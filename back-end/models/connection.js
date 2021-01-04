@@ -6,7 +6,6 @@ const mysql = require('mysql2');
 const enviromentVariable = path.resolve(__dirname, '..', '..', '.env');
 require('dotenv').config({ path: enviromentVariable });
 
-
 const config = mysql.createConnection({
   user: process.env.MYSQL_USER,
   password: process.env.MYSQL_PASSWORD,
