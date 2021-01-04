@@ -14,8 +14,6 @@ const config = mysql.createConnection({
   socketPath: '/var/run/mysqld/mysqld.sock',
 });
 
-config.connect((err) => {
-  return err
-    ? console.error(`${err} ${err.message}`)
-    : console.log(`Connected to the MySQL server.`);
-});
+config.connect((err) => (err
+  ? console.error(`${err} ${err.message}`)
+  : console.log('Connected to the MySQL server.')));
