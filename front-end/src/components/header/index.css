@@ -1,0 +1,33 @@
+.header {
+  align-items: center;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.burguerBtn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 3rem;
+  padding: .5rem;
+}
+
+.sideBar {
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+
+  /* position: fixed; */
+  /* transform: translateX(-30rem); */
+  width: 30rem;
+  /* height: 100%; */
+}
+/* .sideBar.open {
+  transform: translateX(0);
+} */
