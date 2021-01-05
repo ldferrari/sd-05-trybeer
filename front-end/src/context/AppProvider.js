@@ -5,10 +5,13 @@ import AppContext from './AppContext';
 
 function Provider({ children }) {
   const [userName, setUserName] = useState([]);
+  const [nomeProfile, setNomeProfile] = useState([]);
 
   const contextValue = {
     userName,
     setUserName,
+    nomeProfile,
+    setNomeProfile,
   };
   return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>;
 }
