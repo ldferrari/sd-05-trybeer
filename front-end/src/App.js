@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import RegisterPage from './pages/general/RegisterPage';
+import LoginPage from './pages/general/LoginPage';
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
           <RegisterPage />
         </Route>
         <Route path="/">
-          Login
+          <LoginPage />
         </Route>
       </Switch>
     </div>
