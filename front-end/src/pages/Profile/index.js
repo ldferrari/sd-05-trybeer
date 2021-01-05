@@ -2,39 +2,43 @@ import React, { useState } from 'react';
 import './index.css';
 
 const Perfil = () => {
-  const [nomeProfile, setNomeProfile] = useState('');
+  const [nomeProfile, setNomeProfile] = useState('Artur Pirashkov');
+  const [emailProfile, setEmailProfile] = useState('email@email.com');
+
+  const submitChange = async () => {
+    alert(nomeProfile, emailProfile);
+    // axios.post('http://localhost:3001/api/insert', {
+    //   name: nomeProfile,
+    // }).then(() => {
+    //   alert('Sucesso!');
+    // });
+  };
 
   return (
-    <div className="flexbox-container ">
+    <div className="App">
       <h1 data-testid="top-title">Perfil</h1>
-      <form>
-        <label htmlFor='name'
-          className='name-label'>
-          <input
-            type="text"
-            name="name"
-            className="name"
-            placeholder="name"
-            data-testid="profile-name-input"
-            onChange={(e) => setNomeProfile(e.target.value)}
-          />
-        </label>
-        <label htmlFor='email'
-          className='email-label'>
-          <input
-            type="email"
-            name="email"
-            className="email"
-            placeholder="email"
-            data-testid="profile-email-input"
-            readOnly />
-        </label>
+      <div className='form'>
+        <label>Nome</label>
+        <input
+          type="text"
+          name="name"
+          placeholder={nomeProfile}
+          data-testid="profile-name-input"
+          onChange={(e) => setNomeProfile(e.target.value)}
+        />
+        <label>Email</label>
+        <input
+          type="email"
+          name="email"
+          placeholder={emailProfile}
+          data-testid="profile-email-input"
+          readOnly />
         <button
           type="submit"
-          className="salvar-btn"
           data-testid="profile-save-btn"
-          disabled={!(nomeProfile.length > 3)}>Cadastrar</button>
-      </form>
+          disabled={!(nomeProfile.length > 3)}
+          onClick={submitChange}>Cadastrar</button>
+      </div>
     </div>
 
   );
