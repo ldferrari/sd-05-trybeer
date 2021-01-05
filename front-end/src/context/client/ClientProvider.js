@@ -18,6 +18,6 @@ const ClientProvider = ({ children }) => {
 
 export default ClientProvider;
 
-RecipeProvider.propTypes = {
+ClientProvider.propTypes = {
   children: PropTypes.objectOf(Object).isRequired,
 };
