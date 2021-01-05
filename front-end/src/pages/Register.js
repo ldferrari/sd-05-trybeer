@@ -2,8 +2,8 @@ import React from 'react';
 import { useContext } from 'react';
 import TrybeerContext from '../context/TrybeerContext';
 
-// Os dados do presente registro vão provocqr o Create dos DB
-// Que seja do lado admin ou client dependendo do click
+// BACK - registro vai provocar Create nos DB (admin/client)
+
 
 function Register() {
   // const [bla, setBla] = useState(initialstatetrueorfalse);
@@ -56,5 +56,7 @@ function Register() {
     </div>
   );
 }
+
+// hipotese: aqui também tem local storage pois pula o login
 
 export default Register;
