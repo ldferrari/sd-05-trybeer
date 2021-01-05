@@ -1,19 +1,18 @@
-// 'Path' is a Node.js module
-const path = require('path');
 const mysql = require('mysql2');
+require('dotenv').config({ path: __dirname + '/../../.env' });
 
-// https://nodejs.org/api/path.html#path_path_resolve_paths
-const enviromentVariable = path.resolve(__dirname, '..', '..', '.env');
-require('dotenv').config({ path: enviromentVariable });
+console.log(process.env.MYSQL_USER);
 
-const config = mysql.createConnection({
+const config = {
   user: process.env.MYSQL_USER,
   password: process.env.MYSQL_PASSWORD,
   host: process.env.HOSTNAME,
   port: 33060,
   socketPath: '/var/run/mysqld/mysqld.sock',
-});
+};
 
-config.connect((err) => (err
-  ? console.error(`${err} ${err.message}`)
-  : console.log('Connected to the MySQL server.')));
+const connection = mysql.createPool(config);
+
+console.log(connection);
+
+module.exports = connection;
