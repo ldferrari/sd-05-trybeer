@@ -1,10 +1,14 @@
 import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import ClientProfile from './pages/client/ClientProfile';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Teste</h1>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/profile" component={ClientProfile}/>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
