@@ -8,7 +8,13 @@ import TrybeerContext from './TrybeerContext';
 const TrybeerProvider = ({ children }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [admin, setAdmin] = useState(false);
   const context = {
+    name,
+    setName,
+    admin,
+    setAdmin,
     email,
     setEmail,
     password,
