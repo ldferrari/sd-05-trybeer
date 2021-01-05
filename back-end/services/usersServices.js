@@ -1,17 +1,55 @@
 const model = require('../models/usersModel');
 
+const regexName = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
+const regexEmail = /\S+@\S+\.\S+/;
+
 const createUser = async (newUser) => {
-  const { name, email, password } = newUser;
+  const { name, email, password, role } = newUser;
 
-  if (typeof name !== 'string') return false;
+  if (!name.match(regexName) || name.length < 12) throw { err: { code: 404, message: 'name format invalid' }};
 
-  if (typeof email !== 'string') return false;
+  if (!email.match(regexEmail)) throw { err: { code: 404, message: 'email format invalid' }};
 
-  if (password.length < 6) return false;
+  if (typeof password !== 'number' || password.length < 6) throw { err: { code: 404, message: 'password format invalid' }};
 
-  return true;
+  const createdUser = await model.createUser(name, email, password, role);
+
+  if (!createdUser) throw { err: { code: 401, message: 'error' } };
+
+  return createdUser;
 };
+
+const logIn = async (email, password1) => {
+  const userFound = await model.logIn(email)
+  
+  if (!userFound) {
+    throw { err: {code: 404, message: 'user email do not exist'}}
+  }
+
+  if (password1 !== userFound[0].password) {
+    throw { err: {code: 401, message: 'password incorrect'}}
+  }
+
+  const { id, password, ...user } = userFound[0]
+
+// console.log(user)
+ return user;
+}
+
+const updateUserName = async (name, email) =>{
+  const newName = await model.updateUserName(name, email)
+  if (!name.match(regexName) || name.length < 12) throw { err: { code: 404, message: 'name format invalid' }};
+  if (!newName) {
+    throw { err: {code: 404, message: 'operation fail'}}
+  }
+  return newName;
+}
+
+
+// logIn('tryber@trybe.com.br', '123456');
 
 module.exports = {
   createUser,
+  logIn,
+  updateUserName,
 };

@@ -1,55 +1,49 @@
 const connection = require('./connection');
 
-const createUser = async (name, email, password) =>
-  connection.execute(
-    'INSERT INTO Trybeer.users (name, email, password) VALUES (?,?,?)',
-    [name, email, password]
+const createUser = async (name, email, password, role) =>
+  await connection.execute(
+    'INSERT INTO users (name, email, password, role) VALUES (?,?,?,?)',
+    [name, email, password, role]
   );
 
-const getAllUsers = async () => {
-  const [users] = await connection.execute('SELECT * FROM Trybeer.users;');
+// const getAllUsers = async () => {
+//   const [users] = await connection.execute('SELECT * FROM Trybeer.users;');
 
-  return users.map(({ id, first_name, last_name, email, password }) => ({
-    id,
-    firstName: first_name,
-    lastName: last_name,
-    email,
-    password,
-  }));
-};
+//   return users.map(({ id, first_name, last_name, email, password }) => ({
+//     id,
+//     firstName: first_name,
+//     lastName: last_name,
+//     email,
+//     password,
+//   }));
+// };
 
-const getUserById = async (id) => {
+const logIn = async (email) => {
   const [
     user,
-  ] = await connection.execute('SELECT * FROM Trybeer.users WHERE id = ?', [
-    id,
+  ] = await connection.query('SELECT * FROM users WHERE email = ? ', [
+    email,
   ]);
 
   if (!user) return null;
-
-  return {
-    id: user[0].id,
-    firstName: user[0].first_name,
-    lastName: user[0].last_name,
-    email: user[0].email,
-    password: user[0].password,
-  };
+  return user
 };
 
-const updateUser = (id, firstName, lastName, email, password) =>
-  connection.execute(
-    'UPDATE Trybeer.users SET first_name = ?, last_name = ?, email = ?, password = ? WHERE id = ?',
-    [firstName, lastName, email, password, id]
+const updateUserName = async (name, email) => {
+  const [newName] = await connection.execute(
+    'UPDATE users SET name = ? WHERE email = ?',
+    [name, email]
   );
+  console.log(newName)
+  return newName
+}
 
-const deleteUser = async (id) =>
-  connection.execute('DELETE FROM Trybeer.users WHERE id = ?', [id]);
+// const deleteUser = async (id) =>
+//   await connection.execute('DELETE FROM Trybeer.users WHERE id = ?', [id]);
 
 module.exports = {
-  isValid,
   createUser,
-  getAllUsers,
-  getUserById,
-  updateUser,
-  deleteUser,
+  logIn,
+  updateUserName,
+  // deleteUser,
 };
