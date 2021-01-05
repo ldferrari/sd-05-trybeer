@@ -1,9 +1,7 @@
-const path = require('path');
 const mysql = require('mysql2');
+require('dotenv').config({ path: __dirname + '/../../.env' });
 
-const environmentVariable = path.resolve(__dirname, '..', '..', '.env');
-
-require('dotenv').config({ path: environmentVariable });
+console.log(process.env.MYSQL_USER);
 
 const config = {
   user: process.env.MYSQL_USER,
@@ -12,3 +10,9 @@ const config = {
   port: 33060,
   socketPath: '/var/run/mysqld/mysqld.sock',
 };
+
+const connection = mysql.createPool(config);
+
+console.log(connection);
+
+module.exports = connection;
