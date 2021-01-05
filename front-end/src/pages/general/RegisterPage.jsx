@@ -61,8 +61,8 @@ export default function RegisterPage() {
           type="button"
           data-testid="signup-btn"
           disabled={ !isNameValid || !isEmailValid || !isPasswordValid }
-        >{ (isNameValid || isEmailValid || isPasswordValid) ?
-            <Link to={ isSignupSellerSelected ? '/admin/orders' : '/products' }>
+        >{ (isNameValid || isEmailValid || isPasswordValid)
+          ? <Link to={ isSignupSellerSelected ? '/admin/orders' : '/products' }>
               Cadastrar
             </Link> : <div>Cadastrar</div> }
         </button>
