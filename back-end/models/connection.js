@@ -1,4 +1,4 @@
-const mysql = require('mysql2/promise');
+const mysql = require('mysql/promise');
 const path = require('path');
 
 const enviromentVariable = path.resolve(__dirname, '..', '..', '.env');
@@ -11,7 +11,7 @@ const config = {
   host: process.env.HOSTNAME,
   port: 33060,
   socketPath: '/var/run/mysqld/mysqld.sock',
-  database: 'Trybeer'
+  database: 'Trybeer',
 };
 
 const connection = mysql.createPool(config);

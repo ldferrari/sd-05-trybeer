@@ -14,7 +14,7 @@ function App() {
         <Route path="/">
           <LoginPage />
         </Route>
-        <Route path="/profile" component={ ClientProfile }/>
+        <Route path="/profile" component={ ClientProfile } />
       </Switch>
     </div>
   );

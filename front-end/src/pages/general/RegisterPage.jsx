@@ -41,7 +41,7 @@ export default function RegisterPage() {
             type="password"
             id="password"
             data-testid="signup-password"
-            onChange={ ((event) => { setPasswordValid(validatePassword(event.target.value)); }) } 
+            onChange={ ((event) => { setPasswordValid(validatePassword(event.target.value)); }) }
           />
         </label>
       </div>
@@ -53,15 +53,20 @@ export default function RegisterPage() {
             data-testid="signup-seller"
             onChange={ () => setSignupSellerSelected(!isSignupSellerSelected) }
           />
-        Quero Vender
+          Quero Vender
         </label>
       </div>
       <div>
-        <button type="button" data-testid="signup-btn" disabled={ !isNameValid || !isEmailValid || !isPasswordValid }>
-          { (isNameValid || isEmailValid || isPasswordValid) ?
-              <Link to={ isSignupSellerSelected ? '/admin/orders' : '/products' }>
-                Cadastrar
-              </Link> : <div>Cadastrar</div> }
+        <button
+          type="button"
+          data-testid="signup-btn"
+          disabled={ !isNameValid || !isEmailValid || !isPasswordValid }
+          >
+            { (isNameValid || isEmailValid || isPasswordValid)
+            ?
+            <Link to={ isSignupSellerSelected ? '/admin/orders' : '/products' }>
+              Cadastrar
+            </Link> : <div>Cadastrar</div> }
         </button>
       </div>
     </div>

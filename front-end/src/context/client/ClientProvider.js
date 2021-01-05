@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import ClientContext from './ClientContext';
 
 const ClientProvider = ({ children }) => {
@@ -16,3 +17,7 @@ const ClientProvider = ({ children }) => {
 };
 
 export default ClientProvider;
+
+RecipeProvider.propTypes = {
+  children: PropTypes.objectOf(Object).isRequired,
+};
