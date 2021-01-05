@@ -8,8 +8,8 @@ user.get('/', (_req, res) => {
 });
 
 // endpoint de registro
-user.post('/register', (_req, res) => {
-  res.status(201).json({});
+user.post('/register', userServices.register ,(req, res) => {
+  res.status(201).json(req.data);
 });
 
 user.post('/', userServices.login, (req, res) => {
