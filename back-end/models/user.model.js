@@ -1,5 +1,19 @@
 const connection = require('./connection.model');
 
+const findUserbyEmailAndPassword = async ({ email, password }) => {
+  const db = await connection();
+  const results = await db
+    .getTable('users')
+    .select(['id', 'name', 'email', 'role'])
+    .where('email = :email AND password = :password')
+    .bind('email', email)
+    .bind('password', password)
+    .execute();
+
+  const user = results.fetchOne();
+  return user;
+};
+
 const createUser = async (userData) => {
   const { email, name, password, role } = userData;
   const db = await connection();
@@ -49,4 +63,8 @@ const excludeUser = async (id) => {
 
 module.exports = {
   createUser,
+  findUserById,
+  findUserbyEmailAndPassword,
+  excludeUser,
+  updateUser,
 };

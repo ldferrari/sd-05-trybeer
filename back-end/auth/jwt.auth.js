@@ -14,4 +14,4 @@ const checkToken = (token) => jwt.verify(token, SECRET);
 module.exports = {
   createToken,
   checkToken,
-}
+};

@@ -15,15 +15,15 @@ function connection() {
   return schema
     ? Promise.resolve(schema)
     : mysql
-        .getSession(config)
-        .then((session) => {
-          schema = session.getSchema('Trybeer');
-          return schema;
-        })
-        .catch((err) => {
-          console.error(err);
-          process.exit(1);
-        });
+      .getSession(config)
+      .then((session) => {
+        schema = session.getSchema('Trybeer');
+        return schema;
+      })
+      .catch((err) => {
+        console.error(err);
+        process.exit(1);
+      });
 }
 
 module.exports = connection;
