@@ -22,5 +22,6 @@ const getProductById = rescue (async (req, res, next) => {
 //   const { name, price, url_image } = req.body;
 //   const 
 // })
+// apagar
 
 module.exports = { getAllProducts, getProductById };
