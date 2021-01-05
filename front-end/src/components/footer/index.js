@@ -5,7 +5,7 @@ import './index.css';
 const Footer = () => {
   return (
     <div className="footer">
-      <h4>no rights reserved & made with love</h4>
+      <p>no rights reserved & made with love</p>
     </div>
   )
 }

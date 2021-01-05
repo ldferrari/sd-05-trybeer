@@ -19,6 +19,7 @@ const Header = ({ children }) => {
           &#9776;
         </button>
         <h2 data-testid="top-title" className="title">{children}</h2>
+        </div>
         { display && <aside className="sideBar side-menu-container">
           <ul>
             <li className="menuBtn">
@@ -43,7 +44,6 @@ const Header = ({ children }) => {
             </li>
           </ul>
         </aside>}
-      </div>
       {/* <div className="header-bottom">{display && <SearchBar recipeType={children} />}</div> */}
     </Fragment>
   );

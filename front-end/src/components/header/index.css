@@ -4,7 +4,7 @@
   color: white;
   display: flex;
   flex-wrap: wrap;
-  /* height: 100px; */
+  height: 100px;
   /* position:fixed; */
   width: 100%;
 }
@@ -27,15 +27,18 @@
 .sideBar {
   background-color: black;
   color: white;
-  display: flex;
-  flex-direction: column;
+  float: left;
+  /* display: flex;
+  flex-direction: column; */
   height: 100%;
   /* margin-top: 100px; */
   /* position: fixed; */
   padding: 3%;
+  position: absolute;
   text-decoration: none;
   /* transform: translateX(-30rem); */
-  width: 100%;
+  width: 73%;
+  z-index: 1;
 }
 /* .sideBar.open {
   transform: translateX(0);
