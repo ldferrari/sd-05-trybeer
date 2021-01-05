@@ -63,9 +63,9 @@ export default function RegisterPage() {
           disabled={ !isNameValid || !isEmailValid || !isPasswordValid }
         >
           { (isNameValid || isEmailValid || isPasswordValid)
-        ? <Link to={ isSignupSellerSelected ? '/admin/orders' : '/products' }>
+    ? <Link to={ isSignupSellerSelected ? '/admin/orders' : '/products' }>
               Cadastrar
-          </Link> : <div>Cadastrar</div> }
+      </Link> : <div>Cadastrar</div> }
         </button>
       </div>
     </div>
