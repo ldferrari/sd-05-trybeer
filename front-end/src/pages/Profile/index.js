@@ -5,7 +5,7 @@ const Perfil = () => {
   const [nomeProfile, setNomeProfile] = useState('');
 
   return (
-    <div>
+    <div className="flexbox-container ">
       <h1 data-testid="top-title">Perfil</h1>
       <form>
         <label htmlFor='name'
