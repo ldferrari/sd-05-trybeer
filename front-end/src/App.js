@@ -3,6 +3,7 @@ import Provider from './context/Provider';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Login from './pages/login';
+import Products from './pages/products';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <BrowserRouter>
           <Switch>
             <Route exact path="/login" component={Login} />
+            <Route exact path="/products" component={Products} />
           </Switch>
         </BrowserRouter>
       </Provider>

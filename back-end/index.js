@@ -1,10 +1,17 @@
 const express = require('express');
+const users = require('./controllers/usersController');
+require('dotenv').config({ path: __dirname + '/../.env' });
+
 const app = express();
 const bodyParser = require('body-parser');
-app.use(bodyParser.json());
 
-app.get('/', (request, response) => {
+app.use(bodyParser.json());
+app.use('/users', users);
+
+app.get('/', (_request, response) => {
   response.send();
 });
 
-app.listen(3001, () => console.log('listenning on 3001'));
+const PORT = process.env.PORT || 3001;
+
+app.listen(PORT, () => console.log(`listening on ${PORT}`));
