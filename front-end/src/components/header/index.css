@@ -3,8 +3,8 @@
   background-color: black;
   color: white;
   display: flex;
-  justify-content: space-between;
-
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .burguerBtn {
@@ -12,8 +12,13 @@
   border: none;
   color: white;
   cursor: pointer;
-  font-size: 3rem;
-  padding: .5rem;
+  font-size: 2rem;
+  padding: 1%;
+}
+
+.title {
+  margin-left: 3%;
+  padding: 1%;
 }
 
 .sideBar {
@@ -22,12 +27,20 @@
   display: flex;
   flex-direction: column;
   text-decoration: none;
-
-  /* position: fixed; */
+    /* position: fixed; */
   /* transform: translateX(-30rem); */
-  width: 30rem;
-  /* height: 100%; */
+  width: 100%;
+  height: 100%;
 }
 /* .sideBar.open {
   transform: translateX(0);
-} */
+} */ 
+.menuBtn {
+  color: white;
+  text-decoration: none;
+  padding: 2%;
+}
+
+ul {
+  list-style-type: none;
+}
