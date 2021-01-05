@@ -15,6 +15,7 @@
   color: white;
   cursor: pointer;
   font-size: 2rem;
+  margin-left: 1%;
   padding: 1%;
 }
 
@@ -47,4 +48,10 @@
 
 ul {
   list-style-type: none;
+}
+
+Link {
+  color: white;
+  text-decoration: none;
+  padding: 2%;
 }
