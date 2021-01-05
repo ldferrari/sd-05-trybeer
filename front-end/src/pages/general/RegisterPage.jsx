@@ -13,52 +13,57 @@ export default function RegisterPage() {
     <div>
       <h2>Registro</h2>
       <div>
-        <label>
+        <label htmlFor="name">
           Nome
-          <input type="text" data-testid="signup-name" onChange={
-            (event => {
-              setNameValid(validateName(event.target.value))
-            })
-          } />
+          <input
+            type="text"
+            id="name"
+            data-testid="signup-name"
+            onChange={ ((event) => { setNameValid(validateName(event.target.value)); }) }
+          />
         </label>
       </div>
       <div>
-        <label>
+        <label htmlFor="email">
           Email
-          <input type="text" data-testid="signup-email" onChange={
-            (event => {
-              setEmailValid(validateEmail(event.target.value))
-            })
-          } />
+          <input
+            type="text"
+            id="email"
+            data-testid="signup-email"
+            onChange={ ((event) => { setEmailValid(validateEmail(event.target.value)); }) }
+          />
         </label>
       </div>
       <div>
-        <label>
+        <label htmlFor="password">
           Password
-          <input type="password" data-testid="signup-password" onChange={
-            (event => {
-              setPasswordValid(validatePassword(event.target.value))
-            })
-          } />
+          <input
+            type="password"
+            id="password"
+            data-testid="signup-password"
+            onChange={ ((event) => { setPasswordValid(validatePassword(event.target.value)); }) } 
+          />
         </label>
       </div>
       <div>
-        <input type="checkbox" id="want-to-sell" data-testid="signup-seller" onChange={
-          () => setSignupSellerSelected(!isSignupSellerSelected)
-        } />
-        <label htmlFor="want-to-sell">Quero Vender</label>
+        <label htmlFor="want-to-sell">
+          <input
+            type="checkbox"
+            id="want-to-sell"
+            data-testid="signup-seller"
+            onChange={ () => setSignupSellerSelected(!isSignupSellerSelected) }
+          />
+        Quero Vender
+        </label>
       </div>
       <div>
-        <button type="button" data-testid="signup-btn" disabled={!isNameValid || !isEmailValid || !isPasswordValid}>
-          {
-            (isNameValid || isEmailValid || isPasswordValid) ?
-            <Link to={isSignupSellerSelected ? "/admin/orders" : "/products"}>
-            Cadastrar
-          </Link> :
-            <Link>Cadastrar</Link>
-          }
+        <button type="button" data-testid="signup-btn" disabled={ !isNameValid || !isEmailValid || !isPasswordValid }>
+          { (isNameValid || isEmailValid || isPasswordValid) ?
+              <Link to={ isSignupSellerSelected ? '/admin/orders' : '/products' }>
+                Cadastrar
+              </Link> : <div>Cadastrar</div> }
         </button>
       </div>
     </div>
-  )
+  );
 }
