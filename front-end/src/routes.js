@@ -4,11 +4,13 @@ import {
   Login,
   Profile,
 } from './pages/';
+import Products from './pages/Products';
 
 const Rotas = () => (
   <Switch>
     <Route exact path="/" component={Login} />
     <Route path="/profile" component={Profile} />
+    <Route path="/products" component={Products} />
   </Switch>
 );
 
