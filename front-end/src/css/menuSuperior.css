@@ -1,0 +1,30 @@
+* {
+	margin: 0;
+}
+
+.menuSuperior {
+width:100%;
+padding:10px 18px;
+box-shadow:0px 1px 1px rgba(0,0,0,0.15);
+background:#073416;
+}
+
+.buttonHamburguer {
+	display:inline-block;
+	color:white;
+	box-shadow:0px 1px 1px rgba(0,0,0,0.15);
+	border-radius:10px;
+	background:#073416;
+	float:left;
+	font-size:30px;
+	text-shadow:0px 1px 0px rgba(0,0,0,0.5);
+	transition:color linear 0.15s;
+}
+
+.topTitle {
+	text-align: center;
+	color: white;
+	font-family: Roboto;
+	font-size: 36px;
+	line-height: 42px;
+}
