@@ -5,10 +5,9 @@ const getByEmail = async (email) => {
   return user;
 };
 
-const createUser = async (name, email, password, role) =>
-  connection.execute(
-    ' INSERT INTO Trybeer.users (name, email, password, role) VALUES (?, ?, ?, ?) ',
-    [name, email, password, role],
-  );
+const createUser = async (name, email, password, role) => connection.execute(
+  ' INSERT INTO Trybeer.users (name, email, password, role) VALUES (?, ?, ?, ?) ',
+  [name, email, password, role],
+);
 
 module.exports = { getByEmail, createUser };

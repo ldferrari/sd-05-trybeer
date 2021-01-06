@@ -11,7 +11,6 @@ async function authToken(req, res, next) {
     req.userPayload = payload.userData;
 
     return next();
-
   } catch (err) {
     console.log(err.message);
     return res.status(401).json({ message: 'token malformed' });
