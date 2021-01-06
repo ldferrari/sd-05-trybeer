@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import ClientContext from '../../context/client/ClientContext';
 
 const Products = () => {
@@ -8,39 +9,54 @@ const Products = () => {
 
   return (
     <div>
-      {/* <div>
+      <div>
         {products.map((product, index) => (
           <div key={ product.id }>
-            <img data-testid={ `${index}-product-img` } >
-              Foto
-            </img>
+            <img 
+              data-testid={ `${index}-product-img` }
+              src={ product.urlImage }
+              alt="foto_produto" 
+            />
+            {/* <img 
+              data-testid="0-product-img"
+              alt="imagem_produto"
+            /> */}
+            <div data-testid={ `${index}-product-name` }>
+            {/* <div data-testid="0-product-name"> */}
+             { product.name }
+            </div>
+            <div data-testid={ `${index}-product-price` }>
+              R$ { product.price }               
+            </div>
+            <div>
+              <button 
+                data-testid={ `${index}-product-plus` }
+                type="button"
+                // onClick={ () => aumentar unidade e adicionar ao carrinho }
+              >
+                +
+              </button>
+              <div data-testid={ `${index}-product-qtd` }>
+                Quantidade
+              </div>
+              <button 
+                type="button"
+                data-testid={ `${index}-product-minus` }
+                // onClick={ () => diminuir unidade e remover do carrinho }
+              >
+                -
+              </button>
+            </div>
+            <button
+              type="button"
+              data-testid="checkout-bottom-btn">
+              <Link to="/checkout">
+                Ver carrinho // valor data-testid="checkout-bottom-btn-value"
+              </Link>
+            </button>
           </div>
         ))}
-      </div> */}
-      
-      {/* <div data-testid={ `${index}-product-name` }>
-        Nome Produto
-      </div> */}
-      <div data-testid="0-product-price">
-        Preço
       </div>
-      <div>
-        Quantidade
-      </div>
-      <div>
-        <button data-testid="0-product-plus">
-          +
-        </button>
-        <div data-testid="0-product-qtd">
-          Quantidade
-        </div>
-        <button data-testid="0-product-minus">
-          -
-        </button>
-      </div>
-      <button data-testid="checkout-bottom-btn">
-        Ver carrinho
-      </button>
     </div>
   );
 };

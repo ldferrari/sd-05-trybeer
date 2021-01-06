@@ -12,11 +12,11 @@ function App() {
         <Route path="/register">
           <RegisterPage />
         </Route>
-        <Route path="/">
         <Route path="/profile" component={ ClientProfile } />
+        <Route path="/products" component={ Products } />
+        <Route path="/">
           <LoginPage />
         </Route>
-        <Route path="/products" component={ Products } />
       </Switch>
     </div>
   );
