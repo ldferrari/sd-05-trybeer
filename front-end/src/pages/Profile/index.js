@@ -17,7 +17,7 @@ const Perfil = () => {
     axios.post('http://localhost:3001/api/insert', {
       name: nomeProfile,
     }).then(() => {
-      alert('Sucesso!');
+      return 'Sucesso!';
     });
   };
 
@@ -36,20 +36,20 @@ const Perfil = () => {
     <div className="App">
       <h1 data-testid="top-title">Perfil</h1>
       <div className="form">
-        <label htmlFor="name" for="name">Nome</label>
+        <label htmlFor="name-id">Nome</label>
         <input
           type="text"
           name="name"
-          id="name"
+          id="name-id"
           placeholder={ nomes }
           data-testid="profile-name-input"
           onChange={ handleChanged }
         />
-        <label htmlFor="email" for="email">Email</label>
+        <label htmlFor="email-id">Email</label>
         <input
           type="email"
           id="email"
-          name="email"
+          name="email-id"
           placeholder={ emailProfile }
           data-testid="profile-email-input"
           readOnly
