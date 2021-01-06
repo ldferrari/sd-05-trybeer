@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import TrybeerContext from './TrybeerContext';
 // Caso for preciso fazer mais de um provider e contexto
 // por critério de legibilidade de código,
@@ -26,6 +26,6 @@ const TrybeerProvider = ({ children }) => {
 
 export default TrybeerProvider;
 
-// TrybeerProvider.propTypes = {
-//   children: PropTypes.objectOf(Object).isRequired,
-// };
+TrybeerProvider.propTypes = {
+  children: PropTypes.objectOf(Object).isRequired,
+};
