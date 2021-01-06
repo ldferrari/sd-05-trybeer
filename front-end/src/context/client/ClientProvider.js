@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import ClientContext from './ClientContext';
 
 const ClientProvider = ({ children }) => {
@@ -12,7 +13,11 @@ const ClientProvider = ({ children }) => {
     setName,
   };
 
-  return <ClientContext.Provider value={context}>{children}</ClientContext.Provider>;
+  return <ClientContext.Provider value={ context }>{children}</ClientContext.Provider>;
 };
 
 export default ClientProvider;
+
+ClientProvider.propTypes = {
+  children: PropTypes.objectOf(Object).isRequired,
+};
