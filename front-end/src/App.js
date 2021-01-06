@@ -1,14 +1,22 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import RegisterPage from './pages/general/RegisterPage';
+import LoginPage from './pages/general/LoginPage';
 import ClientProfile from './pages/client/ClientProfile';
 
 function App() {
   return (
-    <BrowserRouter>
+    <div className="App">
       <Switch>
-        <Route path="/profile" component={ClientProfile}/>
+        <Route path="/register">
+          <RegisterPage />
+        </Route>
+        <Route path="/">
+          <LoginPage />
+        </Route>
+        <Route path="/profile" component={ ClientProfile } />
       </Switch>
-    </BrowserRouter>
+    </div>
   );
 }
 

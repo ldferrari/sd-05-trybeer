@@ -11,7 +11,7 @@ import {
 } from '../actions/actionBase';
 
 import { internet } from 'faker';
-  
+
 describe('Crie uma página de registro de usuários', () => {
   before(() => {
     createAndInsertsDataBase()
@@ -19,7 +19,7 @@ describe('Crie uma página de registro de usuários', () => {
 
   after(() => {
     dropAndTruncateDataBase();
-  }) 
+  })
 
   beforeEach( () => {
     cy.visit(Cypress.config().baseUrl);
@@ -35,7 +35,7 @@ describe('Crie uma página de registro de usuários', () => {
     verifyElementVisible('[data-testid="signup-name"]');
     verifyContainsText('Email');
     verifyElementVisible('[data-testid="signup-email"]');
-    verifyContainsText('Password');
+    verifyContainsText('Senha');
     verifyElementVisible('[data-testid="signup-password"]');
     verifyContainsText('Quero Vender');
     verifyElementVisible('[data-testid="signup-seller"]');
@@ -44,7 +44,7 @@ describe('Crie uma página de registro de usuários', () => {
   });
 
   it('Será validado que não é possível fazer o registro com um nome com menos de 12 letras', () => {
-    insertText('[data-testid="signup-name"]', 'bruno');  
+    insertText('[data-testid="signup-name"]', 'bruno');
     insertText('[data-testid="signup-email"]', 'email@gmail.com');
     insertText('[data-testid="signup-password"]', '12345678');
     verifyElementIsDisable('[data-testid="signup-btn"]');
