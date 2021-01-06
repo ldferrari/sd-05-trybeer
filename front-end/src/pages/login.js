@@ -56,7 +56,7 @@ const Login = () => {
         type="text"
         onChange={ (event) => setEmail(event.target.value) }
       />
-      <h2>Password</h2>
+      <h2>Senha</h2>
       <input data-testid="password-input" type="password" onChange={ (event) => setPassword(event.target.value) } />
       <button
         type="submit"

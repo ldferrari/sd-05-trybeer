@@ -1,11 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const path = require('path');
+const cors = require('cors');
 const users = require('./controllers/usersController');
-require('dotenv').config(path.join(__dirname, '/../.env'));
+
+require('dotenv').config({ path: `${__dirname}/../../.env` });
 
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use('/users', users);
 
