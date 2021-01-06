@@ -44,7 +44,7 @@ const Login = () => {
         setDesignetedRoute('/admin/orders');
         break;
       default:
-        alert('Usuário não encontrado');
+        break;
     }
   };
 
