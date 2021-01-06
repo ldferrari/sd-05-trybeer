@@ -16,9 +16,7 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        {/* <Route exact path="/login" component={Login} /> 
-        readme indica path /login mas teste passa com raiz / */}
-        <Route exact path="/" component={ Login } />
+        <Route exact path="/login" component={ Login } />
         <Route exact path="/register" component={ Register } />
         <Route exact path="/profile" component={ ClientProfile } />
         <Route exact path="/products" component={ Products } />

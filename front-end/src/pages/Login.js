@@ -32,19 +32,20 @@ function Login() {
 
   const checkEmail = (emailTested) => {
     const regexEmail = /^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/;
-    if (regexEmail.test(emailTested) === true) setCheckedEmail(true);
+    return regexEmail.test(emailTested);
   };
   const checkPassword = (passwordTested) => {
-    if (passwordTested.length > 5) setCheckedPassword(true);
+    if (passwordTested.length > 5) return true;
+    else return false;
   };
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
-    checkEmail(e.target.value);
+    setCheckedEmail(checkEmail(e.target.value));
   };
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-    checkPassword(e.target.value);
+    setCheckedPassword(checkPassword(e.target.value));
   };
 
   const storage = () => {
