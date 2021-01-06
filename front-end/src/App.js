@@ -18,20 +18,22 @@ function App() {
       <Switch>
         {/* <Route exact path="/login" component={Login} /> 
         readme indica path /login mas teste passa com raiz / */}
-        <Route exact path="/" component={Login} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/profile" component={ClientProfile} />
-        <Route exact path="/products" component={Products} />
-        <Route exact path="/checkout" component={Checkout} />
-        <Route exact path="/orders" component={Orders} />
+        <Route exact path="/" component={ Login } />
+        <Route exact path="/register" component={ Register } />
+        <Route exact path="/profile" component={ ClientProfile } />
+        <Route exact path="/products" component={ Products } />
+        <Route exact path="/checkout" component={ Checkout } />
+        <Route exact path="/orders" component={ Orders } />
         <Route
-          exact path="/orders/:orderNumber"
+          exact
+          path="/orders/:orderNumber"
           render={(props) => <OrdersDetails {...props} />}
         />
         <Route exact path="/admin/profile" component={AdminProfile} />
         <Route exact path="/admin/orders" component={PendingOrders} />
         <Route
-          exact path="/admin/orders/:id"
+          exact
+          path="/admin/orders/:id"
           render={(props) => <AdminOrdersDetails {...props} />}
         />
       </Switch>
