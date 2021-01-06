@@ -35,7 +35,7 @@ function Login() {
     if (regexEmail.test(emailTested) === true) setCheckedEmail(true);
   };
   const checkPassword = (passwordTested) => {
-    if (passwordTested.length > 6) setCheckedPassword(true);
+    if (passwordTested.length > 5) setCheckedPassword(true);
   };
 
   const handleEmailChange = (e) => {
@@ -65,7 +65,8 @@ function Login() {
       {inputPassword(handlePasswordChange)}
       <Link to="/products">
         {/* BACK - Conseguir condicionar, é
-        <Link to="/admin/orders"> no caso de ser admin.*/}
+        <Link to="/admin/orders"> no caso de ser admin.
+        Isso vem do create do register */}
         <button
           type="button"
           data-testid="signin-btn"

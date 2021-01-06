@@ -13,12 +13,12 @@ const TrybeerProvider = ({ children }) => {
   const context = {
     name,
     setName,
-    admin,
-    setAdmin,
     email,
     setEmail,
     password,
     setPassword,
+    admin,
+    setAdmin,
   };
 
   return <TrybeerContext.Provider value={context}>{ children }</TrybeerContext.Provider>;
