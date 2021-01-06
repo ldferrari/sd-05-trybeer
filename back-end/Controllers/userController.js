@@ -4,7 +4,7 @@ const service = require('../Service/userService');
 
 const register = Router();
 
-const createToken = require('../Middlewares/webTokenMiddleware');
+const { createToken } = require('../Middlewares/webTokenMiddleware');
 
 const validateEmail = (email) => {
   const regexEmail = RegExp(/\S+@\S+\.\S+/, 'i');
