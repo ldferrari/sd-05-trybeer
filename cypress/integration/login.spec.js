@@ -9,7 +9,7 @@ import {
   createAndInsertsDataBase,
   dropAndTruncateDataBase,
 } from '../actions/actionBase';
-  
+
 describe('Crie uma página de login', () => {
   before(() => {
     createAndInsertsDataBase();
@@ -30,7 +30,7 @@ describe('Crie uma página de login', () => {
   it('Será validado que a tela login contém os atributos descritos no protótipo', () => {
     verifyContainsText('Email');
     verifyElementVisible('[data-testid="email-input"]');
-    verifyContainsText('Password');
+    verifyContainsText('Senha');
     verifyElementVisible('[data-testid="password-input"]');
     verifyContainsText('ENTRAR');
     verifyElementVisible('[data-testid="signin-btn"]');
