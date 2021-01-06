@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import Context from './Context';
 
 function Provider({ children }) {
@@ -7,6 +8,9 @@ function Provider({ children }) {
     beers,
     setBeer,
   };
-  return <Context.Provider value = { dataContext }>{children}</Context.Provider>;
+  return <Context.Provider value={ dataContext }>{children}</Context.Provider>;
 }
+Provider.propTypes = {
+  children: PropTypes.string.isRequired,
+};
 export default Provider;

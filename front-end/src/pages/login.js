@@ -9,7 +9,9 @@ const Login = () => {
   const [isLoginValid, setIsLoginValid] = useState(false);
   const [designatedRoute, setDesignetedRoute] = useState(undefined);
 
-  useEffect(() => { setIsLoginValid(validateLogin(email, password)) }, [email, password]);
+  useEffect(() => {
+    setIsLoginValid(validateLogin(email, password));
+  }, [email, password]);
 
   // const handleRoute = async (email) => {
   //   const userRole = await checkUser(email);
@@ -30,35 +32,46 @@ const Login = () => {
   //   }
   // }
 
-  const handleRoute = async (email, password) => {
-    const userRole = await checkUser(email, password);
+  const handleRoute = async (ema, pass) => {
+    const userRole = await checkUser(ema, pass);
     localStorage.setItem('token', userRole.token);
-    switch(userRole.role) {
+    // console.log(userRole);
+    switch (userRole.role) {
       case 'client':
-        setDesignetedRoute('/products')
+        setDesignetedRoute('/products');
         break;
       case 'administrator':
-        setDesignetedRoute('/admin/orders')
+        setDesignetedRoute('/admin/orders');
         break;
       default:
         alert('Usuário não encontrado');
     }
-  }
-
+  };
 
   return (
     <div className="input">
       <h2>Email</h2>
-      <input data-testid="email-input" type='text' onChange={(event) => setEmail(event.target.value)}></input>
+      <input
+        data-testid="email-input"
+        type="text"
+        onChange={ (event) => setEmail(event.target.value) }
+      />
       <h2>Password</h2>
-      <input data-testid="password-input" type='password' onChange={(event) => setPassword(event.target.value)}></input>
-      <button data-testid="signin-btn" disabled={!isLoginValid} onClick={() => handleRoute(email, password)}>ENTRAR</button>
-      { designatedRoute !== undefined ?  <Redirect to={designatedRoute}/> : null }
+      <input data-testid="password-input" type="password" onChange={ (event) => setPassword(event.target.value) } />
+      <button
+        type="submit"
+        data-testid="signin-btn"
+        disabled={ !isLoginValid }
+        onClick={ () => handleRoute(email, password) }
+      >
+        ENTRAR
+      </button>
+      { designatedRoute !== undefined ? <Redirect to={ designatedRoute } /> : null }
       <Link to="/register">
-        <button data-testid="no-account-btn">Ainda não tenho conta</button>
+        <button type="submit" data-testid="no-account-btn">Ainda não tenho conta</button>
       </Link>
     </div>
-  )
-}
+  );
+};
 
 export default Login;
