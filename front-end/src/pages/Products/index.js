@@ -1,18 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './index.css';
-// import Header from '../../'
+import Header from '../../components/header';
+import Footer from '../../components/footer';
+
 import axios from 'axios';
 
 import data from './data';
+import Card from '../../components/productCard';
+import AppContext from '../../context/AppContext';
 
 const Products = () => {
-const [qty, setQty] = useState(0);
+
+  const { cart, setCart } = useContext(AppContext);
+
+  const cartSum = cart.reduce((acc, cv) => acc + cv.price * cv.qty, 0).toFixed(2);
 // const [produtos, setProdutos] = useState([]);
 
 // useEffect(() => {
 //  const fetchProducts = async () => {
-//    const {data} = await axios.get("/api/products");
+//    const {data} = await axios.get("/api/productinhos");
 //    setProdutos(data);
 //  }
 //  fetchProducts();
@@ -23,30 +30,17 @@ const [qty, setQty] = useState(0);
 
   return (
     <div className="Products">
-      {/* <Header>TryBeer</Header> */}
+      <Header>TryBeer</Header>
       <div className="productList">
-        { data.products.map((product) =>
-          <div className="card" key={ product.name }>
-            <img src={ product.url_image } alt={ product.name } data-testid={ `${product.id - 1}-product-img` } />
-            <p data-testid={ `${product.id - 1}-product-name` }>{ product.name }</p>
-            <h4 data-testid={ `${product.id - 1}-product-price` }>
-              R$
-              { product.price }
-            </h4>
-            <div className="cardBottom">
-              <button type="button" data-testid={ `${product.id - 1}-product-minus` } onClick={() => { setQty(qty - 1) }} >-</button>
-              <p data-testid={ `${product.id - 1}-product-qtd` }>{qty}</p>
-              <button type="button" data-testid={ `${product.id - 1}-product-plus` } onClick={() => { setQty(qty + 1) }}>+</button>
-            </div>
-          </div>,) },
+        { data.products.map((product) => <Card product={product} /> ) },
       </div>
       <div className="checkoutBtn">
         <Link to="/checkout" data-testid="checkout-bottom-btn" className="checkoutLink">
           <p>Ver Carrinho</p>
-          <p data-testid="checkout-bottom-btn-value">Valor dentro do cart</p>
+          <p data-testid="checkout-bottom-btn-value">R${cartSum}</p>
         </Link>
       </div>
-      {/* <Footer/> */}
+      <Footer/>
     </div>
   )
 };
