@@ -35,18 +35,20 @@ const Perfil = () => {
   return (
     <div className="App">
       <h1 data-testid="top-title">Perfil</h1>
-      <div className='form'>
-        <label htmlFor="name">Nome</label>
+      <div className="form">
+        <label htmlFor="name" for="name">Nome</label>
         <input
           type="text"
           name="name"
+          id="name"
           placeholder={ nomes }
           data-testid="profile-name-input"
           onChange={ handleChanged }
         />
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email" for="email">Email</label>
         <input
           type="email"
+          id="email"
           name="email"
           placeholder={ emailProfile }
           data-testid="profile-email-input"
