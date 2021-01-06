@@ -14,7 +14,7 @@ const Perfil = () => {
   } = useContext(AppContext);
 
   const submitChange = async () => {
-    alert(nomeProfile, emailProfile);
+    console.log(nomeProfile, emailProfile);
     // axios.post('http://localhost:3001/api/insert', {
     //   name: nomeProfile,
     // }).then(() => {
@@ -24,14 +24,14 @@ const Perfil = () => {
 
   const handleChanged = (e) => {
     setNomeProfile(e.target.value);
-    if(nomeProfile.length > 3){
+    if (nomeProfile.length > 3){
       setDisable(false);
-    }else {
+    } else {
       setDisable(true);
     }
-  }
+  };
 
-  let nomes = nomeProfile;
+  const nomes = nomeProfile;
   return (
     <div className="App">
       <h1 data-testid="top-title">Perfil</h1>
@@ -40,22 +40,23 @@ const Perfil = () => {
         <input
           type="text"
           name="name"
-          placeholder={nomes}
+          placeholder={ nomes }
           data-testid="profile-name-input"
-          onChange={handleChanged}
-        />
+          onChange={ handleChanged } />
         <label>Email</label>
         <input
           type="email"
           name="email"
-          placeholder={emailProfile}
+          placeholder={ emailProfile }
           data-testid="profile-email-input"
           readOnly />
         <button
           type="submit"
           data-testid="profile-save-btn"
-          disabled={disabled}
-          onClick={submitChange}>Cadastrar</button>
+          disabled={ disabled }
+          onClick={ submitChange }>
+            Cadastrar
+        </button>
       </div>
     </div>
 
