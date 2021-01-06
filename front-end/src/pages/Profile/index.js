@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import AppContext from '../../context/AppContext';
 
 import './index.css';
@@ -14,17 +14,17 @@ const Perfil = () => {
   } = useContext(AppContext);
 
   const submitChange = async () => {
-    console.log(nomeProfile, emailProfile);
-    // axios.post('http://localhost:3001/api/insert', {
-    //   name: nomeProfile,
-    // }).then(() => {
-    //   alert('Sucesso!');
-    // });
+    axios.post('http://localhost:3001/api/insert', {
+      name: nomeProfile,
+    }).then(() => {
+      alert('Sucesso!');
+    });
   };
 
   const handleChanged = (e) => {
     setNomeProfile(e.target.value);
-    if (nomeProfile.length > 3){
+    const lengthName = 3;
+    if (nomeProfile.length > lengthName) {
       setDisable(false);
     } else {
       setDisable(true);
@@ -36,26 +36,29 @@ const Perfil = () => {
     <div className="App">
       <h1 data-testid="top-title">Perfil</h1>
       <div className='form'>
-        <label>Nome</label>
+        <label htmlFor="name">Nome</label>
         <input
           type="text"
           name="name"
           placeholder={ nomes }
           data-testid="profile-name-input"
-          onChange={ handleChanged } />
-        <label>Email</label>
+          onChange={ handleChanged }
+        />
+        <label htmlFor="email">Email</label>
         <input
           type="email"
           name="email"
           placeholder={ emailProfile }
           data-testid="profile-email-input"
-          readOnly />
+          readOnly
+        />
         <button
           type="submit"
           data-testid="profile-save-btn"
           disabled={ disabled }
-          onClick={ submitChange }>
-            Cadastrar
+          onClick={ submitChange }
+        >
+          Cadastrar
         </button>
       </div>
     </div>
