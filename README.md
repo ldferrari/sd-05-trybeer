@@ -261,6 +261,16 @@ Variáveis:
 
 ### 1 - Crie uma página de login
 
+RETORNA:
+``` js
+{
+    "id": 2,
+    "name": "testuser",
+    "email": "user@test.com",
+    "password": "test123",
+    "role": "client"
+}
+```
 Esta tela possui o nome `Login` no protótipo.
 
 - Todos os elementos da tela devem respeitar os atributos descritos no protótipo;
@@ -311,6 +321,17 @@ Esta tela possui o nome `Login` no protótipo.
 
 ### 2 - Crie uma página de registro de usuários
 
+RETORNA:
+```js
+{
+    "user": {
+        "name": "Paulo Ricardao",
+        "email": "paulo@paulo2.com",
+        "role": "admin"
+    },
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhdWxvQHBhdWxvMi5jb20iLCJyb2xlIjoiYWRtaW4iLCJpc3MiOiJwb3N0X2FwaSIsImlhdCI6MTYwOTkwMDMwMSwiZXhwIjoxNjA5OTg2NzAxfQ.TEBkUCRevflydklknce1RcF_foWjll-upoY8Bz9TB44"
+}
+```
 Esta tela possui o nome `Registro` no protótipo.
 
 - Todos os elementos devem respeitar os atributos descritos no protótipo;
