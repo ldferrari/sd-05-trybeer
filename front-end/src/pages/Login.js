@@ -14,9 +14,9 @@ function inputEmail(handleEmailChange) {
 function inputPassword(handlePasswordChange) {
   return (
     <div className="login-input">
-      <p>Password</p>
+      <p>Senha</p>
       <input
-        type="password"
+        type=""
         data-testid="password-input"
         name="password"
         onChange={(e) => handlePasswordChange(e)}
