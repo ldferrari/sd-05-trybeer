@@ -1,11 +1,11 @@
-import React from 'react';
+// import React from 'react';
 
-const TopBar = (props) => {
-  return (
-    <div>
-      <h1 data-testid="top-title">{props.title}</h1>
-    </div>
-  )
-}
+// const TopBar = (props) => {
+//   return (
+//     <div>
+//       <h1 data-testid="top-title">{props.title}</h1>
+//     </div>
+//   )
+// }
 
-export default TopBar;
+// export default TopBar;

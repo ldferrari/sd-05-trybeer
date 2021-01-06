@@ -25,7 +25,7 @@ const checkUser = async (email) => {
 
 const registerUserService = async (name, email, password, checkbox) => {
   const role = checkbox ? 'administrator' : 'client';
-  const newUser = await userModel.registerUser(email, password, name, role);
+  const newUser = await model.registerUser(email, password, name, role);
   return newUser;
 };
 

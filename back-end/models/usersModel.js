@@ -15,22 +15,21 @@ const checkUser = async (email) => {
   return user[0][0].email;
 };
 
-const registerUser = async (name, email, password, role) => {
-  try {
-    db()
-    .then((connect) => connect
-    .getTable('users')
-    .insert(['name', 'email', 'password', 'role'])
-    .values(name, email, password, role)
-    .execute());
-    return { name, email, role };
-  } catch (err) {
-    console.log(err.message)
-  }
-};
+// const registerUser = async (name, email, password, role) => {
+//   try {
+//     db()
+//     .then((connect) => connect
+//     .getTable('users')
+//     .insert(['name', 'email', 'password', 'role'])
+//     .values(name, email, password, role)
+//     .execute());
+//     return { name, email, role };
+//   } catch (err) {
+//     console.log(err.message)
+//   }
+// };
 
 module.exports = {
   validateLog,
   checkUser,
-  registerUser,
 };
