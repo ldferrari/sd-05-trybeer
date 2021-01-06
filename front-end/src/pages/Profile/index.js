@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+// import axios from 'axios';
+import AppContext from '../../context/AppContext';
+
 import './index.css';
 
 const Perfil = () => {
-  const [nomeProfile, setNomeProfile] = useState('Artur Pirashkov');
-  const [emailProfile, setEmailProfile] = useState('email@email.com');
+  const [disabled, setDisable] = useState(true);
+
+  const {
+    nomeProfile,
+    setNomeProfile,
+    emailProfile,
+  } = useContext(AppContext);
 
   const submitChange = async () => {
     alert(nomeProfile, emailProfile);
@@ -14,6 +22,16 @@ const Perfil = () => {
     // });
   };
 
+  const handleChanged = (e) => {
+    setNomeProfile(e.target.value);
+    if(nomeProfile.length > 3){
+      setDisable(false);
+    }else {
+      setDisable(true);
+    }
+  }
+
+  let nomes = nomeProfile;
   return (
     <div className="App">
       <h1 data-testid="top-title">Perfil</h1>
@@ -22,9 +40,9 @@ const Perfil = () => {
         <input
           type="text"
           name="name"
-          placeholder={nomeProfile}
+          placeholder={nomes}
           data-testid="profile-name-input"
-          onChange={(e) => setNomeProfile(e.target.value)}
+          onChange={handleChanged}
         />
         <label>Email</label>
         <input
@@ -36,7 +54,7 @@ const Perfil = () => {
         <button
           type="submit"
           data-testid="profile-save-btn"
-          disabled={!(nomeProfile.length > 3)}
+          disabled={disabled}
           onClick={submitChange}>Cadastrar</button>
       </div>
     </div>

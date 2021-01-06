@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import AppContext from './AppContext';
 
 function Provider({ children }) {
-  const [userName, setUserName] = useState([]);
-  const [nomeProfile, setNomeProfile] = useState([]);
-  const [emailProfile, setEmailProfile] = useState([]);
+  const [userName, setUserName] = useState('');
+  const [nomeProfile, setNomeProfile] = useState('Eder Sena');
+  const [emailProfile, setEmailProfile] = useState('');
 
   const contextValue = {
     userName,
