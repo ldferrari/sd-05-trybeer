@@ -1,0 +1,36 @@
+body {
+  height: 640px;
+  position: relative;
+  width: 360px;
+}
+
+.name {
+  background: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-sizing: border-box;
+  height: 70px;
+  margin-bottom: 17px;
+  margin-left: 10%;
+  width: 80%;
+}
+
+.email {
+  background: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-sizing: border-box;
+  height: 70px;
+  margin-bottom: 17px;
+  margin-left: 10%;
+  width: 80%;
+}
+
+.salvar-btn {
+  background: #6ce34f;
+  border-radius: 5px;
+  font-size: large;
+  height: 76px;
+  margin-left: 7.5%;
+  width: 85%;
+}
