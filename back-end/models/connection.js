@@ -9,7 +9,6 @@ const config = {
   host: process.env.HOSTNAME,
   port: 33060,
   socketPath: '/var/run/mysqld/mysqld.sock',
-  database: 'Trybeer',
 };
 
 const connection = mysql.createPool(config);
