@@ -12,7 +12,7 @@ function App() {
         <Route path="/register">
           <RegisterPage />
         </Route>
-        <Route path="/profile" component={ ClientProfile } />
+        <Route path="/profile" component={ ClientProfilePage } />
         <Route path="/products" component={ Products } />
         <Route path="/">
           <LoginPage />
