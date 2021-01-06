@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import validateName from '../../services/general/validateName';
 import validateEmail from '../../services/general/validateEmail';
 import validatePassword from '../../services/general/validatePassword';
+import fetchUserEmail from '../../services/general/fetchUserEmail';
 
 export default function RegisterPage() {
   const [isNameValid, setNameValid] = useState(false);
   const [isEmailValid, setEmailValid] = useState(false);
   const [isPasswordValid, setPasswordValid] = useState(false);
   const [isSignupSellerSelected, setSignupSellerSelected] = useState(false);
+  const [userEmail, setUserEmail] = useState('');
   return (
     <div>
       <h2>Registro</h2>
@@ -30,7 +32,10 @@ export default function RegisterPage() {
             type="text"
             id="email"
             data-testid="signup-email"
-            onChange={ ((event) => { setEmailValid(validateEmail(event.target.value)); }) }
+            onChange={ ((event) => {
+              setEmailValid(validateEmail(event.target.value));
+              setUserEmail(event.target.value);
+            }) }
           />
         </label>
       </div>
@@ -60,6 +65,7 @@ export default function RegisterPage() {
         <button
           type="button"
           data-testid="signup-btn"
+          onClick={ () => fetchUserEmail(userEmail) }
           disabled={ !isNameValid || !isEmailValid || !isPasswordValid }
         >
           { (isNameValid || isEmailValid || isPasswordValid)
