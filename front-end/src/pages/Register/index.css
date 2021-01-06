@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.column-login {
+.column {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,32 +14,25 @@
   vertical-align: middle;
 }
 
-.column-login fieldset {
+.column fieldset {
   border: 0;
   width: 80%;
   display: flex;
   justify-content: flex-end;
 }
 
-.column-login label {
+.column label {
   margin: 5px 0;
+  vertical-align: baseline;
 }
 
-.column-login input {
+.column input {
   margin: 5px 0;
-  border-radius: 5px;
-  box-shadow: 5px 2px 1px #cccccc;
-  
-}
-
-.column-login button {
-  margin: 5px;
-  padding: 2px;
   border-radius: 5px;
   box-shadow: 5px 2px 1px #cccccc;
 }
 
-.column-login button[type='submit'] {
+.column button {
   position: absolute;
   bottom: 10px;
   margin: 5px;
@@ -47,6 +40,12 @@
   height: 40px;
   padding: 2px;
   border-radius: 5px;
+  box-shadow: 5px 2px 1px #cccccc;
+  background-color: #dddddd;
+}
+
+button.ready {
+  background-color: #00ff00;
 }
 
 a {
