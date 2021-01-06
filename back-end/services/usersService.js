@@ -2,7 +2,7 @@ const model = require('../models/usersModel');
 
 const validateLog = async (email, password) => {
   const user = await model.validateLog(email, password);
-  
+
   if (user === undefined) {
     return {
       error: true,
@@ -11,7 +11,7 @@ const validateLog = async (email, password) => {
     };
   }
   return user;
-}
+};
 module.exports = {
   validateLog,
-}
+};

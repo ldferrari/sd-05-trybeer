@@ -9,6 +9,6 @@ function createToken(payload) {
   };
   const token = jwt.sign(payload, secret, headers);
   return token;
-};
+}
 
 module.exports = createToken;

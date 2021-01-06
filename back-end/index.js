@@ -1,9 +1,10 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
 const users = require('./controllers/usersController');
-require('dotenv').config({ path: __dirname + '/../.env' });
+require('dotenv').config(path.join(__dirname, '/../.env'));
 
 const app = express();
-const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 app.use('/users', users);
