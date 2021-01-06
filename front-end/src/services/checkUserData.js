@@ -7,7 +7,8 @@ export const checkEmail = (emailTested) => {
   return regexEmail.test(emailTested);
 };
 export const checkPassword = (passwordTested) => {
-  if (passwordTested.length > 5) return true;
+  const notEnough = 5;
+  if (passwordTested.length > notEnough) return true;
   return false;
 };
 

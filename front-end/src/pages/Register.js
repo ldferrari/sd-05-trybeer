@@ -8,8 +8,8 @@ function Register() {
   const [checkedEmail, setCheckedEmail] = useState(false);
   const [checkedPassword, setCheckedPassword] = useState(false);
   const [clickRegister, setClickRegister] = useState(false);
-  const { 
-    name, setName, email, setEmail, setPassword, admin, setAdmin
+  const {
+    name, setName, email, setEmail, setPassword, admin, setAdmin,
   } = useContext(TrybeerContext);
 
   const handleNameChange = (e) => {
@@ -55,13 +55,13 @@ function Register() {
         onChange={ (e) => handlePasswordChange(e) }
       />
       <div>
+        <label htmlFor="vender">Quero Vender</label>
         <input
           data-testid="signup-seller"
           type="checkbox"
-          id="Vender"
+          id="vender"
           onClick={ () => setAdmin(true) }
         />
-        <label htmlFor="Vender">Quero Vender</label>
       </div>
       <button
         type="button"
