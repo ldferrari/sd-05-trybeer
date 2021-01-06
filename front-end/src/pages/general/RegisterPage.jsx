@@ -36,7 +36,7 @@ export default function RegisterPage() {
       </div>
       <div>
         <label htmlFor="password">
-          Password
+          Senha
           <input
             type="password"
             id="password"
