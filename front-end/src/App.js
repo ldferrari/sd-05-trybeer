@@ -12,9 +12,9 @@ function App() {
           <RegisterPage />
         </Route>
         <Route path="/">
-        <Route path="/profile" component={ClientProfile}/>
           <LoginPage />
         </Route>
+        <Route path="/profile" component={ ClientProfile } />
       </Switch>
     </div>
   );
