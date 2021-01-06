@@ -339,7 +339,7 @@ Esta tela possui o nome `Registro` no protótipo.
 
 - O campo input 'email' deverá conter a tag `data-testid="signup-email"`
 
-- O campo input 'password' deverá conter a tag `data-testid="signup-password"`
+- O campo input 'Senha' deverá conter a tag `data-testid="signup-password"`
 
 - O campo checkbox 'Quero vender' deverá conter a tag `data-testid="signup-seller"`
 
