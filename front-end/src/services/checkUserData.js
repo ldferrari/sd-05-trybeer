@@ -8,7 +8,7 @@ export const checkEmail = (emailTested) => {
 };
 export const checkPassword = (passwordTested) => {
   if (passwordTested.length > 5) return true;
-  else return false;
+  return false;
 };
 
 // outros regexs criados pelo Jorge deste presente grupo 3:

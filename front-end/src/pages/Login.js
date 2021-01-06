@@ -1,13 +1,13 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { checkEmail, checkPassword} from '../services/checkUserData';
+import { checkEmail, checkPassword } from '../services/checkUserData';
 import TrybeerContext from '../context/TrybeerContext';
 
 function inputEmail(handleEmailChange) {
   return (
     <div className="login-input">
       <p>Email</p>
-      <input type="email" data-testid="email-input" onChange={(e) => handleEmailChange(e)} />
+      <input type="email" data-testid="email-input" onChange={ (e) => handleEmailChange(e) } />
     </div>
   );
 }
@@ -20,7 +20,7 @@ function inputPassword(handlePasswordChange) {
         type=""
         data-testid="password-input"
         name="password"
-        onChange={(e) => handlePasswordChange(e)}
+        onChange={ (e) => handlePasswordChange(e) }
       />
     </div>
   );
@@ -63,8 +63,8 @@ function Login() {
         <button
           type="button"
           data-testid="signin-btn"
-          disabled={!(checkedEmail && checkedPassword)}
-          onClick={() => storage()}
+          disabled={ !(checkedEmail && checkedPassword) }
+          onClick={ () => storage() }
           // BACK - aqui também cria token do user
         >
           ENTRAR
