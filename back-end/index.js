@@ -1,11 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const userController = require('./controllers/users.controller');
+const productsController = require('./controllers/products.controller');
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use('/', userController);
+
+app.use('/products', productsController);
 
 const errorMiddleware = (err, _req, res, _next) => {
   console.error(err);
