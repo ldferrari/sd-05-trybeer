@@ -5,7 +5,8 @@ const validateLog = async (email, password) => {
     'SELECT role FROM Trybeer.users WHERE email = ? and password = ? ',
     [email, password],
   );
-  return user[0][0].role;
+  console.log(user);
+  return user[0][0];
 };
 const checkUser = async (email) => {
   const user = await db.execute(
@@ -13,7 +14,23 @@ const checkUser = async (email) => {
   );
   return user[0][0].email;
 };
+
+const registerUser = async (name, email, password, role) => {
+  try {
+    db()
+    .then((connect) => connect
+    .getTable('users')
+    .insert(['name', 'email', 'password', 'role'])
+    .values(name, email, password, role)
+    .execute());
+    return { name, email, role };
+  } catch (err) {
+    console.log(err.message)
+  }
+};
+
 module.exports = {
   validateLog,
   checkUser,
+  registerUser,
 };

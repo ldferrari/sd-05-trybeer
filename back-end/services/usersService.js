@@ -10,7 +10,7 @@ const validateLog = async (email, password) => {
       message: 'Email or password invalid',
     };
   }
-  return user;
+  return user.role;
 };
 const checkUser = async (email) => {
   const user = await model.checkUser(email);
@@ -22,7 +22,15 @@ const checkUser = async (email) => {
     };
   }
 };
+
+const registerUserService = async (name, email, password, checkbox) => {
+  const role = checkbox ? 'administrator' : 'client';
+  const newUser = await userModel.registerUser(email, password, name, role);
+  return newUser;
+};
+
 module.exports = {
   validateLog,
   checkUser,
+  registerUserService,
 };

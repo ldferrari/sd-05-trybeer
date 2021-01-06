@@ -5,8 +5,9 @@ const validateLogin = (email, password) => {
   const isEmailValid = validationRegex.test(String(email).toLowerCase());
   const isPasswordValid = String(password).length > passLenght;
   const isLoginValid = isEmailValid && isPasswordValid;
-
   return isLoginValid;
 };
+
+// const isNameValid = isNameValid.length > 12
 
 export default validateLogin;
