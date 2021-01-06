@@ -1,6 +1,6 @@
-import React from 'react';
-import { useContext, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Redirect } from 'react-router-dom';
+import { checkName, checkEmail, checkPassword} from '../services/checkUserData';
 import TrybeerContext from '../context/TrybeerContext';
 
 function Register() {
@@ -11,25 +11,6 @@ function Register() {
   const { name, setName, email, setEmail, setPassword, admin, setAdmin } = useContext(
     TrybeerContext
   );
-
-  const checkName = (nameTested) => {
-    // const regexName = /[a-z ]{12,30}/i;
-    // (jorge)
-    // (calado:)
-    const regexName = /^[a-z\s]{12,}$/i;
-    return regexName.test(nameTested);
-  };
-  const checkEmail = (emailTested) => {
-    const regexEmail = /^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/;
-    return regexEmail.test(emailTested);
-  };
-  const checkPassword = (passwordTested) => {
-    if (passwordTested.length > 5) return true;
-    else return false;
-  };
-  // outros regex Jorge
-  // const regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-  // const regexPassword = /[a-zA-Z0-9@#$%&*]{6,30}/;
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -61,7 +42,6 @@ function Register() {
     };
     localStorage.setItem('user', JSON.stringify(userInfos));
   };
-  // console.log(checkedName, checkedEmail, checkedPassword);
   return (
     <div>
       <div>Nome</div>

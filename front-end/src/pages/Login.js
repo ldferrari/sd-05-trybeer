@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { checkEmail, checkPassword} from '../services/checkUserData';
 import TrybeerContext from '../context/TrybeerContext';
 
 function inputEmail(handleEmailChange) {
@@ -29,15 +30,6 @@ function Login() {
   const [checkedEmail, setCheckedEmail] = useState(false);
   const [checkedPassword, setCheckedPassword] = useState(false);
   const { setEmail, setPassword } = useContext(TrybeerContext);
-
-  const checkEmail = (emailTested) => {
-    const regexEmail = /^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/;
-    return regexEmail.test(emailTested);
-  };
-  const checkPassword = (passwordTested) => {
-    if (passwordTested.length > 5) return true;
-    else return false;
-  };
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);

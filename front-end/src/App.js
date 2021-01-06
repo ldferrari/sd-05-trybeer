@@ -16,7 +16,9 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
+        <Route exact path="/" component={ Login } />
         <Route exact path="/login" component={ Login } />
+        {/* (needed to set both routes for login page because of tests) */}
         <Route exact path="/register" component={ Register } />
         <Route exact path="/profile" component={ ClientProfile } />
         <Route exact path="/products" component={ Products } />
@@ -27,8 +29,8 @@ function App() {
           path="/orders/:orderNumber"
           render={(props) => <OrdersDetails {...props} />}
         />
-        <Route exact path="/admin/profile" component={AdminProfile} />
-        <Route exact path="/admin/orders" component={PendingOrders} />
+        <Route exact path="/admin/profile" component={ AdminProfile } />
+        <Route exact path="/admin/orders" component={ PendingOrders } />
         <Route
           exact
           path="/admin/orders/:id"
