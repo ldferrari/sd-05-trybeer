@@ -10,6 +10,7 @@ const config = {
   password: process.env.MYSQL_PASSWORD,
   host: process.env.HOSTNAME,
   port: 33060,
+  socketPath: '/var/run/mysqld/mysqld.sock',
   database: 'Trybeer',
 };
 

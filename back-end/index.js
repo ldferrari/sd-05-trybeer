@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const users = require('./controllers/usersController');
 
-require('dotenv').config({ path: `${__dirname}/../../.env` });
+require('dotenv').config({ path: `${__dirname}/../.env` });
 
 const app = express();
 

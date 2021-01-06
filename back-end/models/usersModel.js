@@ -7,6 +7,13 @@ const validateLog = async (email, password) => {
   );
   return user[0][0].role;
 };
+const checkUser = async (email) => {
+  const user = await db.execute(
+    'SELECT email FROM Trybeer.users WHERE email = ? ', [email],
+  );
+  return user[0][0].email;
+};
 module.exports = {
   validateLog,
+  checkUser,
 };
