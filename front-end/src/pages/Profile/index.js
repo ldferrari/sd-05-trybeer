@@ -36,7 +36,7 @@ const Perfil = () => {
     <div className="App">
       <h1 data-testid="top-title">Perfil</h1>
       <div className="form">
-        <label htmlFor="name-id">Nome</label>
+        <p>Nome</p>
         <input
           type="text"
           name="name"
@@ -45,7 +45,7 @@ const Perfil = () => {
           data-testid="profile-name-input"
           onChange={ handleChanged }
         />
-        <label htmlFor="email-id">Email</label>
+        <p>Email</p>
         <input
           type="email"
           id="email"
