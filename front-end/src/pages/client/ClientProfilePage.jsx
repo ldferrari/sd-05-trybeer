@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import validateName from '../../services/general/validateName';
-
+import Menu from '../../components/client/Menu';
 
 export default function ClientProfilePage() {
  /*  useEffect(() => {
@@ -18,6 +18,7 @@ export default function ClientProfilePage() {
 
   return (
     <div>
+      <Menu title={'Meu perfil'} />
       <div data-testid="top-title">Meu perfil</div>
       <label htmlFor="email">
         Email
