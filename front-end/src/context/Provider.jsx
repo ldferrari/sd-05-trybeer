@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import TryBeerContext from './TryBeerContext';
 
-const Provider = ({ Children }) => {
+const Provider = ({ children }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -13,11 +13,11 @@ const Provider = ({ Children }) => {
     setPassword,
   };
 
-  return <TryBeerContext.Provider value={contextValue}>{Children}</TryBeerContext.Provider>;
+  return <TryBeerContext.Provider value={contextValue}>{children}</TryBeerContext.Provider>;
 };
 
 export default Provider;
 
 Provider.prototype = {
-  Children: PropTypes.element.isRequired,
+  children: PropTypes.element.isRequired,
 };

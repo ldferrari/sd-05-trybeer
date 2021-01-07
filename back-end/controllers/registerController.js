@@ -10,7 +10,7 @@ registerRouter.post(
     const { name, email, password, role } = req.body;
     const newUser = await registerService.createUser(name, email, password, role);
 
-    return newUser
+    return !newUser
       ? res.status(400).json({ message: 'Registration failed!' })
       : res.status(200).json(newUser);
   }),
