@@ -43,7 +43,7 @@ const Products = () => {
       </div>
       <Footer />
     </div>
-  ),
+  )
 };
 
 export default Products;
