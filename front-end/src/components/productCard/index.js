@@ -1,29 +1,24 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import AppContext from '../../context/AppContext';
+import PropTypes from 'prop-types'; 
 import './index.css';
 
 const Card = (props) => {
   const { cart, setCart } = useContext(AppContext);
 
   const { product } = props;
-  // cart => id, name, price, qty
+
   const exists = cart.find((produto) => produto.id === product.id);
 
   const minusOne = () => {
     // const exists = cart.find((produto) => produto.id === product.id);
-
     return exists
-      ? setCart(
-          cart.map((e) =>
-            e.id === product.id ? { ...e, qty: e.qty <= 0 ? 0 : e.qty - 1 } : e
-          )
-        )
+      ? setCart(cart.map((e) => e.id === product.id ? { ...e, qty: e.qty <= 0 ? 0 : e.qty - 1 } : e))
       : null;
   };
 
   const plusOne = () => {
     // const exists = cart.find((produto) => produto.id === product.id);
-
     return exists
       ? setCart(
           cart.map((e) =>
@@ -67,3 +62,9 @@ const Card = (props) => {
 };
 
 export default Card;
+
+Card.propTypes = {
+  product: PropTypes.object.isRequired,
+  product.id: PropTypes.number,
+  product.name: PropTypes.string,
+};
