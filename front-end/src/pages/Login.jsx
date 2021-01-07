@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import TryBeerContext from '../context/TryBeerContext';
 
 const Login = () => {
-  const { setEmail, setPassword } = useContext(TryBeerContext);
+  const { email, setEmail, password, setPassword } = useContext(TryBeerContext);
+  const RegEx = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const validEmail = RegEx.test(String(email).toLowerCase());
 
   return (
     <section>
@@ -27,7 +29,11 @@ const Login = () => {
           />
         </label>
         <Link to="/products">
-          <button data-testid="signin-btn" type="button">
+          <button
+            data-testid="signin-btn"
+            type="button"
+            disabled={!validEmail || password.length < 6}
+          >
             ENTRAR
           </button>
         </Link>
