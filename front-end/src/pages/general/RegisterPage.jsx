@@ -65,12 +65,12 @@ export default function RegisterPage() {
         <button
           type="button"
           data-testid="signup-btn"
-          onClick={ () => fetchUserEmail(userEmail) }
+          // onClick={ () => fetchUserEmail(userEmail).then(res => console.log(res)) }
           disabled={ !isNameValid || !isEmailValid || !isPasswordValid }
         >
-          { (isNameValid || isEmailValid || isPasswordValid)
-            ? <Link to={ isSignupSellerSelected ? '/admin/orders' : '/products' }>Cadastrar</Link>
-            : <div>Cadastrar</div> }
+          {(isNameValid && isEmailValid && isPasswordValid)
+            ? <Link onClick={ () => fetchUserEmail(userEmail) } to={ isSignupSellerSelected ? '/admin/orders' : '/products' }>Cadastrar</Link>
+            : <div>Cadastrar</div>}
         </button>
       </div>
     </div>
