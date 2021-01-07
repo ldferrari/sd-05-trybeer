@@ -4,7 +4,7 @@ const User = require('../Models/userModel');
 
 const emailMiddleware = require('../Middlewares/emailMiddleware');
 
-const createToken = require('../Middlewares/webTokenMiddleware');
+const { createToken } = require('../Middlewares/webTokenMiddleware');
 
 const login = Router();
 

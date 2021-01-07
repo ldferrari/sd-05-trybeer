@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -84,8 +85,25 @@ const Login = (props) => {
           data-testid="signin-btn"
         >
           ENTRAR
+=======
+import React from 'react';
+// import { Redirect } from 'react-router-dom';
+import './index.css';
+// import Header from '../../components/header';
+// import Footer from '../../components/footer';
+const Login = () => {
+  return (
+    <div>
+      {/* <Header>TryBeer</Header> */}
+      <form>
+        <input/>
+        <input/>
+        <button>
+          Entrar
+>>>>>>> main-group-1-master
         </button>
       </form>
+      {/* <Footer /> */}
     </div>
   );
 };

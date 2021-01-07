@@ -10,4 +10,12 @@ const jwtConfig = {
 
 const createToken = (payload) => jwt.sign(payload, secret, jwtConfig);
 
-module.exports = createToken;
+const verifyToken = async (token) => {
+  const payload = jwt.verify(token, secret);
+  return payload;
+};
+
+module.exports = {
+  createToken,
+  verifyToken,
+};
