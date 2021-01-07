@@ -6,6 +6,7 @@ import { login, getProducts } from '../services/fetch';
 import TrybeerProvider from '../context/TrybeerProvider';
 import { Get } from 'react-axios';
 import axios from 'axios'
+import { withRouter } from 'react-router-dom';
 
 
 
@@ -32,7 +33,7 @@ function inputPassword(handlePasswordChange) {
   );
 }
 
-function Login() {
+function Login({ history}) {
   const [checkedEmail, setCheckedEmail] = useState('');
   const [checkedPassword, setCheckedPassword] = useState('');
   const { setEmail, setPassword, email, password } = useContext(TrybeerContext);
@@ -54,26 +55,34 @@ function Login() {
   };
 
   const handleResult = (result) => {
-    setLoginInfo(result)
+    // setLoginInfo(result)
+    console.log(result.role)
     localStorage.setItem('user', JSON.stringify(result))
+    if (result.role === "administrator") {
+      history.push('/admin/orders')
+    }
+    if (result.role === "client") {
+      history.push('/products')
+    }
   }
-  const storage = () => {
-    const userInfos = {
-      // BACK - substituir mock por infos do db (em params?)
-      name: 'Taylor Swift',
-      email: 'taylorswift@email.com',
-      token:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4(...)',
-      role: 'client',
-    };
-    localStorage.setItem('user', JSON.stringify(userInfos));
-  };
+
+  // const storage = () => {
+  //   const userInfos = {
+  //     // BACK - substituir mock por infos do db (em params?)
+  //     name: 'Taylor Swift',
+  //     email: 'taylorswift@email.com',
+  //     token:
+  //       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4(...)',
+  //     role: 'client',
+  //   };
+  //   localStorage.setItem('user', JSON.stringify(userInfos));
+  // };
 
   return (
     <div className="login-page" data-testid="">
       {inputEmail(handleEmailChange)}
       {inputPassword(handlePasswordChange)}
-      <Link to="/products">
+      {/* <Link to={ loginInfo.role === 'administrador' ? "/admin/orders" : "/products"}> */}
         {/* BACK - Conseguir condicionar, é
         <Link to="/admin/orders"> no caso de ser admin.
         Isso vem do create do register */}
@@ -89,23 +98,15 @@ function Login() {
         >
           ENTRAR
         </button>
-      </Link>
+      {/* </Link> */}
       <Link to="/register">
         <button type="button" data-testid="no-account-btn"
           >
           Ainda não tenho conta
           </button>
         </Link>
-          <button
-            type="button"
-            onClick={() => getProducts()
-              // axios.get('http://localhost:3001/products', {}).then((response) => console.log(response)) ||
-              // console.log('entrou no onclick')
-              // isConnected().then(response => console.log(response)) || console.log('entreou no onclick')
-            }
-          >testat fetch produtos</button>
     </div>
   );
 }
 
-export default Login;
+export default withRouter(Login);
