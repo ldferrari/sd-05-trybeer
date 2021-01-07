@@ -1,37 +1,22 @@
+const { array } = require('@hapi/joi');
+const products = require('../controllers/products.controller');
 const connection = require('./connection.model');
 
-const getProducts = () => connection()
-  .then((db) => db.getTable('products')
-    .select('id', 'name', 'price', 'url_image')
-    .execute())
-  .then((response) => response.fetchAll())
-  .then((result) => result.map(([id, name, price, urlImage]) => ({
-    id,
-    name,
-    price,
-    urlImage,
-  })))
-  .catch((err) => err);
+const getProducts = () =>
+  connection.query('SELECT * FROM products').then((array) => array[0]);
 
-const getProductById = (id) => connection()
-  .then((db) => db.getTable('products')
-    .select('id', 'name', 'price', 'url_image')
-    .where('id = :id')
-    .bind('id', id)
-    .execute())
-  .then((response) => response.fetchOne())
-  .then((result) => result)
-  .catch((err) => err);
+const getProductById = (id) =>
+  connection
+    .query('SELECT * FROM products WHERE id = ?', [id])
+    .then((array) => array[0]);
 
-const addProduct = ({ id, name, price, url_image }) => connection().then((db) => db.getTable('products')
-  .insert('id', 'name', 'price', 'url_image')
-  .values(id, name, price, url_image)
-  .execute());
+const addProduct = ({ name, price, url_image }) =>
+  connection.query(
+    'INSERT INTO products (name, price, url_image) VALUES (?,?,?)',
+    [name, price, url_image],
+  );
 
-const deleteRecipe = (id) => connection().then((db) => db.getTable('products')
-  .delete()
-  .where('id = :id')
-  .bind('id', id)
-  .execute());
+const deleteProduct = (id) =>
+  connection.query('DELETE FROM products WHERE id = ?', [id]);
 
-module.exports = { getProducts, getProductById, addProduct, deleteRecipe };
+module.exports = { getProducts, getProductById, addProduct, deleteProduct };

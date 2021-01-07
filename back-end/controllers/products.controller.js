@@ -10,8 +10,10 @@ products.get('/', productsServices.getAllProducts, (req, res) => {
 products.get('/:id', productsServices.getProductById, (req, res) => {
   res.status(200).json(req.data);
 });
-// products.post('/', productsServices, (req, res) => {
-//   res.status(200).json({ token: req.data });
-// });
+
+products.post('/', productsServices.addProduct, (req, res) => {
+  res.status(200).json(req.data);
+});
+
 
 module.exports = products;
