@@ -6,7 +6,7 @@ import './index.css';
 // trocar por controler de login
 const getTokenAndData = async ({ email, password }) => ({
   token: 'tokenDoido',
-  user: { email, password, role: 'admin' },
+  role: 'admin',
 });
 const saveToken = (token) => localStorage.setItem('token', token);
 
@@ -35,11 +35,11 @@ const Login = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { token, user } = await getTokenAndData({ email, password });
+    const { token, role } = await getTokenAndData({ email, password });
     saveToken(token);
-    if (user.role === 'admin') {
+    if (role === 'admin') {
       props.history.push('/admin/orders');
-    } else if (user.role === 'client') {
+    } else if (role === 'client') {
       props.history.push('/products');
     } else {
       setValidEmail(true);
