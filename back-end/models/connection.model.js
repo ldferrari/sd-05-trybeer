@@ -1,29 +1,21 @@
-const mysql = require('@mysql/xdevapi');
+const mysql = require('mysql2/promise');
 require('dotenv').config();
 
 const config = {
+  database: process.env.MYSQL_DB,
+  port: process.env.PORT,
   user: process.env.MYSQL_USER,
   password: process.env.MYSQL_PASSWORD,
   host: process.env.HOSTNAME,
-  // port: 33060,
-  socketPath: '/var/run/mysqld/mysqld.sock',
 };
 
-let schema;
-
-function connection() {
-  return schema
-    ? Promise.resolve(schema)
-    : mysql
-      .getSession(config)
-      .then((session) => {
-        schema = session.getSchema(process.env.DB_NAME || 'Trybeer');
-        return schema;
-      })
-      .catch((err) => {
-        console.error(err);
-        process.exit(1);
-      });
-}
-
-module.exports = connection;
+module.exports = async (...query) => {
+  try {
+    const connection = await mysql.createConnection(config);
+    const [data] = await connection.query(...query);
+    return data;
+  } catch (err) {
+    console.error(err);
+    throw new Error(err);
+  }
+};

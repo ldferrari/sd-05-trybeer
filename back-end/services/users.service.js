@@ -42,12 +42,10 @@ const login = rescue(async (req, _res, next) => {
   next();
 });
 
-const register = rescue(async (req, res, next) => {
+const register = rescue(async (req, _res, next) => {
   const { error } = REGISTER_SCHEMA.validate(req.body);
   if (error) throw new Error(error);
-  // const emailAlreadyExists = await userModel.findByEmail(req.body.email);
-  // if (emailAlreadyExists) throw new Error("Email já existe");
-  await userModel.createUser(req.body);
+  console.log(await userModel.createUser(req.body));
   req.data = 'usuario criado com sucesso';
   next();
 });

@@ -1,65 +1,41 @@
 const connection = require('./connection.model');
 
-const findUserbyEmailAndPassword = async ({ email, password }) => {
-  const db = await connection();
-  const results = await db
-    .getTable('users')
-    .select(['id', 'name', 'email', 'role'])
-    .where('email = :email AND password = :password')
-    .bind('email', email)
-    .bind('password', password)
-    .execute();
+const TABLE = 'users';
 
-  const user = results.fetchOne();
-  return user;
-};
+const findUserbyEmailAndPassword = async ({ email, password }) => (
+  await connection(
+    `SELECT id, name, email, role FROM ${TABLE}
+    WHERE email = ? AND password = ?`,
+    [email, password],
+  )
+);
 
 const createUser = async (userData) => {
   const { email, name, password, role } = userData;
-  const db = await connection();
-  await db
-    .getTable('users')
-    .insert(['email', 'name', 'password', 'role'])
-    .values(email, name, password, role)
-    .execute();
+  return await connection(
+    `INSERT INTO ${TABLE} SET ?`,
+    { email, name, password, role },
+  );
 };
 
-const findUserById = async (id) => {
-  const db = await connection();
-  const results = await db
-    .getTable('users')
-    .select(['id', 'name', 'email', 'role'])
-    .where('id = :id')
-    .bind('id', id)
-    .execute();
+const findUserById = async (id) => await connection(
+  `SELECT id, name, email, role FROM ${TABLE} WHERE id = ?`,
+  [id],
+);
 
-  const user = results.fetchOne();
-  return user;
-};
+const updateUser = async (id, name, email, password, role) => (
+  await connection(
+    `UPDATE ${TABLE} SET ? WHERE id = ?`,
+    [{ id, name, email, password, role }, id],
+  )
+);
 
-const updateUser = async (id, name, email, password, role) => {
-  const db = await connection();
-  await db
-    .getTable('users')
-    .update()
-    .set('name', name)
-    .set('email', email)
-    .set('password', password)
-    .set('role', role)
-    .where('id = :id')
-    .bind('id', id)
-    .execute();
-};
-
-const excludeUser = async (id) => {
-  const db = await connection();
-  await db
-    .getTable('users')
-    .delete()
-    .where('id = :id')
-    .bind('id', id)
-    .execute();
-};
+const excludeUser = async (id) => (
+  await connection(
+    `DELETE FROM ${TABLE} WHERE id = ?`,
+    [id],
+  )
+);
 
 module.exports = {
   createUser,
