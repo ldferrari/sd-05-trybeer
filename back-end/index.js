@@ -18,7 +18,10 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.use('/login', loginController);
+app.use('/login', (req,res,next)=>{
+  console.log(req.body)
+  next()
+}, loginController);
 
 app.use('/register', registerController);
 

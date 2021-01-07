@@ -14,6 +14,7 @@ const validateEmail = (email) => {
 register.post('/', async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
+    console.log('PASSEI AQUI')
 
     if (!/^[A-Za-z \s]{12,}$/.test(name)) {
       return res.status(401).json({
@@ -30,7 +31,6 @@ register.post('/', async (req, res) => {
     if (password.length < 6) {
       return res.status(401).json({ message: 'Email ou senha incorreto.' });
     }
-
     const newUser = await service.create(name, email, password, role);
     if (newUser.error) {
       return res.status(newUser.statusCode).json({ message: newUser.message });

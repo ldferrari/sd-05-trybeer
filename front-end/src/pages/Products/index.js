@@ -37,10 +37,7 @@ const Products = () => {
     <div className="Products">
       <Header>TryBeer</Header>
       <div className="productList">
-        {produtos.map((product) => (
-          <Card product={ product } key={ product.name }/>
-        ))}
-        ,
+        { data.products.map((product) => <Card key={ product.id } product={ product } />) },
       </div>
       <div className="checkoutBtn">
         <Link

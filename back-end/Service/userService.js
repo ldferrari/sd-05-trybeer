@@ -13,6 +13,7 @@ const create = async (name, email, password, role) => {
       statusCode: 400,
     };
   }
+  console.log(emailExists)
   if (emailExists) {
     return {
       error: true,

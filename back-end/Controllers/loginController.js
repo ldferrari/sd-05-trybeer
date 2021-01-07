@@ -31,7 +31,7 @@ login.post('/', async (req, res) => {
       role: findUser.role,
       iss: 'post_api',
     });
-    res.status(200).json({ token });
+    res.status(200).json({ token, role: findUser.role });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Algo deu errado.' });
