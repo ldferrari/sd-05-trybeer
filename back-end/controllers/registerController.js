@@ -11,8 +11,8 @@ registerRouter.post(
     const newUser = await registerService.createUser(name, email, password, role);
 
     return newUser
-      ? res.status(400).json({ message: 'Registration failed!' })
-      : res.status(200).json(newUser);
+      ? res.status(200).json(newUser)
+      : res.status(400).json({ message: 'Registration failed!' });
   }),
 );
 
