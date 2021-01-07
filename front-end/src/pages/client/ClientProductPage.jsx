@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Menu from '../../components/client/Menu';
 
-export default class ClientProduct extends Component {
-  render() {
-    return (
-      <div>
-        <Menu title={'Trybeer'} />
-      </div>
-    )
-  }
-};
+export default function ClientProduct() {
+  return (
+    <div>
+      <Menu title={ 'Trybeer' } />
+    </div>
+  );
+}
