@@ -9,13 +9,12 @@ import TrybeerProvider from './context/TrybeerProvider';
 // por critério de legibilidade de código,
 // A solução é importar todos e embalar um Provider dentro do outro aqui.
 
-
 ReactDOM.render(
   // <PossivelOutroProvider>
   <TrybeerProvider>
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
   </TrybeerProvider>,
   // </PossivelOutroProvider>,
   document.getElementById('root'),
