@@ -1,0 +1,1194 @@
+Script iniciado em 2021-01-06 17:00:09-0300
+[1m[7m%[27m[1m[0m                                                                                                                            ]2;douglaza@douglaza:~/Trybe/Projetos/sd-05-trybeer]1;..sd-05-trybeer[0m[27m[24m[J[01;32m➜  [36msd-05-trybeer[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m [K[?1h=[?2004h/ m [H[2J[0m[27m[24m[J[01;32m➜  [36msd-05-trybeer[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m [Kmmys m  scriptmysql -u root -p
+[K
+[K[A[A[61C[16Dscript          [1B[K[1B[K[A[A[51Cmysql -u root -p[1B[K[1B[K[A[A[61C[2B[K[A[A[61C[?1l>[?2004l[2B
+]2;mysql -u root -p]1;mysqlEnter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 5.7.32-0ubuntu0.18.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> source scripts [K.sql
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Database changed
+Query OK, 0 rows affected (0.18 sec)
+
+Query OK, 0 rows affected (0.10 sec)
+
+Query OK, 0 rows affected (0.09 sec)
+
+Query OK, 0 rows affected (0.10 sec)
+
+Query OK, 2 rows affected (0.06 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+Query OK, 11 rows affected (0.03 sec)
+Records: 11  Duplicates: 0  Warnings: 0
+
+mysql> showdata datadatabases/[K;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| Escola             |
+| Trybeer            |
+| hr                 |
+| model_example      |
+| mysql              |
+| northwind          |
+| performance_schema |
+| sakila             |
+| sys                |
+| w3schools          |
++--------------------+
+11 rows in set (0.00 sec)
+
+mysql> connection.query[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[1]  + 11354 suspended  mysql -u root -p
+[1m[7m%[27m[1m[0m                                                                                                                            ]2;douglaza@douglaza:~/Trybe/Projetos/sd-05-trybeer]1;..sd-05-trybeer[0m[27m[24m[J[01;31m➜  [36msd-05-trybeer[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m [K[?1h=[?2004h[0m[27m[24m[J[01;31m➜  [36msd-05-trybeer[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m ccd back-end[1m/[0m[0m/models[1m/[0m[0m [?1l>[?2004l
+]2;cd back-end/models]1;cd[1m[7m%[27m[1m[0m                                                                                                                            ]2;douglaza@douglaza:~/Trybe/Projetos/sd-05-trybeer/back-end/models]1;..ck-end/models[0m[27m[24m[J[01;32m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m [K[?1h=[?2004hnnode connection.js[1m [0m[0m [?1l>[?2004l
+]2;node connection.js]1;noderoot
+Pool {
+  _events: [Object: null prototype] {},
+  _eventsCount: [33m0[39m,
+  _maxListeners: [90mundefined[39m,
+  config: PoolConfig {
+    connectionConfig: ConnectionConfig {
+      isServer: [90mundefined[39m,
+      stream: [90mundefined[39m,
+      host: [32m'localhost'[39m,
+      port: [33m3306[39m,
+      localAddress: [90mundefined[39m,
+      socketPath: [90mundefined[39m,
+      user: [32m'root'[39m,
+      password: [90mundefined[39m,
+      passwordSha1: [90mundefined[39m,
+      database: [90mundefined[39m,
+      connectTimeout: [33m10000[39m,
+      insecureAuth: [33mfalse[39m,
+      supportBigNumbers: [33mfalse[39m,
+      bigNumberStrings: [33mfalse[39m,
+      decimalNumbers: [33mfalse[39m,
+      dateStrings: [33mfalse[39m,
+      debug: [90mundefined[39m,
+      trace: [33mtrue[39m,
+      stringifyObjects: [33mfalse[39m,
+      enableKeepAlive: [33mfalse[39m,
+      keepAliveInitialDelay: [33m0[39m,
+      timezone: [32m'local'[39m,
+      queryFormat: [90mundefined[39m,
+      pool: [36m[Circular][39m,
+      ssl: [33mfalse[39m,
+      multipleStatements: [33mfalse[39m,
+      rowsAsArray: [33mfalse[39m,
+      namedPlaceholders: [33mfalse[39m,
+      nestTables: [90mundefined[39m,
+      typeCast: [33mtrue[39m,
+      maxPacketSize: [33m0[39m,
+      charsetNumber: [33m224[39m,
+      compress: [33mfalse[39m,
+      authPlugins: [90mundefined[39m,
+      authSwitchHandler: [90mundefined[39m,
+      clientFlags: [33m11203535[39m,
+      connectAttributes: [90mundefined[39m,
+      maxPreparedStatements: [33m16000[39m
+    },
+    waitForConnections: [33mtrue[39m,
+    connectionLimit: [33m10[39m,
+    queueLimit: [33m0[39m
+  },
+  _allConnections: Denque {
+    _head: [33m0[39m,
+    _tail: [33m1[39m,
+    _capacity: [90mundefined[39m,
+    _capacityMask: [33m3[39m,
+    _list: [ [36m[PoolConnection][39m, [90m<3 empty items>[39m ]
+  },
+  _freeConnections: Denque {
+    _head: [33m0[39m,
+    _tail: [33m0[39m,
+    _capacity: [90mundefined[39m,
+    _capacityMask: [33m3[39m,
+    _list: [ [90m<4 empty items>[39m ]
+  },
+  _connectionQueue: Denque {
+    _head: [33m0[39m,
+    _tail: [33m0[39m,
+    _capacity: [90mundefined[39m,
+    _capacityMask: [33m3[39m,
+    _list: [ [90m<4 empty items>[39m ]
+  },
+  _closed: [33mfalse[39m,
+  [[32mSymbol(kCapture)[39m]: [33mfalse[39m
+}
+[90mundefined[39m
+[90mundefined[39m
+[1m[7m%[27m[1m[0m                                                                                                                            ]2;douglaza@douglaza:~/Trybe/Projetos/sd-05-trybeer/back-end/models]1;..ck-end/models[0m[27m[24m[J[01;32m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m [K[?1h=[?2004h[0m[27m[24m[J[01;32m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m [0m[27m[24m[J[01;32m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m node connection.js[?1l>[?2004l
+]2;node connection.js]1;noderoot
+Pool {
+  _events: [Object: null prototype] {},
+  _eventsCount: [33m0[39m,
+  _maxListeners: [90mundefined[39m,
+  config: PoolConfig {
+    connectionConfig: ConnectionConfig {
+      isServer: [90mundefined[39m,
+      stream: [90mundefined[39m,
+      host: [32m'localhost'[39m,
+      port: [33m3306[39m,
+      localAddress: [90mundefined[39m,
+      socketPath: [90mundefined[39m,
+      user: [32m'root'[39m,
+      password: [90mundefined[39m,
+      passwordSha1: [90mundefined[39m,
+      database: [90mundefined[39m,
+      connectTimeout: [33m10000[39m,
+      insecureAuth: [33mfalse[39m,
+      supportBigNumbers: [33mfalse[39m,
+      bigNumberStrings: [33mfalse[39m,
+      decimalNumbers: [33mfalse[39m,
+      dateStrings: [33mfalse[39m,
+      debug: [90mundefined[39m,
+      trace: [33mtrue[39m,
+      stringifyObjects: [33mfalse[39m,
+      enableKeepAlive: [33mfalse[39m,
+      keepAliveInitialDelay: [33m0[39m,
+      timezone: [32m'local'[39m,
+      queryFormat: [90mundefined[39m,
+      pool: [36m[Circular][39m,
+      ssl: [33mfalse[39m,
+      multipleStatements: [33mfalse[39m,
+      rowsAsArray: [33mfalse[39m,
+      namedPlaceholders: [33mfalse[39m,
+      nestTables: [90mundefined[39m,
+      typeCast: [33mtrue[39m,
+      maxPacketSize: [33m0[39m,
+      charsetNumber: [33m224[39m,
+      compress: [33mfalse[39m,
+      authPlugins: [90mundefined[39m,
+      authSwitchHandler: [90mundefined[39m,
+      clientFlags: [33m11203535[39m,
+      connectAttributes: [90mundefined[39m,
+      maxPreparedStatements: [33m16000[39m
+    },
+    waitForConnections: [33mtrue[39m,
+    connectionLimit: [33m10[39m,
+    queueLimit: [33m0[39m
+  },
+  _allConnections: Denque {
+    _head: [33m0[39m,
+    _tail: [33m1[39m,
+    _capacity: [90mundefined[39m,
+    _capacityMask: [33m3[39m,
+    _list: [ [36m[PoolConnection][39m, [90m<3 empty items>[39m ]
+  },
+  _freeConnections: Denque {
+    _head: [33m0[39m,
+    _tail: [33m0[39m,
+    _capacity: [90mundefined[39m,
+    _capacityMask: [33m3[39m,
+    _list: [ [90m<4 empty items>[39m ]
+  },
+  _connectionQueue: Denque {
+    _head: [33m0[39m,
+    _tail: [33m0[39m,
+    _capacity: [90mundefined[39m,
+    _capacityMask: [33m3[39m,
+    _list: [ [90m<4 empty items>[39m ]
+  },
+  _closed: [33mfalse[39m,
+  [[32mSymbol(kCapture)[39m]: [33mfalse[39m
+}
+[90mundefined[39m
+[90mundefined[39m
+[1m[7m%[27m[1m[0m                                                                                                                            ]2;douglaza@douglaza:~/Trybe/Projetos/sd-05-trybeer/back-end/models]1;..ck-end/models[0m[27m[24m[J[01;32m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m [K[?1h=[?2004h[0m[27m[24m[J[01;32m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m node connection.js[?1l>[?2004l
+]2;node connection.js]1;noderoot
+Connection {
+  _events: [Object: null prototype] {},
+  _eventsCount: [33m0[39m,
+  _maxListeners: [90mundefined[39m,
+  config: ConnectionConfig {
+    isServer: [90mundefined[39m,
+    stream: [90mundefined[39m,
+    host: [32m'localhost'[39m,
+    port: [33m3306[39m,
+    localAddress: [90mundefined[39m,
+    socketPath: [90mundefined[39m,
+    user: [32m'root'[39m,
+    password: [90mundefined[39m,
+    passwordSha1: [90mundefined[39m,
+    database: [90mundefined[39m,
+    connectTimeout: [33m10000[39m,
+    insecureAuth: [33mfalse[39m,
+    supportBigNumbers: [33mfalse[39m,
+    bigNumberStrings: [33mfalse[39m,
+    decimalNumbers: [33mfalse[39m,
+    dateStrings: [33mfalse[39m,
+    debug: [90mundefined[39m,
+    trace: [33mtrue[39m,
+    stringifyObjects: [33mfalse[39m,
+    enableKeepAlive: [33mfalse[39m,
+    keepAliveInitialDelay: [33m0[39m,
+    timezone: [32m'local'[39m,
+    queryFormat: [90mundefined[39m,
+    pool: [90mundefined[39m,
+    ssl: [33mfalse[39m,
+    multipleStatements: [33mfalse[39m,
+    rowsAsArray: [33mfalse[39m,
+    namedPlaceholders: [33mfalse[39m,
+    nestTables: [90mundefined[39m,
+    typeCast: [33mtrue[39m,
+    maxPacketSize: [33m0[39m,
+    charsetNumber: [33m224[39m,
+    compress: [33mfalse[39m,
+    authPlugins: [90mundefined[39m,
+    authSwitchHandler: [90mundefined[39m,
+    clientFlags: [33m11203535[39m,
+    connectAttributes: [90mundefined[39m,
+    maxPreparedStatements: [33m16000[39m
+  },
+  stream: Socket {
+    connecting: [33mtrue[39m,
+    _hadError: [33mfalse[39m,
+    _parent: [1mnull[22m,
+    _host: [32m'localhost'[39m,
+    _readableState: ReadableState {
+      objectMode: [33mfalse[39m,
+      highWaterMark: [33m16384[39m,
+      buffer: BufferList { head: [1mnull[22m, tail: [1mnull[22m, length: [33m0[39m },
+      length: [33m0[39m,
+      pipes: [1mnull[22m,
+      pipesCount: [33m0[39m,
+      flowing: [33mtrue[39m,
+      ended: [33mfalse[39m,
+      endEmitted: [33mfalse[39m,
+      reading: [33mfalse[39m,
+      sync: [33mtrue[39m,
+      needReadable: [33mfalse[39m,
+      emittedReadable: [33mfalse[39m,
+      readableListening: [33mfalse[39m,
+      resumeScheduled: [33mtrue[39m,
+      emitClose: [33mfalse[39m,
+      autoDestroy: [33mfalse[39m,
+      destroyed: [33mfalse[39m,
+      defaultEncoding: [32m'utf8'[39m,
+      awaitDrainWriters: [1mnull[22m,
+      multiAwaitDrain: [33mfalse[39m,
+      readingMore: [33mfalse[39m,
+      decoder: [1mnull[22m,
+      encoding: [1mnull[22m,
+      [[32mSymbol(kPaused)[39m]: [33mfalse[39m
+    },
+    readable: [33mfalse[39m,
+    _events: [Object: null prototype] {
+      end: [36m[Function: onReadableStreamEnd][39m,
+      error: [36m[Function: bound _handleNetworkError][39m,
+      data: [36m[Function][39m,
+      close: [36m[Function][39m
+    },
+    _eventsCount: [33m4[39m,
+    _maxListeners: [90mundefined[39m,
+    _writableState: WritableState {
+      objectMode: [33mfalse[39m,
+      highWaterMark: [33m16384[39m,
+      finalCalled: [33mfalse[39m,
+      needDrain: [33mfalse[39m,
+      ending: [33mfalse[39m,
+      ended: [33mfalse[39m,
+      finished: [33mfalse[39m,
+      destroyed: [33mfalse[39m,
+      decodeStrings: [33mfalse[39m,
+      defaultEncoding: [32m'utf8'[39m,
+      length: [33m0[39m,
+      writing: [33mfalse[39m,
+      corked: [33m0[39m,
+      sync: [33mtrue[39m,
+      bufferProcessing: [33mfalse[39m,
+      onwrite: [36m[Function: bound onwrite][39m,
+      writecb: [1mnull[22m,
+      writelen: [33m0[39m,
+      afterWriteTickInfo: [1mnull[22m,
+      bufferedRequest: [1mnull[22m,
+      lastBufferedRequest: [1mnull[22m,
+      pendingcb: [33m0[39m,
+      prefinished: [33mfalse[39m,
+      errorEmitted: [33mfalse[39m,
+      emitClose: [33mfalse[39m,
+      autoDestroy: [33mfalse[39m,
+      bufferedRequestCount: [33m0[39m,
+      corkedRequestsFree: [36m[Object][39m
+    },
+    writable: [33mtrue[39m,
+    allowHalfOpen: [33mfalse[39m,
+    _sockname: [1mnull[22m,
+    _pendingData: [1mnull[22m,
+    _pendingEncoding: [32m''[39m,
+    server: [1mnull[22m,
+    _server: [1mnull[22m,
+    [[32mSymbol(asyncId)[39m]: [33m7[39m,
+    [[32mSymbol(kHandle)[39m]: TCP {
+      reading: [33mfalse[39m,
+      onconnection: [1mnull[22m,
+      [[32mSymbol(owner_symbol)[39m]: [36m[Circular][39m
+    },
+    [[32mSymbol(kSetNoDelay)[39m]: [33mfalse[39m,
+    [[32mSymbol(lastWriteQueueSize)[39m]: [33m0[39m,
+    [[32mSymbol(timeout)[39m]: [1mnull[22m,
+    [[32mSymbol(kBuffer)[39m]: [1mnull[22m,
+    [[32mSymbol(kBufferCb)[39m]: [1mnull[22m,
+    [[32mSymbol(kBufferGen)[39m]: [1mnull[22m,
+    [[32mSymbol(kCapture)[39m]: [33mfalse[39m,
+    [[32mSymbol(kBytesRead)[39m]: [33m0[39m,
+    [[32mSymbol(kBytesWritten)[39m]: [33m0[39m
+  },
+  _internalId: [33m0[39m,
+  _commands: Denque {
+    _head: [33m0[39m,
+    _tail: [33m1[39m,
+    _capacity: [90mundefined[39m,
+    _capacityMask: [33m3[39m,
+    _list: [ [36m[Query][39m, [90m<3 empty items>[39m ]
+  },
+  _command: ClientHandshake {
+    _events: [Object: null prototype] { end: [36m[Function][39m, error: [36m[Function][39m },
+    _eventsCount: [33m2[39m,
+    _maxListeners: [90mundefined[39m,
+    next: [36m[Function: handshakeInit][39m,
+    handshake: [1mnull[22m,
+    clientFlags: [33m11203535[39m,
+    [[32mSymbol(kCapture)[39m]: [33mfalse[39m
+  },
+  _paused: [33mfalse[39m,
+  _paused_packets: Denque {
+    _head: [33m0[39m,
+    _tail: [33m0[39m,
+    _capacity: [90mundefined[39m,
+    _capacityMask: [33m3[39m,
+    _list: [ [90m<4 empty items>[39m ]
+  },
+  _statements: LRUCache {
+    [[32mSymbol(max)[39m]: [33m16000[39m,
+    [[32mSymbol(lengthCalculator)[39m]: [36m[Function: naiveLength][39m,
+    [[32mSymbol(allowStale)[39m]: [33mfalse[39m,
+    [[32mSymbol(maxAge)[39m]: [33m0[39m,
+    [[32mSymbol(dispose)[39m]: [36m[Function: dispose][39m,
+    [[32mSymbol(noDisposeOnSet)[39m]: [33mfalse[39m,
+    [[32mSymbol(updateAgeOnGet)[39m]: [33mfalse[39m,
+    [[32mSymbol(cache)[39m]: Map {},
+    [[32mSymbol(lruList)[39m]: Yallist { tail: [1mnull[22m, head: [1mnull[22m, length: [33m0[39m },
+    [[32mSymbol(length)[39m]: [33m0[39m
+  },
+  serverCapabilityFlags: [33m0[39m,
+  authorized: [33mfalse[39m,
+  sequenceId: [33m0[39m,
+  compressedSequenceId: [33m0[39m,
+  threadId: [1mnull[22m,
+  _handshakePacket: [1mnull[22m,
+  _fatalError: [1mnull[22m,
+  _protocolError: [1mnull[22m,
+  _outOfOrderPackets: [],
+  clientEncoding: [32m'utf8'[39m,
+  packetParser: PacketParser {
+    buffer: [],
+    bufferLength: [33m0[39m,
+    packetHeaderLength: [33m4[39m,
+    headerLen: [33m0[39m,
+    length: [33m0[39m,
+    largePacketParts: [],
+    firstPacketSequenceId: [33m0[39m,
+    onPacket: [36m[Function][39m,
+    execute: [36m[Function: executeStart][39m,
+    _flushLargePacket: [36m[Function: _flushLargePacket4][39m
+  },
+  serverEncoding: [32m'utf8'[39m,
+  connectTimeout: Timeout {
+    _idleTimeout: [33m10000[39m,
+    _idlePrev: [36m[TimersList][39m,
+    _idleNext: [36m[TimersList][39m,
+    _idleStart: [33m935[39m,
+    _onTimeout: [36m[Function: bound _handleTimeoutError][39m,
+    _timerArgs: [90mundefined[39m,
+    _repeat: [1mnull[22m,
+    _destroyed: [33mfalse[39m,
+    [[32mSymbol(refed)[39m]: [33mtrue[39m,
+    [[32mSymbol(asyncId)[39m]: [33m11[39m,
+    [[32mSymbol(triggerId)[39m]: [33m1[39m
+  },
+  [[32mSymbol(kCapture)[39m]: [33mfalse[39m
+}
+[90mundefined[39m
+[90mundefined[39m
+[1m[7m%[27m[1m[0m                                                                                                                            ]2;douglaza@douglaza:~/Trybe/Projetos/sd-05-trybeer/back-end/models]1;..ck-end/models[0m[27m[24m[J[01;32m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m [K[?1h=[?2004hnode connection.js[?1l>[?2004l
+]2;node connection.js]1;noderoot
+Connection {
+  _events: [Object: null prototype] {},
+  _eventsCount: [33m0[39m,
+  _maxListeners: [90mundefined[39m,
+  config: ConnectionConfig {
+    isServer: [90mundefined[39m,
+    stream: [90mundefined[39m,
+    host: [32m'localhost'[39m,
+    port: [33m3306[39m,
+    localAddress: [90mundefined[39m,
+    socketPath: [90mundefined[39m,
+    user: [32m'root'[39m,
+    password: [90mundefined[39m,
+    passwordSha1: [90mundefined[39m,
+    database: [32m'Trybeer'[39m,
+    connectTimeout: [33m10000[39m,
+    insecureAuth: [33mfalse[39m,
+    supportBigNumbers: [33mfalse[39m,
+    bigNumberStrings: [33mfalse[39m,
+    decimalNumbers: [33mfalse[39m,
+    dateStrings: [33mfalse[39m,
+    debug: [90mundefined[39m,
+    trace: [33mtrue[39m,
+    stringifyObjects: [33mfalse[39m,
+    enableKeepAlive: [33mfalse[39m,
+    keepAliveInitialDelay: [33m0[39m,
+    timezone: [32m'local'[39m,
+    queryFormat: [90mundefined[39m,
+    pool: [90mundefined[39m,
+    ssl: [33mfalse[39m,
+    multipleStatements: [33mfalse[39m,
+    rowsAsArray: [33mfalse[39m,
+    namedPlaceholders: [33mfalse[39m,
+    nestTables: [90mundefined[39m,
+    typeCast: [33mtrue[39m,
+    maxPacketSize: [33m0[39m,
+    charsetNumber: [33m224[39m,
+    compress: [33mfalse[39m,
+    authPlugins: [90mundefined[39m,
+    authSwitchHandler: [90mundefined[39m,
+    clientFlags: [33m11203535[39m,
+    connectAttributes: [90mundefined[39m,
+    maxPreparedStatements: [33m16000[39m
+  },
+  stream: Socket {
+    connecting: [33mtrue[39m,
+    _hadError: [33mfalse[39m,
+    _parent: [1mnull[22m,
+    _host: [32m'localhost'[39m,
+    _readableState: ReadableState {
+      objectMode: [33mfalse[39m,
+      highWaterMark: [33m16384[39m,
+      buffer: BufferList { head: [1mnull[22m, tail: [1mnull[22m, length: [33m0[39m },
+      length: [33m0[39m,
+      pipes: [1mnull[22m,
+      pipesCount: [33m0[39m,
+      flowing: [33mtrue[39m,
+      ended: [33mfalse[39m,
+      endEmitted: [33mfalse[39m,
+      reading: [33mfalse[39m,
+      sync: [33mtrue[39m,
+      needReadable: [33mfalse[39m,
+      emittedReadable: [33mfalse[39m,
+      readableListening: [33mfalse[39m,
+      resumeScheduled: [33mtrue[39m,
+      emitClose: [33mfalse[39m,
+      autoDestroy: [33mfalse[39m,
+      destroyed: [33mfalse[39m,
+      defaultEncoding: [32m'utf8'[39m,
+      awaitDrainWriters: [1mnull[22m,
+      multiAwaitDrain: [33mfalse[39m,
+      readingMore: [33mfalse[39m,
+      decoder: [1mnull[22m,
+      encoding: [1mnull[22m,
+      [[32mSymbol(kPaused)[39m]: [33mfalse[39m
+    },
+    readable: [33mfalse[39m,
+    _events: [Object: null prototype] {
+      end: [36m[Function: onReadableStreamEnd][39m,
+      error: [36m[Function: bound _handleNetworkError][39m,
+      data: [36m[Function][39m,
+      close: [36m[Function][39m
+    },
+    _eventsCount: [33m4[39m,
+    _maxListeners: [90mundefined[39m,
+    _writableState: WritableState {
+      objectMode: [33mfalse[39m,
+      highWaterMark: [33m16384[39m,
+      finalCalled: [33mfalse[39m,
+      needDrain: [33mfalse[39m,
+      ending: [33mfalse[39m,
+      ended: [33mfalse[39m,
+      finished: [33mfalse[39m,
+      destroyed: [33mfalse[39m,
+      decodeStrings: [33mfalse[39m,
+      defaultEncoding: [32m'utf8'[39m,
+      length: [33m0[39m,
+      writing: [33mfalse[39m,
+      corked: [33m0[39m,
+      sync: [33mtrue[39m,
+      bufferProcessing: [33mfalse[39m,
+      onwrite: [36m[Function: bound onwrite][39m,
+      writecb: [1mnull[22m,
+      writelen: [33m0[39m,
+      afterWriteTickInfo: [1mnull[22m,
+      bufferedRequest: [1mnull[22m,
+      lastBufferedRequest: [1mnull[22m,
+      pendingcb: [33m0[39m,
+      prefinished: [33mfalse[39m,
+      errorEmitted: [33mfalse[39m,
+      emitClose: [33mfalse[39m,
+      autoDestroy: [33mfalse[39m,
+      bufferedRequestCount: [33m0[39m,
+      corkedRequestsFree: [36m[Object][39m
+    },
+    writable: [33mtrue[39m,
+    allowHalfOpen: [33mfalse[39m,
+    _sockname: [1mnull[22m,
+    _pendingData: [1mnull[22m,
+    _pendingEncoding: [32m''[39m,
+    server: [1mnull[22m,
+    _server: [1mnull[22m,
+    [[32mSymbol(asyncId)[39m]: [33m7[39m,
+    [[32mSymbol(kHandle)[39m]: TCP {
+      reading: [33mfalse[39m,
+      onconnection: [1mnull[22m,
+      [[32mSymbol(owner_symbol)[39m]: [36m[Circular][39m
+    },
+    [[32mSymbol(kSetNoDelay)[39m]: [33mfalse[39m,
+    [[32mSymbol(lastWriteQueueSize)[39m]: [33m0[39m,
+    [[32mSymbol(timeout)[39m]: [1mnull[22m,
+    [[32mSymbol(kBuffer)[39m]: [1mnull[22m,
+    [[32mSymbol(kBufferCb)[39m]: [1mnull[22m,
+    [[32mSymbol(kBufferGen)[39m]: [1mnull[22m,
+    [[32mSymbol(kCapture)[39m]: [33mfalse[39m,
+    [[32mSymbol(kBytesRead)[39m]: [33m0[39m,
+    [[32mSymbol(kBytesWritten)[39m]: [33m0[39m
+  },
+  _internalId: [33m0[39m,
+  _commands: Denque {
+    _head: [33m0[39m,
+    _tail: [33m1[39m,
+    _capacity: [90mundefined[39m,
+    _capacityMask: [33m3[39m,
+    _list: [ [36m[Query][39m, [90m<3 empty items>[39m ]
+  },
+  _command: ClientHandshake {
+    _events: [Object: null prototype] { end: [36m[Function][39m, error: [36m[Function][39m },
+    _eventsCount: [33m2[39m,
+    _maxListeners: [90mundefined[39m,
+    next: [36m[Function: handshakeInit][39m,
+    handshake: [1mnull[22m,
+    clientFlags: [33m11203535[39m,
+    [[32mSymbol(kCapture)[39m]: [33mfalse[39m
+  },
+  _paused: [33mfalse[39m,
+  _paused_packets: Denque {
+    _head: [33m0[39m,
+    _tail: [33m0[39m,
+    _capacity: [90mundefined[39m,
+    _capacityMask: [33m3[39m,
+    _list: [ [90m<4 empty items>[39m ]
+  },
+  _statements: LRUCache {
+    [[32mSymbol(max)[39m]: [33m16000[39m,
+    [[32mSymbol(lengthCalculator)[39m]: [36m[Function: naiveLength][39m,
+    [[32mSymbol(allowStale)[39m]: [33mfalse[39m,
+    [[32mSymbol(maxAge)[39m]: [33m0[39m,
+    [[32mSymbol(dispose)[39m]: [36m[Function: dispose][39m,
+    [[32mSymbol(noDisposeOnSet)[39m]: [33mfalse[39m,
+    [[32mSymbol(updateAgeOnGet)[39m]: [33mfalse[39m,
+    [[32mSymbol(cache)[39m]: Map {},
+    [[32mSymbol(lruList)[39m]: Yallist { tail: [1mnull[22m, head: [1mnull[22m, length: [33m0[39m },
+    [[32mSymbol(length)[39m]: [33m0[39m
+  },
+  serverCapabilityFlags: [33m0[39m,
+  authorized: [33mfalse[39m,
+  sequenceId: [33m0[39m,
+  compressedSequenceId: [33m0[39m,
+  threadId: [1mnull[22m,
+  _handshakePacket: [1mnull[22m,
+  _fatalError: [1mnull[22m,
+  _protocolError: [1mnull[22m,
+  _outOfOrderPackets: [],
+  clientEncoding: [32m'utf8'[39m,
+  packetParser: PacketParser {
+    buffer: [],
+    bufferLength: [33m0[39m,
+    packetHeaderLength: [33m4[39m,
+    headerLen: [33m0[39m,
+    length: [33m0[39m,
+    largePacketParts: [],
+    firstPacketSequenceId: [33m0[39m,
+    onPacket: [36m[Function][39m,
+    execute: [36m[Function: executeStart][39m,
+    _flushLargePacket: [36m[Function: _flushLargePacket4][39m
+  },
+  serverEncoding: [32m'utf8'[39m,
+  connectTimeout: Timeout {
+    _idleTimeout: [33m10000[39m,
+    _idlePrev: [36m[TimersList][39m,
+    _idleNext: [36m[TimersList][39m,
+    _idleStart: [33m935[39m,
+    _onTimeout: [36m[Function: bound _handleTimeoutError][39m,
+    _timerArgs: [90mundefined[39m,
+    _repeat: [1mnull[22m,
+    _destroyed: [33mfalse[39m,
+    [[32mSymbol(refed)[39m]: [33mtrue[39m,
+    [[32mSymbol(asyncId)[39m]: [33m11[39m,
+    [[32mSymbol(triggerId)[39m]: [33m1[39m
+  },
+  [[32mSymbol(kCapture)[39m]: [33mfalse[39m
+}
+[90mundefined[39m
+[90mundefined[39m
+[1m[7m%[27m[1m[0m                                                                                                                            ]2;douglaza@douglaza:~/Trybe/Projetos/sd-05-trybeer/back-end/models]1;..ck-end/models[0m[27m[24m[J[01;32m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m [K[?1h=[?2004hnode connection.js[?1l>[?2004l
+]2;node connection.js]1;noderoot
+[90mundefined[39m
+[90mundefined[39m
+[1m[7m%[27m[1m[0m                                                                                                                            ]2;douglaza@douglaza:~/Trybe/Projetos/sd-05-trybeer/back-end/models]1;..ck-end/models[0m[27m[24m[J[01;32m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m [K[?1h=[?2004hnode connection.js[?1l>[?2004l
+]2;node connection.js]1;noderoot
+[90mundefined[39m
+[90mundefined[39m
+[1m[7m%[27m[1m[0m                                                                                                                            ]2;douglaza@douglaza:~/Trybe/Projetos/sd-05-trybeer/back-end/models]1;..ck-end/models[0m[27m[24m[J[01;32m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m [K[?1h=[?2004hnode connection.js[?1l>[?2004l
+]2;node connection.js]1;node[90mundefined[39m
+[90mundefined[39m
+[1m[7m%[27m[1m[0m                                                                                                                            ]2;douglaza@douglaza:~/Trybe/Projetos/sd-05-trybeer/back-end/models]1;..ck-end/models[0m[27m[24m[J[01;32m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m [K[?1h=[?2004h[H[2J[0m[27m[24m[J[01;32m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m [Knode connection.js[18Dcd back-end/model[1C[18Dmysql -u root -p  
+[K
+[K[A[A[54C[16Dscript          [1B[K[1B[K[A[A[44Cmysql -u root -p[1B[K[1B[K[A[A[54C[2B[K[A[A[54C[?1l>[?2004l[2B
+]2;mysql -u root -p]1;mysqlEnter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 16
+Server version: 5.7.32-0ubuntu0.18.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use dartab[K[K[K[Ktabase Trybeer;
+ERROR 1049 (42000): Unknown database 'database'
+mysql> use database Trybeer;[P [P [P [P [P [P [P [P [PT
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables
+    -> ^X  ;
+;
+^C
+mysql> show tables;
++-------------------+
+| Tables_in_Trybeer |
++-------------------+
+| products          |
+| sales             |
+| sales_products    |
+| users             |
++-------------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from prdocuts[K[K[K[K[K[Koducts;
++----+--------------------------+-------+-----------------------------------------------------------+
+| id | name                     | price | url_image                                                 |
++----+--------------------------+-------+-----------------------------------------------------------+
+|  1 | Skol Lata 250ml          |  2.20 | http://localhost:3001/images/Skol Lata 350ml.jpg          |
+|  2 | Heineken 600ml           |  7.50 | http://localhost:3001/images/Heineken 600ml.jpg           |
+|  3 | Antarctica Pilsen 300ml  |  2.49 | http://localhost:3001/images/Antarctica Pilsen 300ml.jpg  |
+|  4 | Brahma 600ml             |  7.50 | http://localhost:3001/images/Brahma 600ml.jpg             |
+|  5 | Skol 269ml               |  2.19 | http://localhost:3001/images/Skol 269ml.jpg               |
+|  6 | Skol Beats Senses 313ml  |  4.49 | http://localhost:3001/images/Skol Beats Senses 313ml.jpg  |
+|  7 | Becks 330ml              |  4.99 | http://localhost:3001/images/Becks 330ml.jpg              |
+|  8 | Brahma Duplo Malte 350ml |  2.79 | http://localhost:3001/images/Brahma Duplo Malte 350ml.jpg |
+|  9 | Becks 600ml              |  8.89 | http://localhost:3001/images/Becks 600ml.jpg              |
+| 10 | Skol Beats Senses 269ml  |  3.57 | http://localhost:3001/images/Skol Beats Senses 269ml.jpg  |
+| 11 | Stella Artois 275ml      |  3.49 | http://localhost:3001/images/Stella Artois 275ml.jpg      |
++----+--------------------------+-------+-----------------------------------------------------------+
+11 rows in set (0.01 sec)
+
+mysql> ^Z[K^C^Z
+[2]  + 12367 suspended  mysql -u root -p
+[1m[7m%[27m[1m[0m                                                                                                                            ]2;douglaza@douglaza:~/Trybe/Projetos/sd-05-trybeer/back-end/models]1;..ck-end/models[0m[27m[24m[J[01;31m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m [K[?1h=[?2004hmysql -u root -p
+[K
+[K[A[A[54C[16Dnode connection.js[1B[K[1B[K[A[A[56C[?1l>[?2004l[1B]2;node connection.js]1;nodeQuery {
+  _events: [Object: null prototype] {},
+  _eventsCount: [33m0[39m,
+  _maxListeners: [90mundefined[39m,
+  next: [1mnull[22m,
+  sql: [32m'SELECT * FROM products'[39m,
+  values: [90mundefined[39m,
+  _queryOptions: {
+    rowsAsArray: [33mfalse[39m,
+    sql: [32m'SELECT * FROM products'[39m,
+    values: [90mundefined[39m
+  },
+  namedPlaceholders: [33mfalse[39m,
+  onResult: [90mundefined[39m,
+  _fieldCount: [33m0[39m,
+  _rowParser: [1mnull[22m,
+  _fields: [],
+  _rows: [],
+  _receivedFieldsCount: [33m0[39m,
+  _resultIndex: [33m0[39m,
+  _localStream: [1mnull[22m,
+  _unpipeStream: [36m[Function][39m,
+  _streamFactory: [90mundefined[39m,
+  _connection: [1mnull[22m,
+  [[32mSymbol(kCapture)[39m]: [33mfalse[39m
+}
+events.js:292
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: Access denied for user 'root'@'localhost' (using password: NO)
+    at Packet.asError (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/packets/packet.js:712:17)
+    at ClientHandshake.execute (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/commands/command.js:28:26)
+    at Connection.handlePacket (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:425:32)
+    at PacketParser.onPacket (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:75:12)
+    at PacketParser.executeStart (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/packet_parser.js:75:16)
+    at Socket.<anonymous> (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:82:25)
+[90m    at Socket.emit (events.js:315:20)[39m
+[90m    at addChunk (_stream_readable.js:295:12)[39m
+[90m    at readableAddChunk (_stream_readable.js:271:9)[39m
+[90m    at Socket.Readable.push (_stream_readable.js:212:10)[39m
+Emitted 'error' event on Connection instance at:
+    at Connection._notifyError (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:225:12)
+    at ClientHandshake.<anonymous> (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:114:14)
+[90m    at ClientHandshake.emit (events.js:327:22)[39m
+    at ClientHandshake.execute (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/commands/command.js:33:14)
+    at Connection.handlePacket (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:425:32)
+    [... lines matching original stack trace ...]
+[90m    at addChunk (_stream_readable.js:295:12)[39m {
+  code: [32m'ER_ACCESS_DENIED_ERROR'[39m,
+  errno: [33m1045[39m,
+  sqlState: [32m'28000'[39m,
+  sqlMessage: [32m"Access denied for user 'root'@'localhost' (using password: NO)"[39m
+}
+[1m[7m%[27m[1m[0m                                                                                                                            ]2;douglaza@douglaza:~/Trybe/Projetos/sd-05-trybeer/back-end/models]1;..ck-end/models[0m[27m[24m[J[01;31m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m [K[?1h=[?2004hnode connection.js[?1l>[?2004l
+]2;node connection.js]1;nodeQuery {
+  _events: [Object: null prototype] {},
+  _eventsCount: [33m0[39m,
+  _maxListeners: [90mundefined[39m,
+  next: [1mnull[22m,
+  sql: [32m'SELECT * FROM products'[39m,
+  values: [90mundefined[39m,
+  _queryOptions: {
+    rowsAsArray: [33mfalse[39m,
+    sql: [32m'SELECT * FROM products'[39m,
+    values: [90mundefined[39m
+  },
+  namedPlaceholders: [33mfalse[39m,
+  onResult: [90mundefined[39m,
+  _fieldCount: [33m0[39m,
+  _rowParser: [1mnull[22m,
+  _fields: [],
+  _rows: [],
+  _receivedFieldsCount: [33m0[39m,
+  _resultIndex: [33m0[39m,
+  _localStream: [1mnull[22m,
+  _unpipeStream: [36m[Function][39m,
+  _streamFactory: [90mundefined[39m,
+  _connection: [1mnull[22m,
+  [[32mSymbol(kCapture)[39m]: [33mfalse[39m
+}
+events.js:292
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: Access denied for user 'root'@'localhost' (using password: NO)
+    at Packet.asError (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/packets/packet.js:712:17)
+    at ClientHandshake.execute (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/commands/command.js:28:26)
+    at Connection.handlePacket (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:425:32)
+    at PacketParser.onPacket (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:75:12)
+    at PacketParser.executeStart (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/packet_parser.js:75:16)
+    at Socket.<anonymous> (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:82:25)
+[90m    at Socket.emit (events.js:315:20)[39m
+[90m    at addChunk (_stream_readable.js:295:12)[39m
+[90m    at readableAddChunk (_stream_readable.js:271:9)[39m
+[90m    at Socket.Readable.push (_stream_readable.js:212:10)[39m
+Emitted 'error' event on Connection instance at:
+    at Connection._notifyError (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:225:12)
+    at ClientHandshake.<anonymous> (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:114:14)
+[90m    at ClientHandshake.emit (events.js:327:22)[39m
+    at ClientHandshake.execute (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/commands/command.js:33:14)
+    at Connection.handlePacket (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:425:32)
+    [... lines matching original stack trace ...]
+[90m    at addChunk (_stream_readable.js:295:12)[39m {
+  code: [32m'ER_ACCESS_DENIED_ERROR'[39m,
+  errno: [33m1045[39m,
+  sqlState: [32m'28000'[39m,
+  sqlMessage: [32m"Access denied for user 'root'@'localhost' (using password: NO)"[39m
+}
+[1m[7m%[27m[1m[0m                                                                                                                            ]2;douglaza@douglaza:~/Trybe/Projetos/sd-05-trybeer/back-end/models]1;..ck-end/models[0m[27m[24m[J[01;31m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m [K[?1h=[?2004hnode connection.js[?1l>[?2004l
+]2;node connection.js]1;nodeQuery {
+  _events: [Object: null prototype] {},
+  _eventsCount: [33m0[39m,
+  _maxListeners: [90mundefined[39m,
+  next: [1mnull[22m,
+  sql: [32m'SELECT * FROM products'[39m,
+  values: [90mundefined[39m,
+  _queryOptions: {
+    rowsAsArray: [33mfalse[39m,
+    sql: [32m'SELECT * FROM products'[39m,
+    values: [90mundefined[39m
+  },
+  namedPlaceholders: [33mfalse[39m,
+  onResult: [90mundefined[39m,
+  _fieldCount: [33m0[39m,
+  _rowParser: [1mnull[22m,
+  _fields: [],
+  _rows: [],
+  _receivedFieldsCount: [33m0[39m,
+  _resultIndex: [33m0[39m,
+  _localStream: [1mnull[22m,
+  _unpipeStream: [36m[Function][39m,
+  _streamFactory: [90mundefined[39m,
+  _connection: [1mnull[22m,
+  [[32mSymbol(kCapture)[39m]: [33mfalse[39m
+}
+events.js:292
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: Access denied for user 'root'@'localhost' (using password: NO)
+    at Packet.asError (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/packets/packet.js:712:17)
+    at ClientHandshake.execute (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/commands/command.js:28:26)
+    at Connection.handlePacket (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:425:32)
+    at PacketParser.onPacket (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:75:12)
+    at PacketParser.executeStart (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/packet_parser.js:75:16)
+    at Socket.<anonymous> (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:82:25)
+[90m    at Socket.emit (events.js:315:20)[39m
+[90m    at addChunk (_stream_readable.js:295:12)[39m
+[90m    at readableAddChunk (_stream_readable.js:271:9)[39m
+[90m    at Socket.Readable.push (_stream_readable.js:212:10)[39m
+Emitted 'error' event on Connection instance at:
+    at Connection._notifyError (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:225:12)
+    at ClientHandshake.<anonymous> (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:114:14)
+[90m    at ClientHandshake.emit (events.js:327:22)[39m
+    at ClientHandshake.execute (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/commands/command.js:33:14)
+    at Connection.handlePacket (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:425:32)
+    [... lines matching original stack trace ...]
+[90m    at addChunk (_stream_readable.js:295:12)[39m {
+  code: [32m'ER_ACCESS_DENIED_ERROR'[39m,
+  errno: [33m1045[39m,
+  sqlState: [32m'28000'[39m,
+  sqlMessage: [32m"Access denied for user 'root'@'localhost' (using password: NO)"[39m
+}
+[1m[7m%[27m[1m[0m                                                                                                                            ]2;douglaza@douglaza:~/Trybe/Projetos/sd-05-trybeer/back-end/models]1;..ck-end/models[0m[27m[24m[J[01;31m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m [K[?1h=[?2004hnode connection.js[?1l>[?2004l
+]2;node connection.js]1;nodeQuery {
+  _events: [Object: null prototype] {},
+  _eventsCount: [33m0[39m,
+  _maxListeners: [90mundefined[39m,
+  next: [1mnull[22m,
+  sql: [32m'SELECT * FROM products'[39m,
+  values: [90mundefined[39m,
+  _queryOptions: {
+    rowsAsArray: [33mfalse[39m,
+    sql: [32m'SELECT * FROM products'[39m,
+    values: [90mundefined[39m
+  },
+  namedPlaceholders: [33mfalse[39m,
+  onResult: [90mundefined[39m,
+  _fieldCount: [33m0[39m,
+  _rowParser: [1mnull[22m,
+  _fields: [],
+  _rows: [],
+  _receivedFieldsCount: [33m0[39m,
+  _resultIndex: [33m0[39m,
+  _localStream: [1mnull[22m,
+  _unpipeStream: [36m[Function][39m,
+  _streamFactory: [90mundefined[39m,
+  _connection: [1mnull[22m,
+  [[32mSymbol(kCapture)[39m]: [33mfalse[39m
+}
+events.js:292
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: Access denied for user 'root'@'localhost' (using password: NO)
+    at Packet.asError (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/packets/packet.js:712:17)
+    at ClientHandshake.execute (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/commands/command.js:28:26)
+    at Connection.handlePacket (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:425:32)
+    at PacketParser.onPacket (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:75:12)
+    at PacketParser.executeStart (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/packet_parser.js:75:16)
+    at Socket.<anonymous> (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:82:25)
+[90m    at Socket.emit (events.js:315:20)[39m
+[90m    at addChunk (_stream_readable.js:295:12)[39m
+[90m    at readableAddChunk (_stream_readable.js:271:9)[39m
+[90m    at Socket.Readable.push (_stream_readable.js:212:10)[39m
+Emitted 'error' event on Connection instance at:
+    at Connection._notifyError (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:225:12)
+    at ClientHandshake.<anonymous> (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:114:14)
+[90m    at ClientHandshake.emit (events.js:327:22)[39m
+    at ClientHandshake.execute (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/commands/command.js:33:14)
+    at Connection.handlePacket (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:425:32)
+    [... lines matching original stack trace ...]
+[90m    at addChunk (_stream_readable.js:295:12)[39m {
+  code: [32m'ER_ACCESS_DENIED_ERROR'[39m,
+  errno: [33m1045[39m,
+  sqlState: [32m'28000'[39m,
+  sqlMessage: [32m"Access denied for user 'root'@'localhost' (using password: NO)"[39m
+}
+[1m[7m%[27m[1m[0m                                                                                                                            ]2;douglaza@douglaza:~/Trybe/Projetos/sd-05-trybeer/back-end/models]1;..ck-end/models[0m[27m[24m[J[01;31m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m [K[?1h=[?2004hnode connection.js[?1l>[?2004l
+]2;node connection.js]1;nodeQuery {
+  _events: [Object: null prototype] {},
+  _eventsCount: [33m0[39m,
+  _maxListeners: [90mundefined[39m,
+  next: [1mnull[22m,
+  sql: [32m'SELECT * FROM products'[39m,
+  values: [90mundefined[39m,
+  _queryOptions: {
+    rowsAsArray: [33mfalse[39m,
+    sql: [32m'SELECT * FROM products'[39m,
+    values: [90mundefined[39m
+  },
+  namedPlaceholders: [33mfalse[39m,
+  onResult: [90mundefined[39m,
+  _fieldCount: [33m0[39m,
+  _rowParser: [1mnull[22m,
+  _fields: [],
+  _rows: [],
+  _receivedFieldsCount: [33m0[39m,
+  _resultIndex: [33m0[39m,
+  _localStream: [1mnull[22m,
+  _unpipeStream: [36m[Function][39m,
+  _streamFactory: [90mundefined[39m,
+  _connection: [1mnull[22m,
+  [[32mSymbol(kCapture)[39m]: [33mfalse[39m
+}
+events.js:292
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: Access denied for user 'root'@'localhost' (using password: NO)
+    at Packet.asError (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/packets/packet.js:712:17)
+    at ClientHandshake.execute (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/commands/command.js:28:26)
+    at Connection.handlePacket (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:425:32)
+    at PacketParser.onPacket (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:75:12)
+    at PacketParser.executeStart (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/packet_parser.js:75:16)
+    at Socket.<anonymous> (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:82:25)
+[90m    at Socket.emit (events.js:315:20)[39m
+[90m    at addChunk (_stream_readable.js:295:12)[39m
+[90m    at readableAddChunk (_stream_readable.js:271:9)[39m
+[90m    at Socket.Readable.push (_stream_readable.js:212:10)[39m
+Emitted 'error' event on Connection instance at:
+    at Connection._notifyError (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:225:12)
+    at ClientHandshake.<anonymous> (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:114:14)
+[90m    at ClientHandshake.emit (events.js:327:22)[39m
+    at ClientHandshake.execute (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/commands/command.js:33:14)
+    at Connection.handlePacket (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:425:32)
+    [... lines matching original stack trace ...]
+[90m    at addChunk (_stream_readable.js:295:12)[39m {
+  code: [32m'ER_ACCESS_DENIED_ERROR'[39m,
+  errno: [33m1045[39m,
+  sqlState: [32m'28000'[39m,
+  sqlMessage: [32m"Access denied for user 'root'@'localhost' (using password: NO)"[39m
+}
+[1m[7m%[27m[1m[0m                                                                                                                            ]2;douglaza@douglaza:~/Trybe/Projetos/sd-05-trybeer/back-end/models]1;..ck-end/models[0m[27m[24m[J[01;31m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m [K[?1h=[?2004hssudo an  nano node connection.js[1m [0m[0m [?1l>[?2004l
+]2;sudo nano node connection.js]1;nano[sudo] senha para douglaza: 
+[?1049h[22;0;0t[1;15r(B[m[4l[?7h[39;49m[?1h=[?1h=[?1h=[?25l[39;49m(B[m[H[2J[13;55H(B[0;7m[ Novo arquivo ](B[m[13;53H(B[0;7m[ Lendo o arquivo ](B[m[13;55H(B[0;7m19 linhas lidas ](B[m[H(B[0;7m  [1/2]                                                  node                                                               [1;123H(B[m[14d(B[0;7m^G(B[m Obter Ajuda (B[0;7m^O(B[m Gravar[31G(B[0;7m^W(B[m Onde está?  (B[0;7m^K(B[m Recort txt  (B[0;7m^J(B[m Justificar  (B[0;7m^C(B[m Pos atual   (B[0;7mM-U(B[m Desfazer   (B[0;7mM-A(B[m Marcar txt[15d(B[0;7m^X(B[m Fechar[16G(B[0;7m^R(B[m Ler o arq   (B[0;7m^\(B[m Substituir  (B[0;7m^U(B[m Colar txt   (B[0;7m^T(B[m VerfOrtog   (B[0;7m^_(B[m Ir p/ linha (B[0;7mM-E(B[m Refazer    (B[0;7mM-6(B[m Copiar texto[13d[3d[39;49m(B[m[?12l[?25h[?25l[1;4H(B[0;7m2[1;54Hconnection.js[123G(B[m[13;47H(B[0;7m[ Alternado para connection.js ](B[m[1;4H(B[0;7m1/1[123G(B[m[15;4HSair  [13d[3d[39;49m[32mconst[39m(B[m mysql = require((B[0;1m[35m'mysql2'[39m(B[m);[4drequire((B[0;1m[35m'dotenv'[39m(B[m).config({ path: __dirname + (B[0;1m[35m'/../../.env'[39m(B[m });[6d[32mconst[39m(B[m config = {[7;3Huser: process.env.MYSQL_USER,[8;3Hpassword: process.env.MYSQL_PASSWORD,[9;3Hhost: process.env.HOSTNAME,[10;3Hport: [36m33060[39m(B[m,[11;3HsocketPath: (B[0;1m[35m'/var/run/mysqld/mysqld.sock'[39m(B[m,[12d};[3d[?12l[?25h[?25l[1;113H(B[0;7mModificado(B[m7[2;12r8[2dM[1;15r[4;1H[?12l[?25h[?25l[13d(B[0;7mSalvar buffer modificado? (Responder "Não" vai DESCARTAR alterações.)                                                       [14;1H S(B[m Sim[K[15d(B[0;7m N(B[m Não [15;16H (B[0;7m^C(B[m Cancelar[K[13;71H[?12l[?25h[?25l[J[15;124H[?12l[?25h[15;1H[?1049l[23;0;0t[?1l>[1m[7m%[27m[1m[0m                                                                                                                            ]2;douglaza@douglaza:~/Trybe/Projetos/sd-05-trybeer/back-end/models]1;..ck-end/models[0m[27m[24m[J[01;32m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m [K[?1h=[?2004hsudo nano node connection.js[P[19C [20D[P[19C [20D[P[19C [20D[P[19C [20D[P[18C [20D[?1l>[?2004l
+]2;sudo node connection.js]1;nodeQuery {
+  _events: [Object: null prototype] {},
+  _eventsCount: [33m0[39m,
+  _maxListeners: [90mundefined[39m,
+  next: [1mnull[22m,
+  sql: [32m'SELECT * FROM products'[39m,
+  values: [90mundefined[39m,
+  _queryOptions: {
+    rowsAsArray: [33mfalse[39m,
+    sql: [32m'SELECT * FROM products'[39m,
+    values: [90mundefined[39m
+  },
+  namedPlaceholders: [33mfalse[39m,
+  onResult: [90mundefined[39m,
+  _fieldCount: [33m0[39m,
+  _rowParser: [1mnull[22m,
+  _fields: [],
+  _rows: [],
+  _receivedFieldsCount: [33m0[39m,
+  _resultIndex: [33m0[39m,
+  _localStream: [1mnull[22m,
+  _unpipeStream: [36m[Function][39m,
+  _streamFactory: [90mundefined[39m,
+  _connection: [1mnull[22m,
+  [[32mSymbol(kCapture)[39m]: [33mfalse[39m
+}
+events.js:292
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: Access denied for user 'root'@'localhost' (using password: NO)
+    at Packet.asError (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/packets/packet.js:712:17)
+    at ClientHandshake.execute (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/commands/command.js:28:26)
+    at Connection.handlePacket (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:425:32)
+    at PacketParser.onPacket (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:75:12)
+    at PacketParser.executeStart (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/packet_parser.js:75:16)
+    at Socket.<anonymous> (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:82:25)
+[90m    at Socket.emit (events.js:315:20)[39m
+[90m    at addChunk (_stream_readable.js:295:12)[39m
+[90m    at readableAddChunk (_stream_readable.js:271:9)[39m
+[90m    at Socket.Readable.push (_stream_readable.js:212:10)[39m
+Emitted 'error' event on Connection instance at:
+    at Connection._notifyError (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:225:12)
+    at ClientHandshake.<anonymous> (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:114:14)
+[90m    at ClientHandshake.emit (events.js:327:22)[39m
+    at ClientHandshake.execute (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/commands/command.js:33:14)
+    at Connection.handlePacket (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:425:32)
+    [... lines matching original stack trace ...]
+[90m    at addChunk (_stream_readable.js:295:12)[39m {
+  code: [32m'ER_ACCESS_DENIED_ERROR'[39m,
+  errno: [33m1045[39m,
+  sqlState: [32m'28000'[39m,
+  sqlMessage: [32m"Access denied for user 'root'@'localhost' (using password: NO)"[39m
+}
+[1m[7m%[27m[1m[0m                                                                                                                            ]2;douglaza@douglaza:~/Trybe/Projetos/sd-05-trybeer/back-end/models]1;..ck-end/models[0m[27m[24m[J[01;31m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m [K[?1h=[?2004h[0m[27m[24m[J[01;31m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m [0m[27m[24m[J[01;31m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m [0m[27m[24m[J[01;31m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m [0m[27m[24m[J[01;31m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m sudo node connection.js[0m[27m[24m[J[01;31m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m sudo node connection.js[K[A[0m[27m[24m[J[01;31m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m sudo node connection.js
+[K[A[61C[?1l>[?2004l
+]2;sudo node connection.js]1;nodeQuery {
+  _events: [Object: null prototype] {},
+  _eventsCount: [33m0[39m,
+  _maxListeners: [90mundefined[39m,
+  next: [1mnull[22m,
+  sql: [32m'SELECT * FROM products'[39m,
+  values: [90mundefined[39m,
+  _queryOptions: {
+    rowsAsArray: [33mfalse[39m,
+    sql: [32m'SELECT * FROM products'[39m,
+    values: [90mundefined[39m
+  },
+  namedPlaceholders: [33mfalse[39m,
+  onResult: [90mundefined[39m,
+  _fieldCount: [33m0[39m,
+  _rowParser: [1mnull[22m,
+  _fields: [],
+  _rows: [],
+  _receivedFieldsCount: [33m0[39m,
+  _resultIndex: [33m0[39m,
+  _localStream: [1mnull[22m,
+  _unpipeStream: [36m[Function][39m,
+  _streamFactory: [90mundefined[39m,
+  _connection: [1mnull[22m,
+  [[32mSymbol(kCapture)[39m]: [33mfalse[39m
+}
+events.js:292
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: No database selected
+    at Packet.asError (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/packets/packet.js:712:17)
+    at Query.execute (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/commands/command.js:28:26)
+    at Connection.handlePacket (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:425:32)
+    at PacketParser.onPacket (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:75:12)
+    at PacketParser.executeStart (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/packet_parser.js:75:16)
+    at Socket.<anonymous> (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:82:25)
+[90m    at Socket.emit (events.js:315:20)[39m
+[90m    at addChunk (_stream_readable.js:295:12)[39m
+[90m    at readableAddChunk (_stream_readable.js:271:9)[39m
+[90m    at Socket.Readable.push (_stream_readable.js:212:10)[39m
+Emitted 'error' event on Query instance at:
+    at Query.execute (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/commands/command.js:33:14)
+    at Connection.handlePacket (/home/douglaza/Trybe/Projetos/sd-05-trybeer/back-end/node_modules/[4mmysql2[24m/lib/connection.js:425:32)
+    [... lines matching original stack trace ...]
+[90m    at Socket.Readable.push (_stream_readable.js:212:10)[39m
+[90m    at Pipe.onStreamRead (internal/stream_base_commons.js:186:23)[39m {
+  code: [32m'ER_NO_DB_ERROR'[39m,
+  errno: [33m1046[39m,
+  sqlState: [32m'3D000'[39m,
+  sqlMessage: [32m'No database selected'[39m
+}
+[1m[7m%[27m[1m[0m                                                                                                                            ]2;douglaza@douglaza:~/Trybe/Projetos/sd-05-trybeer/back-end/models]1;..ck-end/models[0m[27m[24m[J[01;31m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m [K[?1h=[?2004h[0m[27m[24m[J[01;31m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m [0m[27m[24m[J[01;31m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m [0m[27m[24m[J[01;31m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m sudo node connection.js[?1l>[?2004l
+]2;sudo node connection.js]1;nodeQuery {
+  _events: [Object: null prototype] {},
+  _eventsCount: [33m0[39m,
+  _maxListeners: [90mundefined[39m,
+  next: [1mnull[22m,
+  sql: [32m'SELECT * FROM products'[39m,
+  values: [90mundefined[39m,
+  _queryOptions: {
+    rowsAsArray: [33mfalse[39m,
+    sql: [32m'SELECT * FROM products'[39m,
+    values: [90mundefined[39m
+  },
+  namedPlaceholders: [33mfalse[39m,
+  onResult: [90mundefined[39m,
+  _fieldCount: [33m0[39m,
+  _rowParser: [1mnull[22m,
+  _fields: [],
+  _rows: [],
+  _receivedFieldsCount: [33m0[39m,
+  _resultIndex: [33m0[39m,
+  _localStream: [1mnull[22m,
+  _unpipeStream: [36m[Function][39m,
+  _streamFactory: [90mundefined[39m,
+  _connection: [1mnull[22m,
+  [[32mSymbol(kCapture)[39m]: [33mfalse[39m
+}
+^[[A^[[B^X^C
+[1m[7m%[27m[1m[0m                                                                                                                            ]2;douglaza@douglaza:~/Trybe/Projetos/sd-05-trybeer/back-end/models]1;..ck-end/models[0m[27m[24m[J[01;31m➜  [36mmodels[00m [01;34mgit:([31mdouglaza-2nd-branch[34m) [33m✗[00m [K[?1h=[?2004hsudo node connection.js[?1l>[?2004l
+]2;sudo node connection.js]1;node[
+  TextRow {
+    id: [33m1[39m,
+    name: [32m'Skol Lata 250ml'[39m,
+    price: [32m'2.20'[39m,
+    url_image: [32m'http://localhost:3001/images/Skol Lata 350ml.jpg'[39m
+  },
+  TextRow {
+    id: [33m2[39m,
+    name: [32m'Heineken 600ml'[39m,
+    price: [32m'7.50'[39m,
+    url_image: [32m'http://localhost:3001/images/Heineken 600ml.jpg'[39m
+  },
+  TextRow {
+    id: [33m3[39m,
+    name: [32m'Antarctica Pilsen 300ml'[39m,
+    price: [32m'2.49'[39m,
+    url_image: [32m'http://localhost:3001/images/Antarctica Pilsen 300ml.jpg'[39m
+  },
+  TextRow {
+    id: [33m4[39m,
+    name: [32m'Brahma 600ml'[39m,
+    price: [32m'7.50'[39m,
+    url_image: [32m'http://localhost:3001/images/Brahma 600ml.jpg'[39m
+  },
+  TextRow {
+    id: [33m5[39m,
+    name: [32m'Skol 269ml'[39m,
+    price: [32m'2.19'[39m,
+    url_image: [32m'http://localhost:3001/images/Skol 269ml.jpg'[39m
+  },
+  TextRow {
+    id: [33m6[39m,
+    name: [32m'Skol Beats Senses 313ml'[39m,
+    price: [32m'4.49'[39m,
+    url_image: [32m'http://localhost:3001/images/Skol Beats Senses 313ml.jpg'[39m
+  },
+  TextRow {
+    id: [33m7[39m,
+    name: [32m'Becks 330ml'[39m,
+    price: [32m'4.99'[39m,
+    url_image: [32m'http://localhost:3001/images/Becks 330ml.jpg'[39m
+  },
+  TextRow {
+    id: [33m8[39m,
+    name: [32m'Brahma Duplo Malte 350ml'[39m,
+    price: [32m'2.79'[39m,
+    url_image: [32m'http://localhost:3001/images/Brahma Duplo Malte 350ml.jpg'[39m
+  },
+  TextRow {
+    id: [33m9[39m,
+    name: [32m'Becks 600ml'[39m,
+    price: [32m'8.89'[39m,
+    url_image: [32m'http://localhost:3001/images/Becks 600ml.jpg'[39m
+  },
+  TextRow {
+    id: [33m10[39m,
+    name: [32m'Skol Beats Senses 269ml'[39m,
+    price: [32m'3.57'[39m,
+    url_image: [32m'http://localhost:3001/images/Skol Beats Senses 269ml.jpg'[39m
+  },
+  TextRow {
+    id: [3

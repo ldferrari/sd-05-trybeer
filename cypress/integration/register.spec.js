@@ -35,7 +35,7 @@ describe('Crie uma página de registro de usuários', () => {
     verifyElementVisible('[data-testid="signup-name"]');
     verifyContainsText('Email');
     verifyElementVisible('[data-testid="signup-email"]');
-    verifyContainsText('Password');
+    verifyContainsText('Senha');
     verifyElementVisible('[data-testid="signup-password"]');
     verifyContainsText('Quero Vender');
     verifyElementVisible('[data-testid="signup-seller"]');
