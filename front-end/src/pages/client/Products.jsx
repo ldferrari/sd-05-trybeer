@@ -30,21 +30,21 @@ const Products = () => {
             </div>
             <div>
               <button 
-                data-testid={ `${index}-product-plus` }
-                type="button"
-                // onClick={ () => aumentar unidade e adicionar ao carrinho }
-              >
-                +
-              </button>
-              <div data-testid={ `${index}-product-qtd` }>
-                Quantidade
-              </div>
-              <button 
                 type="button"
                 data-testid={ `${index}-product-minus` }
                 // onClick={ () => diminuir unidade e remover do carrinho }
               >
                 -
+              </button>
+              <div data-testid={ `${index}-product-qtd` }>
+                Quantidade
+              </div>
+              <button 
+                data-testid={ `${index}-product-plus` }
+                type="button"
+                // onClick={ () => aumentar unidade e adicionar ao carrinho }
+              >
+                +
               </button>
             </div>
             <button
