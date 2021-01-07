@@ -53,6 +53,10 @@ function Login() {
     return setPassword(e.target.value)
   };
 
+  const handleResult = (result) => {
+    setLoginInfo(result)
+    localStorage.setItem('user', JSON.stringify(result))
+  }
   const storage = () => {
     const userInfos = {
       // BACK - substituir mock por infos do db (em params?)
@@ -77,8 +81,8 @@ function Login() {
           type="button"
           data-testid="signin-btn"
           disabled={ !(checkedEmail && checkedPassword) }
-          onClick={ () => /* storage() */ 
-            login(email, password).then((result) => setLoginInfo(result))
+          onClick={ () => login(email, password)
+            .then((result) => handleResult(result))
           }
           
           // BACK - aqui também cria token do user
