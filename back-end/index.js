@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const users = require('./controllers/usersController');
+const login = require('./controllers/loginController');
 
 // require('dotenv').config({ path: `${__dirname}/../.env` });
 require('dotenv').config();
@@ -11,6 +12,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/users', users);
+app.use('/login', login);
 
 app.get('/', (_request, response) => {
   response.send();

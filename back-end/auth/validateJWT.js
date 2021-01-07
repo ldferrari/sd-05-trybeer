@@ -1,16 +1,19 @@
-// const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
-// const secret = 'grupo6';
+const secret = 'grupo6';
 
-// const { userModel } = require('../models');
+const validateJWT = (req, res, next) => {
+  const token = req.headers.authorization;
 
-// const validateJWT = async (req, res, next) => {
-//   const token = req.headers.authorization;
-//   if (!token) return res.status(401).json({ message: 'Missing authorization token' });
-//   try {
-//     const payload = jwt.verify(token, secret);
-//     const user = await userModel.checkUser();
-//   } catch (erro) {
-//     console.log(erro);
-//   }
-// }
+  if (!token) return res.status(401).json({ message: 'missing auth token' });
+
+  try {
+    const decoded = jwt.verify(token, secret);
+    req.user = decoded.userId;
+    next();
+  } catch (err) {
+    res.status(401).json({ message: 'jwt malformed' });
+  }
+};
+
+module.exports = validateJWT;

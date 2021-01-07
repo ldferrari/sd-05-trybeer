@@ -1,13 +1,5 @@
 const db = require('./connection');
 
-const validateLog = async (email, password) => {
-  const user = await db.execute('SELECT role FROM users WHERE email = ? and password = ? ', [
-    email,
-    password,
-  ]);
-  return user[0][0];
-};
-
 const checkUser = async (email) => {
   const user = await db.execute('SELECT email FROM users WHERE email = ? ', [email]);
   // return user[0][0];
@@ -23,8 +15,12 @@ const createUser = async (name, email, password, role) => {
   ]);
 };
 
+const updateUser = async (newName, email) => {
+  await db.execute('UPDATE users SET name = ? WHERE email = ?', [newName, email]);
+};
+
 module.exports = {
-  validateLog,
   checkUser,
   createUser,
+  updateUser,
 };

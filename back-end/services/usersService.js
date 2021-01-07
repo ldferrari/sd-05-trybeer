@@ -1,18 +1,5 @@
 const model = require('../models/usersModel');
 
-const validateLog = async (email, password) => {
-  const user = await model.validateLog(email, password);
-
-  if (user === undefined) {
-    return {
-      error: true,
-      code: 'invalid_info',
-      message: 'Email or password invalid',
-    };
-  }
-  return user.role;
-};
-
 const checkUser = async (email) => {
   const user = await model.checkUser(email);
   if (user[0][0] !== undefined) {
@@ -41,8 +28,11 @@ const createUser = async (name, email, password, checkbox) => {
   return role;
 };
 
+// const updateUser = async (newName, email) => {
+//   await model.updateUser(newName, email);
+// };
+
 module.exports = {
-  validateLog,
   checkUser,
   createUser,
 };
