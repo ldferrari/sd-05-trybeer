@@ -18,7 +18,7 @@ export default function ClientProfilePage() {
 
   return (
     <div>
-      <Menu title='Meu perfil' />
+      <Menu title="Meu perfil" />
       <div data-testid="top-title">Meu perfil</div>
       <label htmlFor="email">
         Email

@@ -6,8 +6,8 @@ export default function Menu(props) {
   const { title } = props;
   return (
     <header className="menuSuperior">
-      <input type="checkbox" id="check" />
       <label className="top-hamburguer" data-testid="top-hamburguer" htmlFor="check">&#9776;</label>
+      <input type="checkbox" id="check" />
       <h1 className="topTitle" data-testid="top-title">{title}</h1>
       <div className="side-menu-container">
         <nav className="menuLateral">
