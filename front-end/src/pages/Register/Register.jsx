@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // import { Redirect } from 'react-router-dom';
 import './index.css';
+import { postRegister } from '../../services/requestAPI';
 // trocar por controler de login
 const sendToDB = async ({
   name, email, password, role,
@@ -44,15 +45,25 @@ const Register = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const ok = await sendToDB({
-      name, email, password, role: isAdmin ? 'admin' : 'client',
-    });
-    console.log(ok)
-    if (isAdmin) {
-      return props.history.push('/admin/orders');
+    let ok
+    try {
+      ok = await postRegister({
+       name, email, password, role: isAdmin ? 'admin' : 'client',
+     });
+      
+    } catch (error) {
+      ok=false
     }
-    return props.history.push('/products');
+    console.log(ok)
+    if(!ok){
+      window.alert('Email já está sendo usado');
+    } else{
+
+      if (isAdmin) {
+        return props.history.push('/admin/orders');
+      }
+      return props.history.push('/products');
+    }
   };
   const adminFunction = ({ target: { checked } }) => setIsAdmin(checked);
 
@@ -96,7 +107,6 @@ const Register = (props) => {
           <input
             type="checkbox"
             onClick={ adminFunction }
-            checked={ isAdmin }
             data-testid="signup-seller"
           />
           Quero Vender

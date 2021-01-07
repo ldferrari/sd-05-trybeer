@@ -1,10 +1,9 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // import { Redirect } from 'react-router-dom';
 import './index.css';
-import {postLogin} from '../../services/requestAPI'
+import { postLogin } from '../../services/requestAPI';
 // trocar por controler de login
 
 const saveToken = (token) => localStorage.setItem('token', token);
@@ -35,7 +34,6 @@ const Login = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { token, role } = await postLogin({ email, password });
-    console.log(token,role)
     saveToken(token);
     if (role === 'admin') {
       props.history.push('/admin/orders');
@@ -65,7 +63,7 @@ const Login = (props) => {
         <fieldset>
 
           <label htmlFor="password">
-            Password:
+            Senha:
             <input
               type="password"
               name="password"
@@ -85,22 +83,6 @@ const Login = (props) => {
           data-testid="signin-btn"
         >
           ENTRAR
-=======
-import React from 'react';
-// import { Redirect } from 'react-router-dom';
-import './index.css';
-// import Header from '../../components/header';
-// import Footer from '../../components/footer';
-const Login = () => {
-  return (
-    <div>
-      {/* <Header>TryBeer</Header> */}
-      <form>
-        <input/>
-        <input/>
-        <button>
-          Entrar
->>>>>>> main-group-1-master
         </button>
       </form>
       {/* <Footer /> */}
