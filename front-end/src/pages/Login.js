@@ -2,47 +2,12 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { checkEmail, checkPassword } from '../services/checkUserData';
 import TrybeerContext from '../context/TrybeerContext';
-import { login } from '../services/fetch';
+import { login, getProducts } from '../services/fetch';
 import TrybeerProvider from '../context/TrybeerProvider';
 import { Get } from 'react-axios';
 import axios from 'axios'
 
-// const loginAPI = async ({ email, password }) => await login({ email, password });
 
-// const loginAPI = (email, password) => {
-//   axios({
-//     method: 'get',
-//     url: 'http://localhost:3001/users/login',
-//     headers: {}, 
-//     data: {
-//         email: email,
-//         password: password
-//     }, // This is the body part
-//   })
-
-// }
-
-const getProductsAPI = () => {
-  return (<div>
-    <Get 
-    url='http://localhost:3001/products'
-    // data= {
-    //   email: email,
-    //   password: password
-    // }
-    >
-     {(response, error) => {
-       if (response !== null) {
-         return console.log(response)
-       }
-       if (error) {
-         return console.log(error)
-       }
-     }}
-    </Get>
-  </div>
-  )
-}
 
 function inputEmail(handleEmailChange) {
   return (
@@ -68,19 +33,24 @@ function inputPassword(handlePasswordChange) {
 }
 
 function Login() {
-  const [checkedEmail, setCheckedEmail] = useState(false);
-  const [checkedPassword, setCheckedPassword] = useState(false);
-  const { setEmail, setPassword } = useContext(TrybeerContext);
-  const { email, password } = useContext(TrybeerContext);
-  const [fetchResult, setFetchResult] = useState([]);
+  const [checkedEmail, setCheckedEmail] = useState('');
+  const [checkedPassword, setCheckedPassword] = useState('');
+  const { setEmail, setPassword, email, password } = useContext(TrybeerContext);
+  const [loginInfo, setLoginInfo] = useState([])
 
   const handleEmailChange = (e) => {
-    setEmail(e.target.value);
     setCheckedEmail(checkEmail(e.target.value));
+    if (!checkedEmail) {
+      console.log('email is bad format')
+    }
+    return setEmail(e.target.value)
   };
   const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
     setCheckedPassword(checkPassword(e.target.value));
+    if (!checkedPassword) {
+      console.log('password has to have 6 caracteres')
+    }
+    return setPassword(e.target.value)
   };
 
   const storage = () => {
@@ -108,7 +78,7 @@ function Login() {
           data-testid="signin-btn"
           disabled={ !(checkedEmail && checkedPassword) }
           onClick={ () => /* storage() */ 
-            getProductsAPI()
+            login(email, password).then((result) => setLoginInfo(result))
           }
           
           // BACK - aqui também cria token do user
@@ -124,9 +94,10 @@ function Login() {
         </Link>
           <button
             type="button"
-            onClick={() =>
-              axios.get('http://localhost:3001/products', {}).then((response) => console.log(response)) ||
-              console.log('entrou no onclick')
+            onClick={() => getProducts()
+              // axios.get('http://localhost:3001/products', {}).then((response) => console.log(response)) ||
+              // console.log('entrou no onclick')
+              // isConnected().then(response => console.log(response)) || console.log('entreou no onclick')
             }
           >testat fetch produtos</button>
     </div>

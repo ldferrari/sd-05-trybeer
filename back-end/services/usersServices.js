@@ -30,7 +30,7 @@ const createUser = async (newUser) => {
 const logIn = async (email, password1) => {
   const userFound = await model.logIn(email);
 
-  if (!userFound) {
+  if (!userFound || userFound.length === 0) {
     throw { err: { code: 404, message: 'user email do not exist' } };
   }
 
