@@ -1,4 +1,4 @@
-const mysql = require('mysql2');
+const mysql = require('mysql2/promise');
 require('dotenv').config({ path: __dirname + '/../../.env' });
 
 const config = {
@@ -13,8 +13,4 @@ const config = {
 const connection = mysql.createPool(config);
 // const connection = mysql.createConnection(config);
 
-connection.query('SELECT * FROM products', function (err, products, campos) {
-  console.log(products);
-});
-
-module.exports = { connection };
+module.exports = connection;
