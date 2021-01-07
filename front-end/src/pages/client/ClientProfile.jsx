@@ -1,4 +1,5 @@
 import React from 'react';
+import Menu from '../../components/client/Menu';
 
 /* const handleChange = (e, name) => {
   name = e.target.value;
@@ -12,6 +13,7 @@ function ClientProfile() {
   // const logOut = () => localStorage.clear();
   return (
     <div>
+      <Menu title={'Meu perfil'} />
       <div data-testid="top-title">Meu perfil</div>
       <label htmlFor="email">
         Email
