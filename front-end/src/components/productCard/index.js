@@ -21,14 +21,14 @@ const Card = (props) => {
   };
 
   const plusOne = () => {
-    // const exists = cart.find((produto) => produto.id === product.id);
+    const um = 1;
     return exists
       ? setCart(
           cart.map((e) =>
             e.id === product.id ? { ...e, qty: e.qty + 1 } : e
           )
         )
-      : setCart([...cart, {id: product.id, name: product.name, price: product.price, qty: 1}]);
+      : setCart([...cart, {id: product.id, name: product.name, price: product.price, qty: um}]);
   };
   const zero = 0;
   return (
