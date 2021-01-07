@@ -12,25 +12,37 @@ const validateLog = async (email, password) => {
   }
   return user.role;
 };
+
 const checkUser = async (email) => {
   const user = await model.checkUser(email);
-  if (!user) {
+  if (user[0][0] !== undefined) {
     return {
       error: true,
-      code: 'user_exists',
-      message: 'This email is already in use',
+      statusCode: 409,
+      message: 'This email is already registered',
     };
   }
+  return false;
 };
 
-const registerUserService = async (name, email, password, checkbox) => {
+const createUser = async (name, email, password, checkbox) => {
+  const userExists = await checkUser(email);
+  if (userExists.error) return userExists;
+
+  if (!name || !email || !password) {
+    return {
+      error: true,
+      message: 'Missing information, please try again.',
+      statusCode: 400,
+    };
+  }
   const role = checkbox ? 'administrator' : 'client';
-  const newUser = await model.registerUser(email, password, name, role);
-  return newUser;
+  await model.createUser(name, email, password, role);
+  return role;
 };
 
 module.exports = {
   validateLog,
   checkUser,
-  registerUserService,
+  createUser,
 };

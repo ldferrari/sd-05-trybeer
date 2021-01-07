@@ -1,35 +1,30 @@
 const db = require('./connection');
 
 const validateLog = async (email, password) => {
-  const user = await db.execute(
-    'SELECT role FROM users WHERE email = ? and password = ? ',
-    [email, password],
-  );
-  console.log(user);
+  const user = await db.execute('SELECT role FROM users WHERE email = ? and password = ? ', [
+    email,
+    password,
+  ]);
   return user[0][0];
 };
+
 const checkUser = async (email) => {
-  const user = await db.execute(
-    'SELECT email FROM users WHERE email = ? ', [email],
-  );
-  return user[0][0].email;
+  const user = await db.execute('SELECT email FROM users WHERE email = ? ', [email]);
+  // return user[0][0];
+  return user;
 };
 
-// const registerUser = async (name, email, password, role) => {
-//   try {
-//     db()
-//     .then((connect) => connect
-//     .getTable('users')
-//     .insert(['name', 'email', 'password', 'role'])
-//     .values(name, email, password, role)
-//     .execute());
-//     return { name, email, role };
-//   } catch (err) {
-//     console.log(err.message)
-//   }
-// };
+const createUser = async (name, email, password, role) => {
+  await db.execute('INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)', [
+    name,
+    email,
+    password,
+    role,
+  ]);
+};
 
 module.exports = {
   validateLog,
   checkUser,
+  createUser,
 };
