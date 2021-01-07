@@ -1,6 +1,7 @@
-const getCollection = require('./connection');
+const connection = require('./connection');
 
-const getAllProducts = async () => await connection.execute('SELECT * FROM Trybeer.products;');
+const getAllProducts = async () =>
+  connection.execute('SELECT * FROM products;');
 
 module.exports = {
   getAllProducts,
