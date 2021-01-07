@@ -1,6 +1,8 @@
+const path = require('path');
 const mysql = require('mysql2/promise');
-const path = path.join(__dirname, '/../../.env');
-require('dotenv').config({ path: path });
+
+const filepath = path.join(__dirname, '/../../.env');
+require('dotenv').config({ filepath });
 
 const config = {
   user: process.env.MYSQL_USER,
@@ -10,13 +12,5 @@ const config = {
 };
 
 const connection = mysql.createPool(config);
-
-// connection.query(
-//   `SELECT * FROM users WHERE email = 'tryber@trybe.com.br'`,
-//   function(err, results, fields) {
-//   console.log(results); // results contains rows returned by server
-//   // console.log(fields); // fields contains extra meta data about results, if available
-//   }
-//   );
 
 module.exports = connection;

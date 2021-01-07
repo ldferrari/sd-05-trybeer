@@ -1,10 +1,9 @@
 const connection = require('./connection');
 
-const createUser = async (name, email, password, role) =>
-  connection.execute(
-    'INSERT INTO users (name, email, password, role) VALUES (?,?,?,?)',
-    [name, email, password, role],
-  );
+const createUser = async (name, email, password, role) => connection.execute(
+  'INSERT INTO users (name, email, password, role) VALUES (?,?,?,?)',
+  [name, email, password, role],
+);
 
 // const getAllUsers = async () => {
 //   const [users] = await connection.execute('SELECT * FROM Trybeer.users;');

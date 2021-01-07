@@ -1,6 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import { checkName, checkEmail, checkPassword } from '../services/checkUserData';
+import {
+  checkName,
+  checkEmail,
+  checkPassword,
+} from '../services/checkUserData';
 import TrybeerContext from '../context/TrybeerContext';
 
 function Register() {
@@ -9,7 +13,13 @@ function Register() {
   const [checkedPassword, setCheckedPassword] = useState(false);
   const [clickRegister, setClickRegister] = useState(false);
   const {
-    name, setName, email, setEmail, setPassword, admin, setAdmin,
+    name,
+    setName,
+    email,
+    setEmail,
+    setPassword,
+    admin,
+    setAdmin,
   } = useContext(TrybeerContext);
 
   const handleNameChange = (e) => {
@@ -45,9 +55,17 @@ function Register() {
   return (
     <div>
       <div>Nome</div>
-      <input data-testid="signup-name" type="text" onChange={ (e) => handleNameChange(e) } />
+      <input
+        data-testid="signup-name"
+        type="text"
+        onChange={ (e) => handleNameChange(e) }
+      />
       <div>Email</div>
-      <input data-testid="signup-email" type="text" onChange={ (e) => handleEmailChange(e) } />
+      <input
+        data-testid="signup-email"
+        type="text"
+        onChange={ (e) => handleEmailChange(e) }
+      />
       <div>Senha</div>
       <input
         data-testid="signup-password"
@@ -55,13 +73,15 @@ function Register() {
         onChange={ (e) => handlePasswordChange(e) }
       />
       <div>
-        <label htmlFor="vender">Quero Vender</label>
-        <input
-          data-testid="signup-seller"
-          type="checkbox"
-          id="vender"
-          onClick={ () => setAdmin(true) }
-        />
+        <label htmlFor="vender">
+          Quero Vender
+          <input
+            data-testid="signup-seller"
+            type="checkbox"
+            id="vender"
+            onClick={ () => setAdmin(true) }
+          />
+        </label>
       </div>
       <button
         type="button"
