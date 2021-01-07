@@ -27,7 +27,7 @@ users.get('/login', async (req, res) => {
 
 users.post('/register', async (req, res) => {
   try {
-    const createdUser = await service.createUser(req.body);
+    await service.createUser(req.body);
     res.status(201).json({ message: 'Created' });
   } catch (e) {
     console.log(e);
@@ -38,7 +38,7 @@ users.post('/register', async (req, res) => {
 users.put('/profile', async (req, res) => {
   try {
     const { name, email } = req.body;
-    const newName = await service.updateUserName(name, email);
+    await service.updateUserName(name, email);
     res.status(200).json({ message: 'name updated' });
   } catch (e) {
     console.log(e);

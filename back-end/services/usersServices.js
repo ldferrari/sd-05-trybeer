@@ -6,18 +6,23 @@ const regexEmail = /\S+@\S+\.\S+/;
 const createUser = async (newUser) => {
   const { name, email, password, role } = newUser;
 
-  if (!name.match(regexName) || name.length < 12)
+  if (!name.match(regexName) || name.length < 12) {
     throw { err: { code: 404, message: 'name format invalid' } };
+  }
 
-  if (!email.match(regexEmail))
+  if (!email.match(regexEmail)) {
     throw { err: { code: 404, message: 'email format invalid' } };
+  }
 
-  if (typeof password !== 'number' || password.length < 6)
+  if (typeof password !== 'number' || password.length < 6) {
     throw { err: { code: 404, message: 'password format invalid' } };
+  }
 
   const createdUser = await model.createUser(name, email, password, role);
 
-  if (!createdUser) throw { err: { code: 401, message: 'error' } };
+  if (!createdUser) {
+    throw { err: { code: 401, message: 'error' } };
+  }
 
   return createdUser;
 };
