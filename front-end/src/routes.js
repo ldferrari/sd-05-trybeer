@@ -3,8 +3,8 @@ import { Switch, Route } from 'react-router-dom';
 import {
   Login,
   Profile,
-} from './pages/';
-import Products from './pages/Products';
+  Products,
+} from './pages';
 
 const Rotas = () => (
   <Switch>
