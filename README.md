@@ -453,6 +453,16 @@ Esta tela possui o nome `Registro` no protótipo.
 
 ### 4 - Criar tela de perfil do cliente
 
+RETORNA:
+``` js
+{
+    "user": {
+        "name": "Hugo Leonardo",
+        "email": "paulo@paulo3.com"
+    }
+}
+```
+
 Esta tela possui o nome `Cliente - Meu Perfil` no protótipo.
 
 - Todos os elementos devem respeitar os atributos descritos no protótipo;
@@ -492,6 +502,65 @@ Esta tela possui o nome `Cliente - Meu Perfil` no protótipo.
 **[Será validado que é possível alterar o nome com sucesso]**
 
 ### 5 - Criar Tela de Produtos
+```js
+[
+    {
+        "name": "Skol Lata 250ml",
+        "price": "2.20",
+        "url_image": "http://localhost:3001/images/Skol Lata 350ml.jpg"
+    },
+    {
+        "name": "Heineken 600ml",
+        "price": "7.50",
+        "url_image": "http://localhost:3001/images/Heineken 600ml.jpg"
+    },
+    {
+        "name": "Antarctica Pilsen 300ml",
+        "price": "2.49",
+        "url_image": "http://localhost:3001/images/Antarctica Pilsen 300ml.jpg"
+    },
+    {
+        "name": "Brahma 600ml",
+        "price": "7.50",
+        "url_image": "http://localhost:3001/images/Brahma 600ml.jpg"
+    },
+    {
+        "name": "Skol 269ml",
+        "price": "2.19",
+        "url_image": "http://localhost:3001/images/Skol 269ml.jpg"
+    },
+    {
+        "name": "Skol Beats Senses 313ml",
+        "price": "4.49",
+        "url_image": "http://localhost:3001/images/Skol Beats Senses 313ml.jpg"
+    },
+    {
+        "name": "Becks 330ml",
+        "price": "4.99",
+        "url_image": "http://localhost:3001/images/Becks 330ml.jpg"
+    },
+    {
+        "name": "Brahma Duplo Malte 350ml",
+        "price": "2.79",
+        "url_image": "http://localhost:3001/images/Brahma Duplo Malte 350ml.jpg"
+    },
+    {
+        "name": "Becks 600ml",
+        "price": "8.89",
+        "url_image": "http://localhost:3001/images/Becks 600ml.jpg"
+    },
+    {
+        "name": "Skol Beats Senses 269ml",
+        "price": "3.57",
+        "url_image": "http://localhost:3001/images/Skol Beats Senses 269ml.jpg"
+    },
+    {
+        "name": "Stella Artois 275ml",
+        "price": "3.49",
+        "url_image": "http://localhost:3001/images/Stella Artois 275ml.jpg"
+    }
+]
+```
 
 Esta tela possui o nome `Cliente - Produtos` no protótipo.
 

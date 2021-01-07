@@ -1,40 +1,66 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import axios from 'axios';
+import AppContext from '../../context/AppContext';
+
 import './index.css';
 
 const Perfil = () => {
-  const [nomeProfile, setNomeProfile] = useState('');
+  const [disabled, setDisable] = useState(true);
 
+  const {
+    nomeProfile,
+    setNomeProfile,
+    emailProfile,
+  } = useContext(AppContext);
+
+  const submitChange = async () => {
+    axios.post('http://localhost:3001/api/insert', {
+      name: nomeProfile,
+    }).then(() => 'Sucesso!');
+  };
+
+  const handleChanged = (e) => {
+    setNomeProfile(e.target.value);
+    const lengthName = 3;
+    if (nomeProfile.length > lengthName) {
+      setDisable(false);
+    } else {
+      setDisable(true);
+    }
+  };
+
+  const nomes = nomeProfile;
   return (
-    <div>
+    <div className="App">
       <h1 data-testid="top-title">Perfil</h1>
-      <form>
-        <label htmlFor='name'
-          className='name-label'>
-          <input
-            type="text"
-            name="name"
-            className="name"
-            placeholder="name"
-            data-testid="profile-name-input"
-            onChange={(e) => setNomeProfile(e.target.value)}
-          />
-        </label>
-        <label htmlFor='email'
-          className='email-label'>
-          <input
-            type="email"
-            name="email"
-            className="email"
-            placeholder="email"
-            data-testid="profile-email-input"
-            readOnly />
-        </label>
+      <div className="form">
+        <p>Nome</p>
+        <input
+          type="text"
+          name="name"
+          id="name-id"
+          placeholder={ nomes }
+          data-testid="profile-name-input"
+          onChange={ handleChanged }
+        />
+        <p>Email</p>
+        <input
+          type="email"
+          id="email"
+          name="email-id"
+          placeholder={ emailProfile }
+          data-testid="profile-email-input"
+          readOnly
+        />
         <button
           type="submit"
-          className="salvar-btn"
           data-testid="profile-save-btn"
-          disabled={!(nomeProfile.length > 3)}>Cadastrar</button>
-      </form>
+          disabled={ disabled }
+          onClick={ submitChange }
+        >
+          Cadastrar
+        </button>
+      </div>
     </div>
 
   );

@@ -3,12 +3,14 @@ import { Switch, Route } from 'react-router-dom';
 import {
   Login,
   Profile,
-} from './pages/';
+  Products,
+} from './pages';
 
 const Rotas = () => (
   <Switch>
     <Route exact path="/" component={Login} />
     <Route path="/profile" component={Profile} />
+    <Route path="/products" component={Products} />
   </Switch>
 );
 
