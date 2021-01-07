@@ -1,6 +1,6 @@
-const url = 'http://localhost:3001/users';
+const url = 'http://localhost:3001';
 
-const checkUser = async (email, password) => {
+export const checkUser = async (email, password) => {
   const myInit = {
     method: 'POST',
     headers: {
@@ -11,7 +11,7 @@ const checkUser = async (email, password) => {
     mode: 'cors',
     body: JSON.stringify({ email, password }),
   };
-  const user = await fetch(url, myInit).then((response) => response.json());
+  const user = await fetch(`${url}/users`, myInit).then((response) => response.json());
 
   // console.log(`
   // @api.js file ->
@@ -21,4 +21,24 @@ const checkUser = async (email, password) => {
   return user || undefined;
 };
 
-export default checkUser;
+export const registerUser = async (userData) => {
+  // teste
+  // const { name, email, password, role } = userData;
+  // console.log(userData.role);
+  const registerReq = {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+    },
+    mode: 'cors',
+    body: JSON.stringify(userData),
+  };
+  const response = await fetch(`${url}/register`, registerReq).then((res) => res.json());
+  /* const response =
+    userData.role === 'client'
+      ? { role: 'client', token: 'ufjdnmx' }
+      : { role: 'administrator', token: 'kkkkk' }; */
+  return response || undefined;
+};
