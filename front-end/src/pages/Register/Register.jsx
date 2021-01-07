@@ -45,9 +45,10 @@ const Register = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await sendToDB({
+    const ok = await sendToDB({
       name, email, password, role: isAdmin ? 'admin' : 'client',
     });
+    console.log(ok)
     if (isAdmin) {
       return props.history.push('/admin/orders');
     }

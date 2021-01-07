@@ -16,10 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "@hapi/joi": "^17.1.1",
-<<<<<<< HEAD
-    "@mysql/xdevapi": "^8.0.20",
-=======
->>>>>>> main-group-1
+
     "@types/jest": "25.1.4",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
@@ -27,17 +24,8 @@
     "express": "^4.17.1",
     "express-rescue": "^1.1.26",
     "jsonwebtoken": "^8.5.1",
-<<<<<<< HEAD
-    "multer": "^1.4.2",
-<<<<<<< HEAD
     "mysql2": "^2.2.5",
-    "mysql2-promise": "^0.1.4"
-=======
-    "mysql2": "^2.2.5"
-=======
     "multer": "^1.4.2"
->>>>>>> main-group-1
->>>>>>> main-group-1-master
   },
   "devDependencies": {
     "eslint": "^6.1.0",

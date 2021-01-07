@@ -3,11 +3,9 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // import { Redirect } from 'react-router-dom';
 import './index.css';
+import {postLogin} from '../../services/requestAPI'
 // trocar por controler de login
-const getTokenAndData = async ({ email, password }) => ({
-  token: 'tokenDoido',
-  role: 'admin',
-});
+
 const saveToken = (token) => localStorage.setItem('token', token);
 
 const Login = (props) => {
@@ -35,7 +33,8 @@ const Login = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { token, role } = await getTokenAndData({ email, password });
+    const { token, role } = await postLogin({ email, password });
+    console.log(token,role)
     saveToken(token);
     if (role === 'admin') {
       props.history.push('/admin/orders');
