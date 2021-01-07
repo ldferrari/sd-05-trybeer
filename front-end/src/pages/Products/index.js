@@ -5,7 +5,6 @@ import axios from 'axios';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
 
-import data from './data';
 import Card from '../../components/productCard';
 import AppContext from '../../context/AppContext';
 
@@ -17,16 +16,18 @@ const Products = () => {
     .reduce((acc, cv) => acc + cv.price * cv.qty, zero)
     .toFixed(dois);
 
-  const [produtos, setProdutos] = useState([]);
+  const [theProducts, setProducts] = useState([]);
+
+  const fetchProducts = async () => {
+    const {data} = await axios.get("http://localhost:3001/products");
+    setProducts(data)
+    };
 
   useEffect(() => {
-   const fetchProducts = async () => {
-     const {data} = await axios.get("http://localhost:3001/products");
-     console.log(data);
-     setProdutos(data);
-   };
-   fetchProducts();}
-   , []);
+   fetchProducts();
+   console.log(theProducts);
+  }
+   , []); 
 
   const logged = localStorage.getItem("token");
   if(!logged) {
@@ -37,7 +38,7 @@ const Products = () => {
     <div className="Products">
       <Header>TryBeer</Header>
       <div className="productList">
-        { data.products.map((product) => <Card key={ product.id } product={ product } />) },
+        { theProducts.map((product) => <Card key={ product.id } product={ product } />) },
       </div>
       <div className="checkoutBtn">
         <Link
