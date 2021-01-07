@@ -12,6 +12,13 @@ module.exports = async (req, res) => {
       .status(400)
       .json({ message: "O campo e-mail deve ter o formato 'email@email.com'" });
   }
+
+  if (password === '' || !password) {
+    return res
+      .status(400)
+      .json({ message: 'O campo "senha" é obrigatório' });
+  }
+
   if (String(password).length < 6) {
     return res
       .status(400)
