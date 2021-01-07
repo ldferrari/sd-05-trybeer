@@ -12,14 +12,13 @@ export default function ClientProfilePage() {
   const [email] = useState('email@email.com');
   const [name, setName] = useState('Mau');
 
-  const handleChange = (e) =>
-   {
+  const handleChange = (e) => {
       return validateName(setName(e.target.value));
     };
 
   return (
     <div>
-      <Menu title={ 'Meu perfil' } />
+      <Menu title='Meu perfil' />
       <div data-testid="top-title">Meu perfil</div>
       <label htmlFor="email">
         Email

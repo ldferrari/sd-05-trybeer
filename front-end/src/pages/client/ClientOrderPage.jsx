@@ -4,7 +4,7 @@ import Menu from '../../components/client/Menu';
 export default function ClientOrderPage() {
   return (
     <div>
-      <Menu title={ 'Meus Pedidos' } />
+      <Menu title='Meus Pedidos' />
     </div>
   );
 }
