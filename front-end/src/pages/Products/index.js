@@ -5,17 +5,17 @@ import axios from 'axios';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
 
-
 import data from './data';
 import Card from '../../components/productCard';
 import AppContext from '../../context/AppContext';
 
 const Products = () => {
-  const { cart, setCart } = useContext(AppContext);
-
+  const { cart } = useContext(AppContext);
+  const zero = 0;
+  const dois = 2;
   const cartSum = cart
-    .reduce((acc, cv) => acc + cv.price * cv.qty, 0)
-    .toFixed(2);
+    .reduce((acc, cv) => acc + cv.price * cv.qty, zero)
+    .toFixed(dois);
 
   // const [produtos, setProdutos] = useState([]);
 
@@ -35,7 +35,7 @@ const Products = () => {
       <Header>TryBeer</Header>
       <div className="productList">
         {data.products.map((product) => (
-          <Card product={product} />
+          <Card product={ product } key={ product.name }/>
         ))}
         ,
       </div>
@@ -46,7 +46,10 @@ const Products = () => {
           className="checkoutLink"
         >
           <p>Ver Carrinho</p>
-          <p data-testid="checkout-bottom-btn-value">R${cartSum}</p>
+          <p data-testid="checkout-bottom-btn-value">
+            R$
+            {cartSum}
+          </p>
         </Link>
       </div>
       <Footer />

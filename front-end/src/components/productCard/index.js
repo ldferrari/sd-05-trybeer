@@ -65,6 +65,6 @@ export default Card;
 
 Card.propTypes = {
   product: PropTypes.object.isRequired,
-  product.id: PropTypes.number,
-  product.name: PropTypes.string,
+  id: PropTypes.number,
+  name: PropTypes.string,
 };
