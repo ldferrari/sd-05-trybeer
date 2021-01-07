@@ -12,9 +12,7 @@ export default function ClientProfilePage() {
   const [email] = useState('email@email.com');
   const [name, setName] = useState('Mau');
 
-  const handleChange = (e) => {
-      return validateName(setName(e.target.value));
-    };
+  const handleChange = (e) => validateName(setName(e.target.value));
 
   return (
     <div>
@@ -47,7 +45,7 @@ export default function ClientProfilePage() {
         data-testid="profile-save-btn"
         type="button"
         // segundo name vai vir da tela de login para comparar
-        disabled={ name ? true : false }
+        disabled
       >
         Salvar
       </button>
