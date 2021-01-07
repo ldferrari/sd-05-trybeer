@@ -2,15 +2,25 @@ import './App.css';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getProductsAct } from '../src/Redux/Actions/index';
-import Header from './Components/Header';
+import { Route, Switch } from 'react-router-dom';
+import Profile from './Pages/Profile';
+import Products from './Pages/Products';
+import Checkout from './Pages/Checkout';
+import Orders from './Pages/Orders';
 
-function App({ProductsAPI}) {
+function App({ ProductsAPI }) {
   useEffect(() => {
     ProductsAPI();
   }, [ProductsAPI]);
+
   return (
-    <div className="App">
-      <Header></Header>
+    <div>
+      <Switch>
+        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/products" component={Products} />
+        <Route exact path="/checkout" component={Checkout} />
+        <Route exact path="/orders" component={Orders} />
+      </Switch>
     </div>
   );
 }
