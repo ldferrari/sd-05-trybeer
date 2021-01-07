@@ -1,10 +1,10 @@
 const connection = require('./connection');
 
 const createUser = async (name, email, password, role) =>
-	await connection.execute(
-		'INSERT INTO users (name, email, password, role) VALUES (?,?,?,?)',
-		[name, email, password, role]
-	);
+  await connection.execute(
+    'INSERT INTO users (name, email, password, role) VALUES (?,?,?,?)',
+    [name, email, password, role]
+  );
 
 // const getAllUsers = async () => {
 //   const [users] = await connection.execute('SELECT * FROM Trybeer.users;');
@@ -19,32 +19,32 @@ const createUser = async (name, email, password, role) =>
 // };
 
 const logIn = async (email) => {
-	const [user] = await connection.query(
-		'SELECT * FROM users WHERE email = ? ',
-		[email]
-	);
+  const [user] = await connection.query(
+    'SELECT * FROM users WHERE email = ? ',
+    [email]
+  );
 
-	if (!user) return null;
-	return user;
+  if (!user) return null;
+  return user;
 };
 
 const updateUserName = async (name, email) => {
-	const [
-		newName,
-	] = await connection.execute('UPDATE users SET name = ? WHERE email = ?', [
-		name,
-		email,
-	]);
-	console.log(newName);
-	return newName;
+  const [
+    newName,
+  ] = await connection.execute('UPDATE users SET name = ? WHERE email = ?', [
+    name,
+    email,
+  ]);
+  console.log(newName);
+  return newName;
 };
 
 // const deleteUser = async (id) =>
 //   await connection.execute('DELETE FROM Trybeer.users WHERE id = ?', [id]);
 
 module.exports = {
-	createUser,
-	logIn,
-	updateUserName,
-	// deleteUser,
+  createUser,
+  logIn,
+  updateUserName,
+  // deleteUser,
 };

@@ -15,7 +15,11 @@ const TrybeerProvider = ({ children }) => {
     setPassword,
   };
 
-  return <TrybeerContext.Provider value={context}>{children}</TrybeerContext.Provider>;
+  return (
+    <TrybeerContext.Provider value={context}>
+      {children}
+    </TrybeerContext.Provider>
+  );
 };
 
 export default TrybeerProvider;
