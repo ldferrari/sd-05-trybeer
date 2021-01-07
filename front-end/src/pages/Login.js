@@ -2,6 +2,10 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { checkEmail, checkPassword } from '../services/checkUserData';
 import TrybeerContext from '../context/TrybeerContext';
+import { login } from '../services/fetch';
+import TrybeerProvider from '../context/TrybeerProvider';
+
+const loginAPI = async ({ email, password }) => await login({ email, password });
 
 function inputEmail(handleEmailChange) {
   return (
@@ -30,6 +34,8 @@ function Login() {
   const [checkedEmail, setCheckedEmail] = useState(false);
   const [checkedPassword, setCheckedPassword] = useState(false);
   const { setEmail, setPassword } = useContext(TrybeerContext);
+  const { email, password } = useContext(TrybeerContext);
+  const [fetchResult, setFetchResult] = useState([]);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -64,7 +70,10 @@ function Login() {
           type="button"
           data-testid="signin-btn"
           disabled={ !(checkedEmail && checkedPassword) }
-          onClick={ () => storage() }
+          onClick={ () => /* storage() */ 
+            loginAPI({ checkedEmail, checkedPassword }).then((result) => console.log(result))
+          }
+          
           // BACK - aqui também cria token do user
         >
           ENTRAR
