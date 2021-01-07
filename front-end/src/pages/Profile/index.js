@@ -16,9 +16,7 @@ const Perfil = () => {
   const submitChange = async () => {
     axios.post('http://localhost:3001/api/insert', {
       name: nomeProfile,
-    }).then(() => {
-      return 'Sucesso!';
-    });
+    }).then(() => 'Sucesso!');
   };
 
   const handleChanged = (e) => {
