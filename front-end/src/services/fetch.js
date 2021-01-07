@@ -5,7 +5,7 @@ const API_URL = 'http://localhost:3001';
 export const getProducts = () => {
   const products = axios
     .get(`${API_URL}/products`, {})
-    .then((response) => response);
+    .then((response) => response.data);
   return products;
 };
 
