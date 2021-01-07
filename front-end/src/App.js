@@ -1,8 +1,13 @@
-import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { getProductsAct } from '../src/Redux/Actions/index';
 
-function App() {
+function App({ProductsAPI}) {
+  useEffect(() => {
+    ProductsAPI();
+  }, [ProductsAPI]);
   return (
     <div className="App">
       <header className="App-header">
@@ -24,5 +29,12 @@ function App() {
     </div>
   );
 }
+const mapStateToProps = (state) => ({
+  products: state.productsRequestReducer.products,
+});
 
-export default App;
+const mapDispatchToProps = (dispatch) => ({
+  ProductsAPI: () => dispatch(getProductsAct()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
