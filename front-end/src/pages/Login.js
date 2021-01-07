@@ -4,8 +4,45 @@ import { checkEmail, checkPassword } from '../services/checkUserData';
 import TrybeerContext from '../context/TrybeerContext';
 import { login } from '../services/fetch';
 import TrybeerProvider from '../context/TrybeerProvider';
+import { Get } from 'react-axios';
+import axios from 'axios'
 
-const loginAPI = async ({ email, password }) => await login({ email, password });
+// const loginAPI = async ({ email, password }) => await login({ email, password });
+
+// const loginAPI = (email, password) => {
+//   axios({
+//     method: 'get',
+//     url: 'http://localhost:3001/users/login',
+//     headers: {}, 
+//     data: {
+//         email: email,
+//         password: password
+//     }, // This is the body part
+//   })
+
+// }
+
+const getProductsAPI = () => {
+  return (<div>
+    <Get 
+    url='http://localhost:3001/products'
+    // data= {
+    //   email: email,
+    //   password: password
+    // }
+    >
+     {(response, error) => {
+       if (response !== null) {
+         return console.log(response)
+       }
+       if (error) {
+         return console.log(error)
+       }
+     }}
+    </Get>
+  </div>
+  )
+}
 
 function inputEmail(handleEmailChange) {
   return (
@@ -71,7 +108,7 @@ function Login() {
           data-testid="signin-btn"
           disabled={ !(checkedEmail && checkedPassword) }
           onClick={ () => /* storage() */ 
-            loginAPI({ checkedEmail, checkedPassword }).then((result) => console.log(result))
+            getProductsAPI()
           }
           
           // BACK - aqui também cria token do user
@@ -80,10 +117,18 @@ function Login() {
         </button>
       </Link>
       <Link to="/register">
-        <button type="button" data-testid="no-account-btn">
+        <button type="button" data-testid="no-account-btn"
+          >
           Ainda não tenho conta
-        </button>
-      </Link>
+          </button>
+        </Link>
+          <button
+            type="button"
+            onClick={() =>
+              axios.get('http://localhost:3001/products', {}).then((response) => console.log(response)) ||
+              console.log('entrou no onclick')
+            }
+          >testat fetch produtos</button>
     </div>
   );
 }
