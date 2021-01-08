@@ -10,7 +10,7 @@ const getById = async (id) => {
   const [e] = await database.query(sql, [id]);
 
   return e;
-}
+};
 
 module.exports = {
   update,

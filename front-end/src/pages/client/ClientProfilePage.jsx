@@ -3,7 +3,7 @@ import validateName from '../../services/general/validateName';
 import Menu from '../../components/client/Menu';
 // import updateUserAPI from '../../services/apis';
 
-export default function ClientProfilePage(props) {
+export default function ClientProfilePage() {
   /*  useEffect(() => {
     return () => {
       document.title = 'BLA';
@@ -12,7 +12,7 @@ export default function ClientProfilePage(props) {
 
   const [email] = useState('email@email.com');
   const [name, setName] = useState('Mau');
-  //const id = props.match.params.id;
+  // const id = props.match.params.id;
 
   /* function fetchAPI(id) {
     return updateUserAPI(id);
@@ -49,7 +49,7 @@ export default function ClientProfilePage(props) {
       <button
         data-testid="profile-save-btn"
         type="button"
-        //onClick={() => fetchAPI(id)}
+        // onClick={() => fetchAPI(id)}
         // segundo name vai vir da tela de login para comparar
         disabled
       >
