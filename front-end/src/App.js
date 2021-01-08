@@ -8,13 +8,9 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route path="/register">
-          <RegisterPage />
-        </Route>
+        <Route path="/register" component={ RegisterPage } />
         <Route path="/profile" component={ ClientProfilePage } />
-        <Route path="/">
-          <LoginPage />
-        </Route>
+        <Route path="/" component={ LoginPage } />
       </Switch>
     </div>
   );
