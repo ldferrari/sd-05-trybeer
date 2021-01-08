@@ -19,11 +19,11 @@ const Provider = ({ children }) => {
     setChecked,
   };
 
-  return <TryBeerContext.Provider value={contextValue}>{children}</TryBeerContext.Provider>;
+  return <TryBeerContext.Provider value={ contextValue }>{children}</TryBeerContext.Provider>;
 };
 
 export default Provider;
 
-Provider.prototype = {
-  children: PropTypes.element.isRequired,
+Provider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
