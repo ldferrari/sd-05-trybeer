@@ -6,12 +6,13 @@ const checkout = Router();
 
 checkout.get('/', async (req, res) => {
   try {
-    const { email, password } = req.body;
-    const checkoutProducts = await service.getCheckout(email, password);
+    // const { email, password } = req.body;
+    // const checkoutProducts = await service.getCheckout(email, password);
+    const checkoutProducts = await service.getCheckout();
     /* if (checkoutProducts.error) {
       return res.status(checkoutProducts.statusCode).json({ message: checkoutProducts.message });
     } */
-    // console.log(checkoutProducts);
+    console.log(checkoutProducts);
     res.status(200).json(checkoutProducts);
   } catch (error) {
     console.error(error);
