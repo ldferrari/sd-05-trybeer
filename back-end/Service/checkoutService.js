@@ -7,7 +7,7 @@ const model = require('../Models/checkoutModel');
   return regexEmail.test(email);
 }; */
 
-const getCheckout = async (email, password) => model.getCheckout(email, password);
+const getCheckout = async () => model.getCheckout();
 
 /* const getCheckout = async (email, password) => {
   const emailExists = await userModel.getByEmail(email);
