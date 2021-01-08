@@ -17,10 +17,10 @@ const getProductById = rescue(async (req, res, next) => {
   next();
 });
 
-// const addProduct = rescue (async (req, res, next) => {
-//   const { name, price, url_image } = req.body;
-//   const
-// })
-// apagar
+const addProduct = rescue(async (req, res, next) => {
+  await productsModel.addProduct(req.body);
+  req.data = { message: 'inseriu um novo produto' };
+  next();
+});
 
-module.exports = { getAllProducts, getProductById };
+module.exports = { getAllProducts, getProductById, addProduct };

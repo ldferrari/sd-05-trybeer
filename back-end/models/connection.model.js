@@ -1,4 +1,4 @@
-const mysql = require('mysql2/promise');
+const mysql2 = require('mysql2/promise');
 require('dotenv').config();
 
 const config = {
@@ -7,15 +7,9 @@ const config = {
   user: process.env.MYSQL_USER,
   password: process.env.MYSQL_PASSWORD,
   host: process.env.HOSTNAME,
+  database: 'Trybeer',
 };
 
-module.exports = async (...query) => {
-  try {
-    const connection = await mysql.createConnection(config);
-    const [data] = await connection.query(...query);
-    return data;
-  } catch (err) {
-    console.error(err);
-    throw new Error(err);
-  }
-};
+const connection = mysql2.createPool(config);
+
+module.exports = connection;
