@@ -9,7 +9,7 @@ import Card from '../../components/productCard';
 import AppContext from '../../context/AppContext';
 
 const Products = () => {
-  const { cart,  } = useContext(AppContext);
+  const { cart } = useContext(AppContext);
   const zero = 0;
   const dois = 2;
   const cartSum = cart
@@ -17,30 +17,38 @@ const Products = () => {
     .toFixed(dois);
 
   const [theProducts, setProducts] = useState([]);
+  const [cartBtn, setCartBtn] = useState(false);
 
   const fetchProducts = async () => {
-    const {data} = await axios.get("http://localhost:3001/products");
-    setProducts(data)
-    };
-
-  useEffect(() => {
-   fetchProducts();
-   console.log(theProducts);
-  }
-   , []); 
-
-  const logged = localStorage.getItem("token");
-  if(!logged) {
-    return <Redirect to="/login" />;
+    const { data } = await axios.get('http://localhost:3001/products');
+    setProducts(data);
   };
 
+  useEffect(() => {
+    fetchProducts();
+    // console.log(theProducts);
+  },
+  [theProducts]);
+
+  useEffect(() => {
+    cartSum > 0 ? setCartBtn(true): setCartBtn(false);
+  },
+  [cartSum]);
+
+  const logged = localStorage.getItem('token');
+  
+  if (!logged) {
+    return <Redirect to="/login" />;
+  }
+  
   return (
     <div className="Products">
       <Header>TryBeer</Header>
       <div className="productList">
-        { theProducts.map((product) => <Card key={ product.id } product={ product } />) },
+        { theProducts.map((product) => <Card key={ product.id } product={ product } />) }
+        ,
       </div>
-      <div className="checkoutBtn">
+      { cartBtn && <div className="checkoutBtn">
         <Link
           to="/checkout"
           data-testid="checkout-bottom-btn"
@@ -52,7 +60,7 @@ const Products = () => {
             {cartSum}
           </p>
         </Link>
-      </div>
+      </div>}
       <Footer />
     </div>
   );

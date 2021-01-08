@@ -9,14 +9,14 @@ const Card = (props) => {
   const { product } = props;
 
   const exists = cart.find((produto) => produto.id === product.id);
-  
+
   const minusOne = () => {
     const zero = 0;
     // const exists = cart.find((produto) => produto.id === product.id);
     return exists
       ? setCart(cart
-        .map((e) => e.id === product.id ? { ...e, qty: e.qty <= zero ? zero : e.qty - 1 } : e
-        ))
+        .map((e) => e.id === product.id ? { ...e, qty: e.qty <= zero ? zero : e.qty - 1, } : e)
+        )
       : null;
   };
 
@@ -24,37 +24,35 @@ const Card = (props) => {
     const um = 1;
     return exists
       ? setCart(
-          cart.map((e) =>
-            e.id === product.id ? { ...e, qty: e.qty + 1 } : e
-          )
-        )
-      : setCart([...cart, {id: product.id, name: product.name, price: product.price, qty: um}]);
+        cart.map((e) => e.id === product.id ? { ...e, qty: e.qty + 1, } : e)
+      )
+      : setCart([...cart, { id: product.id, name: product.name, price: product.price, qty: um },]);
   };
   const zero = 0;
   return (
-    <div className="card" key={product.name}>
+    <div className="card" key={ product.name }>
       <img
-        src={product.url_image}
-        alt={product.name}
-        data-testid={ `${product.id - 1 }-product-img`}
+        src={ product.url_image }
+        alt={ product.name }
+        data-testid={ `${product.id - 1}-product-img` }
       />
-      <p data-testid={ `${product.id - 1 }-product-name`}>{ product.name }</p>
-      <h4 data-testid={ `${product.id - 1 }-product-price` }>
+      <p data-testid={ `${product.id - 1}-product-name` }>{ product.name }</p>
+      <h4 data-testid={ `${product.id - 1}-product-price` }>
         R$
         { product.price }
       </h4>
       <div className="cardBottom">
         <button
           type="button"
-          data-testid={ `${product.id - 1 }-product-minus` }
+          data-testid={ `${product.id - 1}-product-minus` }
           onClick={() => minusOne()}
         >
           -
         </button>
-        <p data-testid={`${ product.id - 1 }-product-qtd`}>{ exists ? exists.qty : zero }</p>
+        <p data-testid={ `${product.id - 1}-product-qtd` }>{ exists ? exists.qty : zero }</p>
         <button
           type="button"
-          data-testid={`${ product.id - 1 }-product-plus`}
+          data-testid={ `${product.id - 1}-product-plus` }
           onClick={() => plusOne()}
         >
           +
@@ -67,5 +65,10 @@ const Card = (props) => {
 export default Card;
 
 Card.propTypes = {
-  product: PropTypes.shape({id: PropTypes.number, name: PropTypes.string}).isRequired,
+  product: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    price: PropTypes.number,
+    url_image: PropTypes.string,
+  }).isRequired,
 };
