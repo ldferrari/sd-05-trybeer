@@ -10,6 +10,7 @@ const TrybeerProvider = ({ children }) => {
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [admin, setAdmin] = useState(false);
+  const [click, setClick] = useState(false);
   const context = {
     name,
     setName,
@@ -19,6 +20,8 @@ const TrybeerProvider = ({ children }) => {
     setPassword,
     admin,
     setAdmin,
+    click,
+    setClick,
   };
 
   return <TrybeerContext.Provider value={ context }>{ children }</TrybeerContext.Provider>;
