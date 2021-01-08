@@ -15,7 +15,7 @@ const jwtConfig = {
 
 users.post('/login', async (req, res) => {
   try {
-    console.log(req.body)
+    console.log(req.body);
     const { email, password } = req.body;
     const user = await service.logIn(email, password);
     const token = jwt.sign({ data: user }, secret, jwtConfig);
