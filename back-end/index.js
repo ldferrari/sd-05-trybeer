@@ -1,6 +1,6 @@
 const express = require('express');
 
-// const path = require('path');
+const path = require('path');
 
 const bodyParser = require('body-parser');
 
@@ -33,7 +33,7 @@ app.use('/products', checkToken, productsController);
 
 app.use('/checkout', checkToken, checkoutController);
 
-// app.use('/back-end/public/', express.static(path.join(__dirname, '..', 'public')));
+app.use('/images/', express.static(path.join(__dirname, '..', 'images')));
 
 const PORT = 3001;
 

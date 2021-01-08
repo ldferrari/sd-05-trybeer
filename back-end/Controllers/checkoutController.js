@@ -8,9 +8,10 @@ checkout.get('/', async (req, res) => {
   try {
     const { email, password } = req.body;
     const checkoutProducts = await service.getCheckout(email, password);
-    if (checkoutProducts.error) {
+    /* if (checkoutProducts.error) {
       return res.status(checkoutProducts.statusCode).json({ message: checkoutProducts.message });
-    }
+    } */
+    // console.log(checkoutProducts);
     res.status(200).json(checkoutProducts);
   } catch (error) {
     console.error(error);
