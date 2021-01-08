@@ -12,8 +12,6 @@ function App() {
       <Provider>
         <BrowserRouter>
           <Switch>
-            {/* passar no teste 2? */}
-            <Route exact path="/" component={ Login } />
             <Route exact path="/login" component={ Login } />
             <Route exact path="/products" component={ Products } />
             <Route exact path="/register" component={ Register } />

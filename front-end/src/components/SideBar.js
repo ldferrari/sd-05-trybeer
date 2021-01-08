@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function SideBar({ userRole, active }) {
   return (
-    <aside className={`side-container ${active && 'appear'}`}>
+    <aside className={ `side-container ${active && 'appear'}` }>
       {userRole === 'client' && (
-        <div className={`${active && 'side-menu-container'} side-bar`}>
+        <div className={ `${active && 'side-menu-container'} side-bar` }>
           <div>
             <a href="/products" data-testid="side-menu-item-products">
               Produtos
@@ -39,3 +40,7 @@ export default function SideBar({ userRole, active }) {
     </aside>
   );
 }
+SideBar.propTypes = {
+  userRole: PropTypes.string.isRequired,
+  active: PropTypes.bool.isRequired,
+};

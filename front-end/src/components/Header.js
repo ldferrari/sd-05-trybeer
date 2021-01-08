@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import SideBar from './SideBar';
 import sidebaricon from '../images/sidebaricon.png';
 
@@ -12,17 +14,18 @@ export default function Header({ children }) {
       <header>
         <button
           data-testid="top-hamburguer"
-          onClick={() => setBtnBurguer(!btnBurguer)}
+          onClick={ () => setBtnBurguer(!btnBurguer) }
           type="button"
         >
-          <img id="btn-hmb" src={sidebaricon} alt="Hamburguer menu icon" />
+          <img id="btn-hmb" src={ sidebaricon } alt="Hamburguer menu icon" />
         </button>
-        <img src={sidebaricon} alt="sideb" />
-        <span data-testid="top-title" >
-          {children}
-        </span>
+        <img src={ sidebaricon } alt="sideb" />
+        <span data-testid="top-title">{ children }</span>
       </header>
-      <SideBar userRole={userInfo.role} active={btnBurguer} />
+      <SideBar userRole={ userInfo.role } active={ btnBurguer } />
     </div>
   );
 }
+Header.propTypes = {
+  children: PropTypes.string.isRequired,
+};
