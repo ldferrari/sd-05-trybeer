@@ -53,12 +53,3 @@ const Header = ({ children }) => {
 };
 
 export default Header;
-
-// Header.defaultProps = {
-//   hideSearch: false,
-// };
-
-// Header.propTypes = {
-// //    hideSearch: PropTypes.bool,
-//   children: PropTypes.string.isRequired,
-// };
