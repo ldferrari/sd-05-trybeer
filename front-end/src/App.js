@@ -11,7 +11,7 @@ import Login from './pages/login';
 import Products from './pages/products';
 import Register from './pages/register';
 import Profile from './pages/profile';
-// import Orders from './pages/orders';
+import Orders from './pages/orders';
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
             <Route exact path="/products" component={ Products } />
             <Route exact path="/register" component={ Register } />
             <Route exact path="/profile" component={ Profile } />
-            {/* <Route exact patch="/admin/orders" component={ Orders }> */}
+            <Route exact patch="/admin/orders" component={ Orders } />
           </Switch>
         </BrowserRouter>
       </Provider>

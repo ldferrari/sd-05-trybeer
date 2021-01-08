@@ -7,7 +7,7 @@ import sidebaricon from '../images/sidebaricon.png';
 export default function Header({ children }) {
   // const userInfo = JSON.parse(localStorage.getItem('role') || '{}');
   const userInfo = localStorage.role || '';
-  const [btnBurguer, setBtnBurguer] = useState(false);
+  const [btnBurguer, setBtnBurguer] = useState(userInfo === 'administrator');
   // if (!userInfo) return <Redirect to="/login" />;
   document.title = children;
   return (
@@ -21,9 +21,9 @@ export default function Header({ children }) {
           <img id="btn-hmb" src={ sidebaricon } alt="Hamburguer menu icon" />
         </button>
         {/* <img src={ sidebaricon } alt="sideb" /> */}
-        <span data-testid="top-title">Trybeer</span>
+        <span data-testid="top-title">TryBeer</span>
       </header>
-      <div><SideBar userRole={ userInfo } active={ btnBurguer } /></div>
+      <div>{btnBurguer && <SideBar userRole={ userInfo } active={ btnBurguer } />}</div>
     </div>
   );
 }
