@@ -8,6 +8,19 @@ const getAllProducts = async () => {
   return allProducts;
 };
 
+const getById = async (body) => {
+  const { id } = body;
+
+  if (!id) throw { err: { code: 404, message: 'Error' } };
+
+  const product = await model.getById(id);
+
+  if(!product) throw { err: { code: 404, message: 'Error' } };
+
+  return product[0];
+};
+
 module.exports = {
   getAllProducts,
+  getById,
 };

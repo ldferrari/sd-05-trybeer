@@ -16,7 +16,7 @@ sales.post('/', async (req, res) => {
 sales.put('/', async (req, res) => {
   try {
     await service.closeSale(req.body);
-    res.status(201).json({ message: 'Sale Closed' });
+    res.status(201).json({ message: 'Closed' });
   } catch (e) {
     res.status(500).json({ message: e.message });
   }
