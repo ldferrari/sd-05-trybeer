@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import validateName from '../../services/general/validateName';
-
+import Menu from '../../components/client/Menu';
 
 export default function ClientProfilePage() {
- /*  useEffect(() => {
+  /*  useEffect(() => {
     return () => {
       document.title = 'BLA';
     };
@@ -12,12 +12,11 @@ export default function ClientProfilePage() {
   const [email] = useState('email@email.com');
   const [name, setName] = useState('Mau');
 
-  const handleChange = (e) => {
-    return validateName(setName(e.target.value));
-  };
+  const handleChange = (e) => validateName(setName(e.target.value));
 
   return (
     <div>
+      <Menu title="Meu perfil" />
       <div data-testid="top-title">Meu perfil</div>
       <label htmlFor="email">
         Email
@@ -46,7 +45,7 @@ export default function ClientProfilePage() {
         data-testid="profile-save-btn"
         type="button"
         // segundo name vai vir da tela de login para comparar
-        disabled={ name ? true : false }
+        disabled
       >
         Salvar
       </button>
