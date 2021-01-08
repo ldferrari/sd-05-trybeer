@@ -1,17 +1,22 @@
+
 import React from 'react';
-// import { useState, useContext } from 'react';
-// import TrybeerContext from '../context/TrybeerContext';
 
 function AdminProfile() {
-  // const [bla, setBla] = useState(initialstatetrueorfalse);
-  // const { blu, bli } = useContext(TrybeerContext);
+  let admin = {
+    name: 'Jorgin Silva',
+    email: 'jorge123@gmail.com',
+  };
 
-  // const someFunction = (someParameter) => {
-  // };
-
-  return (
-    <div>AdminProfile</div>
-  );
+  const myProfile = () => {
+    return (
+      <div>
+        <h1>Perfil</h1>
+        <div data-testid="profile-name">Nome: {admin.name}</div>
+        <div>Email: {admin.email}</div>
+      </div>
+    );
+  };
+  return myProfile();
 }
 
 export default AdminProfile;
