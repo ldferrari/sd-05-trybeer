@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Sidebar from '../sidebar';
 import proptypes from 'prop-types';
+import Sidebar from '../sidebar';
 
 import './index.css';
 
@@ -30,4 +29,4 @@ export default Header;
 
 Header.propTypes = {
   children: proptypes.string.isRequired,
-}
+};
