@@ -1,6 +1,7 @@
 import React from 'react';
 // import { useState, useContext } from 'react';
 // import TrybeerContext from '../context/TrybeerContext';
+import ClientMenu from '../../components/client/ClientMenu';
 
 function Orders() {
   // const [bla, setBla] = useState(initialstatetrueorfalse);
@@ -10,7 +11,9 @@ function Orders() {
   // };
 
   return (
-    <div>Orders</div>
+    <div>
+      <ClientMenu title="Meus Pedidos" />
+    </div>
   );
 }
 
