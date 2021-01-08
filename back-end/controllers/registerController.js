@@ -6,7 +6,6 @@ const register = Router();
 
 register.post('/', rescue(async (req, res, next) => {
   const user = await registerService.create(req.body);
-  console.log(user)
   if (user.error) {
     return next(user);
   }

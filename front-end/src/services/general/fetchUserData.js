@@ -1,13 +1,13 @@
 const URL = 'http://localhost:3001/register';
 
-const fetchUserEmail = (email) => fetch(URL, {
+const fetchUserData = (userData) => fetch(URL, {
   method: 'POST',
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
   },
-  body: JSON.stringify({ email }),
+  body: JSON.stringify(userData),
 })
   .then((response) => response.json().then((data) => data));
 
-export default fetchUserEmail;
+export default fetchUserData;

@@ -1,21 +1,53 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import validateName from '../../services/general/validateName';
 import validateEmail from '../../services/general/validateEmail';
 import validatePassword from '../../services/general/validatePassword';
-// import fetchUserEmail from '../../services/general/fetchUserEmail';
-
-// const isUserRegistered = async (email) => {
-//   const user =
-// }
+import fetchUserData from '../../services/general/fetchUserData';
 
 export default function RegisterPage() {
   const [isNameValid, setNameValid] = useState(false);
   const [isEmailValid, setEmailValid] = useState(false);
   const [isPasswordValid, setPasswordValid] = useState(false);
-  const [isSignupSellerSelected, setSignupSellerSelected] = useState(false);
-  const [userEmail, setUserEmail] = useState('');
-  const [fetchResponse, setFetchResponse] = useState({});
+  const [isEmailRegistered, setEmailRegistered] = useState(false);
+  const [isFetched, setIsFetched] = useState(false);
+  const [userData, setUserData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    role: 'client',
+  });
+
+  const checked = () => {
+    const isChecked = document.getElementById('want-to-sell').checked;
+    if (isChecked) {
+      setUserData({ ...userData, role: 'admin' });
+    } else {
+      setUserData({ ...userData, role: 'client' });
+    }
+  };
+
+  const isUserRegistered = async (user) => {
+    const { message, role } = await fetchUserData(user);
+    setEmailRegistered(false);
+    setIsFetched(false);
+    console.log(message, role);
+    if (message === 'E-mail already in database.') {
+      setIsFetched(true);
+      return setEmailRegistered(true);
+    }
+    if (message === 'ok' && role === 'admin') {
+      setEmailRegistered(false);
+      return setIsFetched(true);
+    }
+    setIsFetched(true);
+    return true;
+  };
+  // console.log(isFetched, isEmailRegistered === false, userData.role === 'client')
+  // console.log(isFetched && isEmailRegistered === false && userData.role === 'client')
+  if (isFetched && !isEmailRegistered && userData.role === 'client') return <Redirect to="/products" />;
+
+  if (isFetched && !isEmailRegistered && userData.role === 'admin') return <Redirect to="/admin/orders" />;
 
   return (
     <div>
@@ -27,7 +59,13 @@ export default function RegisterPage() {
             type="text"
             id="name"
             data-testid="signup-name"
-            onChange={ ((event) => { setNameValid(validateName(event.target.value)); }) }
+            onChange={ ((event) => {
+              setNameValid(validateName(event.target.value));
+              setUserData({
+                ...userData,
+                name: event.target.value,
+              });
+            }) }
           />
         </label>
       </div>
@@ -40,11 +78,14 @@ export default function RegisterPage() {
             data-testid="signup-email"
             onChange={ ((event) => {
               setEmailValid(validateEmail(event.target.value));
-              setUserEmail(event.target.value);
+              setUserData({
+                ...userData,
+                email: event.target.value,
+              });
             }) }
           />
         </label>
-        { (fetchResponse === {}) ? <div>E-mail already in database</div> : false }
+        { isEmailRegistered ? <div>E-mail already in database.</div> : false }
       </div>
       <div>
         <label htmlFor="password">
@@ -53,7 +94,13 @@ export default function RegisterPage() {
             type="password"
             id="password"
             data-testid="signup-password"
-            onChange={ ((event) => { setPasswordValid(validatePassword(event.target.value)); }) }
+            onChange={ ((event) => {
+              setPasswordValid(validatePassword(event.target.value));
+              setUserData({
+                ...userData,
+                password: event.target.value,
+              });
+            }) }
           />
         </label>
       </div>
@@ -63,7 +110,9 @@ export default function RegisterPage() {
             type="checkbox"
             id="want-to-sell"
             data-testid="signup-seller"
-            onChange={ () => setSignupSellerSelected(!isSignupSellerSelected) }
+            onChange={ () => {
+              checked();
+            } }
           />
           Quero Vender
         </label>
@@ -72,12 +121,10 @@ export default function RegisterPage() {
         <button
           type="button"
           data-testid="signup-btn"
-          // onClick={ () => fetchUserEmail(userEmail).then(res => console.log(res)) }
+          onClick={ () => isUserRegistered(userData) }
           disabled={ !isNameValid || !isEmailValid || !isPasswordValid }
         >
-          {(isNameValid && isEmailValid && isPasswordValid)
-            ? <Link onClick={ () => true } to={ isSignupSellerSelected ? '/admin/orders' : '/products' }>Cadastrar</Link>
-            : <div>Cadastrar</div>}
+          Cadastrar
         </button>
       </div>
     </div>
