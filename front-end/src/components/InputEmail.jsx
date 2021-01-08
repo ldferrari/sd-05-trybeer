@@ -1,14 +1,14 @@
 import React from 'react';
 // import React, { useContext } from 'react';
-// import { TrybeerContext } from '../context/TrybeerContext';
+// import  TryBeerContext  from '../context/TryBeerContext';
 
-const InputEmail = () => {
-  // const { setEmail } = useContext(TrybeerContext);
+const InputEmail = (props) => {
+  // const { setEmail } = useContext(TryBeerContext);
   console.log('tst');
   return (
     <form>
-      <label htmlFor="email-input">
-        <input data-testid="email-input" type="email" placeholder="Email" />
+      <label htmlFor={props.dataId}>
+        <input data-testid={props.emailId} type="email" placeholder="Email" />
       </label>
     </form>
   );
