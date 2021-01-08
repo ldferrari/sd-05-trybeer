@@ -9,10 +9,21 @@ import CartButton from '../../components/cartButton';
 
 const Products = () => {
   const [theProducts, setProducts] = useState([]);
+  const theToken = localStorage.getItem("token");
   const fetchProducts = async () => {
-    const { data } = await axios.get('http://localhost:3001/products');
+    const { data } = await axios.get('http://localhost:3001/products', { headers: { Authorization: theToken }});
     setProducts(data);
   };
+  // const fetchProducts = async () => {
+  //   axios.get(URL, { headers: { Authorization: theToken } })
+  // .then(response => {
+  //     setProducts(response.data);
+  //     console.log(response.data);
+  //   })
+  // .catch((error) => {
+  //     console.log('error ' + error);
+  //   });
+  // };
 
   useEffect(() => {
     fetchProducts();
