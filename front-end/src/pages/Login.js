@@ -62,26 +62,10 @@ function Login({ history }) {
     }
   };
 
-  // const storage = () => {
-  //   const userInfos = {
-  //     // BACK - substituir mock por infos do db (em params?)
-  //     name: 'Taylor Swift',
-  //     email: 'taylorswift@email.com',
-  //     token:
-  //       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4(...)',
-  //     role: 'client',
-  //   };
-  //   localStorage.setItem('user', JSON.stringify(userInfos));
-  // };
-
   return (
     <div className="login-page" data-testid="">
       {inputEmail(handleEmailChange)}
       {inputPassword(handlePasswordChange)}
-      {/* <Link to={ loginInfo.role === 'administrador' ? "/admin/orders" : "/products"}> */}
-      {/* BACK - Conseguir condicionar, é
-        <Link to="/admin/orders"> no caso de ser admin.
-        Isso vem do create do register */}
       <button
         type="button"
         data-testid="signin-btn"
@@ -89,12 +73,9 @@ function Login({ history }) {
         onClick={() =>
           login(email, password).then((result) => handleResult(result))
         }
-
-        // BACK - aqui também cria token do user
       >
         ENTRAR
       </button>
-      {/* </Link> */}
       <Link to="/register">
         <button type="button" data-testid="no-account-btn">
           Ainda não tenho conta

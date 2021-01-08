@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 // import './App.css';
+import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import ClientProfile from './pages/client/ClientProfile';
@@ -16,9 +17,8 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={Login} />
+        <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
-        {/* (needed to set both routes for login page because of tests) */}
         <Route exact path="/register" component={ Register } />
         <Route exact path="/profile" component={ ClientProfile } />
         <Route exact path="/products" component={ Products } />
