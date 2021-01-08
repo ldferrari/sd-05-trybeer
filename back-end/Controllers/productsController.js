@@ -7,6 +7,7 @@ const products = Router();
 products.get('/', async (req, res) => {
   try {
     const allProducts = await service.getAll();
+    // console.log(allProducts)
     res.status(200).json(allProducts);
   } catch (error) {
     console.error(error);
