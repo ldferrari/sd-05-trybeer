@@ -37,7 +37,6 @@ function Login({ history}) {
   const [checkedEmail, setCheckedEmail] = useState('');
   const [checkedPassword, setCheckedPassword] = useState('');
   const { setEmail, setPassword, email, password } = useContext(TrybeerContext);
-  const [loginInfo, setLoginInfo] = useState([])
 
   const handleEmailChange = (e) => {
     setCheckedEmail(checkEmail(e.target.value));
@@ -55,8 +54,6 @@ function Login({ history}) {
   };
 
   const handleResult = (result) => {
-    // setLoginInfo(result)
-    console.log(result.role)
     localStorage.setItem('user', JSON.stringify(result))
     if (result.role === "administrator") {
       history.push('/admin/orders')
