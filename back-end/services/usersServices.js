@@ -14,7 +14,7 @@ const createUser = async (newUser) => {
     throw { err: { code: 404, message: 'email format invalid' } };
   }
 
-  if (typeof password !== 'number' || password.length < 6) {
+  if (password.length < 6) {
     throw { err: { code: 404, message: 'password format invalid' } };
   }
 
@@ -30,7 +30,7 @@ const createUser = async (newUser) => {
 const logIn = async (email, password1) => {
   const userFound = await model.logIn(email);
 
-  if (!userFound) {
+  if (!userFound || userFound.length === 0) {
     throw { err: { code: 404, message: 'user email do not exist' } };
   }
 
