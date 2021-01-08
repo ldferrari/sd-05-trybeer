@@ -31,7 +31,9 @@ const Products = () => {
   [theProducts]);
 
   useEffect(() => {
-    cartSum > zero ? setCartBtn(true) : setCartBtn(false);
+    return (
+      cartSum > zero ? setCartBtn(true) : setCartBtn(false)
+    );
   },
   [cartSum]);
 
@@ -41,14 +43,8 @@ const Products = () => {
     return <Redirect to="/login" />;
   }
 
-  return (
-    <div className="Products">
-      <Header>TryBeer</Header>
-      <div className="productList">
-        { theProducts.map((product) => <Card key={ product.id } product={ product } />) }
-        ,
-      </div>
-      { cartBtn && 
+  const CartButton = () => {
+    return (
       <div className="checkoutBtn">
         <Link
           to="/checkout"
@@ -61,7 +57,18 @@ const Products = () => {
             {cartSum}
           </p>
         </Link>
-      </div>}
+      </div>
+    )
+  };
+
+  return (
+    <div className="Products">
+      <Header>TryBeer</Header>
+      <div className="productList">
+        { theProducts.map((product) => <Card key={ product.id } product={ product } />) }
+        ,
+      </div>
+      { cartBtn && CartButton() }
       <Footer />
     </div>
   );
