@@ -7,6 +7,7 @@ import '../../css/client/products.css';
 
 function Products() {
   const [countProduct, setCountProduct] = useState(0);
+  // pbma: o count atualiza para todinhos
   const [isLogged, setIsLogged] = useState(true);
   const { goCart, setGoCart } = useContext(TrybeerContext);
   // Tem que ser no context: "Caso a pessoa atualize o browser,
@@ -45,6 +46,8 @@ function Products() {
   };
 
   const totalPrice = 3;
+  // achar como calcular
+  
   return (
     <section>
       <div className="productCards">
@@ -67,7 +70,7 @@ function Products() {
             +
           </button>
           <p data-testid="0-product-qtd">{countProduct}</p>
-          <button key="" data-testid={`${index}--product-minus`} onClick={() => oneLess()}>
+          <button key="" data-testid={`${index}-product-minus`} onClick={() => oneLess()}>
             -
           </button>
           </div>
@@ -77,9 +80,9 @@ function Products() {
       <Link to="/checkout">
         <button data-testid="checkout-bottom-btn" onClick={() => createCart()}>
           Ver Carrinho
+          <p data-testid="checkout-bottom-btn-value">R$ {totalPrice}</p>
         </button>
       </Link>
-      <button data-testid="checkout-bottom-btn-value">R$ {totalPrice}</button>
       {!isLogged && <Redirect to="/login" />}
       {/* Ao entrar na tela, se o usuário não estiver logado, deve ser redirecionado para a tela Login. */}
     </section>
