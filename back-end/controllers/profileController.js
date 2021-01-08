@@ -5,7 +5,7 @@ const rescue = require('express-rescue');
 const profileRouter = Router();
 
 profileRouter.get('/', rescue(async (_req, res) => {
-  /* const user = await profileModel.update(); */
+  await profileModel.update();
 
   return res.status(200).json('Hello World');
 }));

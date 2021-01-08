@@ -13,20 +13,10 @@ background:#073416;
 	display: none;
 }
 
-#check:checked ~ .side-menu-container{
-	transform: translateX(100%);
-}
-
-#check:checked ~ .side-menu-container nav div .buttonLateral{
-	margin: 5%;
-	transition-delay: .2s;
-}
-
 .top-hamburguer {
 	display:inline-block;
 	color:white;
 	box-shadow:0px 1px 1px rgba(0,0,0,0.15);
-	border-radius:10px;
 	background:#073416;
 	float:left;
 	font-size:30px;
@@ -54,6 +44,10 @@ background:#073416;
 	width:40%;
 }
 
+.side-menu-container-changed {
+	background:#073;
+}
+
 .menuLateral {
 	display: flex;
 	flex-direction: column;
@@ -79,7 +73,7 @@ nav a{
 	border-radius:5px;
 	color:white;
 	font-size: 15px;
-	margin: 20% 5% 5%;
+	margin: 5%;
 	padding: 5%;
 }
 
