@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import validateName from '../../services/general/validateName';
 import validateEmail from '../../services/general/validateEmail';
 import validatePassword from '../../services/general/validatePassword';
-import fetchUserEmail from '../../services/general/fetchUserEmail';
+// import fetchUserEmail from '../../services/general/fetchUserEmail';
 
-const isUserRegistered = async (email) => {
-  const user =
-}
+// const isUserRegistered = async (email) => {
+//   const user =
+// }
 
 export default function RegisterPage() {
   const [isNameValid, setNameValid] = useState(false);
@@ -76,7 +76,7 @@ export default function RegisterPage() {
           disabled={ !isNameValid || !isEmailValid || !isPasswordValid }
         >
           {(isNameValid && isEmailValid && isPasswordValid)
-            ? <Link onClick={ () =>  } to={ isSignupSellerSelected ? '/admin/orders' : '/products' }>Cadastrar</Link>
+            ? <Link onClick={ () => true } to={ isSignupSellerSelected ? '/admin/orders' : '/products' }>Cadastrar</Link>
             : <div>Cadastrar</div>}
         </button>
       </div>

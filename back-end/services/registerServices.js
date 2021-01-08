@@ -1,4 +1,3 @@
-const pool = require('../models/connection');
 const model = require('../models/registerModel');
 
 const getByEmail = async (email) => model.getByEmail(email);
@@ -10,10 +9,10 @@ const isEmailRegistered = async (email) => {
 };
 
 const create = async (user) => {
-  const { name, email, password, role } = user;
+  // const { name, email, password, role } = user;
+  const { email } = user;
 
   if (isEmailRegistered(email)) {
-    console.log('entrou')
     return {
       error: true,
       code: 'conflict',
