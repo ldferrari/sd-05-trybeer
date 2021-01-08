@@ -13,9 +13,9 @@ const Card = (props) => {
   const minusOne = () => {
     const zero = 0;
     // const exists = cart.find((produto) => produto.id === product.id);
-    const newProduct = { ...e, qty: e.qty <= zero ? zero : e.qty - 1 };
+    const newProduct = (e) => ({ ...e, qty: e.qty <= zero ? zero : e.qty - 1 });
     if (exists) {
-      setCart(cart.map((e) => (e.id === product.id ? newProduct : e)))
+      setCart(cart.map((e) => (e.id === product.id ? newProduct(e) : e)));
     }
     return null;
   };
