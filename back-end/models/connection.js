@@ -19,6 +19,14 @@ const getAll = async () => {
   console.log(users);
 };
 
+const getAllProducts = async () => {
+  const [products] = await connection.execute('SELECT * FROM products');
+  // console.log(products);
+  return products;
+}
+
+getAllProducts();
+
 getAll();
 
 module.exports = connection;

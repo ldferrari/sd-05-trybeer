@@ -1,11 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ClientContext from '../../context/client/ClientContext';
+import productsApi from '../../services/client/api';
 
 const Products = () => {
-  const { products, isLoading } = useContext(ClientContext);
+  // const { products, setProducts, isLoading } = useContext(ClientContext);
+  const [ products, setProducts ] = useState([]);
 
-  if (isLoading) return <div>Carregando...</div>;
+  useEffect(() => {
+    const prodAPI = productsApi()
+      .then((response) => setProducts(response));
+      
+    }, []);
+
+    
+  // if (isLoading) return <div>Carregando...</div>;
 
   return (
     <div>
@@ -58,6 +67,10 @@ const Products = () => {
         ))}
       </div>
     </div>
+    // <div>
+    //   {/* {products} */}
+    //   {console.log(products)}
+    // </div>
   );
 };
 
