@@ -6,7 +6,7 @@ const checkUser = async (email) => {
     return {
       error: true,
       statusCode: 409,
-      message: 'This email is already registered',
+      message: 'E-mail already in database.',
     };
   }
   return false;
@@ -28,11 +28,12 @@ const createUser = async (name, email, password, checkbox) => {
   return role;
 };
 
-// const updateUser = async (newName, email) => {
-//   await model.updateUser(newName, email);
-// };
+const updateUser = async (newName, email) => {
+  await model.updateUser(newName, email);
+};
 
 module.exports = {
   checkUser,
   createUser,
+  updateUser,
 };

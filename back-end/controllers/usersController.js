@@ -33,4 +33,14 @@ users.post('/register', async (req, res) => {
   return res.status(201).json({ role, token });
 });
 
+users.put('/update', async (req, res) => {
+  const { name, email } = req.body;
+
+  if (!name || !email) return res.status(400).json({ message: 'Invalid data' });
+
+  await service.updateUser(name, email);
+
+  return res.status(200).json({ message: 'User updated successfully' });
+});
+
 module.exports = users;
