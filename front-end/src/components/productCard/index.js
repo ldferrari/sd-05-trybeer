@@ -15,8 +15,8 @@ const Card = (props) => {
     // const exists = cart.find((produto) => produto.id === product.id);
     return exists
       ? setCart(cart
-        .map((e) => e.id === product.id ? { ...e, qty: e.qty <= zero ? zero : e.qty - 1, } : e)
-        )
+        .map((e) => e.id === product.id ? { ...e, qty: e.qty <= zero ? zero : e.qty - 1 } : e),
+      )
       : null;
   };
 
@@ -24,9 +24,11 @@ const Card = (props) => {
     const um = 1;
     return exists
       ? setCart(
-        cart.map((e) => e.id === product.id ? { ...e, qty: e.qty + 1, } : e)
+        cart.map((e) => e.id === product.id ? { ...e, qty: e.qty + 1 } : e),
       )
-      : setCart([...cart, { id: product.id, name: product.name, price: product.price, qty: um },]);
+      : setCart([
+        ...cart, { id: product.id, name: product.name, price: product.price, qty: um },
+      ]);
   };
   const zero = 0;
   return (
@@ -45,7 +47,7 @@ const Card = (props) => {
         <button
           type="button"
           data-testid={ `${product.id - 1}-product-minus` }
-          onClick={() => minusOne()}
+          onClick={ () => minusOne() }
         >
           -
         </button>
@@ -53,7 +55,7 @@ const Card = (props) => {
         <button
           type="button"
           data-testid={ `${product.id - 1}-product-plus` }
-          onClick={() => plusOne()}
+          onClick={ () => plusOne() }
         >
           +
         </button>

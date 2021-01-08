@@ -31,16 +31,16 @@ const Products = () => {
   [theProducts]);
 
   useEffect(() => {
-    cartSum > 0 ? setCartBtn(true): setCartBtn(false);
+    cartSum > zero ? setCartBtn(true) : setCartBtn(false);
   },
   [cartSum]);
 
   const logged = localStorage.getItem('token');
-  
+
   if (!logged) {
     return <Redirect to="/login" />;
   }
-  
+
   return (
     <div className="Products">
       <Header>TryBeer</Header>
@@ -48,7 +48,8 @@ const Products = () => {
         { theProducts.map((product) => <Card key={ product.id } product={ product } />) }
         ,
       </div>
-      { cartBtn && <div className="checkoutBtn">
+      { cartBtn && 
+      <div className="checkoutBtn">
         <Link
           to="/checkout"
           data-testid="checkout-bottom-btn"

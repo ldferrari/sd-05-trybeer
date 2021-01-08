@@ -21,7 +21,8 @@ const Header = ({ children }) => {
         </button>
         <h2 data-testid="top-title" className="title">{children}</h2>
       </div>
-      { display && <aside className="sideBar side-menu-container">
+      { display &&
+      <aside className="sideBar side-menu-container">
         <ul>
           <li className="menuBtn">
             <Link className="menuBtn" to="/products" data-testid="side-menu-item-products">
