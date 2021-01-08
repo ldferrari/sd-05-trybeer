@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import validateName from '../../services/general/validateName';
 import Menu from '../../components/client/Menu';
+// import updateUserAPI from '../../services/apis';
 
-export default function ClientProfilePage() {
+export default function ClientProfilePage(props) {
   /*  useEffect(() => {
     return () => {
       document.title = 'BLA';
@@ -11,6 +12,11 @@ export default function ClientProfilePage() {
 
   const [email] = useState('email@email.com');
   const [name, setName] = useState('Mau');
+  //const id = props.match.params.id;
+
+  /* function fetchAPI(id) {
+    return updateUserAPI(id);
+  } */
 
   const handleChange = (e) => validateName(setName(e.target.value));
 
@@ -43,6 +49,7 @@ export default function ClientProfilePage() {
       <button
         data-testid="profile-save-btn"
         type="button"
+        //onClick={() => fetchAPI(id)}
         // segundo name vai vir da tela de login para comparar
         disabled
       >

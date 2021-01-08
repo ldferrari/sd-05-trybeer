@@ -12,7 +12,7 @@ function App() {
       <Switch>
         <Route path="/register" component={ RegisterPage } />
         <Route path="/products" component={ ClientProductPage } />
-        <Route path="/profile">
+        <Route path="/profile/:id">
            <ClientProfilePage />
            {/* {!loggedIn ? <Redirect to="/login" /> : <ClientProfilePage />} */}
         </Route>
