@@ -1,10 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Input from '../Components/Input';
-import Button from '../Components/Button';
 
 const Login = () => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
+  const [isDisabled, isSetDisabled] = useState(true);
+
+  function validaInput(xEmail, xSenha) {
+    const regexEmail = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/;
+    const regexSenha = /^[^W_]{7,100}$/;
+    if (regexEmail.test(xEmail) && regexSenha.test(xSenha)) {
+      isSetDisabled(false);
+    } else {
+      isSetDisabled(true);
+    }
+  }
+
+  useEffect(() => {
+    validaInput(email, password);
+  }, [email, password]);
 
   return (
     <div id="Login">
@@ -20,13 +34,9 @@ const Login = () => {
         placeholder="Digite sua senha"
         onChange={(e) => setPassword(e.target.value)}
       />
-      <Button
-        test="login-submit-btn"
-        disabled={loginValidation(email, password)}
-        onClick={() => {}}
-      >
+      <button disabled={isDisabled}  >
         Entrar
-      </Button>
+      </button>
     </div>
   );
 };
