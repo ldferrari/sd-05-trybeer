@@ -4,7 +4,9 @@ import TryBeerContext from '../context/TryBeerContext';
 export default function useLogin() {
   const context = useContext(TryBeerContext);
 
-  const { email, setEmail, password, setPassword } = context;
+  const {
+    email, setEmail, password, setPassword,
+  } = context;
 
   // const para validação
 
