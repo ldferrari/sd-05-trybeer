@@ -19,6 +19,7 @@ const Register = () => {
           placeholder="Name"
           onChange={(e) => setName(e.target.value)}
         />
+        Nome
       </label>
       <label htmlFor="signup-email">
         <input
@@ -27,6 +28,7 @@ const Register = () => {
           placeholder="Email"
           onChange={(e) => setEmail(e.target.value)}
         />
+        Email
       </label>
       <label htmlFor="signup-password">
         <input
@@ -35,6 +37,7 @@ const Register = () => {
           placeholder="Senha"
           onChange={(e) => setPassword(e.target.value)}
         />
+        Senha
       </label>
       <label htmlFor="signup-seller">
         <input data-testid="signup-seller" type="checkbox" onClick={handleClick} />
