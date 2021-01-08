@@ -31,7 +31,7 @@ export default function RegisterPage() {
     const { message, role } = await fetchUserData(user);
     setEmailRegistered(false);
     setIsFetched(false);
-    console.log(message, role);
+    // console.log(message, role);
     if (message === 'E-mail already in database.') {
       setIsFetched(true);
       return setEmailRegistered(true);
