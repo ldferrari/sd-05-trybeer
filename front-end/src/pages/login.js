@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import validateLogin from '../services/validateLogin';
-import checkUser from '../services/api';
+import { checkUser } from '../services/api';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -57,7 +57,11 @@ const Login = () => {
         onChange={ (event) => setEmail(event.target.value) }
       />
       <h2>Senha</h2>
-      <input data-testid="password-input" type="password" onChange={ (event) => setPassword(event.target.value) } />
+      <input
+        data-testid="password-input"
+        type="password"
+        onChange={ (event) => setPassword(event.target.value) }
+      />
       <button
         type="submit"
         data-testid="signin-btn"
@@ -68,7 +72,9 @@ const Login = () => {
       </button>
       { designatedRoute !== undefined ? <Redirect to={ designatedRoute } /> : null }
       <Link to="/register">
-        <button type="submit" data-testid="no-account-btn">Ainda não tenho conta</button>
+        <button type="submit" data-testid="no-account-btn">
+          Ainda não tenho conta
+        </button>
       </Link>
     </div>
   );
