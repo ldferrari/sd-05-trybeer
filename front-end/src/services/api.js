@@ -11,7 +11,7 @@ export const checkUser = async (email, password) => {
     mode: 'cors',
     body: JSON.stringify({ email, password }),
   };
-  const user = await fetch(`${url}/users`, myInit).then((response) => response.json());
+  const user = await fetch(`${url}/login`, myInit).then((response) => response.json());
 
   // console.log(`
   // @api.js file ->
@@ -35,7 +35,7 @@ export const registerUser = async (userData) => {
     mode: 'cors',
     body: JSON.stringify(userData),
   };
-  const response = await fetch(`${url}/register`, registerReq).then((res) => res.json());
+  const response = await fetch(`${url}/users/register`, registerReq).then((res) => res.json());
   /* const response =
     userData.role === 'client'
       ? { role: 'client', token: 'ufjdnmx' }

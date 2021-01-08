@@ -16,6 +16,9 @@ users.post('/', async (req, res) => {
 
 users.post('/register', async (req, res) => {
   const { name, email, password, checkbox } = req.body;
+
+  if (!name || !email || !password) return res.status(400).json({ message: 'Invalid data' });
+
   const role = await service.createUser(name, email, password, checkbox);
 
   if (role.error) {

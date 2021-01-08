@@ -13,7 +13,7 @@ const Register = () => {
     name,
     email,
     password,
-    role: seller ? 'administrator' : 'client',
+    checkbox: seller,
   };
 
   const handleRegister = async (userToRegister, e) => {
@@ -22,9 +22,9 @@ const Register = () => {
     if (!validateRegister(userToRegister)) return setDesignetedRoute(undefined);
 
     const response = await registerUser(userToRegister);
-
+    console.log(response);
     if (response.message) {
-      const labelEmail = document.querySelector('#teste');
+      const labelEmail = document.querySelector('#lblEmail');
       const alreadyExists = document.createElement('span');
       alreadyExists.innerHTML = 'E-mail already in database.';
       return labelEmail.appendChild(alreadyExists);
@@ -35,7 +35,7 @@ const Register = () => {
 
     return response.role === 'client'
       ? setDesignetedRoute('/products')
-      : setDesignetedRoute('/adimn/orders');
+      : setDesignetedRoute('/admin/orders');
   };
 
   return (
@@ -54,7 +54,7 @@ const Register = () => {
             onChange={ (event) => setName(event.target.value) }
           />
         </label>
-        <label htmlFor="email" id="teste">
+        <label htmlFor="email" id="lblEmail">
           Email
           <input
             name="email"
@@ -69,7 +69,7 @@ const Register = () => {
           <input
             name="password"
             type="password"
-            data-testid="signup-name"
+            data-testid="signup-password"
             minLength="6"
             required
             onChange={ (event) => setPassword(event.target.value) }
@@ -82,7 +82,7 @@ const Register = () => {
             data-testid="signup-seller"
             onChange={ (event) => setSeller(event.target.checked) }
           />
-          Quero vender
+          Quero Vender
         </label>
         <button
           type="submit"
