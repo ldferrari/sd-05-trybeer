@@ -25,6 +25,7 @@
   "dependencies": {
     "mysql2": "^2.1.0",
     "prop-types": "^15.7.2",
+    "react-axios": "^2.0.4",
     "sequelize": "^6.3.4"
   },
   "devDependencies": {
