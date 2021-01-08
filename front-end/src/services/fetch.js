@@ -11,19 +11,19 @@ export const getProducts = () => {
 
 export const login = (email, password) => {
   const userInfo = axios
-    .post(`${API_URL}/users/login`, { email, password } )
+    .post(`${API_URL}/users/login`, { email, password })
     .then((response) => response.data)
     .catch((err) => err);
   return userInfo;
 };
 
 export const register = (name, email, password, role) => {
-    const newUser = axios
-    .post(`${API_URL}/users/register`, { name, email, password, role } )
+  const newUser = axios
+    .post(`${API_URL}/users/register`, { name, email, password, role })
     .then((response) => response.data)
     .catch((err) => err);
   return newUser;
-}
+};
 
 export const updateName = (name, email) => {
     const newName = axios
@@ -126,4 +126,3 @@ export const getProductById = (id) => {
   .then((response) => response.data)
   .catch((err) => err);
 return product;
-};

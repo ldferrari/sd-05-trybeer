@@ -14,7 +14,7 @@ const createUser = async (newUser) => {
     throw { err: { code: 404, message: 'email format invalid' } };
   }
 
-  if (typeof password !== 'number' || password.length < 6) {
+  if (password.length < 6) {
     throw { err: { code: 404, message: 'password format invalid' } };
   }
 
