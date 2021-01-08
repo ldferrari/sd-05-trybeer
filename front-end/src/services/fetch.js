@@ -1,6 +1,13 @@
 import axios from 'axios';
 
 const API_URL = 'http://localhost:3001';
+/*
+
+Busca a lista de produtos (client)
+
+nao precisa de params
+
+*/
 
 export const getProducts = () => {
   const products = axios
@@ -8,6 +15,15 @@ export const getProducts = () => {
     .then((response) => response.data);
   return products;
 };
+
+/*
+
+Fazer o Log in (client/administrator): 
+Params:
+  - email: string
+  - password: string
+
+*/
 
 export const login = (email, password) => {
   const userInfo = axios
@@ -17,6 +33,17 @@ export const login = (email, password) => {
   return userInfo;
 };
 
+/*
+
+Registrar um novo usuário (client/administrator): 
+Params:
+  - name: string
+  - email: string
+  - password: string
+  - role: string
+
+*/
+
 export const register = (name, email, password, role) => {
   const newUser = axios
     .post(`${API_URL}/users/register`, { name, email, password, role })
@@ -24,6 +51,15 @@ export const register = (name, email, password, role) => {
     .catch((err) => err);
   return newUser;
 };
+
+/*
+
+Mudar o nome de usuário (client/administrator): 
+Params:
+  - name: string
+  - email: string
+
+*/
 
 export const updateName = (name, email) => {
     const newName = axios
