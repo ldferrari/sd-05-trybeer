@@ -16,8 +16,8 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={ Login } />
-        <Route exact path="/login" component={ Login } />
+        <Route exact path="/" component={Login} />
+        <Route exact path="/login" component={Login} />
         {/* (needed to set both routes for login page because of tests) */}
         <Route exact path="/register" component={ Register } />
         <Route exact path="/profile" component={ ClientProfile } />
