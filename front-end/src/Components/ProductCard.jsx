@@ -30,4 +30,8 @@ ProductCard.propTypes = {
   index: PropTypes.number,
 };
 
+// const mapDispatchToProps = (dispatch) => ({
+
+// });
+
 export default ProductCard;

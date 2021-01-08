@@ -1,17 +1,22 @@
 import './App.css';
 import React, { useEffect } from 'react';
+import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getProductsAct } from '../src/Redux/Actions/index';
 import Products from './Pages/Products';
+import Checkout from './Pages/Checkout';
 
-function App({ ProductsAPI, products }) {
+function App({ ProductsAPI }) {
   useEffect(() => {
     ProductsAPI();
   }, [ProductsAPI]);
 
   return (
     <div className="App">
-      <Products products={products} />
+      <Switch>
+        <Route path="/products" component={Products} />
+        <Route path="/checkout" component={Checkout} />
+      </Switch>
     </div>
   );
 }
