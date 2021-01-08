@@ -26,8 +26,8 @@ export const register = (name, email, password, role) => {
 };
 
 export const updateName = (name, email) => {
-    const newName = axios
-    .put(`${API_URL}/users/register`, { name, email } )
+  const newName = axios
+    .put(`${API_URL}/users/register`, { name, email })
     .then((response) => response.data)
     .catch((err) => err);
   return newName;
@@ -47,10 +47,10 @@ Params:
 */
 export const createNewSale = (email, totalPrice, address, addressNumber, saleDate, products) => {
   const newSale = axios
-  .post(`${API_URL}/checkout`, { email, totalPrice, address, addressNumber, saleDate, products } )
-  .then((response) => response.data)
-  .catch((err) => err);
-return newSale;
+    .post(`${API_URL}/checkout`, { email, totalPrice, address, addressNumber, saleDate, products })
+    .then((response) => response.data)
+    .catch((err) => err);
+  return newSale;
 };
 
 /*
@@ -63,10 +63,10 @@ Params:
 */
 export const closeSale = (id) => {
   const closedSale = axios
-  .put(`${API_URL}/checkout`, { id } )
-  .then((response) => response.data)
-  .catch((err) => err);
-return closedSale;
+    .put(`${API_URL}/checkout`, { id })
+    .then((response) => response.data)
+    .catch((err) => err);
+  return closedSale;
 };
 
 /*
@@ -79,10 +79,10 @@ Params:
 */
 export const getUserSales = (email) => {
   const userSales = axios
-  .get(`${API_URL}/checkout`, { email } )
-  .then((response) => response.data)
-  .catch((err) => err);
-return userSales;
+    .get(`${API_URL}/checkout`, { email })
+    .then((response) => response.data)
+    .catch((err) => err);
+  return userSales;
 };
 
 /*
@@ -90,10 +90,10 @@ Buscar todos pedidos com status "Pendente"
 */
 export const getAllSalesOpen = () => {
   const allSalesOpen = axios
-  .get(`${API_URL}/checkout/sales-open`, {} )
-  .then((response) => response.data)
-  .catch((err) => err);
-return allSalesOpen;
+    .get(`${API_URL}/checkout/sales-open`, {})
+    .then((response) => response.data)
+    .catch((err) => err);
+  return allSalesOpen;
 };
 
 /*
@@ -106,10 +106,10 @@ Params:
 */
 export const getSaleDetails = (id) => {
   const saleDetails = axios
-  .get(`${API_URL}/details`, { id } )
-  .then((response) => response.data)
-  .catch((err) => err);
-return saleDetails;
+    .get(`${API_URL}/details`, { id })
+    .then((response) => response.data)
+    .catch((err) => err);
+  return saleDetails;
 };
 
 /*
@@ -122,7 +122,8 @@ Params:
 */
 export const getProductById = (id) => {
   const product = axios
-  .get(`${API_URL}/products/id`, { id } )
-  .then((response) => response.data)
-  .catch((err) => err);
-return product;
+    .get(`${API_URL}/products/id`, { id })
+    .then((response) => response.data)
+    .catch((err) => err);
+  return product;
+};
