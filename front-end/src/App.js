@@ -1,5 +1,10 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
 
 import Provider from './context/Provider';
 import Login from './pages/login';
@@ -12,6 +17,9 @@ function App() {
       <Provider>
         <BrowserRouter>
           <Switch>
+            <Route exact path="/">
+              <Redirect to="/login" />
+            </Route>
             <Route exact path="/login" component={ Login } />
             <Route exact path="/products" component={ Products } />
             <Route exact path="/register" component={ Register } />

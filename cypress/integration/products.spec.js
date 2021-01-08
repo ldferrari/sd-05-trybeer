@@ -9,7 +9,7 @@ import {
   verifyElementIsDisable,
 } from '../actions/actionBase';
   
-describe('Criar tela de produtos', () => {
+describe.skip('Criar tela de produtos', () => {
   before(() => {
     createAndInsertsDataBase();
   });

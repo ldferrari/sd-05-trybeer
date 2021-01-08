@@ -9,7 +9,7 @@ import {
   verifyContainsUrl,
 } from '../actions/actionBase';
   
-describe('Criar tela de perfil de administrador', () => {
+describe.skip('Criar tela de perfil de administrador', () => {
   before(() => {
     createAndInsertsDataBase()
   });

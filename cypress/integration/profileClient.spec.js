@@ -13,7 +13,7 @@ import {
   verifyContainsUrl,
 } from '../actions/actionBase';
   
-describe('Criar tela de perfil do cliente', () => {
+describe.skip('Criar tela de perfil do cliente', () => {
   before(() => {
     createAndInsertsDataBase()
   });

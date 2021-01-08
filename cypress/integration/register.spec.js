@@ -22,7 +22,7 @@ describe('Crie uma página de registro de usuários', () => {
   }) 
 
   beforeEach( () => {
-    cy.visit(`${Cypress.config().baseUrl}/login`);
+    cy.visit(Cypress.config().baseUrl);
     clickButton('[data-testid="no-account-btn"]');
   });
 

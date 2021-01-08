@@ -22,7 +22,7 @@ const Register = () => {
     if (!validateRegister(userToRegister)) return setDesignetedRoute(undefined);
 
     const response = await registerUser(userToRegister);
-    console.log(response);
+    
     if (response.message) {
       const labelEmail = document.querySelector('#lblEmail');
       const alreadyExists = document.createElement('span');
