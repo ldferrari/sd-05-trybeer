@@ -12,14 +12,15 @@ const CartButton = () => {
     .toFixed(dois);
 
   useEffect(() => {
-    return (
-      cartSum > zero ? setCartBtn(true) : setCartBtn(false)
-    );
+    if (cartSum > zero) {
+      return setCartBtn(true);
+    }
+    return setCartBtn(false);
   },
   [cartSum]);
 
-  if(!cartBtn){
-    return null
+  if (!cartBtn) {
+    return null;
   }
 
   return (

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import './index.css';
@@ -10,7 +10,7 @@ import CartButton from '../../components/cartButton';
 const Products = () => {
   const [theProducts, setProducts] = useState([]);
   const fetchProducts = async () => {
-    const { data } = await axios.get('http://localhost:3001/products', {headers: {Authorization: localStorage.getItem("token")}});
+    const { data } = await axios.get('http://localhost:3001/products');
     setProducts(data);
   };
 
