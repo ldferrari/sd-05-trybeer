@@ -5,7 +5,6 @@ const getAllProducts = async () => {
 
   if (!allProducts) throw { err: { code: 404, message: 'Not found' } };
 
-  console.log(allProducts);
   return allProducts;
 };
 
