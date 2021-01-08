@@ -28,11 +28,16 @@ users.post('/login', async (req, res) => {
 
 users.post('/register', async (req, res) => {
   try {
-    await service.createUser(req.body);
-    res.status(201).json({ message: 'Created' });
+    const { name, email, role } = req.body;
+    const user = await service.createUser(req.body);
+    if (user.message === 'E-mail already in database') {
+      return res.status(201).json({ message: 'E-mail already in database' });
+    }
+    const token = jwt.sign({ data: { name, email, role } }, secret, jwtConfig);
+    return res.status(201).json({ name, email, role, token });
   } catch (e) {
     console.log(e);
-    res.status(e.err.code).json({ message: e.err.message });
+    res.status(500).json(e);
   }
 });
 
@@ -40,10 +45,10 @@ users.put('/profile', async (req, res) => {
   try {
     const { name, email } = req.body;
     await service.updateUserName(name, email);
-    res.status(200).json({ message: 'name updated' });
+    res.status(200).json({ message: 'name updated', name: name });
   } catch (e) {
     console.log(e);
-    res.status(e.err.code).json({ message: e.err.message });
+    res.status(500).json(e);
   }
 });
 
