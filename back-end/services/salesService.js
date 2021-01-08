@@ -39,7 +39,7 @@ const createSale = async (newSale) => {
   return createdSale;
 };
 
-const closeSale = (body) => {
+const closeSale = async (body) => {
   const { id } = body;
 
   if (!id) {
@@ -49,7 +49,38 @@ const closeSale = (body) => {
   return model.closeSale(id);
 };
 
+const getByUserId = async (body) => {
+  const { email } = body;
+
+  if (!email) {
+    throw { err: { code: 404, message: 'email is invalid' } };
+  }
+
+  const userFound = await usersModel.logIn(email);
+  const { id } = userFound[0];
+
+  const userSales = await model.getByUserId(id);
+
+  if (!userSales) {
+    throw { err: { code: 404, message: 'error' } };
+  }
+
+  return userSales[0];
+};
+
+const getAllOpen = async () => {
+  const allSalesOpen = await model.getAllOpen();
+
+  if (!allSalesOpen) {
+    throw { err: { code: 404, message: 'error' } };
+  }
+
+  return allSalesOpen[0];
+}
+
 module.exports = {
   createSale,
   closeSale,
+  getByUserId,
+  getAllOpen,
 };

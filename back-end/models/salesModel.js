@@ -8,7 +8,13 @@ const createSale = async (userId, totalPrice, address, addressNumber, saleDate) 
 
 const closeSale = async (id) => connection.execute('UPDATE sales SET status = "closed" WHERE id = ?', [id]);
 
+const getByUserId = (userId) => connection.execute('SELECT * FROM sales WHERE user_id = ?;', [userId]);
+
+const getAllOpen = () => connection.execute('SELECT * FROM sales WHERE status = "open";');
+
 module.exports = {
   createSale,
   closeSale,
+  getByUserId,
+  getAllOpen,
 };
