@@ -23,7 +23,7 @@ export default function Header({ children }) {
         {/* <img src={ sidebaricon } alt="sideb" /> */}
         <span data-testid="top-title">Trybeer</span>
       </header>
-      <SideBar userRole={ userInfo } active={ btnBurguer } />
+      <div><SideBar userRole={ userInfo } active={ btnBurguer } /></div>
     </div>
   );
 }
