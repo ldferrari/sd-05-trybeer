@@ -1,18 +1,11 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router';
-import Input from '../components/Input';
-import Button from '../components/Button';
-import loginValidation from '../services/loginValidation';
-import { setLocalStorage } from '../services/localStorage';
-import '../App.css';
+import Input from '../Components/Input';
+import Button from '../Components/Button';
 
 const Login = () => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
 
-  const [isRedirect, setIsRedirect] = useState(false);
-
-  if (isRedirect) return <Redirect to="/comidas" />;
   return (
     <div id="Login">
       <h1>Login</h1>
@@ -30,12 +23,7 @@ const Login = () => {
       <Button
         test="login-submit-btn"
         disabled={loginValidation(email, password)}
-        onClick={() => {
-          setLocalStorage('mealsToken', 1);
-          setLocalStorage('cocktailsToken', 1);
-          setLocalStorage('user', { email });
-          setIsRedirect(true);
-        }}
+        onClick={() => {}}
       >
         Entrar
       </Button>
