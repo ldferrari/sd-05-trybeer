@@ -1,3 +1,14 @@
+// import React from 'react';
+// import Menu from '../../components/client/Menu';
+
+// export default function ClientProduct() {
+//   return (
+//     <div>
+//       <Menu title="Trybeer" />
+//     </div>
+//   );
+// }
+
 import React, { useEffect, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ClientContext from '../../context/client/ClientContext';
