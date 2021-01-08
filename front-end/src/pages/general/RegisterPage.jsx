@@ -5,12 +5,18 @@ import validateEmail from '../../services/general/validateEmail';
 import validatePassword from '../../services/general/validatePassword';
 import fetchUserEmail from '../../services/general/fetchUserEmail';
 
+const isUserRegistered = async (email) => {
+  const user =
+}
+
 export default function RegisterPage() {
   const [isNameValid, setNameValid] = useState(false);
   const [isEmailValid, setEmailValid] = useState(false);
   const [isPasswordValid, setPasswordValid] = useState(false);
   const [isSignupSellerSelected, setSignupSellerSelected] = useState(false);
   const [userEmail, setUserEmail] = useState('');
+  const [fetchResponse, setFetchResponse] = useState({});
+
   return (
     <div>
       <h2>Registro</h2>
@@ -38,6 +44,7 @@ export default function RegisterPage() {
             }) }
           />
         </label>
+        { (fetchResponse === {}) ? <div>E-mail already in database</div> : false }
       </div>
       <div>
         <label htmlFor="password">
@@ -69,7 +76,7 @@ export default function RegisterPage() {
           disabled={ !isNameValid || !isEmailValid || !isPasswordValid }
         >
           {(isNameValid && isEmailValid && isPasswordValid)
-            ? <Link onClick={ () => fetchUserEmail(userEmail) } to={ isSignupSellerSelected ? '/admin/orders' : '/products' }>Cadastrar</Link>
+            ? <Link onClick={ () =>  } to={ isSignupSellerSelected ? '/admin/orders' : '/products' }>Cadastrar</Link>
             : <div>Cadastrar</div>}
         </button>
       </div>
