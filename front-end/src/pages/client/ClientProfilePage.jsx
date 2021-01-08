@@ -16,8 +16,7 @@ export default function ClientProfilePage() {
 
   return (
     <div>
-      <Menu title="Meu perfil" />
-      <div data-testid="top-title">Meu perfil</div>
+      <Menu title="Meu perfil" data-testid="top-title" />
       <label htmlFor="email">
         Email
         {/* campos email e name, o value vai puxar do login ou do localstorage */}
