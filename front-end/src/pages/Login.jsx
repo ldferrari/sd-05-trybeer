@@ -1,19 +1,49 @@
-import React from 'react';
-// import { Redirect } from 'react-router-dom';
-// import useLogin from '../hooks/useLogin';
-import { InputEmail, InputPassword, BtnLogin, BtnSignUp, Progress } from '../components';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import TryBeerContext from '../context/TryBeerContext';
 
 const Login = () => {
-  // const { email, setEmail, password, setPassword } = useLogin();
-  console.log('Login');
+  const { email, setEmail, password, setPassword } = useContext(TryBeerContext);
+  const RegEx = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const validEmail = RegEx.test(String(email).toLowerCase());
+
   return (
-    <div>
-      <InputEmail />
-      <InputPassword />
-      <BtnLogin />
-      <BtnSignUp />
-      <Progress />
-    </div>
+    <section>
+      <form>
+        <label htmlFor="email-input">
+          Email
+          <input
+            data-testid="email-input"
+            type="email"
+            placeholder="Email"
+            onChange={(event) => setEmail(event.target.value)}
+          />
+        </label>
+        <label htmlFor="password-input">
+          Senha
+          <input
+            data-testid="password-input"
+            type="password"
+            placeholder="Senha"
+            onChange={(event) => setPassword(event.target.value)}
+          />
+        </label>
+        <Link to="/products">
+          <button
+            data-testid="signin-btn"
+            type="button"
+            disabled={!validEmail || password.length < 6}
+          >
+            ENTRAR
+          </button>
+        </Link>
+        <Link to="/register">
+          <button data-testid="no-account-btn" type="button">
+            Ainda não tenho conta
+          </button>
+        </Link>
+      </form>
+    </section>
   );
 };
 
