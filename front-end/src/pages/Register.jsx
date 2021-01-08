@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { validate } from '../services/validation';
+import { apiRegister } from '../services/ApiTrybeer';
 import TryBeerContext from '../context/TryBeerContext';
 
 const Register = () => {
@@ -13,38 +14,45 @@ const Register = () => {
   return (
     <form>
       <label htmlFor="signup-name">
+        Nome
         <input
           data-testid="signup-name"
           type="text"
           placeholder="Name"
           onChange={(e) => setName(e.target.value)}
         />
-        Nome
       </label>
       <label htmlFor="signup-email">
+        Email
         <input
           data-testid="signup-email"
           type="email"
+          value={email}
           placeholder="Email"
           onChange={(e) => setEmail(e.target.value)}
         />
-        Email
       </label>
       <label htmlFor="signup-password">
+        Senha
         <input
           data-testid="signup-password"
           type="password"
+          value={password}
           placeholder="Senha"
           onChange={(e) => setPassword(e.target.value)}
         />
-        Senha
       </label>
       <label htmlFor="signup-seller">
         <input data-testid="signup-seller" type="checkbox" onClick={handleClick} />
         Quero Vender
       </label>
       <Link to={!checked ? '/products' : '/admin/orders'}>
-        <button data-testid="signup-btn" type="button" disabled={!validate(email, password, name)}>
+        <button
+          data-testid="signup-btn"
+          type="button"
+          disabled={!validate(email, password, name)}
+          onClick={(email, password, name, checked) => apiRegister(email, password, name, checked)}
+        >
           Cadastrar
         </button>
         {console.log(checked)}

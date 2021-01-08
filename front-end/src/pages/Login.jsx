@@ -1,28 +1,13 @@
-import React, { useContext, useEffect } from 'react';
-<<<<<<< HEAD
-=======
-import axios from 'axios';
->>>>>>> fc4903d89564ee78530125f7c2394378778159b6
+import React, { useContext } from 'react';
+// import axios from 'axios';
 import { Link } from 'react-router-dom';
 import TryBeerContext from '../context/TryBeerContext';
+import { apiLogin } from '../services/ApiTrybeer';
 
 const Login = () => {
   const { email, setEmail, password, setPassword } = useContext(TryBeerContext);
   const RegEx = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const validEmail = RegEx.test(String(email).toLowerCase());
-
-  // useEffect(() => {
-  //   fetch('http://localhost:3001/api/users')
-  //     .then((result) => result.json())
-  //     .then((data) => console.log(data[0][0].role));
-  // }, []);
-
-  // O axios POST será disparado quando o botão ENTRAR por acionado.
-  // useEffect(() => {
-  //   axios
-  //     .post('http://localhost:3001/login', { email: 'tryber@trybe.com.br', password: '123456' })
-  //     .then((res) => console.log(res.data));
-  // }, []);
 
   return (
     <section>
@@ -55,7 +40,11 @@ const Login = () => {
           </button>
         </Link>
         <Link to="/register">
-          <button data-testid="no-account-btn" type="button">
+          <button
+            data-testid="no-account-btn"
+            type="button"
+            onClick={(email, password) => apiLogin(email, password)}
+          >
             Ainda não tenho conta
           </button>
         </Link>
