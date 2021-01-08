@@ -18,14 +18,26 @@ const Register = () => {
 
   const handleRegister = async (userToRegister, e) => {
     e.preventDefault();
+
     if (!validateRegister(userToRegister)) return setDesignetedRoute(undefined);
+
     const response = await registerUser(userToRegister);
+
+    if (response.message) {
+      const labelEmail = document.querySelector('#teste');
+      const alreadyExists = document.createElement('span');
+      alreadyExists.innerHTML = 'E-mail already in database.';
+      return labelEmail.appendChild(alreadyExists);
+    }
+
     localStorage.setItem('role', response.role);
     localStorage.setItem('token', response.token);
+
     return response.role === 'client'
       ? setDesignetedRoute('/products')
       : setDesignetedRoute('/adimn/orders');
   };
+
   return (
     <div>
       { designatedRoute !== undefined ? <Redirect to={ designatedRoute } /> : null }
@@ -42,7 +54,7 @@ const Register = () => {
             onChange={ (event) => setName(event.target.value) }
           />
         </label>
-        <label htmlFor="email">
+        <label htmlFor="email" id="teste">
           Email
           <input
             name="email"
