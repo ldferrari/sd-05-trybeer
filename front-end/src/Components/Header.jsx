@@ -1,5 +1,6 @@
 import React from 'react';
 import titleForHeader from '../Helper/titleForHeader';
+import SideBar from './SideBar';
 // refatorar na estilização 
 const headerStyle = {
   background: '#100F0F',
@@ -29,6 +30,8 @@ export default ({ pathname }) => {
           {title}
         </h1>
       </header>
+      <SideBar />
+
     </div>
   );
 };
