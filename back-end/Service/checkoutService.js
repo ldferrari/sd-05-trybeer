@@ -1,13 +1,15 @@
 const model = require('../Models/checkoutModel');
 
-const userModel = require('../Models/userModel');
+// const userModel = require('../Models/userModel');
 
-const validateEmail = (email) => {
+/* const validateEmail = (email) => {
   const regexEmail = RegExp(/\S+@\S+\.\S+/, 'i');
   return regexEmail.test(email);
-};
+}; */
 
-const getCheckout = async (email, password) => {
+const getCheckout = async (email, password) => model.getCheckout(email, password);
+
+/* const getCheckout = async (email, password) => {
   const emailExists = await userModel.getByEmail(email);
   if (!emailExists) {
     return {
@@ -36,7 +38,7 @@ const getCheckout = async (email, password) => {
     };
   }
   return model.getCheckout(email, password);
-};
+}; */
 
 module.exports = {
   getCheckout,

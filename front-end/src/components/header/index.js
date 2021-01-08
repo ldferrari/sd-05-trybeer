@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import './index.css';
 
@@ -43,7 +43,7 @@ const Header = ({ children }) => {
           data-testid="top-hamburguer"
           onClick={ () => { setDisplay(!display) } }
         >
-        &#9776;
+          &#9776;
         </button>
         <h2 data-testid="top-title" className="title">{children}</h2>
         </div>
