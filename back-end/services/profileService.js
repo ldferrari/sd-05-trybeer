@@ -7,7 +7,7 @@ const update = async (id, name) => {
     throw new Error({
       code: 'not_found',
       message: 'User not found',
-    })
+    });
   }
 
   await models.update(id, name);
