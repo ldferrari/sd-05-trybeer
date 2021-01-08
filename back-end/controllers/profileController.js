@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const rescue = require('express-rescue');
-/* const profileModel = require('../models/profileModel'); */
+const profileModel = require('../models/profileModel');
 
 const profileRouter = Router();
 

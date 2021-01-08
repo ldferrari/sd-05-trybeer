@@ -1,24 +1,24 @@
 import React from 'react';
-import PropTypes, { checkPropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 import '../../css/menu.css';
 
 export default function Menu(props) {
   const { title } = props;
 
   function menuChecked() {
-    if (document.getElementById("check").checked) {
-      document.getElementsByClassName("side-menu-container")[0].style.left = "0%";
+    if (document.getElementById('check').checked) {
+      document.getElementsByClassName('side-menu-container')[0].style.left = '0%';
     }
-    if (!document.getElementById("check").checked) {
-      document.getElementsByClassName("side-menu-container")[0].style.left = "-40%";
-    } 
+    if (!document.getElementById('check').checked) {
+      document.getElementsByClassName('side-menu-container')[0].style.left = '-40%';
+    }
   }
 
   return (
     <header className="menuSuperior">
       <label className="top-hamburguer" data-testid="top-hamburguer" htmlFor="check">
         &#9776;
-        <input type="checkbox" id="check" onChange={() => menuChecked()}/>
+        <input type="checkbox" id="check" onChange={ () => menuChecked() } />
       </label>
       <h1 className="topTitle" data-testid="top-title">{title}</h1>
       <div className="side-menu-container">
