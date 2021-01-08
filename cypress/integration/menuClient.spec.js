@@ -9,7 +9,7 @@ import {
   verifyContainsUrl,
 } from '../actions/actionBase';
   
-describe.skip('Crie o menu top e menu side bar', () => {
+describe('Crie o menu top e menu side bar', () => {
   before(() => {
     createAndInsertsDataBase()
   });

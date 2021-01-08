@@ -1,10 +1,10 @@
 import React from 'react';
 import Header from '../components/Header';
 
-const Products = () => (
+const Orders = () => (
   <div>
-    <Header>Products</Header>
+    <Header>Orders</Header>
   </div>
 );
 
-export default Products;
+export default Orders;

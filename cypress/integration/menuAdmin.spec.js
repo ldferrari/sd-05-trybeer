@@ -7,7 +7,7 @@ import {
   verifyContainsUrl,
 } from '../actions/actionBase';
   
-describe.skip('Criar menu side bar para administrador', () => {
+describe('Criar menu side bar para administrador', () => {
   before(() => {
     createAndInsertsDataBase()
   });

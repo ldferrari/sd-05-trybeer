@@ -1,10 +1,10 @@
 import React from 'react';
 import Header from '../components/Header';
 
-const Products = () => (
+const Profile = () => (
   <div>
-    <Header>Products</Header>
+    <Header>Profile</Header>
   </div>
 );
 
-export default Products;
+export default Profile;
