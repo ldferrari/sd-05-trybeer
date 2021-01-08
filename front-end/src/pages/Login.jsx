@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import TryBeerContext from '../context/TryBeerContext';
 
@@ -6,6 +7,13 @@ const Login = () => {
   const { email, setEmail, password, setPassword } = useContext(TryBeerContext);
   const RegEx = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const validEmail = RegEx.test(String(email).toLowerCase());
+
+  // O axios POST será disparado quando o botão ENTRAR por acionado.
+  // useEffect(() => {
+  //   axios
+  //     .post('http://localhost:3001/login', { email: 'tryber@trybe.com.br', password: '123456' })
+  //     .then((res) => console.log(res.data));
+  // }, []);
 
   return (
     <section>
