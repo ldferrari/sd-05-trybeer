@@ -13,12 +13,14 @@ loginRouter.post(
 
     const userLogin = await loginService.userLogin(email, password);
     console.log(userLogin);
+    console.log('esse eh o userLogin');
     if (!userLogin) return res.status(400).json({ message: 'Login failed' });
 
     const payload = {
       issuer: 'post-api',
       audience: 'identity',
       userData: email,
+      userRole: userLogin.role,
     };
 
     const token = await createToken(payload);

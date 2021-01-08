@@ -1,4 +1,8 @@
 import React, { useContext, useEffect } from 'react';
+<<<<<<< HEAD
+=======
+import axios from 'axios';
+>>>>>>> fc4903d89564ee78530125f7c2394378778159b6
 import { Link } from 'react-router-dom';
 import TryBeerContext from '../context/TryBeerContext';
 
@@ -13,12 +17,12 @@ const Login = () => {
   //     .then((data) => console.log(data[0][0].role));
   // }, []);
 
-  useEffect(() => {
-    axios.post('http://localhost:3001/login', {email: "tryber@trybe.com", password: })
-      .then((result) => result.json())
-      .then((data) => console.log(data[0][0].role));
-  }, []);
-)
+  // O axios POST será disparado quando o botão ENTRAR por acionado.
+  // useEffect(() => {
+  //   axios
+  //     .post('http://localhost:3001/login', { email: 'tryber@trybe.com.br', password: '123456' })
+  //     .then((res) => console.log(res.data));
+  // }, []);
 
   return (
     <section>
