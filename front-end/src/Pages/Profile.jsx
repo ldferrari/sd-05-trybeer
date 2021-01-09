@@ -10,7 +10,7 @@ function Profile(props) {
 
   useEffect(() => {
     refreshUser();
-  }, []);
+  }, [refreshUser]); // lint pediu pra por o refreshUser
 
   return (
     <div className="container-main">

@@ -1,14 +1,16 @@
 import './App.css';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getProductsAct } from '../src/Redux/Actions/index';
 import { Route, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { getProductsAct } from './Redux/Actions/index';
 import Login from './Pages/Login';
 import Profile from './Pages/Profile';
 import Products from './Pages/Products';
 import Checkout from './Pages/Checkout';
 import Orders from './Pages/Orders';
 
+// prettier-ignore
 function App({ ProductsAPI }) {
   useEffect(() => {
     ProductsAPI();
@@ -17,21 +19,28 @@ function App({ ProductsAPI }) {
   return (
     <div>
       <Switch>
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/profile" component={Profile} />
-        <Route exact path="/products" component={Products} />
-        <Route exact path="/checkout" component={Checkout} />
-        <Route exact path="/orders" component={Orders} />
+        <Route exact path="/login" component={ Login } />
+        <Route exact path="/profile" component={ Profile } />
+        <Route exact path="/products" component={ Products } />
+        <Route exact path="/checkout" component={ Checkout } />
+        <Route exact path="/orders" component={ Orders } />
       </Switch>
     </div>
   );
 }
-const mapStateToProps = (state) => ({
-  products: state.productsRequestReducer.products,
-});
+
+App.propTypes = {
+  ProductsAPI: PropTypes.func.isRequired,
+};
+
+// Se 'products' for usado aqui, pode descomentar.
+
+// const mapStateToProps = (state) => ({
+//   products: state.productsRequestReducer.products,
+// });
 
 const mapDispatchToProps = (dispatch) => ({
   ProductsAPI: () => dispatch(getProductsAct()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);
