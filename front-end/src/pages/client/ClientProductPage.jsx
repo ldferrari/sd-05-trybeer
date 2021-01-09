@@ -6,6 +6,7 @@ import productsApi from '../../services/client/api';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
+  console.log(products);
 
   useEffect(() => {
     const prodAPI = productsApi().then(response => setProducts(response));
@@ -19,7 +20,6 @@ const Products = () => {
         {products.map(product => (
           <ProdCard key={product.id} product={product} />
         ))}
-        ,
       </div>
       <div>
         <button type="button" data-testid="checkout-bottom-btn">
