@@ -32,7 +32,8 @@ registerRouter.post('/', async (req, res) => {
     res.status(200).json(newUser);
   } catch (err) {
     if (err.code === 'invalid_email') {
-      return res.status(400).json({ message: 'E-mail already in database.' });
+      console.log(err);
+      return res.status(422).json({ message: 'E-mail already in database.' });
     }
 
     if (err.code === 'invalid_data') {

@@ -47,11 +47,7 @@ const Login = ({ history }) => {
           ENTRAR
         </button>
         <Link to="/register">
-          <button
-            data-testid="no-account-btn"
-            type="button"
-            // onClick={() => apiLogin(email, password)}
-          >
+          <button data-testid="no-account-btn" type="button">
             Ainda não tenho conta
           </button>
         </Link>

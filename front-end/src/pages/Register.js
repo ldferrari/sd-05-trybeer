@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import validate from '../services/validation';
 import { apiRegister } from '../services/ApiTrybeer';
 import TryBeerContext from '../context/TryBeerContext';
@@ -8,16 +8,24 @@ const Register = () => {
   const { email, password, name, checked, setEmail, setPassword, setName, setChecked } = useContext(
     TryBeerContext,
   );
+  const [thisEmailAlreadyExists, setThisEmailAlreadyExists] = useState('');
+  const history = useHistory();
+  const unprocessable = 422;
+  const reverse = -1;
 
-  const message = 'E-mail already in database.';
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const result = await apiRegister(name, email, password, checked);
+    const response = result.message && +result.message.split(' ').slice(reverse)[0];
+    return response === unprocessable
+      ? setThisEmailAlreadyExists('E-mail already in database.')
+      : history.push(!checked ? '/products' : '/admin/orders');
+  };
+
   const handleClick = () => setChecked(!checked);
 
   return (
     <form>
-      <p> Douglas Silva</p>
-      <p>doug@mail.com</p>
-      <p>password</p>
-
       <label htmlFor="signup-name">
         Nome
         <input
@@ -52,17 +60,15 @@ const Register = () => {
         <input data-testid="signup-seller" type="checkbox" onClick={handleClick} />
         Quero Vender
       </label>
-      <Link to={!checked ? '/products' : '/admin/orders'}>
-        <button
-          data-testid="signup-btn"
-          type="button"
-          disabled={!validate(email, password, name)}
-          onClick={() => apiRegister(email, password, name, checked)}
-        >
-          Cadastrar
-        </button>
-      </Link>
-      <span>{message}</span>
+      <button
+        data-testid="signup-btn"
+        type="button"
+        disabled={!validate(email, password, name)}
+        onClick={(e) => handleSubmit(e)}
+      >
+        Cadastrar
+      </button>
+      <span>{thisEmailAlreadyExists}</span>
     </form>
   );
 };
