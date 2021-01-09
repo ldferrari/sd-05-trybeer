@@ -3,5 +3,4 @@ export default (pathname) => ({
   '/products': 'Trybeer',
   '/checkout': 'Finalizar Pedido',
   '/orders': 'Meus Pedidos',
-  
-}[pathname])
+}[pathname]);

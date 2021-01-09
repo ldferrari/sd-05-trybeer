@@ -6,7 +6,7 @@ import {
 
 const INITIAL_STATE = {
   isLoading: false,
-  products: []
+  products: [],
 };
 
 function productsRequestReducer(state = INITIAL_STATE, action) {

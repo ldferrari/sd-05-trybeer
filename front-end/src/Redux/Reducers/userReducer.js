@@ -15,7 +15,12 @@ function userRequestReducer(state = INITIAL_STATE, action) {
     case REQUESTING_USER:
       return { ...state, isLoading: true };
     case REQUEST_USER_SUCCESS:
-      return { ...state, userData: action.data, shouldRedirect: true, isLoading: false };
+      return {
+        ...state,
+        userData: action.data,
+        shouldRedirect: true,
+        isLoading: false,
+      };
     case REQUEST_USER_ERROR:
       return {
         ...state,

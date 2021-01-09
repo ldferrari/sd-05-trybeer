@@ -1,4 +1,4 @@
-import { getUser } from "../Services/index";
+import { getUser } from '../Services/index';
 
 export const REQUESTING_USER = 'REQUESTING_USER';
 export const REQUEST_USER_SUCCESS = 'REQUEST_USER_SUCCESS';
