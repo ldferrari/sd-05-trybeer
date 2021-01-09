@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { validate } from '../services/validation';
+import validate from '../services/validation';
 import { apiRegister } from '../services/ApiTrybeer';
 import TryBeerContext from '../context/TryBeerContext';
 
