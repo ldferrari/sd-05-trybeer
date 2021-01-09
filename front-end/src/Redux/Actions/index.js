@@ -1,4 +1,5 @@
 import { getProducts } from '../Services/index';
+
 export const REQUESTING_PRODUCTS = 'REQUESTING_PRODUCTS';
 export const REQUEST_PRODUCTS_SUCCESS = 'REQUEST_PRODUCTS_SUCCESS';
 export const REQUEST_PRODUCTS_ERROR = 'REQUEST_PRODUCTS_ERROR';
