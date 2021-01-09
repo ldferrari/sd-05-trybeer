@@ -8,6 +8,7 @@ import Profile from './Pages/Profile';
 import Products from './Pages/Products';
 import Checkout from './Pages/Checkout';
 import Orders from './Pages/Orders';
+import Register from './Pages/Register';
 
 function App({ ProductsAPI }) {
   useEffect(() => {
@@ -17,6 +18,7 @@ function App({ ProductsAPI }) {
   return (
     <div>
       <Switch>
+        <Route exact path="/register" component={Register} />
         <Route exact path="/" component={Login} />
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/products" component={Products} />
