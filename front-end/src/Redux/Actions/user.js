@@ -18,10 +18,10 @@ const requestUserError = (error) => ({
   error,
 });
 
-export function getUserData() {
+export function getUserDataAct(body) {
   return (dispatch) => {
     dispatch(requestingUser());
-    return getUser().then(
+    return getUser(body).then(
       (data) => dispatch(requestUserSuccess(data)),
       (error) => dispatch(requestUserError(error)),
     );

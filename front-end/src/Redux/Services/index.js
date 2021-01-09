@@ -8,6 +8,17 @@ const myInit = {
   },
 };
 
+const myInitWithBody = (data) => {
+  return {
+    mode: 'cors',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  };
+};
+
 export const getProducts = () =>
   fetch(`${localhostURL}/products`, myInit).then((response) =>
     response
@@ -17,10 +28,13 @@ export const getProducts = () =>
       ),
   );
 
-export const getUser = () => (
-  // Simula a requisição
-  new Promise((resolve, _reject) => {
-      resolve({ name: "Teste", email: "teste@teste.com" });
-    }
-  )
-);
+export const getUser = (data) => {
+  console.log(myInitWithBody(data));
+  return fetch(`${localhostURL}/`, myInitWithBody(data)).then((response) =>
+    response
+      .json()
+      .then((json) =>
+        response.ok ? Promise.resolve(json) : Promise.reject(json),
+      ),
+  );
+};
