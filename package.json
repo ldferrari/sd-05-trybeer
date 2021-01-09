@@ -23,10 +23,7 @@
   },
   "homepage": "https://github.com/betrybe/sd-0x-trybeer#readme",
   "dependencies": {
-<<<<<<< HEAD
-=======
     "mysql2": "^2.2.5",
->>>>>>> ad9ecc71a68a9f4013bf35e079115e3c7aa24a38
     "sequelize": "^6.3.4"
   },
   "devDependencies": {
