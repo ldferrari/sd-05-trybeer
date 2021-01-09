@@ -9,15 +9,21 @@ const Register = () => {
     TryBeerContext,
   );
 
+  const message = 'E-mail already in database.';
   const handleClick = () => setChecked(!checked);
 
   return (
     <form>
+      <p> Douglas Silva</p>
+      <p>doug@mail.com</p>
+      <p>password</p>
+
       <label htmlFor="signup-name">
         Nome
         <input
           data-testid="signup-name"
           type="text"
+          value={name}
           placeholder="Name"
           onChange={(e) => setName(e.target.value)}
         />
@@ -51,12 +57,12 @@ const Register = () => {
           data-testid="signup-btn"
           type="button"
           disabled={!validate(email, password, name)}
-          onClick={(email, password, name, checked) => apiRegister(email, password, name, checked)}
+          onClick={() => apiRegister(email, password, name, checked)}
         >
           Cadastrar
         </button>
-        {console.log(checked)}
       </Link>
+      <span>{message}</span>
     </form>
   );
 };
