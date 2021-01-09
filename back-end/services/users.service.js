@@ -4,33 +4,15 @@ const jwt = require('../auth/jwt.auth');
 const userModel = require('../models/user.model');
 
 const LOGIN_SCHEMA = Joi.object({
-  email: Joi.string()
-    .email()
-    .required(),
-  password: Joi.string()
-    .min(3)
-    .max(64)
-    .required(),
+  email: Joi.string().email().required(),
+  password: Joi.string().min(3).max(64).required(),
 });
 
 const REGISTER_SCHEMA = Joi.object({
-  email: Joi
-    .string()
-    .email()
-    .required(),
-  name: Joi
-    .string()
-    .min(3)
-    .max(64)
-    .required(),
-  password: Joi
-    .string()
-    .min(3)
-    .max(64)
-    .required(),
-  role: Joi
-    .string()
-    .required(),
+  email: Joi.string().email().required(),
+  name: Joi.string().min(3).max(64).required(),
+  password: Joi.string().min(3).max(64).required(),
+  role: Joi.string().required(),
 });
 
 const login = rescue(async (req, _res, next) => {
@@ -40,7 +22,7 @@ const login = rescue(async (req, _res, next) => {
   console.log(user);
   if (error) throw new Error(error);
   if (!user) throw new Error('Email ou senha inválidos');
-  req.data = {user,token: jwt.createToken(user)};
+  req.data = { user, token: jwt.createToken(user) };
   next();
 });
 
