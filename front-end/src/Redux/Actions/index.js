@@ -30,9 +30,32 @@ export function getProductsAct() {
   };
 }
 
-export const ADDING_TO_CART = 'ADD_TO_CART';
+export const ADD_CART = 'ADD_CART';
+export const DELETE_CART = 'DELETE_CART';
+export const GET_QUANTITY_CART = 'GET_NUMBER_CART';
+export const INCREASE_QUANTITY = 'INCREASE_QUANTITY';
+export const DECREASE_QUANTITY = 'DECREASE_QUANTITY';
 
-const addingToCart = (product) => ({
-  type: ADDING_TO_CART,
+export const addToCartAct = (product) => ({
+  type: ADD_CART,
   product,
+});
+
+export const deleteFromCartAct = (key) => ({
+  type: DELETE_CART,
+  key,
+});
+
+export const getCartQuantityAct = () => ({
+  type: GET_QUANTITY_CART,
+});
+
+export const increaseQuantityAct = (key) => ({
+  type: INCREASE_QUANTITY,
+  key,
+});
+
+export const decreaseQuantityAct = (key) => ({
+  type: DECREASE_QUANTITY,
+  key,
 });
