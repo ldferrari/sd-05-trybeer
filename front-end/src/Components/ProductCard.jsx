@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import increaseQuantity from '../Helpers/increaseQuantity'
 
 function ProductCard({ product, index }) {
   const { name, price, url_image } = product;
@@ -14,12 +15,11 @@ function ProductCard({ product, index }) {
       <div data-testid={`${index}-product-name`}>{name}</div>
       <button
         type="button"
-        // onClick={() => increaseOrDecrease(product, false)}
       >-</button>
       <span data-testid={`${index}-product-qtd`}>{}</span>
       <button
         type="button"
-        // onClick={() => increaseOrDecrease(product, false)}
+        onClick={() => increaseQuantity(product)}
       >+</button>
     </div>
   );
