@@ -5,7 +5,6 @@ const errorMiddleware = require('./middlewares/error');
 const registerController = require('./controllers/registerController');
 const profileController = require('./controllers/profileController.js');
 const productsController = require('./controllers/productsController.js');
-const cors = require('cors');
 
 const app = express();
 
@@ -18,5 +17,5 @@ app.use(errorMiddleware);
 
 app.use('/products', productsController);
 
-const PORT = 3001;
+const PORT = 3000;
 app.listen(PORT, () => console.log(`Ouvindo na porta ${PORT}`));

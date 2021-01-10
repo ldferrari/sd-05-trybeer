@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import ProdCard from '../../components/client/ProductCard';
 // import ClientContext from '../../context/client/ClientContext';
 import productsApi from '../../services/client/api';
+import Menu from '../../components/client/Menu';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -11,11 +12,13 @@ const Products = () => {
   useEffect(() => {
     const prodAPI = productsApi().then(response => setProducts(response));
   }, []);
+  console.log(products);
 
   // if (isLoading) return <div>Carregando...</div>;
 
   return (
     <div>
+      <Menu title="Trybeer" />
       <div>
         {products.map(product => (
           <ProdCard key={product.id} product={product} />
