@@ -13,7 +13,7 @@ const INITIAL_STATE = {
   isLoading: false,
   products: [],
   cart: [],
-  cartQuantity: 0,
+  totalPrice: 0,
 };
 
 function productsRequestReducer(state = INITIAL_STATE, action) {
@@ -32,36 +32,50 @@ function productsRequestReducer(state = INITIAL_STATE, action) {
         products: action.error,
         isLoading: false,
       };
-    case ADD_CART:
+    case ADD_CART: {
+      let key;
       let { id, name, price, url_image } = action.product;
-      if (state.cartQuantity == 0) {
+      let cartItemFound = state.cart.find((item) => item.id === id);
+      if (!cartItemFound) {
         let newProduct = { id, name, price, url_image, quantity: 1 };
-        state.cart.push(newProduct);
+        return { ...state, cart: [...state, newProduct] }
       } else {
-        state.cart.map((item, index) => item.id == id ? state.cart[index].quantity++ : null);
+        state.cart.map((item, key_) => {
+          if (item.id === id) {
+            state.cart[key].quantity++;
+            key = key_;
+          }
+        });
       }
-      return { ...state, cartQuantity: state.cartQuantity++, }
-    case DELETE_CART:
-      let product = state.cart[action.key]
+      console.log('Adicionado!');
+      return { ...state, totalPrice: state.totalPrice + (price * state.cart[key].quantity), };
+    }
+    case DELETE_CART: {
+      let { id, price, quantity } = state.cart[action.key];
       return {
         ...state,
-        cartQuantity: state.cartQuantity - product.quantity,
-        cart: state.cart.filter((item) => item.id != product.id),
+        totalPrice: state.totalPrice + price * quantity,
+        cart: state.cart.filter((item) => item.id !== id),
       }
+    }
     case GET_QUANTITY_CART:
       return { ...state, };
-    case INCREASE_QUANTITY:
+    case INCREASE_QUANTITY: {
+      let { price, quantity } = action.product;
       return {
         ...state,
-        cartQuantity: state.cartQuantity++,
-        cart: state.cart[action.key].quantity++,
+        totalPrice: state.totalPrice + price * quantity,
+        cart: quantity++,
       }
-    case DECREASE_QUANTITY:
+    }
+    case DECREASE_QUANTITY: {
+      let { price, quantity } = state.cart[action.key];
       return {
         ...state,
-        cartQuantity: state.cartQuantity--,
-        cart: state.cart[action.key].quantity--,
+        totalPrice: state.totalPrice + price * quantity,
+        cart: quantity--,
       }
+    }
     default:
       return state;
   }

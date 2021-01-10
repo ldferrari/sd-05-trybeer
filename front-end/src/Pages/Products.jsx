@@ -10,13 +10,12 @@ function Products({ products }) {
     <div>
       {/*<Header />*/}
       <h1>Produtos</h1>
-      {products.map((product, index) =>
+      {products.map((product, key) =>
         <ProductCard
-          key={product.id}
+          key={key}
           product={product}
-          index={index}
         />)}
-      <Link to="/checkout" >Ver carrinho</Link>
+      <Link to="/checkout">Ver carrinho</Link>
     </div>
   );
 };

@@ -36,10 +36,16 @@ export const GET_QUANTITY_CART = 'GET_NUMBER_CART';
 export const INCREASE_QUANTITY = 'INCREASE_QUANTITY';
 export const DECREASE_QUANTITY = 'DECREASE_QUANTITY';
 
-export const addToCartAct = (product) => ({
+const addToCart = (product) => ({
   type: ADD_CART,
   product,
 });
+
+export function addToCartAct(product) {
+  return (dispatch) => {
+    dispatch(addToCart(product));
+  };
+}
 
 export const deleteFromCartAct = (key) => ({
   type: DELETE_CART,

@@ -1,25 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import increaseQuantity from '../Helpers/increaseQuantity'
+import { connect } from 'react-redux';
+import { increaseQuantityAct, decreaseQuantityAct, addToCartAct } from '../Redux/Actions';
 
-function ProductCard({ product, index }) {
+function ProductCard({ key, product, increaseQuantity, decreaseQuantity }) {
   const { name, price, url_image } = product;
   return (
     <div>
-      <div data-testid={`${index}-product-price`} >{price}</div>
+      <div data-testid={`${key}-product-price`} >{price}</div>
       <img
-        data-testid={`${index}-product-img`}
+        data-testid={`${key}-product-img`}
         src={url_image}
         alt={name}
       />
-      <div data-testid={`${index}-product-name`}>{name}</div>
+      <div data-testid={`${key}-product-name`}>{name}</div>
       <button
         type="button"
+        onClick={() => {
+
+          decreaseQuantity(key)
+        }}
       >-</button>
-      <span data-testid={`${index}-product-qtd`}>{}</span>
+      <span data-testid={`${key}-product-qtd`}>{}</span>
       <button
         type="button"
-        onClick={() => increaseQuantity(product)}
+        onClick={() => {addToCartAct(product);}}
       >+</button>
     </div>
   );
@@ -28,10 +33,17 @@ function ProductCard({ product, index }) {
 ProductCard.propTypes = {
   product: PropTypes.object,
   index: PropTypes.number,
+  addToCart: PropTypes.func,
+  increaseQuantity: PropTypes.func,
+  decreaseQuantity: PropTypes.func,
 };
 
-// const mapDispatchToProps = (dispatch) => ({
+const mapStateToProps = (state) => ({});
 
-// });
+const mapDispatchToProps = (dispatch) => ({
+  addToCart: (product) => dispatch(addToCartAct(product)),
+  increaseQuantity: (product) => dispatch(increaseQuantityAct(product)),
+  decreaseQuantity: (product) => dispatch(decreaseQuantityAct(product)),
+});
 
-export default ProductCard;
+export default connect(mapStateToProps, mapDispatchToProps)(ProductCard);
