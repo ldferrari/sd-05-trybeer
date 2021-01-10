@@ -12,7 +12,7 @@ login.post(
       return next(user);
     }
     res.status(201).json(user);
-  })
+  }),
 );
 
 module.exports = login;
