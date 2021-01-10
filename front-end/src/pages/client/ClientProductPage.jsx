@@ -7,10 +7,12 @@ import Menu from '../../components/client/Menu';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
+  console.log(products);
 
   useEffect(() => {
     productsApi().then(response => setProducts(response));
   }, []);
+  console.log(products);
 
   // if (isLoading) return <div>Carregando...</div>;
 

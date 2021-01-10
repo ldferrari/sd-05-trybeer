@@ -1,5 +1,6 @@
 import React, { useEffect, useContext, useState } from 'react';
 // import ClientContext from '../../context/client/ClientContext';
+import QuantityButton from '../../components/client/QuantityButton';
 
 const ProdCard = (props) => {
   
@@ -18,25 +19,7 @@ const ProdCard = (props) => {
       <div data-testid={ `${product.id}-product-price` }>
         R$ { product.price }               
       </div>
-      <div>
-        <button 
-          type="button"
-          data-testid={ `${product.id}-product-minus` }
-          // onClick={ () => diminuir unidade e remover do carrinho }
-        >
-          -
-        </button>
-        <div data-testid={ `${product.id}-product-qtd` }>
-          Quantidade
-        </div>
-        <button 
-          data-testid={ `${product.id}-product-plus` }
-          type="button"
-          // onClick={ () => aumentar unidade e adicionar ao carrinho }
-        >
-          +
-        </button>
-      </div>
+      <QuantityButton />
     </div>
   )
 }
