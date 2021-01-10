@@ -7,7 +7,7 @@ const getByEmail = async (email) => {
   return user[0][0];
 };
 
-const createUser = async (name, email, password, role) => await connection.execute(
+const createUser = async (name, email, password, role) => connection.execute(
   'INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)',
   [name, email, password, role],
 );
