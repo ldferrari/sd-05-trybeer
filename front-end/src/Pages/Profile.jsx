@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import Header from '../Components/Header';
 import PropTypes from 'prop-types';
 
-import { getUserData } from '../Redux/Actions/user';
+import { getUserDataAct } from '../Redux/Actions/user';
 
 function Profile(props) {
   const { name, email, refreshUser } = props;
 
   useEffect(() => {
     refreshUser();
-  }, []);
+  }, [refreshUser]); // lint pediu pra por o refreshUser
 
   return (
     <div className="container-main">
@@ -40,7 +40,7 @@ const mapStateToProps = ({ userRequestReducer }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  refreshUser: () => dispatch(getUserData()),
+  refreshUser: () => dispatch(getUserDataAct()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

@@ -8,19 +8,45 @@ const myInit = {
   },
 };
 
-export const getProducts = () =>
-  fetch(`${localhostURL}/products`, myInit).then((response) =>
+const myInitWithBody = (data) => ({
+  mode: 'cors',
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(data),
+});
+
+// NÃO USAR ESTA SINTAXE *lint:
+
+// export const getProducts = () =>
+//   fetch(`${localhostURL}/products`, myInit).then((response) =>
+//     response
+//       .json()
+//       .then((json) =>
+//         response.ok ? Promise.resolve(json) : Promise.reject(json),
+//       ),
+//   );
+
+// Use esta aqui ou outra que não envolva retorno do retorno do ternário:
+
+// prettier-ignore
+export const getProducts = () => (
+  fetch(`${localhostURL}/productss`, myInit).then((response) => (
     response
       .json()
-      .then((json) =>
-        response.ok ? Promise.resolve(json) : Promise.reject(json),
-      ),
-  );
+      .then((json) => Promise.resolve(json))
+      .catch((err) => console.error(err))
+  )));
 
-export const getUser = () => (
-  // Simula a requisição
-  new Promise((resolve, _reject) => {
-      resolve({ name: "Teste", email: "teste@teste.com" });
-    }
-  )
-);
+// prettier-ignore
+export const getUser = (data) => {
+  console.log(myInitWithBody(data));
+  return fetch(`${localhostURL}/`, myInitWithBody(data)).then((response) => (
+    response
+      .json()
+      .then((json) => Promise.resolve(json))
+      .catch((err) => console.error(err))));
+};
+
+// Achar saída adequada para os 'catchs', no lugar de console.error.
