@@ -7,9 +7,15 @@ const getByEmail = async (email) => {
   return user[0][0];
 };
 
-const createUser = async (name, email, password, role) => connection.execute(
-  'INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)',
-  [name, email, password, role],
-);
+const createUser = async (name, email, password, role) =>
+  connection.execute('INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)', [
+    name,
+    email,
+    password,
+    role,
+  ]);
 
-module.exports = { getAllUsers, getByEmail, createUser };
+const updateUser = async (nameEdit, email) =>
+  connection.execute('UPDATE users SET name = ? WHERE email = ?', [nameEdit, email]);
+
+module.exports = { getAllUsers, getByEmail, createUser, updateUser };
