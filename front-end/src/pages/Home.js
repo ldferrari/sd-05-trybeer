@@ -5,9 +5,9 @@ import { Login, Register } from '.';
 const Home = () => (
   <Router>
     <Switch>
-      <Route exact path="/" component={Login} />
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/register" component={Register} />
+      <Route exact path="/" component={ Login } />
+      <Route exact path="/login" component={ Login } />
+      <Route exact path="/register" component={ Register } />
     </Switch>
   </Router>
 );

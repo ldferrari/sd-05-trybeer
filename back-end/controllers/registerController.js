@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const rescue = require('express-rescue');
+// const rescue = require('express-rescue');
 const registerService = require('../services/registerService');
 
 const registerRouter = Router();
