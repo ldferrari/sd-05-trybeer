@@ -10,7 +10,7 @@ const Products = () => {
   console.log(products);
 
   useEffect(() => {
-    const prodAPI = productsApi().then(response => setProducts(response));
+    productsApi().then(response => setProducts(response));
   }, []);
   console.log(products);
 

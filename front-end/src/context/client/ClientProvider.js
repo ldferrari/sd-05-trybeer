@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ClientContext from './ClientContext';
+import productsApi from '../../services/client/api';
+
 
 const ClientProvider = ({ children }) => {
   const [email, setEmail] = useState('');
@@ -15,6 +17,13 @@ const ClientProvider = ({ children }) => {
     products,
     setProducts,
   };
+
+  // console.log(products);
+
+  // useEffect(() => {
+  //   productsApi()
+  //     .then((products) => { setProducts(products) });
+  // }, []);
 
   return <ClientContext.Provider value={ context }>{children}</ClientContext.Provider>;
 };

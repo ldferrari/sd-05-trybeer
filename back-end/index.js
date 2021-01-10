@@ -9,10 +9,13 @@ const productsController = require('./controllers/productsController.js');
 const app = express();
 
 app.use(bodyParser.json());
+
 app.use(cors());
 
 app.use('/register', registerController);
+
 app.use('/profile', profileController);
+
 app.use(errorMiddleware);
 
 app.use('/products', productsController);
