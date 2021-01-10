@@ -22,6 +22,7 @@ function Products({ products, totalPrice }) {
 
 Products.propTypes = {
   products: PropTypes.array,
+  totalPrice: PropTypes.number,
 };
 
 const mapStateToProps = (state) => ({

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { increaseQuantityAct, decreaseQuantityAct } from '../Redux/Actions';
 
-function ProductCard({ key, product, increaseQuantity, decreaseQuantity }) {
+function ProductCard({ key, product, cart, increaseQuantity, decreaseQuantity }) {
+  const [quantity, setQuantity] = useState(0);
   const { name, price, url_image } = product;
   return (
     <div>
@@ -16,12 +17,18 @@ function ProductCard({ key, product, increaseQuantity, decreaseQuantity }) {
       <div data-testid={`${key}-product-name`}>{name}</div>
       <button
         type="button"
-        onClick={() => decreaseQuantity(product)}
+        onClick={() => {
+          decreaseQuantity(product);
+          if (quantity > 0) setQuantity(quantity - 1);
+        }}
       >-</button>
-      <span data-testid={`${key}-product-qtd`}>{}</span>
+      <span data-testid={`${key}-product-qtd`}>{quantity}</span>
       <button
         type="button"
-        onClick={() => increaseQuantity(product)}
+        onClick={() => {
+          increaseQuantity(product);
+          setQuantity(quantity + 1);
+        }}
       >+</button>
     </div >
   );
@@ -35,6 +42,7 @@ ProductCard.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
+  cart: state.productsReducer.cart,
   totalPrice: state.productsReducer.totalPrice,
 });
 
