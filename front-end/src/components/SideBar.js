@@ -29,9 +29,9 @@ export default function SideBar({ userRole, active }) {
             <a href="/admin/orders" data-testid="side-menu-item-orders">
               Meus pedidos
             </a>
-            <a href="/admin/profile" data-testid="side-menu-item-profile">
+            <Link to="/admin/profile" data-testid="side-menu-item-profile">
               Meu perfil
-            </a>
+            </Link>
           </div>
           <a href="/login" data-testid="side-menu-item-logout">
             Sair

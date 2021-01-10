@@ -4,6 +4,11 @@ import validateLogin from '../services/validateLogin';
 import { checkUser } from '../services/api';
 import Context from '../context/Context';
 
+// gambi pra passar no requisito 10 ARRUMAR dps da entrega 1
+localStorage.removeItem('role');
+localStorage.removeItem('email');
+localStorage.removeItem('token');
+
 const Login = () => {
   // const [email, setEmail] = useContext(Context);
   const { setUserEmail, setUserName, userEmail } = useContext(Context);

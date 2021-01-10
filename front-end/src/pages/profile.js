@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { Redirect } from 'react-router-dom';
 
 import { updateUserName } from '../services/api';
 import Header from '../components/Header';
@@ -7,6 +8,7 @@ import Context from '../context/Context';
 const Profile = () => {
   // const [email, setEmail] = useState('');
   const { userEmail, userName, setUserName } = useContext(Context);
+  const { role } = localStorage;
   const nameSize = 12;
   const [disableBtn, setDisableBtn] = useState(false);
   const handleChange = (event) => {
@@ -26,12 +28,13 @@ const Profile = () => {
     saveButton.innerText = 'Atualização concluída com sucesso';
     return response;
   };
+  if (!localStorage.token) return <Redirect to="/login" />;
   return (
     <div>
-      <Header>Meu perfil</Header>
+      <Header>{role === 'administrator' ? 'Perfil' : 'Meu perfil'}</Header>
       <form>
-        <label htmlFor="name">
-          Nome
+        <label htmlFor="name" data-testid="profile-name">
+          {role === 'administrator' ? userName : 'Nome'}
           <input
             name="name"
             type="text"
@@ -41,10 +44,11 @@ const Profile = () => {
             placeholder={ userName }
             required
             onChange={ (event) => handleChange(event) }
+            readOnly={ role === 'administrator' }
           />
         </label>
-        <label htmlFor="email" id="lblEmail">
-          Email
+        <label htmlFor="email" id="lblEmail" data-testid="profile-email">
+          {role === 'administrator' ? userEmail : 'Email'}
           <input
             name="email"
             type="email"
