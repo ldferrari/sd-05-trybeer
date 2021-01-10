@@ -22,7 +22,7 @@ function App({ ProductsAPI }) {
 }
 
 const mapStateToProps = (state) => ({
-  products: state.productsRequestReducer.products,
+  products: state.productsReducer.products,
 });
 
 const mapDispatchToProps = (dispatch) => ({

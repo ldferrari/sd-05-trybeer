@@ -2,9 +2,6 @@ import {
   REQUESTING_PRODUCTS,
   REQUEST_PRODUCTS_SUCCESS,
   REQUEST_PRODUCTS_ERROR,
-  ADD_CART,
-  DELETE_CART,
-  GET_QUANTITY_CART,
   INCREASE_QUANTITY,
   DECREASE_QUANTITY,
 } from '../Actions/index';
@@ -13,10 +10,10 @@ const INITIAL_STATE = {
   isLoading: false,
   products: [],
   cart: [],
-  totalPrice: 0,
+  totalPrice: 0.00,
 };
 
-function productsRequestReducer(state = INITIAL_STATE, action) {
+function productsReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case REQUESTING_PRODUCTS:
       return { ...state, isLoading: true };
@@ -32,48 +29,38 @@ function productsRequestReducer(state = INITIAL_STATE, action) {
         products: action.error,
         isLoading: false,
       };
-    case ADD_CART: {
-      let key;
-      let { id, name, price, url_image } = action.product;
-      let cartItemFound = state.cart.find((item) => item.id === id);
-      if (!cartItemFound) {
-        let newProduct = { id, name, price, url_image, quantity: 1 };
-        return { ...state, cart: [...state, newProduct] }
-      } else {
-        state.cart.map((item, key_) => {
-          if (item.id === id) {
-            state.cart[key].quantity++;
-            key = key_;
-          }
-        });
-      }
-      console.log('Adicionado!');
-      return { ...state, totalPrice: state.totalPrice + (price * state.cart[key].quantity), };
-    }
-    case DELETE_CART: {
-      let { id, price, quantity } = state.cart[action.key];
-      return {
-        ...state,
-        totalPrice: state.totalPrice + price * quantity,
-        cart: state.cart.filter((item) => item.id !== id),
-      }
-    }
-    case GET_QUANTITY_CART:
-      return { ...state, };
     case INCREASE_QUANTITY: {
-      let { price, quantity } = action.product;
+      let product = action.product;
+      let newCart = [...state.cart, { ...product, quantity: 1, }]
+      state.cart.map((item, key) => {
+        if (item.id === product.id) {
+          state.cart[key].quantity++;
+          newCart = state.cart;
+        }
+      })
       return {
         ...state,
-        totalPrice: state.totalPrice + price * quantity,
-        cart: quantity++,
+        cart: newCart,
+        totalPrice: Number((state.totalPrice + parseFloat(product.price)).toFixed(3)),
       }
     }
     case DECREASE_QUANTITY: {
-      let { price, quantity } = state.cart[action.key];
+      let product = action.product
+      let newCart = state.cart;
+      let newTotalPrice = state.totalPrice;
+      state.cart.map((item, key) => {
+        if (item.id === product.id) {
+          if (state.cart[key].quantity > 0) {
+            state.cart[key].quantity--
+            newTotalPrice = Number((state.totalPrice - parseFloat(product.price)).toFixed(3));
+          };
+          if (state.cart[key].quantity === 0) newCart = state.cart.filter((item) => item.id !== product.id);
+        }
+      })
       return {
         ...state,
-        totalPrice: state.totalPrice + price * quantity,
-        cart: quantity--,
+        totalPrice: newTotalPrice,
+        cart: newCart,
       }
     }
     default:
@@ -81,4 +68,4 @@ function productsRequestReducer(state = INITIAL_STATE, action) {
   }
 }
 
-export default productsRequestReducer;
+export default productsReducer;

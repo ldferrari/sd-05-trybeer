@@ -22,7 +22,7 @@ const requestProductsError = (error) => ({
 export function getProductsAct() {
   return (dispatch) => {
     dispatch(requestingProducts());
-    
+
     return getProducts().then(
       (data) => dispatch(requestProductsSuccess(data)),
       (error) => dispatch(requestProductsError(error)),
@@ -30,38 +30,15 @@ export function getProductsAct() {
   };
 }
 
-export const ADD_CART = 'ADD_CART';
-export const DELETE_CART = 'DELETE_CART';
-export const GET_QUANTITY_CART = 'GET_NUMBER_CART';
 export const INCREASE_QUANTITY = 'INCREASE_QUANTITY';
 export const DECREASE_QUANTITY = 'DECREASE_QUANTITY';
 
-const addToCart = (product) => ({
-  type: ADD_CART,
+export const increaseQuantityAct = (product) => ({
+  type: INCREASE_QUANTITY,
   product,
 });
 
-export function addToCartAct(product) {
-  return (dispatch) => {
-    dispatch(addToCart(product));
-  };
-}
-
-export const deleteFromCartAct = (key) => ({
-  type: DELETE_CART,
-  key,
-});
-
-export const getCartQuantityAct = () => ({
-  type: GET_QUANTITY_CART,
-});
-
-export const increaseQuantityAct = (key) => ({
-  type: INCREASE_QUANTITY,
-  key,
-});
-
-export const decreaseQuantityAct = (key) => ({
+export const decreaseQuantityAct = (product) => ({
   type: DECREASE_QUANTITY,
-  key,
+  product,
 });

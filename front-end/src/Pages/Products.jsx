@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 // import Header from './Header';
 import ProductCard from '../Components/ProductCard';
 
-function Products({ products }) {
+function Products({ products, totalPrice }) {
   return (
     <div>
       {/*<Header />*/}
@@ -15,7 +15,7 @@ function Products({ products }) {
           key={key}
           product={product}
         />)}
-      <Link to="/checkout">Ver carrinho</Link>
+      <Link to="/checkout">Ver carrinho {totalPrice}</Link>
     </div>
   );
 };
@@ -25,7 +25,8 @@ Products.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  products: state.productsRequestReducer.products,
+  products: state.productsReducer.products,
+  totalPrice: state.productsReducer.totalPrice,
 });
 
 export default connect(mapStateToProps)(Products);
