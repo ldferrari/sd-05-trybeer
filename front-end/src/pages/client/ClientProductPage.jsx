@@ -24,7 +24,9 @@ const Products = () => {
       </div>
       <div>
         <button type="button" data-testid="checkout-bottom-btn">
-          <Link to="/checkout">Ver carrinho // valor data-testid="checkout-bottom-btn-value"</Link>
+          <Link to="/checkout">
+            Ver carrinho // valor data-testid="checkout-bottom-btn-value"
+          </Link>
         </button>
       </div>
     </div>
