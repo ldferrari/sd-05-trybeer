@@ -32,7 +32,7 @@ const myInitWithBody = (data) => ({
 
 // prettier-ignore
 export const getProducts = () => (
-  fetch(`${localhostURL}/productss`, myInit).then((response) => (
+  fetch(`${localhostURL}/products`, myInit).then((response) => (
     response
       .json()
       .then((json) => Promise.resolve(json))
