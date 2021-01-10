@@ -79,7 +79,7 @@ Params:
 */
 export const getUserSales = (email) => {
   const userSales = axios
-    .get(`${API_URL}/checkout`, { email })
+    .get(`${API_URL}/checkout?email=${email}`, {})
     .then((response) => response.data)
     .catch((err) => err);
   return userSales;
@@ -102,11 +102,10 @@ Buscar detalhes de uma venda
 Params:
 
 - id da venda
-
 */
 export const getSaleDetails = (id) => {
   const saleDetails = axios
-    .get(`${API_URL}/details`, { id })
+    .get(`${API_URL}/details?id=${id}`)
     .then((response) => response.data)
     .catch((err) => err);
   return saleDetails;
@@ -122,8 +121,19 @@ Params:
 */
 export const getProductById = (id) => {
   const product = axios
-    .get(`${API_URL}/products/id`, { id })
+    .get(`${API_URL}/products/id?id=${id}`, {})
     .then((response) => response.data)
     .catch((err) => err);
   return product;
+};
+
+/*
+Buscar todas as vendas cadastradas
+*/
+export const getAllSales = () => {
+  const allSales = axios
+    .get(`${API_URL}/checkout/all-sales`, {})
+    .then((response) => response.data)
+    .catch((err) => err);
+  return allSales;
 };

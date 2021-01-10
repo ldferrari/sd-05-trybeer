@@ -12,9 +12,12 @@ const getByUserId = (userId) => connection.execute('SELECT * FROM sales WHERE us
 
 const getAllOpen = () => connection.execute('SELECT * FROM sales WHERE status = "Pendente";');
 
+const getAll = () => connection.execute('SELECT * FROM sales;');
+
 module.exports = {
   createSale,
   closeSale,
   getByUserId,
   getAllOpen,
+  getAll,
 };

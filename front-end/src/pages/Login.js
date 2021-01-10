@@ -5,6 +5,8 @@ import TrybeerContext from '../context/TrybeerContext';
 import { login } from '../services/fetch';
 import { withRouter } from 'react-router-dom';
 
+import SqlBtn from '../components/sqlBtn';
+
 function inputEmail(handleEmailChange) {
   return (
     <div className="login-input">
@@ -100,6 +102,7 @@ function Login({ history }) {
           Ainda não tenho conta
         </button>
       </Link>
+      <SqlBtn />
     </div>
   );
 }

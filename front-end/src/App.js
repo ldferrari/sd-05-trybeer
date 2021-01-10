@@ -10,7 +10,7 @@ import Orders from './pages/client/Orders';
 // import OrdersDetails from './pages/client/OrdersDetails';
 import AdminProfile from './pages/admin/AdminProfile';
 import PendingOrders from './pages/admin/PendingOrders';
-// import AdminOrdersDetails from './pages/admin/AdminOrdersDetails';
+import AdminOrdersDetails from './pages/admin/AdminOrdersDetails';
 
 function App() {
   return (
@@ -32,11 +32,10 @@ function App() {
         {/* Problem ESLINT "Prop spreading is forbidden" */}
         <Route exact path="/admin/profile" component={AdminProfile} />
         <Route exact path="/admin/orders" component={PendingOrders} />
-        {/* <Route
-          exact
-          path="/admin/orders/:id"
+        <Route
+          exact path="/admin/orders/:id"
           render={ (props) => <AdminOrdersDetails { ...props } /> }
-        /> */}
+        />
       </Switch>
     </BrowserRouter>
   );
