@@ -15,5 +15,4 @@ products.post('/', productsServices.addProduct, (req, res) => {
   res.status(200).json(req.data);
 });
 
-
 module.exports = products;

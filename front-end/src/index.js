@@ -6,9 +6,9 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from './Redux/Store';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+// prettier-ignore
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={ store }>
     <BrowserRouter>
       <App />
     </BrowserRouter>

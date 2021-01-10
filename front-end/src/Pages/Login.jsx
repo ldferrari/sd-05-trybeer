@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import Input from '../Components/Input';
+import { getUserDataAct } from '../Redux/Actions/user';
 
-const Login = () => {
+const Login = ({ submitLogin }) => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [isDisabled, isSetDisabled] = useState(true);
@@ -20,25 +22,46 @@ const Login = () => {
     validaInput(email, password);
   }, [email, password]);
 
+
   return (
     <div id="Login">
       <h1>Login</h1>
-      <Input
-        test="email-input"
-        placeholder="Digite seu e-mail"
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <Input
-        type="password"
-        test="password-input"
-        placeholder="Digite sua senha"
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button disabled={isDisabled}  >
+      <form>
+        <Input
+          test="email-input"
+          placeholder="Digite seu e-mail"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <Input
+          type="password"
+          test="password-input"
+          placeholder="Digite sua senha"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </form>
+        <button
+          disabled={isDisabled}
+          type="submit"
+          onClick={(event) => {
+            event.preventDefault();
+            submitLogin({ email, password })}
+
+          }
+        >
         Entrar
       </button>
     </div>
   );
 };
 
-export default Login;
+const mapStateToProps = (state) => ({
+  products: state.productsRequestReducer.products,
+  shouldRedirect: state.userRequestReducer.shouldRedirect,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  submitLogin: (data) =>
+    dispatch(getUserDataAct(data)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -13,7 +13,7 @@ user.post('/register', userServices.register, (req, res) => {
 });
 
 user.post('/', userServices.login, (req, res) => {
-  res.status(200).json({ token: req.data });
+  res.status(200).json(req.data);
 });
 
 module.exports = user;
