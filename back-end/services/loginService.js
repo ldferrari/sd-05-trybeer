@@ -42,11 +42,11 @@ const validationUser = async (body) => {
   }
 
   if (user.password !== password) {
-      return {
-          error: true,
-          code: 'invalid_user',
-          message: 'Senha incorreta'
-      }
+    return {
+      error: true,
+      code: 'invalid_user',
+      message: 'Senha incorreta',
+    };
   }
 
   const token = crypto.randomBytes(8).toString('hex');

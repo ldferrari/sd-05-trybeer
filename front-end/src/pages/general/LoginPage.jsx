@@ -10,16 +10,16 @@ export default function LoginPage() {
   const [userData, setUserData] = useState({
     email: '',
     password: '',
-    role: ''
+    role: '',
   });
 
   const login = async (data) => {
     const usuario = await loginData(data);
-    setUserData({...userData, role: usuario.role})
+    setUserData({ ...userData, role: usuario.role });
   };
-  
-  if (userData.role === "administrator") return <Redirect to='/admin/orders' />
-  if (userData.role === "client") return <Redirect to='/products' />
+
+  if (userData.role === 'administrator') return <Redirect to="/admin/orders" />;
+  if (userData.role === 'client') return <Redirect to="/products" />;
   return (
     <div>
       <label htmlFor="email">
@@ -47,13 +47,12 @@ export default function LoginPage() {
               setPasswordValidate(true);
               setUserData({ ...userData, password: event.target.value });
             }
-          }
-        }
+          }}
         />
       </label>
       <button
         data-testid="signin-btn"
-        disabled = {!emailValidate || !passwordValidate}
+        disabled={!emailValidate || !passwordValidate}
         onClick={() => {
           login(userData);
         }}
