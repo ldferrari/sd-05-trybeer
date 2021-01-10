@@ -1,17 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Redirect } from 'react-router-dom';
+
+import Context from '../context/Context';
 import { registerUser } from '../services/api';
-import validateRegister from '../services/validateRegister';
+import { validateRegister } from '../services/validateRegister';
 
 const Register = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  // const [email, setEmail] = useContext(Context);
+  const {
+    userName,
+    setUserName,
+    userEmail,
+    setUserEmail,
+  } = useContext(Context);
   const [password, setPassword] = useState('');
   const [seller, setSeller] = useState(false);
   const [designatedRoute, setDesignetedRoute] = useState(undefined);
   const userData = {
-    name,
-    email,
+    name: userName,
+    email: userEmail,
     password,
     checkbox: seller,
   };
@@ -51,7 +58,7 @@ const Register = () => {
             // minLength acessibilidade
             minLength="12"
             required
-            onChange={ (event) => setName(event.target.value) }
+            onChange={ (event) => setUserName(event.target.value) }
           />
         </label>
         <label htmlFor="email" id="lblEmail">
@@ -61,7 +68,7 @@ const Register = () => {
             type="email"
             data-testid="signup-email"
             required
-            onChange={ (event) => setEmail(event.target.value) }
+            onChange={ (event) => setUserEmail(event.target.value) }
           />
         </label>
         <label htmlFor="password">

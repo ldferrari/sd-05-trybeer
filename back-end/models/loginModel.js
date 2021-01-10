@@ -1,7 +1,7 @@
 const db = require('./connection');
 
 const validateLog = async (email, password) => {
-  const user = await db.execute('SELECT role FROM users WHERE email = ? and password = ? ', [
+  const user = await db.execute('SELECT role, name FROM users WHERE email = ? and password = ? ', [
     email,
     password,
   ]);

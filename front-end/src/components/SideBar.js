@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 export default function SideBar({ userRole, active }) {
   return (
@@ -13,9 +14,9 @@ export default function SideBar({ userRole, active }) {
             <a href="/orders" data-testid="side-menu-item-my-orders">
               Meus pedidos
             </a>
-            <a href="/profile" data-testid="side-menu-item-my-profile">
+            <Link to="/profile" data-testid="side-menu-item-my-profile">
               Meu perfil
-            </a>
+            </Link>
           </div>
           <a href="/login" data-testid="side-menu-item-logout">
             Sair

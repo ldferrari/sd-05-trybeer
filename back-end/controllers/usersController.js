@@ -2,6 +2,7 @@ const { Router } = require('express');
 
 const service = require('../services/usersService');
 const createJWT = require('../auth/createJWT');
+const validateJWT = require('../auth/validateJWT');
 
 const users = Router();
 
@@ -36,7 +37,7 @@ users.post('/register', async (req, res) => {
   return res.status(201).json({ role, token });
 });
 
-users.put('/update', async (req, res) => {
+users.put('/update', validateJWT, async (req, res) => {
   const { name, email } = req.body;
 
   if (!name || !email) return res.status(400).json({ message: 'Invalid data' });
@@ -44,6 +45,16 @@ users.put('/update', async (req, res) => {
   await service.updateUser(name, email);
 
   return res.status(200).json({ message: 'User updated successfully' });
+});
+
+users.get('/profile', validateJWT, async (req, res) => {
+  // const token = req.query.q;
+  const emailInput = req.query.email;
+  const user = await service.getUserByEmail(emailInput);
+  if (user) {
+    return res.status(200).json(user);
+  }
+  return res.status(400).json({ message: 'jwt malformed' });
 });
 
 module.exports = users;

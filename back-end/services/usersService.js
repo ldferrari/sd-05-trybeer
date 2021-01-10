@@ -32,8 +32,14 @@ const updateUser = async (newName, email) => {
   await model.updateUser(newName, email);
 };
 
+const getUserByEmail = async (email) => {
+  const user = await model.checkUser(email);
+  return user[0][0].name || undefined;
+};
+
 module.exports = {
   checkUser,
   createUser,
   updateUser,
+  getUserByEmail,
 };

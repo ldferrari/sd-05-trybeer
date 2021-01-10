@@ -25,7 +25,7 @@ login.post('/', async (req, res) => {
   if (user.error) {
     return res.status(404).json({ message: user.message });
   }
-  return res.status(200).json({ role: user, token });
+  return res.status(200).json({ role: user.role, name: user.name, token });
 });
 
 module.exports = login;

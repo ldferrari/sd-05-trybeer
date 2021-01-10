@@ -1,22 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import validateLogin from '../services/validateLogin';
 import { checkUser } from '../services/api';
+import Context from '../context/Context';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
+  // const [email, setEmail] = useContext(Context);
+  const { setUserEmail, setUserName, userEmail } = useContext(Context);
   const [password, setPassword] = useState('');
   const [isLoginValid, setIsLoginValid] = useState(false);
   const [designatedRoute, setDesignetedRoute] = useState(undefined);
 
   useEffect(() => {
-    setIsLoginValid(validateLogin(email, password));
-  }, [email, password]);
+    setIsLoginValid(validateLogin(userEmail, password));
+  }, [userEmail, password]);
 
   const handleRoute = async (ema, pass) => {
     const userRole = await checkUser(ema, pass);
     localStorage.setItem('role', userRole.role);
     localStorage.setItem('token', userRole.token);
+    localStorage.setItem('email', userEmail);
+    if (userRole) {
+      setUserName(userRole.name);
+    }
     // console.log(userRole);
     switch (userRole.role) {
       case 'client':
@@ -36,7 +42,7 @@ const Login = () => {
       <input
         data-testid="email-input"
         type="text"
-        onChange={ (event) => setEmail(event.target.value) }
+        onChange={ (event) => setUserEmail(event.target.value) }
       />
       <h2>Senha</h2>
       <input
@@ -48,7 +54,7 @@ const Login = () => {
         type="submit"
         data-testid="signin-btn"
         disabled={ !isLoginValid }
-        onClick={ () => handleRoute(email, password) }
+        onClick={ () => handleRoute(userEmail, password) }
       >
         ENTRAR
       </button>

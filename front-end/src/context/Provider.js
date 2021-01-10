@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 import Context from './Context';
 
 function Provider({ children }) {
-  const [beers, setBeer] = useState([]);
+  const [userName, setUserName] = useState([]);
+  const [userEmail, setUserEmail] = useState([]);
   const dataContext = {
-    beers,
-    setBeer,
+    userName,
+    setUserName,
+    userEmail,
+    setUserEmail,
   };
   return <Context.Provider value={ dataContext }>{children}</Context.Provider>;
 }

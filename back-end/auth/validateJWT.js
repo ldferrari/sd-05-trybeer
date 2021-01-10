@@ -4,15 +4,12 @@ const secret = 'grupo6';
 
 const validateJWT = (req, res, next) => {
   const token = req.headers.authorization;
-
-  if (!token) return res.status(401).json({ message: 'missing auth token' });
-
+  if (!token) return res.status(410).json({ message: 'Missing auth token' });
   try {
-    const decoded = jwt.verify(token, secret);
-    req.user = decoded.userId;
+    jwt.verify(token, secret);
     next();
   } catch (err) {
-    res.status(401).json({ message: 'jwt malformed' });
+    return res.status(410).json({ message: err.message });
   }
 };
 

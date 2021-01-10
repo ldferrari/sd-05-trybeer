@@ -10,7 +10,7 @@ const validateLog = async (email, password) => {
       message: 'Email or password invalid',
     };
   }
-  return user.role;
+  return user;
 };
 
 module.exports = {

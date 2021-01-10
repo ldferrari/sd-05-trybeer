@@ -11,20 +11,11 @@ export const checkUser = async (email, password) => {
     mode: 'cors',
     body: JSON.stringify({ email, password }),
   };
-  const user = await fetch(`${url}/login`, myInit).then((response) => response.json());
-
-  // console.log(`
-  // @api.js file ->
-  // user role: ${user.role}
-  // token: ${user.token}
-  // `);
-  return user || undefined;
+  const response = await fetch(`${url}/login`, myInit).then((user) => user.json());
+  return response || undefined;
 };
 
 export const registerUser = async (userData) => {
-  // teste
-  // const { name, email, password, role } = userData;
-  // console.log(userData.role);
   const registerReq = {
     method: 'POST',
     headers: {
@@ -36,9 +27,38 @@ export const registerUser = async (userData) => {
     body: JSON.stringify(userData),
   };
   const response = await fetch(`${url}/users/register`, registerReq).then((res) => res.json());
-  /* const response =
-    userData.role === 'client'
-      ? { role: 'client', token: 'ufjdnmx' }
-      : { role: 'administrator', token: 'kkkkk' }; */
+  return response || undefined;
+};
+
+export const getUserByEmail = async (email, token) => {
+  const updateReq = {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      Authorization: token,
+    },
+    mode: 'cors',
+  };
+  const response = await fetch(`${url}/users/profile?email=${email}`, updateReq)
+    .then((userData) => userData.json());
+  return response || undefined;
+};
+
+export const updateUserName = async (userData, token) => {
+  const updateReq = {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      Authorization: token,
+    },
+    mode: 'cors',
+    body: JSON.stringify(userData),
+  };
+  const response = await fetch(`${url}/users/update`, updateReq).then((res) => res.json());
+  localStorage.setItem('tsetes', response);
   return response || undefined;
 };

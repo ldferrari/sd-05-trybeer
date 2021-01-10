@@ -9,7 +9,7 @@ export default function Header({ children }) {
   const userInfo = localStorage.role || '';
   const [btnBurguer, setBtnBurguer] = useState(userInfo === 'administrator');
   // if (!userInfo) return <Redirect to="/login" />;
-  document.title = children;
+  document.title = children === 'Products' ? 'TryBeer' : children;
   return (
     <div>
       <header>
@@ -21,7 +21,7 @@ export default function Header({ children }) {
           <img id="btn-hmb" src={ sidebaricon } alt="Hamburguer menu icon" />
         </button>
         {/* <img src={ sidebaricon } alt="sideb" /> */}
-        <span data-testid="top-title">TryBeer</span>
+        <span data-testid="top-title">{children === 'Products' ? 'TryBeer' : children}</span>
       </header>
       <div>{btnBurguer && <SideBar userRole={ userInfo } active={ btnBurguer } />}</div>
     </div>
