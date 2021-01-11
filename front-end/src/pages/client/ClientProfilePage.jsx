@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import validateName from '../../services/general/validateName';
 import Menu from '../../components/client/Menu';
+import GeneralContext from '../../context/general/GeneralContext';
 // import updateUserAPI from '../../services/apis';
 
 export default function ClientProfilePage() {
@@ -10,28 +12,34 @@ export default function ClientProfilePage() {
     };
   }); */
 
-  const [email] = useState('email@email.com');
-  const [name, setName] = useState('Mau');
-  // const id = props.match.params.id;
+  const { userData, setUserData, loggedIn } = useContext(GeneralContext);
+  const userEmail = JSON.parse(localStorage.getItem('user')).email || { email: '' };
+  const userName = JSON.parse(localStorage.getItem('user')).name || { name: '' };
+  const [nameEqual, setNameEqual] = useState(false)
 
   /* function fetchAPI(id) {
     return updateUserAPI(id);
   } */
 
-  const handleChange = (e) => validateName(setName(e.target.value));
+  //if (!loggedIn) return <Redirect to="/login" />;
+  const handleChange = (e) => {
+    validateName(setUserData({ name: e.target.value }));
+    if (e.target.value === userName) {
+      setNameEqual(true);
+    }
+  }
 
   return (
     <div>
       <Menu title="Meu perfil" data-testid="top-title" />
       <label htmlFor="email">
         Email
-        {/* campos email e name, o value vai puxar do login ou do localstorage */}
         <input
           data-testid="profile-email-input"
           type="text"
           id="email"
           name="email"
-          value={ email }
+          value={ userEmail }
           readOnly
         />
       </label>
@@ -42,7 +50,7 @@ export default function ClientProfilePage() {
           type="text"
           id="name"
           name="name"
-          value={ name }
+          value= { userData.name }
           onChange={ handleChange }
         />
       </label>
@@ -51,7 +59,7 @@ export default function ClientProfilePage() {
         type="button"
         // onClick={() => fetchAPI(id)}
         // segundo name vai vir da tela de login para comparar
-        disabled
+        disabled={ nameEqual }
       >
         Salvar
       </button>
