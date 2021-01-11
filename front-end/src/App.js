@@ -12,6 +12,7 @@ import Products from './pages/products';
 import Register from './pages/register';
 import Profile from './pages/profile';
 import Orders from './pages/orders';
+import Checkout from './pages/checkout';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             </Route>
             <Route exact path="/login" component={ Login } />
             <Route exact path="/products" component={ Products } />
+            <Route exact path="/checkout" component={ Checkout } />
             <Route exact path="/register" component={ Register } />
             <Route exact path="/profile" component={ Profile } />
             <Route exact path="/admin/profile" component={ Profile } />

@@ -5,9 +5,9 @@ import { checkUser } from '../services/api';
 import Context from '../context/Context';
 
 // gambi pra passar no requisito 10 ARRUMAR dps da entrega 1
-localStorage.removeItem('role');
-localStorage.removeItem('email');
-localStorage.removeItem('token');
+// localStorage.removeItem('role');
+// localStorage.removeItem('email');
+// localStorage.removeItem('token');
 
 const Login = () => {
   // const [email, setEmail] = useContext(Context);
@@ -22,13 +22,13 @@ const Login = () => {
 
   const handleRoute = async (ema, pass) => {
     const userRole = await checkUser(ema, pass);
-    localStorage.setItem('role', userRole.role);
-    localStorage.setItem('token', userRole.token);
-    localStorage.setItem('email', userEmail);
     if (userRole) {
+      localStorage.setItem('role', userRole.role);
+      localStorage.setItem('token', userRole.token);
+      localStorage.setItem('email', userEmail);
+      localStorage.setItem('cart', JSON.stringify([]));
       setUserName(userRole.name);
     }
-    // console.log(userRole);
     switch (userRole.role) {
       case 'client':
         setDesignetedRoute('/products');

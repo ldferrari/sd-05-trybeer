@@ -8,34 +8,34 @@ export default function SideBar({ userRole, active }) {
       {userRole === 'client' && (
         <div className={ `${active && 'side-menu-container'} side-bar` }>
           <div>
-            <a href="/products" data-testid="side-menu-item-products">
+            <Link to="/products" data-testid="side-menu-item-products">
               Produtos
-            </a>
-            <a href="/orders" data-testid="side-menu-item-my-orders">
+            </Link>
+            <Link to="/orders" data-testid="side-menu-item-my-orders">
               Meus pedidos
-            </a>
+            </Link>
             <Link to="/profile" data-testid="side-menu-item-my-profile">
               Meu perfil
             </Link>
           </div>
-          <a href="/login" data-testid="side-menu-item-logout">
+          <Link to="/login" data-testid="side-menu-item-logout">
             Sair
-          </a>
+          </Link>
         </div>
       )}
       {userRole === 'administrator' && (
         <div className="admin-side-bar-container side-bar">
           <div>
-            <a href="/admin/orders" data-testid="side-menu-item-orders">
+            <Link to="/admin/orders" data-testid="side-menu-item-orders">
               Meus pedidos
-            </a>
+            </Link>
             <Link to="/admin/profile" data-testid="side-menu-item-profile">
               Meu perfil
             </Link>
           </div>
-          <a href="/login" data-testid="side-menu-item-logout">
+          <Link to="/login" data-testid="side-menu-item-logout">
             Sair
-          </a>
+          </Link>
         </div>
       )}
     </aside>

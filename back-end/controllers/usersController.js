@@ -48,7 +48,6 @@ users.put('/update', validateJWT, async (req, res) => {
 });
 
 users.get('/profile', validateJWT, async (req, res) => {
-  // const token = req.query.q;
   const emailInput = req.query.email;
   const user = await service.getUserByEmail(emailInput);
   if (user) {

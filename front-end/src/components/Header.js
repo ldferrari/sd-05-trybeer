@@ -18,7 +18,7 @@ export default function Header({ children }) {
           onClick={ () => setBtnBurguer(!btnBurguer) }
           type="button"
         >
-          <img id="btn-hmb" src={ sidebaricon } alt="Hamburguer menu icon" />
+          <img id="btn-hmb" height="50px" width="50px" src={ sidebaricon } alt="Hamburguer menu icon" />
         </button>
         {/* <img src={ sidebaricon } alt="sideb" /> */}
         <span data-testid="top-title">{children === 'Products' ? 'TryBeer' : children}</span>

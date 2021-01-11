@@ -39,6 +39,7 @@ const Register = () => {
 
     localStorage.setItem('role', response.role);
     localStorage.setItem('token', response.token);
+    localStorage.setItem('email', userEmail);
 
     return response.role === 'client'
       ? setDesignetedRoute('/products')

@@ -59,6 +59,22 @@ export const updateUserName = async (userData, token) => {
     body: JSON.stringify(userData),
   };
   const response = await fetch(`${url}/users/update`, updateReq).then((res) => res.json());
-  localStorage.setItem('tsetes', response);
+  return response || undefined;
+};
+
+export const getProducts = async (email, token) => {
+  const updateReq = {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      Authorization: token,
+    },
+    mode: 'cors',
+  };
+  const response = await fetch(`${url}/products?email=${email}`, updateReq)
+    .then((products) => products.json());
+    // console.log(response)
   return response || undefined;
 };
