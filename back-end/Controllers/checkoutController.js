@@ -4,9 +4,9 @@ const service = require('../Service/checkoutService');
 
 const checkout = Router();
 
-checkout.get('/', async (req, res) => {
+checkout.post('/', async (req, res) => {
   try {
-    // const { email, password } = req.body;
+    const { endereco, numero } = req.body;
     // const checkoutProducts = await service.getCheckout(email, password);
     const checkoutProducts = await service.getCheckout();
     /* if (checkoutProducts.error) {

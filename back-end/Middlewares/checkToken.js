@@ -14,7 +14,7 @@ const checkToken = async (req, res, next) => {
     req.payload = payload;
     // os outros middlewares conseguem ter acesso ao payload.
     // console.log(payload, email, payload.email === email);
-    // console.log(payload);
+    console.log(payload);
   } catch (error) {
     console.error(error);
     return res.status(401).json({ message: 'Operação não autorizada' });
