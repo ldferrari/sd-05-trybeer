@@ -125,4 +125,5 @@ export const getProductById = (id) => {
   .get(`${API_URL}/products/id`, { id } )
   .then((response) => response.data)
   .catch((err) => err);
-return product;
+return product
+}

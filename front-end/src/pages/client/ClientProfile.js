@@ -1,25 +1,24 @@
 import React, { useState } from 'react';
+import ClientMenu from '../../components/client/ClientMenu';
+const fetch = require('../../services/fetch');
+
+console.log()
 
 function ClientProfile() {
-  let client = {
-    name: 'Jorgin Silva',
-    email: 'jorge123@gmail.com',
-  };
 
-  // teste acima simulando o recebimento de informações do back
-
-  const [name, setName] = useState(true);
+  const user = JSON.parse(localStorage.getItem('user'));
+  const [name, setName] = useState(user.name);
 
   const myProfile = () => {
     return (
       <div>
-        <h1 data-testid="top-title">Meu Perfil</h1>
+        <ClientMenu title={'Meu perfil'} />
         Name:
         <div>
           <input
             data-testid="profile-name-input"
-            defaultValue={client.name}
-            onChange={(e) => setName(e.target.value === client.name)}
+            defaultValue={user.name}
+            onChange={(e) => setName(e.target.value)}
             type="text"
           />
         </div>
@@ -27,11 +26,14 @@ function ClientProfile() {
         <div>
           <input
             data-testid="profile-email-input"
-            value={client.email}
+            value={user.email}
             readOnly
           />
         </div>
-        <button data-testid="profile-save-btn" disabled={name}>
+        <button
+          data-testid="profile-save-btn"
+          disabled={(user.name === name)}
+          onClick={() => fetch.updateName(name, user.email)}>
           Salvar
         </button>
       </div>
