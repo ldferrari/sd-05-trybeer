@@ -21,7 +21,7 @@ const Register = () => {
   const reverse = -1;
 
   const handleSubmit = async (e) => {
-    e.preventDefault();    
+    e.preventDefault();
     const result = await apiRegister(name, email, password, role);
     const response = result.message && +result.message.split(' ').slice(reverse)[0];
     // localStorage.setItem(

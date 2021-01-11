@@ -17,7 +17,7 @@ export default function Header(props) {
         <button
           data-testid="top-hamburguer"
           type="button"
-          onClick={() => setActive(!active) }
+          onClick={ () => setActive(!active) }
         >
           BURGER
         </button>
