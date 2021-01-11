@@ -1,19 +1,17 @@
-import React, { useContext, useState } from 'react';
-import TrybeerProvider from '../../context/TrybeerProvider';
+import React, { useState } from 'react';
+import ClientMenu from '../../components/client/ClientMenu';
 import { updateName } from '../../services/fetch';
 import { checkName } from '../../services/checkUserData'
 
 console.log()
 
 function ClientProfile() {
-
-  const [name1, setName1] = useState(true);
-  const [checkedName, setcheckedName] = useState(false)
-  // const { setName } = useContext(TrybeerProvider);
-
   const user = JSON.parse(localStorage.getItem('user'));
-
   const { name, email, token, role } = user;
+
+  const [name1, setName1] = useState(name);
+  const [checkedName, setcheckedName] = useState(false);
+  // const { setName } = useContext(TrybeerProvider);
 
   const saveInStorage = (name) => {
     localStorage.setItem(
@@ -48,14 +46,17 @@ function ClientProfile() {
         </div>
         <button
           data-testid="profile-save-btn"
+          disabled={(name === name1)}
           /*disabled={name}*/ onClick={() =>
             updateName(name1, email).then((result) =>
-              saveInStorage(result.name)
+              saveInStorage(result.name),
+              document.getElementById('update').innerHTML = 'Atualização concluída com sucesso'
             )
           }
         >
           Salvar
         </button>
+        <div id="update"></div>
       </div>
     );
   };
