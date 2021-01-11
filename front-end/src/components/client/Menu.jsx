@@ -24,17 +24,17 @@ export default function Menu(props) {
       <h1 className="topTitle" data-testid="top-title">{title}</h1>
       {isVisible
         && <div className="side-menu-container">
-          <nav className="menuLateral">
-            <div className="menuButton">
-              <a href="/products" data-testid="side-menu-item-products" className="buttonLateral">Produtos</a>
-              <a href="/orders" data-testid="side-menu-item-my-orders" className="buttonLateral">Meus Pedidos</a>
-              <a href="/profile" data-testid="side-menu-item-my-profile" className="buttonLateral">Meu Perfil</a>
-            </div>
-            <div className="menuButton textCenter">
-              <a href="/login" data-testid="side-menu-item-logout" className="buttonLateral">Sair</a>
-            </div>
-          </nav>
-        </div>}
+             <nav className="menuLateral">
+               <div className="menuButton">
+                 <a href="/products" data-testid="side-menu-item-products" className="buttonLateral">Produtos</a>
+                 <a href="/orders" data-testid="side-menu-item-my-orders" className="buttonLateral">Meus Pedidos</a>
+                 <a href="/profile" data-testid="side-menu-item-my-profile" className="buttonLateral">Meu Perfil</a>
+               </div>
+               <div className="menuButton textCenter">
+                 <a href="/login" data-testid="side-menu-item-logout" className="buttonLateral">Sair</a>
+               </div>
+             </nav>
+           </div>}
     </header>
   );
 }
