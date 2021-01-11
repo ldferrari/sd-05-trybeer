@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const secret = 'group-05';
+const secret = 'grupo-05';
 
 async function authToken(req, res, next) {
   const token = req.headers.authorization;
