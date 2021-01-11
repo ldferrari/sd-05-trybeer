@@ -13,7 +13,7 @@ const CartItem = (props) => {
   const zero = 0;
   if (exists.qty === zero) {
     return null;
-  };
+  }
 
   const exclude = () => {
     const itemZero = (e) => ({ ...e, qty: zero });
@@ -26,7 +26,9 @@ const CartItem = (props) => {
     <div className="cartItem" key={ item.name }>
       <p data-testid={ `${index}-product-qtd-input` }>{ exists.qty ? exists.qty : zero }</p>
       <p data-testid={ `${index}-product-name` }>{ item.name }</p>
-      <p data-testid={ `${index}-product-unit-price` }>`R$ ${item.price.toString().replace('.', ',')}`</p>
+      <p data-testid={ `${index}-product-unit-price` }>
+        `R$ ${item.price.toString().replace('.', ',')}`
+      </p>
       <p data-testid={ `${index}-product-total-value` }>
         { `R$ ${(item.price * item.qty).toString().replace('.', ',')}` }
       </p>
@@ -34,7 +36,7 @@ const CartItem = (props) => {
         type="button"
         data-testid={ `${index}-removal-button"` }
         onClick={ () => exclude() }
-    >
+      >
         X
       </button>
     </div>
