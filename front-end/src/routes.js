@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { Login, Profile, Products } from './pages';
 import Checkout from './pages/checkout';
@@ -12,6 +12,7 @@ const Rotas = () => (
     <Route path="/products" component={ Products } />
     <Route exact path="/register" component={ Register } />
     <Route path="/checkout" component={ Checkout } />
+    <Route exact path="/" component={ () => <Redirect to="/login" /> } />
   </Switch>
 );
 

@@ -6,12 +6,13 @@ import Header from '../../components/header';
 import Footer from '../../components/footer';
 import Card from '../../components/productCard';
 import CartButton from '../../components/cartButton';
+import { postGetItems } from '../../services/requestAPI';
 
-const Products = () => {
+const Products = (props) => {
   const [theProducts, setProducts] = useState([]);
-  // const theToken = localStorage.getItem("token");
+  const theToken = localStorage.getItem('token');
   const fetchProducts = async () => {
-    const { data } = await axios.get('http://localhost:3001/products'); // , { headers: { Authorization: theToken }
+    const { data } = await postGetItems(theToken);
     setProducts(data);
   };
   // const fetchProducts = async () => {
@@ -27,8 +28,7 @@ const Products = () => {
 
   useEffect(() => {
     fetchProducts();
-  },
-  [theProducts]);
+  }, []);
 
   const logged = localStorage.getItem('token');
 
@@ -43,7 +43,7 @@ const Products = () => {
         { theProducts.map((product) => <Card key={ product.id } product={ product } />) }
         ,
       </div>
-      <CartButton />
+      <CartButton history={ props.history } />
       <Footer />
     </div>
   );
