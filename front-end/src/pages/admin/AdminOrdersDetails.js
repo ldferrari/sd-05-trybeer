@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getSaleDetails, getProductById } from '../../services/fetch';
+import { getSaleDetails } from '../../services/fetch';
 
 function AdminOrdersDetails() {
   const [saleNumber, setSaleNumber] = useState();

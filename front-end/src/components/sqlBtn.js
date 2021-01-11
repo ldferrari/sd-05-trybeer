@@ -1,5 +1,5 @@
 import React from 'react';
-import { register, createNewSale } from '../services/fetch';
+import { createUser, createNewSale } from '../services/fetch';
 
 const gerarDados = () => {
   const admin = { name: "Tryber Admin", email: "tryber@trybe.com.br", password: "123456", role: "administrator" };
@@ -7,10 +7,10 @@ const gerarDados = () => {
   const user1 = { name: "Userum userum userum", email: "user1@gmail.com", password: "123456", role: "client" };
   const user2 = { name: "Userdois userdois userdois", email: "user2@gmail.com", password: "123456", role: "client" };
 
-  register(admin.name, admin.email, admin.password, admin.role).then((response) => console.log(response));
-  register(testuser.name, testuser.email, testuser.password, testuser.role).then((response) => console.log(response));
-  register(user1.name, user1.email, user1.password, user1.role).then((response) => console.log(response));
-  register(user2.name, user2.email, user2.password, user2.role).then((response) => console.log(response));
+  createUser(admin.name, admin.email, admin.password, admin.role).then((response) => console.log(response));
+  createUser(testuser.name, testuser.email, testuser.password, testuser.role).then((response) => console.log(response));
+  createUser(user1.name, user1.email, user1.password, user1.role).then((response) => console.log(response));
+  createUser(user2.name, user2.email, user2.password, user2.role).then((response) => console.log(response));
 
   const vendas = [
     {
