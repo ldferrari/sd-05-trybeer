@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.column-login {
+.column-register {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,34 +14,36 @@
   vertical-align: middle;
 }
 
-.column-login fieldset {
+.column-register fieldset {
   border: 0;
-  width: 90%;
+  width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.column-login label {
+.column-register label {
   font-size: large;
   margin: 5px 0;
   width: 80%;
 }
 
-.column-login input {
+.column-register input {
   margin: 5px 0;
   border-radius: 5px;
   box-shadow: 5px 2px 1px #cccccc;
 }
-.column-login button {
-  font-size: medium;
-  margin: 5px;
-  padding: 7px;
-  border-radius: 5px;
-  box-shadow: 5px 2px 1px #cccccc;
+
+.email-alert {
+  color: #ff0000;
+  text-decoration: wavy;
 }
 
+.column-register .checkbox {
+  text-align: center;
+  
+}
 
-.column-login button[type='submit'] {
+.column-register button {
   font-size: larger;
   position: absolute;
   bottom: 10px;
@@ -50,11 +52,17 @@
   height: 40px;
   padding: 2px;
   border-radius: 5px;
+  box-shadow: 5px 2px 1px #cccccc;
+  background-color: #dddddd;
 }
 
 label input:not([type='checkbox']) {
   padding: 5px;
   width: 100%;
+}
+
+label input[type='checkbox'] {
+  margin: 10px;
 }
 
 button.ready {
@@ -64,4 +72,4 @@ button.ready {
 a {
   text-decoration: none;
   color: black;
-} 
+}

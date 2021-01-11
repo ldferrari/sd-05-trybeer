@@ -1,0 +1,60 @@
+.header {
+  align-items: center;
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100px;
+  /* position:fixed; */
+  width: 100%;
+}
+
+.burguerBtn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 2rem;
+  margin-left: 1%;
+  padding: 1%;
+}
+
+.title {
+  margin-left: 3%;
+  padding: 1%;
+}
+
+.sideBar {
+  background-color: black;
+  color: white;
+  float: left;
+  /* display: flex;
+  flex-direction: column; */
+  height: 100%;
+  /* margin-top: 100px; */
+  /* position: fixed; */
+  padding: 3%;
+  position: absolute;
+  text-decoration: none;
+  /* transform: translateX(-30rem); */
+  width: 73%;
+  z-index: 1;
+}
+/* .sideBar.open {
+  transform: translateX(0);
+} */ 
+.menuBtn {
+  color: white;
+  text-decoration: none;
+  padding: 2%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+Link {
+  color: white;
+  text-decoration: none;
+  padding: 2%;
+}

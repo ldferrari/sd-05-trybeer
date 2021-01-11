@@ -1,0 +1,40 @@
+.productList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* width: 100%; */
+}
+
+.card {
+  background-color: white;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  /* height: 172px; */
+  margin: 2%;
+  padding: 1%;
+  text-align: center;
+  /* width: 161px; */
+}
+
+.cardBottom {
+  display: flex;
+  justify-content: center;
+}
+
+.checkoutBtn {
+  background-color: darkgreen;
+  color: white;
+  width: 83%;
+  margin: auto;
+  /* position:fixed */
+ }
+
+.checkoutLink {
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  text-decoration: none;
+  padding: 1%;
+}

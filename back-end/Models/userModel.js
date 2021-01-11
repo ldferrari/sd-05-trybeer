@@ -2,7 +2,6 @@ const connection = require('./connection');
 
 const getByEmail = async (email) => {
   const [buscaEmail] = await connection.execute('SELECT * FROM users WHERE email = ?', [email]);
-  // console.log(buscaEmail);
   return buscaEmail[0];
 };
 

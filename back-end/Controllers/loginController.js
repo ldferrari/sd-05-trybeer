@@ -26,12 +26,15 @@ login.post('/', async (req, res) => {
     if (!findUser) {
       return res.status(401).json({ message: 'Email não encontrado.' });
     }
+    if (findUser.password !== password ) {
+      return res.status(401).json({ message: 'Email e/ou password incorretos.', ok:false });
+    }
     const token = createToken({
       email,
       role: findUser.role,
       iss: 'post_api',
     });
-    res.status(200).json({ token });
+    res.status(200).json({ token, role: findUser.role });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Algo deu errado.' });
