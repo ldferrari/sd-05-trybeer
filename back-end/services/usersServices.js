@@ -14,16 +14,16 @@ const createUser = async (newUser) => {
     throw { err: { code: 404, message: 'email format invalid' } };
   }
 
-  console.log(password)
+  console.log(password);
 
   if (toString(password).length < 6) {
     throw { err: { code: 404, message: 'password format invalid' } };
   }
 
-  const emailExists = await model.logIn(email)
+  const emailExists = await model.logIn(email);
 
   if (emailExists.length > 0) {
-    return { message: 'E-mail already in database' } 
+    return { message: 'E-mail already in database' };
   }
 
   const createdUser = await model.createUser(name, email, password, role);
@@ -51,7 +51,6 @@ const logIn = async (email, password1) => {
   // console.log(user)
   return user;
 };
-
 
 const updateUserName = async (name, email) => {
   const newName = await model.updateUserName(name, email);
