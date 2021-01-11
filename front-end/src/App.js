@@ -21,15 +21,23 @@ function App() {
           <Redirect to="/login" />
         </Route>
         <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={ Register } />
-        <Route exact path="/profile" component={ ClientProfile } />
-        <Route exact path="/products" component={ Products } />
-        <Route exact path="/checkout" component={ Checkout } />
-        <Route exact path="/orders" component={ Orders } />
-        <Route exact path="/orders/:orderNumber" component={ OrdersDetails } /> 
-        <Route exact path="/admin/profile" component={ AdminProfile } />
-        <Route exact path="/admin/orders" component={ PendingOrders } />
-        <Route exact path="/admin/orders/:id" component={ AdminOrdersDetails } /> 
+        {/* (needed to set both routes for login page because of tests) */}
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/profile" component={ClientProfile} />
+        <Route exact path="/products" component={Products} />
+        <Route exact path="/checkout" component={Checkout} />
+        <Route exact path="/orders" component={Orders} />
+        <Route
+          exact path="/orders/:orderNumber"
+          render={ (props) => <OrdersDetails { ...props } /> }
+        />
+        {/* Problem ESLINT "Prop spreading is forbidden" */}
+        <Route exact path="/admin/profile" component={AdminProfile} />
+        <Route exact path="/admin/orders" component={PendingOrders} />
+        <Route
+          exact path="/admin/orders/:id"
+          render={ (props) => <AdminOrdersDetails { ...props } /> }
+        />
       </Switch>
     </BrowserRouter>
   );

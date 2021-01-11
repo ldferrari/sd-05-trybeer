@@ -1,16 +1,21 @@
-import React from 'react';
-// import { useState, useContext } from 'react';
-// import TrybeerContext from '../context/TrybeerContext';
+import React, { useEffect, useState } from 'react';
+import { getAllSales } from '../../services/fetch';
+import OrderCard from '../../components/admin/OrderCard';
+import AdminMenu from '../../components/admin/AdminMenu';
 
 function PendingOrders() {
-  // const [bla, setBla] = useState(initialstatetrueorfalse);
-  // const { blu, bli } = useContext(TrybeerContext);
+  const [allSales, setAllSales] = useState([]);
 
-  // const someFunction = (someParameter) => {
-  // };
+  useEffect(() => {
+    getAllSales()
+      .then((response) => setAllSales(response));
+  }, []);
 
   return (
-    <div>PendingOrders</div>
+    <div>
+      <AdminMenu />
+      {allSales.map((order, index) => <OrderCard key={order.id} order={order} index={index} />)}
+    </div>
   );
 }
 
