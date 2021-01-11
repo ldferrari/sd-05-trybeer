@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-export default function Sidebar({ role, active }) {
+export default function Sidebar({ role }) {
   return (
     <aside>
       {role === 'client' && (
-        <section className={ `${active && 'side-menu-container'} side-bar` }>
+        <section className="side-menu-container">
           <section>
             <Link to="/products" data-testid="side-menu-item-products">
-              Produtos
+              Meus produtos
             </Link>
             <Link to="/orders" data-testid="side-menu-item-my-orders">
               Meus pedidos
@@ -28,13 +28,13 @@ export default function Sidebar({ role, active }) {
         </section>
       )}
       {role === 'administrator' && (
-        <section className="admin-side-bar-container side-bar">
+        <section className="admin-side-bar-container">
           <section>
             <Link to="/admin/orders" data-testid="side-menu-item-orders">
-              Meus pedidos
+              Pedidos
             </Link>
             <Link to="/admin/profile" data-testid="side-menu-item-profile">
-              Meu perfil
+              Perfil
             </Link>
           </section>
           <Link
@@ -52,5 +52,4 @@ export default function Sidebar({ role, active }) {
 
 Sidebar.propTypes = {
   role: PropTypes.string.isRequired,
-  active: PropTypes.bool.isRequired,
 };
