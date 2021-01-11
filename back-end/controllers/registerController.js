@@ -18,7 +18,7 @@ registerRouter.post('/', async (req, res) => {
     if (err.code === 'invalid_data') {
       return res.status(400).json({ message: 'Registration failed!' });
     }
-    console.log(JSON.stringify(err))
+    
     res.status(500).json({ message: 'Something went wrong!' });
   }
 });
