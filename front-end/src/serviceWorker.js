@@ -12,10 +12,10 @@
 
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost'
-  || window.location.hostname === '[::1]'
-  || window.location.hostname.match(
-    /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/,
-  ),
+    || window.location.hostname === '[::1]'
+    || window.location.hostname.match(
+      /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/,
+    ),
 );
 
 const notFound = 404;
@@ -76,8 +76,8 @@ function checkValidServiceWorker(swUrl, config) {
       const contentType = response.headers.get('content-type');
       if (
         response.status === notFound
-
-        || (contentType != null && contentType.indexOf('javascript') === numberNegative)
+        || (contentType != null
+          && contentType.indexOf('javascript') === numberNegative)
       ) {
         // No service worker found. Probably a different app. Reload the page.
         navigator.serviceWorker.ready.then((registration) => {

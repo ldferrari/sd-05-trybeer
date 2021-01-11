@@ -44,7 +44,8 @@ const Login = ({ history }) => {
           data-testid="signin-btn"
           type="button"
           disabled={ !validEmail || password.length < passwordLength }
-          onClick={ () => fetchLogin(email, password).then((result) => handleLogin(result)) }
+          onClick={ () => fetchLogin(email, password)
+            .then((result) => handleLogin(result)) }
         >
           ENTRAR
         </button>

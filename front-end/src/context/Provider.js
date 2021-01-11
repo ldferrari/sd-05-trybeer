@@ -19,7 +19,11 @@ const Provider = ({ children }) => {
     setRole,
   };
 
-  return <TryBeerContext.Provider value={contextValue}>{children}</TryBeerContext.Provider>;
+  return (
+    <TryBeerContext.Provider value={ contextValue }>
+      {children}
+    </TryBeerContext.Provider>
+  );
 };
 
 export default Provider;

@@ -5,19 +5,31 @@ import { apiRegister } from '../services/ApiTrybeer';
 import TryBeerContext from '../context/TryBeerContext';
 
 const Register = () => {
-  const { email, password, name, role, setEmail, setPassword, setName, setRole } = useContext(
-    TryBeerContext,
-  );
+  const {
+    email,
+    password,
+    name,
+    role,
+    setEmail,
+    setPassword,
+    setName,
+    setRole,
+  } = useContext(TryBeerContext);
   const [thisEmailAlreadyExists, setThisEmailAlreadyExists] = useState('');
   const history = useHistory();
   const unprocessable = 422;
   const reverse = -1;
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    localStorage.setItem('user', JSON.stringify({ name, email, password, role }));
+    e.preventDefault();    
     const result = await apiRegister(name, email, password, role);
     const response = result.message && +result.message.split(' ').slice(reverse)[0];
+    // localStorage.setItem(
+    //   'user',
+    //   JSON.stringify({
+    //     name, email, password, role,
+    //   }),
+    // );
     return response === unprocessable
       ? setThisEmailAlreadyExists('E-mail already in database.')
       : history.push(role === 'client' ? '/products' : '/admin/orders');
