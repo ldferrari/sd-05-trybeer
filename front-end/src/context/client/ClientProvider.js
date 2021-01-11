@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, createContext } from 'react';
 import PropTypes from 'prop-types';
-import ClientContext from './ClientContext';
-import productsApi from '../../services/client/api';
+// import ClientContext from './ClientContext';
+// import productsApi from '../../services/client/api';
 
+export const ClientContext = createContext();
 
 const ClientProvider = ({ children }) => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState(0);
 
   const context = {
     email,
@@ -16,6 +18,8 @@ const ClientProvider = ({ children }) => {
     setName,
     products,
     setProducts,
+    cart,
+    setCart,
   };
 
   // console.log(products);

@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const errorMiddleware = require('./middlewares/error');
@@ -20,5 +21,7 @@ app.use(errorMiddleware);
 
 app.use('/products', productsController);
 
-const PORT = 3000;
+app.use('/images/', express.static(path.join(__dirname, '..', 'images')));
+
+const PORT = 3001;
 app.listen(PORT, () => console.log(`Ouvindo na porta ${PORT}`));

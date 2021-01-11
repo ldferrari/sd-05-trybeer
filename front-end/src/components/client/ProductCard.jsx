@@ -19,7 +19,7 @@ const ProdCard = (props) => {
       <div data-testid={ `${product.id}-product-price` }>
         R$ { product.price }               
       </div>
-      <QuantityButton />
+      <QuantityButton price={product.price} />
     </div>
   )
 }
