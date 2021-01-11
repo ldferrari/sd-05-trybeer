@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import '../../css/menu.css';
 
@@ -33,7 +33,8 @@ export default function Menu(props) {
             <a href="/login" data-testid="side-menu-item-logout" className="buttonLateral">Sair</a>
           </div>
         </nav>
-      </div>}
+      </div>
+      }
     </header>
   );
 }
