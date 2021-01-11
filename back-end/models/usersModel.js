@@ -1,10 +1,12 @@
 const connection = require('./connection');
 
-const createUser = async (name, email, password, role) =>
+const createUser = async (name, email, password, role) => {
   connection.execute(
     'INSERT INTO users (name, email, password, role) VALUES (?,?,?,?)',
     [name, email, password, role],
   );
+  return { message: "created"}
+}
 
 // const getAllUsers = async () => {
 //   const [users] = await connection.execute('SELECT * FROM Trybeer.users;');
@@ -39,6 +41,7 @@ const updateUserName = async (name, email) => {
   return newName;
 };
 
+
 // const deleteUser = async (id) =>
 //   await connection.execute('DELETE FROM Trybeer.users WHERE id = ?', [id]);
 
@@ -47,4 +50,4 @@ module.exports = {
   logIn,
   updateUserName,
   // deleteUser,
-};
+}

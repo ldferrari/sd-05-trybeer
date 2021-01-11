@@ -85,9 +85,20 @@ const getAllOpen = async () => {
   return allSalesOpen[0];
 }
 
+const getAllSales = async () => {
+  const allSales = await model.getAll();
+
+  if (!allSales) {
+    throw { err: { code: 404, message: 'error' } };
+  }
+
+  return allSales[0];
+}
+
 module.exports = {
   createSale,
   closeSale,
   getByUserId,
   getAllOpen,
+  getAllSales,
 };
