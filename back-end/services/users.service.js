@@ -26,7 +26,6 @@ const REGISTER_SCHEMA = Joi.object({
 const login = rescue(async (req, _res, next) => {
   const { error } = LOGIN_SCHEMA.validate(req.body);
   const user = await userModel.findUserbyEmailAndPassword(req.body);
-
   console.log(user);
   if (error) throw new Error(error);
   if (!user) throw new Error('Email ou senha inválidos');

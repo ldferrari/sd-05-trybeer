@@ -32,21 +32,21 @@ const myInitWithBody = (data) => ({
 
 // prettier-ignore
 export const getProducts = () => (
-  fetch(`${localhostURL}/productss`, myInit).then((response) => (
+  fetch(`${localhostURL}/products`, myInit).then((response) => (
     response
       .json()
       .then((json) => Promise.resolve(json))
-      .catch((err) => console.error(err))
-  )));
+      .catch((err) => Promise.reject(err))
+  ))
+);
 
 // prettier-ignore
-export const getUser = (data) => {
-  console.log(myInitWithBody(data));
-  return fetch(`${localhostURL}/`, myInitWithBody(data)).then((response) => (
+export const getUser = (data) => (
+  fetch(`${localhostURL}/`, myInitWithBody(data)).then((response) => (
     response
       .json()
       .then((json) => Promise.resolve(json))
-      .catch((err) => console.error(err))));
-};
+      .catch((err) => Promise.reject(err))))
+);
 
 // Achar saída adequada para os 'catchs', no lugar de console.error.
