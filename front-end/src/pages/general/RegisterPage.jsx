@@ -10,6 +10,7 @@ export default function RegisterPage() {
   const [isEmailValid, setEmailValid] = useState(false);
   const [isPasswordValid, setPasswordValid] = useState(false);
   const [isEmailRegistered, setEmailRegistered] = useState(false);
+  const [isEmailVerified, setEmailVerified] = useState(false);
   const [isFetched, setIsFetched] = useState(false);
   const [userData, setUserData] = useState({
     name: '',
@@ -28,26 +29,40 @@ export default function RegisterPage() {
   };
 
   const isUserRegistered = async (user) => {
+    if (isFetched) setIsFetched(false);
     const { message, role } = await fetchUserData(user);
-    setEmailRegistered(false);
-    setIsFetched(false);
-    // console.log(message, role);
+    setIsFetched(true);
+    if (isEmailRegistered) {
+      setEmailRegistered(false);
+    }
+    if (isEmailVerified) {
+      setEmailVerified(false);
+    }
     if (message === 'E-mail already in database.') {
-      setIsFetched(true);
-      return setEmailRegistered(true);
+      setEmailRegistered(true);
+      setEmailVerified(true);
+    }
+    if (message === 'ok' && role === 'client') {
+      setEmailRegistered(false);
+      setEmailVerified(true);
     }
     if (message === 'ok' && role === 'admin') {
       setEmailRegistered(false);
-      return setIsFetched(true);
+      setEmailVerified(true);
     }
-    setIsFetched(true);
-    return true;
   };
   // console.log(isFetched, isEmailRegistered === false, userData.role === 'client')
   // console.log(isFetched && isEmailRegistered === false && userData.role === 'client')
-  if (isFetched && !isEmailRegistered && userData.role === 'client') return <Redirect to="/products" />;
+  console.log(isFetched, isEmailRegistered, isEmailVerified);
+  if (isFetched && !isEmailRegistered && userData.role === 'client' && isEmailVerified) {
+    // console.log('products', isEmailRegistered);
+    return <Redirect to="/products" />;
+  }
 
-  if (isFetched && !isEmailRegistered && userData.role === 'admin') return <Redirect to="/admin/orders" />;
+  if (isFetched && !isEmailRegistered && userData.role === 'admin' && isEmailVerified) {
+    // console.log('admin/orders');
+    return <Redirect to="/admin/orders" />;
+  }
 
   return (
     <div>
