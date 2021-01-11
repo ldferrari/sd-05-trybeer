@@ -38,7 +38,7 @@ background:#073416;
 .side-menu-container {
 	background:#073416;
 	height:100%;
-	left: -40%;
+	left: 0;
 	position: absolute;
 	transition:all .2s linear;
 	width:40%;
