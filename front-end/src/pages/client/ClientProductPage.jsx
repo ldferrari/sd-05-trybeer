@@ -7,7 +7,8 @@ import Menu from '../../components/client/Menu';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-  console.log(products);
+  
+  console.log(products);  
 
   useEffect(() => {
     productsApi().then(response => setProducts(response));
