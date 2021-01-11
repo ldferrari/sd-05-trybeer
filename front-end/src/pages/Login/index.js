@@ -8,6 +8,7 @@ import { postLogin } from '../../services/requestAPI';
 
 const saveToken = (token) => localStorage.setItem('token', token);
 
+let timer;
 const Login = (props) => {
   const [validEmail, setValidEmail] = useState(false);
   const [validPassword, setValidPassword] = useState(false);
@@ -43,13 +44,16 @@ const Login = (props) => {
     } catch (error) {
       setAlertLogin('Email e/ou password incorretos');
       const timeAlert = 3500;
-      setTimeout(() => {
+      timer = setTimeout(() => {
         setAlertLogin('');
       }, timeAlert);
       return false;
     }
+    /* if (timer) {
+      clearTimeout(timer);
+    } */
     saveToken(token);
-    if (role === 'admin') {
+    if (role === 'administrator') {
       props.history.push('/admin/orders');
     } else if (role === 'client') {
       props.history.push('/products');

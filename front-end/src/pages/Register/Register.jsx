@@ -4,6 +4,10 @@ import PropTypes from 'prop-types';
 import './index.css';
 import { postRegister } from '../../services/requestAPI';
 
+let timer;
+
+const saveToken = (token) => localStorage.setItem('token', token);
+
 const Register = (props) => {
   const [validName, setValidName] = useState(false);
   const [validEmail, setValidEmail] = useState(false);
@@ -40,26 +44,32 @@ const Register = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let ok;
+    let token;
     try {
-      ok = await postRegister({
-        name, email, password, role: isAdmin ? 'admin' : 'client',
+      const { data } = await postRegister({
+        name, email, password, role: isAdmin ? 'administrator' : 'client',
       });
+      token = data.token;
+      ok = data.ok;
     } catch (error) {
       ok = false;
     }
+    saveToken(token);
     if (!ok) {
-      setEmailUsed('Email já está sendo usado');
-      const timeAlert = 3500;
-      setTimeout(() => {
+      setEmailUsed('E-mail already in database.');
+      const timeAlert = 10000;
+      timer = setTimeout(() => {
         setEmailUsed('');
       }, timeAlert);
-    } else {
-      if (isAdmin) {
-        return props.history.push('/admin/orders');
-      }
-      return props.history.push('/products');
+      return false;
     }
-    return true;
+    if (timer) {
+      clearTimeout(timer);
+    }
+    if (isAdmin) {
+      return props.history.push('/admin/orders');
+    }
+    return props.history.push('/products');
   };
   const adminFunction = ({ target: { checked } }) => setIsAdmin(checked);
 
@@ -90,7 +100,7 @@ const Register = (props) => {
         </fieldset>
         <fieldset>
           <label htmlFor="password">
-            Password:
+            Senha:
             <input
               type="password"
               name="password"

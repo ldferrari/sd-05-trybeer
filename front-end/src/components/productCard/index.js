@@ -44,8 +44,7 @@ const Card = (props) => {
       />
       <p data-testid={ `${product.id - 1}-product-name` }>{ product.name }</p>
       <h4 data-testid={ `${product.id - 1}-product-price` }>
-        R$
-        { product.price }
+        {`R$ ${product.price.toString().replace('.', ',')}` }
       </h4>
       <div className="cardBottom">
         <button
