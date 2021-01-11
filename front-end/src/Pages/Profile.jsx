@@ -18,11 +18,11 @@ function Profile({
       <div className="container-page">
         <strong>Perfil</strong>
         <div>
-          <p>Nome:</p>
+          <p>Nome :</p>
           <span>{ name }</span>
         </div>
         <div>
-          <p>Email:</p>
+          <p>Email :</p>
           <span>{ email }</span>
         </div>
       </div>
