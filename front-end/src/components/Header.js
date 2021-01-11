@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Sidebar from './Sidebar';
 
 export default function Header(props) {
-  const [role, setRole] = useState('administrator');
-  const [active, setActive] = useState(false);
+  const userData = JSON.parse(localStorage.getItem('user'));
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
+  // const role = userData?.user?.role;
+  const role = userData && userData.user && userData.user.role;
+  const [active, setActive] = useState(role === 'administrator');
   const { title } = props;
-
-  useEffect(() => {
-    const userData = JSON.parse(localStorage.getItem('user'));
-    setRole(userData.user.role);
-  }, []);
 
   return (
     <section>
