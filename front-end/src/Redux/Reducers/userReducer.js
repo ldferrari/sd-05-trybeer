@@ -2,6 +2,8 @@ import {
   REQUESTING_USER,
   REQUEST_USER_SUCCESS,
   REQUEST_USER_ERROR,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_ERROR,
 } from '../Actions/user';
 
 const INITIAL_STATE = {
@@ -22,6 +24,18 @@ function userRequestReducer(state = INITIAL_STATE, action) {
         isLoading: false,
       };
     case REQUEST_USER_ERROR:
+      return {
+        ...state,
+        isLoading: false,
+      };
+    case UPDATE_USER_SUCCESS:
+      return {
+        ...state,
+        userData: { user: action.data },
+        shouldRedirect: true,
+        isLoading: false,
+      };
+    case UPDATE_USER_ERROR:
       return {
         ...state,
         isLoading: false,

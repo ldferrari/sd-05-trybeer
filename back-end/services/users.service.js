@@ -22,6 +22,13 @@ const REGISTER_SCHEMA = Joi.object({
     .required(),
   role: Joi.string().required(),
 });
+
+const UPDATE_SCHEMA = Joi.object({
+  id: Joi.number().required(),
+  name: Joi.string().min(3)
+    .max(64)
+    .required(),
+});
 // prettier-ignore
 const login = rescue(async (req, _res, next) => {
   const { error } = LOGIN_SCHEMA.validate(req.body);
@@ -36,12 +43,23 @@ const login = rescue(async (req, _res, next) => {
 const register = rescue(async (req, _res, next) => {
   const { error } = REGISTER_SCHEMA.validate(req.body);
   if (error) throw new Error(error);
-  console.log(await userModel.createUser(req.body));
-  req.data = 'usuario criado com sucesso';
+  req.data = await userModel.createUser(req.body);
+  console.log(req.data);
+  next();
+});
+
+const update = rescue(async (req, _res, next) => {
+  const { error } = UPDATE_SCHEMA.validate(req.body);
+  if (error) throw new Error(error);
+  const user = await userModel.updateUser(req.body);
+  if (user[0].affectedRows === 0) {
+    throw new Error('Usuário bugado');
+  }
   next();
 });
 
 module.exports = {
   login,
   register,
+  update,
 };

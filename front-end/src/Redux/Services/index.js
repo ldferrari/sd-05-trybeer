@@ -50,3 +50,11 @@ export const getUser = (data) => (
 );
 
 // Achar saída adequada para os 'catchs', no lugar de console.error.
+
+export const updateUser = (data) => (
+  fetch(`${localhostURL}/update`, myInitWithBody(data)).then((response) => (
+    response
+      .json()
+      .then((json) => Promise.resolve(json))
+      .catch((err) => Promise.reject(err))))
+);
