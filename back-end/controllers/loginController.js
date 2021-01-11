@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const rescue = require('express-rescue');
+const jwt = require('jsonwebtoken');
 
 const loginService = require('../services/loginService');
 const createToken = require('../services/createToken');
@@ -12,19 +13,20 @@ loginRouter.post(
     const { email, password } = req.body;
 
     const userLogin = await loginService.userLogin(email, password);
-    console.log(userLogin);
-    console.log('esse eh o userLogin');
     if (!userLogin) return res.status(400).json({ message: 'Login failed' });
 
     const payload = {
       issuer: 'post-api',
       audience: 'identity',
-      userData: email,
-      userRole: userLogin.role,
+      name: userLogin.name,
+      email,
+      role: userLogin.role,
     };
 
     const token = await createToken(payload);
-    return res.status(200).json({ token });
+    const user = jwt.decode(token);
+
+    return res.status(200).json({ user, token });
   }),
 );
 

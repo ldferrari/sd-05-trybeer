@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
-// import axios from 'axios';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import TryBeerContext from '../context/TryBeerContext';
+import fetchLogin from '../services/ApiTrybeer';
 
-const Login = () => {
+const Login = ({ history }) => {
   const {
     email, setEmail, password, setPassword,
   } = useContext(TryBeerContext);
@@ -11,12 +12,12 @@ const Login = () => {
   const validEmail = RegEx.test(String(email).toLowerCase());
   const passwordLength = 6;
 
-  // O axios POST será disparado quando o botão ENTRAR por acionado.
-  // useEffect(() => {
-  //   axios
-  //     .post('http://localhost:3001/login', { email: 'tryber@trybe.com.br', password: '123456' })
-  //     .then((res) => console.log(res.data));
-  // }, []);
+  const handleLogin = (result) => {
+    localStorage.setItem('user', JSON.stringify(result));
+    return result.user.role === 'administrator'
+      ? history.push('/admin/orders')
+      : history.push('/products');
+  };
 
   return (
     <section>
@@ -39,15 +40,14 @@ const Login = () => {
             onChange={ (event) => setPassword(event.target.value) }
           />
         </label>
-        <Link to="/products">
-          <button
-            data-testid="signin-btn"
-            type="button"
-            disabled={ !validEmail || password.length < passwordLength }
-          >
-            ENTRAR
-          </button>
-        </Link>
+        <button
+          data-testid="signin-btn"
+          type="button"
+          disabled={ !validEmail || password.length < passwordLength }
+          onClick={ () => fetchLogin(email, password).then((result) => handleLogin(result)) }
+        >
+          ENTRAR
+        </button>
         <Link to="/register">
           <button data-testid="no-account-btn" type="button">
             Ainda não tenho conta
@@ -56,6 +56,10 @@ const Login = () => {
       </form>
     </section>
   );
+};
+
+Login.propTypes = {
+  history: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default Login;

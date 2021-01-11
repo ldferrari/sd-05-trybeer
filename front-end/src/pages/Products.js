@@ -1,10 +1,14 @@
-import React, { useContext } from 'react';
-import TrybeerHeader from '../components/TrybeerHeader';
+import React from 'react';
+import Header from '../components/Header';
+import Sidebar from '../components/Sidebar';
+import ProductsBody from '../components/ProductsBody';
 
-const Products = () => {  
-  return (
-    <TrybeerHeader />
-  );
-};
+const Products = () => (
+  <div>
+    <Header title="TryBeer" />
+    <Sidebar />
+    <ProductsBody />
+  </div>
+);
 
 export default Products;

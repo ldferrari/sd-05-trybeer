@@ -1,37 +1,57 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import validate from '../services/validation';
+import { apiRegister } from '../services/ApiTrybeer';
 import TryBeerContext from '../context/TryBeerContext';
 
 const Register = () => {
   const {
     email, password, name, checked, setEmail, setPassword, setName, setChecked,
   } = useContext(TryBeerContext);
+  const [thisEmailAlreadyExists, setThisEmailAlreadyExists] = useState('');
+  const history = useHistory();
+  const unprocessable = 422;
+  const reverse = -1;
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const result = await apiRegister(name, email, password, checked);
+    const response = result.message && +result.message.split(' ').slice(reverse)[0];
+    return response === unprocessable
+      ? setThisEmailAlreadyExists('E-mail already in database.')
+      : history.push(!checked ? '/products' : '/admin/orders');
+  };
 
   const handleClick = () => setChecked(!checked);
 
   return (
     <form>
       <label htmlFor="signup-name">
+        Nome
         <input
           data-testid="signup-name"
           type="text"
+          value={ name }
           placeholder="Name"
           onChange={ (e) => setName(e.target.value) }
         />
       </label>
       <label htmlFor="signup-email">
+        Email
         <input
           data-testid="signup-email"
           type="email"
+          value={ email }
           placeholder="Email"
           onChange={ (e) => setEmail(e.target.value) }
         />
       </label>
       <label htmlFor="signup-password">
+        Senha
         <input
           data-testid="signup-password"
           type="password"
+          value={ password }
           placeholder="Senha"
           onChange={ (e) => setPassword(e.target.value) }
         />
@@ -40,11 +60,15 @@ const Register = () => {
         <input data-testid="signup-seller" type="checkbox" onClick={ handleClick } />
         Quero Vender
       </label>
-      <Link to={ !checked ? '/products' : '/admin/orders' }>
-        <button data-testid="signup-btn" type="button" disabled={ !validate(email, password, name) }>
-          Cadastrar
-        </button>
-      </Link>
+      <button
+        data-testid="signup-btn"
+        type="button"
+        disabled={ !validate(email, password, name) }
+        onClick={ (e) => handleSubmit(e) }
+      >
+        Cadastrar
+      </button>
+      <span>{ thisEmailAlreadyExists }</span>
     </form>
   );
 };

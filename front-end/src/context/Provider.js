@@ -7,6 +7,7 @@ const Provider = ({ children }) => {
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [checked, setChecked] = useState(false);
+  const [productsList, setProductList] = useState(['luca', 'hugo']);
 
   const contextValue = {
     email,
@@ -17,6 +18,8 @@ const Provider = ({ children }) => {
     setName,
     checked,
     setChecked,
+    productsList,
+    setProductList,
   };
 
   return <TryBeerContext.Provider value={ contextValue }>{children}</TryBeerContext.Provider>;
