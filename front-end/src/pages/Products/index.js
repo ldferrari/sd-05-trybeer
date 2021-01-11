@@ -1,65 +1,40 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import './index.css';
+import React, { useEffect, useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import './index.css';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
-
 import Card from '../../components/productCard';
-import AppContext from '../../context/AppContext';
+import CartButton from '../../components/cartButton';
 
 const Products = () => {
-  const { cart } = useContext(AppContext);
-  const zero = 0;
-  const dois = 2;
-  const cartSum = cart
-    .reduce((acc, cv) => acc + cv.price * cv.qty, zero)
-    .toFixed(dois);
-
   const [theProducts, setProducts] = useState([]);
-  const [cartBtn, setCartBtn] = useState(false);
-
+  const theToken = localStorage.getItem("token");
   const fetchProducts = async () => {
-    const { data } = await axios.get('http://localhost:3001/products');
+    const { data } = await axios.get('http://localhost:3001/products', { headers: { Authorization: theToken }});
     setProducts(data);
   };
+  // const fetchProducts = async () => {
+  //   axios.get(URL, { headers: { Authorization: theToken } })
+  // .then(response => {
+  //     setProducts(response.data);
+  //     console.log(response.data);
+  //   })
+  // .catch((error) => {
+  //     console.log('error ' + error);
+  //   });
+  // };
 
   useEffect(() => {
     fetchProducts();
-    // console.log(theProducts);
   },
   [theProducts]);
-
-  useEffect(() => {
-    return (
-      cartSum > zero ? setCartBtn(true) : setCartBtn(false)
-    );
-  },
-  [cartSum]);
 
   const logged = localStorage.getItem('token');
 
   if (!logged) {
     return <Redirect to="/login" />;
   }
-
-  const CartButton = () => {
-    return (
-      <div className="checkoutBtn">
-        <Link
-          to="/checkout"
-          data-testid="checkout-bottom-btn"
-          className="checkoutLink"
-        >
-          <p>Ver Carrinho</p>
-          <p data-testid="checkout-bottom-btn-value">
-            R$
-            {cartSum}
-          </p>
-        </Link>
-      </div>
-    )
-  };
 
   return (
     <div className="Products">
@@ -68,7 +43,7 @@ const Products = () => {
         { theProducts.map((product) => <Card key={ product.id } product={ product } />) }
         ,
       </div>
-      { cartBtn && CartButton() }
+      <CartButton />
       <Footer />
     </div>
   );

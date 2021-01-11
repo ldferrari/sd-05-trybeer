@@ -13,11 +13,11 @@ const Card = (props) => {
   const minusOne = () => {
     const zero = 0;
     // const exists = cart.find((produto) => produto.id === product.id);
-    return exists
-      ? setCart(cart
-        .map((e) => (e.id === product.id ? { ...e, qty: e.qty <= zero ? zero : e.qty - 1 } : e)),
-      )
-      : null;
+    const newProduct = (e) => ({ ...e, qty: e.qty <= zero ? zero : e.qty - 1 });
+    if (exists) {
+      setCart(cart.map((e) => (e.id === product.id ? newProduct(e) : e)));
+    }
+    return null;
   };
 
   const plusOne = () => {
@@ -28,8 +28,10 @@ const Card = (props) => {
       )
       : setCart(
         [
-        ...cart, { id: product.id, name: product.name, price: product.price, qty: um },
-        ]
+          ...cart, {
+            id: product.id, name: product.name, price: product.price, qty: um,
+          },
+        ],
       );
   };
   const zero = 0;

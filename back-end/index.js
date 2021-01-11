@@ -16,6 +16,8 @@ const productsController = require('./Controllers/productsController');
 
 const checkoutController = require('./Controllers/checkoutController');
 
+const ordersController = require('./Controllers/ordersController');
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -32,6 +34,8 @@ app.use('/profile', checkToken, profileController);
 app.use('/products', checkToken, productsController);
 
 app.use('/checkout', checkToken, checkoutController);
+
+app.use('/orders', checkToken, ordersController);
 
 app.use('/images/', express.static(path.join(__dirname, '..', 'images')));
 
