@@ -1,0 +1,42 @@
+.legenda {
+  font-weight: bold;
+  display: flex;
+  justify-content: space-around;
+}
+.total {
+  margin-left: 2%;
+  margin-right: 2%;
+  padding: 2%;
+  text-align: right;
+}
+
+.checkoutitle {
+  margin-left: 2%;
+  margin-right: 2%;
+  padding: 2%;
+}
+
+.inputs {
+  margin-left: 2%;
+  margin-right: 2%;
+  padding: 2%;
+}
+
+.finishBtn {
+  background-color: darkgreen;
+  color: white;
+  display: flex;
+  justify-content: center;
+  font-size: larger;
+  margin: auto;
+  padding: 3%;
+  width: 47%;
+}
+
+@media screen and ( min-width : 300px ) and ( max-width : 569px ) {
+
+  .legenda {
+    display: none;
+  }
+
+}
