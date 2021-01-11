@@ -8,6 +8,8 @@ import CartItem from '../../components/cartItem';
 
 const Checkout = () => {
   const [cartHere, setCartHere] = useState([]);
+  const [rua, setRua] = useState();
+  const [numero, setNumero] = useState();
   // const theToken = localStorage.getItem("token");
   const logged = localStorage.getItem('token');
   const { cart } = useContext(AppContext);
@@ -58,14 +60,33 @@ const Checkout = () => {
         <h2 className="checkoutitle">Endereço:</h2>
         <div className="inputs">
           <h4>Rua</h4>
-          <input data-testid="checkout-street-input" />
+          <input
+            data-testid="checkout-street-input"
+            type="text"
+            name="rua"
+            onChange={ ({ target: { value } }) => setRua(value) }
+            value={ rua }
+          />
         </div>
         <div className="inputs">
-          <h4 data-testid="checkout-house-number-input">Número</h4>
-          <input />
+          <h4>Número</h4>
+          <input
+            data-testid="checkout-house-number-input"
+            type="number"
+            name="numero"
+            onChange={ ({ target: { value } }) => setNumero(value) }
+            value={ numero }
+          />
         </div>
       </div>
-      <button type="button" data-testid="checkout-finish-btn" className="finishBtn">
+      <button
+        type="button"
+        data-testid="checkout-finish-btn"
+        className="finishBtn"
+        type="submit"
+        disabled={ !(rua && numero) }
+        onClick={ () => {alert(`pedido criado! ${cart} no endereço ${rua},${numero}, agora precisa zerar localstorage e redirecionar para a pagina de produtos`) }}
+      >
         Finalizar Pedido
       </button>
       <Footer />
