@@ -12,9 +12,9 @@ const sideBarStyle = {
   flexDirection: 'column',
 };
 
-function SideBar(props) {
+function SideBar() {
   return (
-    <div style={sideBarStyle} class="side-menu-container">
+    <div style={ sideBarStyle } className="side-menu-container">
       <Link to="/products" data-testid="side-menu-item-products">
         Produtos
       </Link>
