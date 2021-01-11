@@ -4,7 +4,7 @@ import Menu from '../../components/client/Menu';
 export default function ClientProduct() {
   return (
     <div>
-      <Menu title="Trybeer" />
+      <Menu title="TryBeer" />
     </div>
   );
 }

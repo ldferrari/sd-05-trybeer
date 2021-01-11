@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import loginData from '../../services/general/fetchLoginData';
 import validateEmail from '../../services/general/validateEmail';
 import validatePassword from '../../services/general/validatePassword';
+import '../../css/loginPage.css'
 
 export default function LoginPage() {
   const [emailValidate, setEmailValidate] = useState(false);
@@ -21,13 +22,14 @@ export default function LoginPage() {
   if (userData.role === 'administrator') return <Redirect to="/admin/orders" />;
   if (userData.role === 'client') return <Redirect to="/products" />;
   return (
-    <div>
-      <label htmlFor="email">
+    <div className="login">
+      <label htmlFor="email" className="label">
         Email
         <input
           type="text"
           id="email"
           data-testid="email-input"
+          className="input"
           onChange={ (event) => {
             if (validateEmail(event.target.value)) {
               setEmailValidate(true);
@@ -36,12 +38,13 @@ export default function LoginPage() {
           } }
         />
       </label>
-      <label htmlFor="senha">
+      <label htmlFor="senha" className="label">
         Senha
         <input
           type="password"
           id="senha"
           data-testid="password-input"
+          className="input"
           onChange={ (event) => {
             if (validatePassword(event.target.value)) {
               setPasswordValidate(true);

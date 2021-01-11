@@ -1,12 +1,13 @@
-* {
+body {
 	margin: 0;
 }
 
 .menuSuperior {
-width:100%;
-padding:10px 18px;
-box-shadow:0px 1px 1px rgba(0,0,0,0.15);
-background:#073416;
+	background:#073416;
+	box-shadow:0px 1px 1px rgba(0,0,0,0.15);
+	margin: 0;
+	padding: 1px;
+	width:100%;
 }
 
 #check {
@@ -14,16 +15,18 @@ background:#073416;
 }
 
 .top-hamburguer {
-	display:inline-block;
-	color:white;
-	box-shadow:0px 1px 1px rgba(0,0,0,0.15);
+	align-self: center;
 	background:#073416;
+	box-shadow:0px 1px 1px rgba(0,0,0,0.15);
+	color:white;
+	cursor: pointer;
+	display:inline-block;
 	float:left;
-	font-size:30px;
+	font-size:50px;
+	padding: 15px;
+	position: absolute;
 	text-shadow:0px 1px 0px rgba(0,0,0,0.5);
 	transition:color linear 0.15s;
-	cursor: pointer;
-	position: absolute;
 	z-index: 1;
 }
 
@@ -38,7 +41,7 @@ background:#073416;
 .side-menu-container {
 	background:#073416;
 	height:100%;
-	left: -40%;
+	left: 0;
 	position: absolute;
 	transition:all .2s linear;
 	width:40%;
