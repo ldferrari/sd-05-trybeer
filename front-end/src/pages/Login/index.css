@@ -1,4 +1,4 @@
-/* * {
+ * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -18,7 +18,7 @@
   border: 0;
   width: 80%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .column-login label {
@@ -29,15 +29,14 @@
   margin: 5px 0;
   border-radius: 5px;
   box-shadow: 5px 2px 1px #cccccc;
-  
 }
-
 .column-login button {
   margin: 5px;
   padding: 2px;
   border-radius: 5px;
   box-shadow: 5px 2px 1px #cccccc;
 }
+
 
 .column-login button[type='submit'] {
   position: absolute;
@@ -52,4 +51,4 @@
 a {
   text-decoration: none;
   color: black;
-} */
+} 
