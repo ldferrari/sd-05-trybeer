@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { getProductById } from '../../services/fetch';
 import PropTypes from 'prop-types';
+import TrybeerContext from '../../context/TrybeerContext';
 
 export default function AdminProductsList({ sale }) {
   const [product, setProduct] = useState([]);
+  const { setTotalPrice } = useContext(TrybeerContext);
 
   useEffect(() => {
-    getProductById(sale.product_id).then((response) => setProduct(response[0]));
+    setTotalPrice(0);
+    getProductById(sale.product_id).then((response) => setProduct(response[0]) || setTotalPrice((current) => current + (response[0].price) * sale.quantity));
   }, []);
 
   return (

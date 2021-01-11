@@ -12,6 +12,7 @@ const TrybeerProvider = ({ children }) => {
   const [admin, setAdmin] = useState(false);
   const [click, setClick] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [status, setStatus] = useState();
   const context = {
     name,
     setName,
@@ -25,6 +26,8 @@ const TrybeerProvider = ({ children }) => {
     setClick,
     totalPrice,
     setTotalPrice,
+    status,
+    setStatus,
   };
 
   return (
