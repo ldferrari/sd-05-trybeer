@@ -95,10 +95,25 @@ const getAllSales = async () => {
   return allSales[0];
 }
 
+const getSaleById = async (id) => {
+  if (!id) {
+    throw { err: { code: 404, message: 'invalid id' } };
+  }
+
+  const sale = await model.getSaleById(id);
+
+  if (!sale) {
+    throw { err: { code: 404, message: 'sale not found' } };
+  }
+
+  return sale[0];
+}
+
 module.exports = {
   createSale,
   closeSale,
   getByUserId,
   getAllOpen,
   getAllSales,
+  getSaleById,
 };
