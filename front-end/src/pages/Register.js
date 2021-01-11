@@ -1,57 +1,70 @@
 import React, { useContext, useState } from 'react';
-import { Redirect } from 'react-router-dom';
 import {
   checkName,
   checkEmail,
   checkPassword,
 } from '../services/checkUserData';
 import TrybeerContext from '../context/TrybeerContext';
+import { createUser, login } from '../services/fetch';
+import { withRouter } from 'react-router-dom';
 
-function Register() {
+function Register({ history }) {
   const [checkedName, setCheckedName] = useState(false);
   const [checkedEmail, setCheckedEmail] = useState(false);
   const [checkedPassword, setCheckedPassword] = useState(false);
   const [clickRegister, setClickRegister] = useState(false);
+  const [emailExistis, setEmailExists] = useState(false);
   const {
     name,
     setName,
     email,
     setEmail,
     setPassword,
+    password,
     admin,
     setAdmin,
   } = useContext(TrybeerContext);
 
   const handleNameChange = (e) => {
-    setName(e.target.value);
     setCheckedName(checkName(e.target.value));
+    if (checkedName) {
+      setName(e.target.value);
+    }
   };
   const handleEmailChange = (e) => {
-    setEmail(e.target.value);
     setCheckedEmail(checkEmail(e.target.value));
+    if (checkedEmail) {
+      setEmail(e.target.value);
+    }
   };
   const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
     setCheckedPassword(checkPassword(e.target.value));
+    if (checkedPassword) {
+      setPassword(e.target.value);
+    }
   };
 
-  const handleClickRegister = () => {
+  const handleClickRegister = async () => {
     setClickRegister(true);
-    // BACK -
-    // 1. verificar se email jà é existente
-    // caso sim, retornar "E-mail already in database."
-    // 2. Criar user na DB com esse registro
-    // 3. Pegar token do BD para localStorage
-    // Fazer promise para garantir que 2. venha antes de 3.
-    const userInfos = {
-      name,
-      email,
-      token:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4(...)',
-      role: admin ? 'admin' : 'client',
-    };
-    localStorage.setItem('user', JSON.stringify(userInfos));
+    const role = admin ? 'administrator' : 'client';
+    await createUser(name, email, password, role).then((result) =>
+      handleResult(result)
+    );
   };
+
+  const handleResult = async (result) => {
+    if (result.message === 'E-mail already in database') {
+      setEmailExists(true);
+    }
+    localStorage.setItem('user', JSON.stringify(result));
+    if (result.role === 'administrator') {
+      history.push('/admin/orders');
+    }
+    if (result.role === 'client') {
+      history.push('/products');
+    }
+  };
+
   return (
     <div>
       <div>Nome</div>
@@ -89,12 +102,9 @@ function Register() {
       >
         Cadastrar
       </button>
-      {clickRegister && admin && <Redirect to="/admin/orders" />}
-      {clickRegister && !admin && <Redirect to="/products" />}
+      {emailExistis ? <div>E-mail already in database.</div> : null}
     </div>
   );
 }
-// BACK - registro vai provocar Create nos DB (admin/client)
-// hipotese: aqui também tem local storage pois pula o login
 
-export default Register;
+export default withRouter(Register);

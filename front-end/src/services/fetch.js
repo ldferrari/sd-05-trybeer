@@ -1,6 +1,13 @@
 import axios from 'axios';
 
 const API_URL = 'http://localhost:3001';
+/*
+
+Busca a lista de produtos (client)
+
+nao precisa de params
+
+*/
 
 export const getProducts = () => {
   const products = axios
@@ -8,6 +15,15 @@ export const getProducts = () => {
     .then((response) => response.data);
   return products;
 };
+
+/*
+
+Fazer o Log in (client/administrator): 
+Params:
+  - email: string
+  - password: string
+
+*/
 
 export const login = (email, password) => {
   const userInfo = axios
@@ -17,7 +33,18 @@ export const login = (email, password) => {
   return userInfo;
 };
 
-export const register = (name, email, password, role) => {
+/*
+
+Registrar um novo usuário (client/administrator): 
+Params:
+  - name: string
+  - email: string
+  - password: string
+  - role: string
+
+*/
+
+export const createUser = (name, email, password, role) => {
   const newUser = axios
     .post(`${API_URL}/users/register`, { name, email, password, role })
     .then((response) => response.data)
@@ -25,13 +52,22 @@ export const register = (name, email, password, role) => {
   return newUser;
 };
 
+/*
+
+Mudar o nome de usuário (client/administrator): 
+Params:
+  - name: string
+  - email: string
+
+*/
+
 export const updateName = (name, email) => {
   const newName = axios
-    .put(`${API_URL}/users/register`, { name, email })
+    .put(`${API_URL}/users/profile`, { name, email })
     .then((response) => response.data)
     .catch((err) => err);
   return newName;
-}
+};
 
 /*
 Cadastrar nova venda
@@ -45,7 +81,14 @@ Params:
 -  products -- Array de objetos -> [{product_id: 1, quantity, 1}, {product_id: 2, quantity: 3}]
 
 */
-export const createNewSale = (email, totalPrice, address, addressNumber, saleDate, products) => {
+export const createNewSale = (
+  email,
+  totalPrice,
+  address,
+  addressNumber,
+  saleDate,
+  products
+) => {
   const newSale = axios
     .post(`${API_URL}/checkout`, { email, totalPrice, address, addressNumber, saleDate, products })
     .then((response) => response.data)
