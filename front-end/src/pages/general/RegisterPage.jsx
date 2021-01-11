@@ -51,16 +51,11 @@ export default function RegisterPage() {
       setEmailVerified(true);
     }
   };
-  // console.log(isFetched, isEmailRegistered === false, userData.role === 'client')
-  // console.log(isFetched && isEmailRegistered === false && userData.role === 'client')
-  console.log(isFetched, isEmailRegistered, isEmailVerified);
   if (isFetched && !isEmailRegistered && userData.role === 'client' && isEmailVerified) {
-    // console.log('products', isEmailRegistered);
     return <Redirect to="/products" />;
   }
 
   if (isFetched && !isEmailRegistered && userData.role === 'admin' && isEmailVerified) {
-    // console.log('admin/orders');
     return <Redirect to="/admin/orders" />;
   }
 
