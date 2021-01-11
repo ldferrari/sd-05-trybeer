@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
 export default function QuantityButton() {
-  const [quantity, setQuantity] = useState(0);
+  const quantidadeInicial = 0
+  const [quantity, setQuantity] = useState(quantidadeInicial);
 
   function increaseItem() {
     setQuantity(quantity + 1);
@@ -17,7 +18,7 @@ export default function QuantityButton() {
         type="button"
         className="product-decrease-quantity"
         data-testid="product-decrease-quantity"
-        onClick={() => { decreaseItem() }}
+        onClick={ () => { decreaseItem(); } }
       >
         -
       </button>
@@ -32,7 +33,7 @@ export default function QuantityButton() {
         type="button"
         className="product-increase-quantity"
         data-testid="product-increase-quantity"
-        onClick={() => { increaseItem() }}
+        onClick={ () => { increaseItem(); } }
       >
         +
       </button>

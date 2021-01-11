@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProdCard from '../../components/client/ProductCard';
 // import ClientContext from '../../context/client/ClientContext';
@@ -7,12 +7,10 @@ import Menu from '../../components/client/Menu';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-  console.log(products);
 
   useEffect(() => {
-    productsApi().then(response => setProducts(response));
+    productsApi().then((response) => (setProducts(response)));
   }, []);
-  console.log(products);
 
   // if (isLoading) return <div>Carregando...</div>;
 
@@ -20,14 +18,14 @@ const Products = () => {
     <div>
       <Menu title="Trybeer" />
       <div>
-        {products.map(product => (
-          <ProdCard key={product.id} product={product} />
+        {products.map((product) => (
+          <ProdCard key={ product.id } product={ product } />
         ))}
       </div>
       <div>
         <button type="button" data-testid="checkout-bottom-btn">
           <Link to="/checkout">Ver carrinho // valor data-testid="checkout-bottom-btn-value"</Link>
-        </button>
+        </button> 
       </div>
     </div>
     //   {console.log(products)}

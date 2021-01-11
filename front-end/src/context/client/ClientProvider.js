@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ClientContext from './ClientContext';
-import productsApi from '../../services/client/api';
-
+/* import productsApi from '../../services/client/api'; */
 
 const ClientProvider = ({ children }) => {
   const [email, setEmail] = useState('');
