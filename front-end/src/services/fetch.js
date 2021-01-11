@@ -180,3 +180,20 @@ export const getAllSales = () => {
     .catch((err) => err);
   return allSales;
 };
+
+/*
+Buscar order pelo id
+
+Params:
+
+- id do pedido
+
+*/
+export const getSaleById = (id) => {
+  const sale = axios
+    .get(`${API_URL}/checkout/id?id=${id}`, {})
+    .then((response) => response.data)
+    .catch((err) => err);
+  return sale;
+};
+

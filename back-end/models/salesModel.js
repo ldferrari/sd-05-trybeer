@@ -8,11 +8,13 @@ const createSale = async (userId, totalPrice, address, addressNumber, saleDate) 
 
 const closeSale = async (id) => connection.execute('UPDATE sales SET status = "Entregue" WHERE id = ?', [id]);
 
-const getByUserId = (userId) => connection.execute('SELECT * FROM sales WHERE user_id = ?;', [userId]);
+const getByUserId = async (userId) => connection.execute('SELECT * FROM sales WHERE user_id = ?;', [userId]);
 
-const getAllOpen = () => connection.execute('SELECT * FROM sales WHERE status = "Pendente";');
+const getAllOpen = async () => connection.execute('SELECT * FROM sales WHERE status = "Pendente";');
 
-const getAll = () => connection.execute('SELECT * FROM sales;');
+const getAll = async () => connection.execute('SELECT * FROM sales;');
+
+const getSaleById = async (id) => connection.execute('SELECT * FROM sales WHERE id = ?;', [id]);
 
 module.exports = {
   createSale,
@@ -20,4 +22,5 @@ module.exports = {
   getByUserId,
   getAllOpen,
   getAll,
+  getSaleById,
 };
