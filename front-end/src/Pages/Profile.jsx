@@ -5,20 +5,18 @@ import Header from '../Components/Header';
 
 import { getUserDataAct, updateUserAct } from '../Redux/Actions/user';
 
-const changeInput = (event, setFunction) => {
-  return setFunction(event.target.value);
-};
+const changeInput = (event, setFunction) => setFunction(event.target.value);
 
 function Profile({ history, userData, updateUser }) {
   useEffect(() => {}, []); // lint pediu pra por o refreshUser
-  const [id, setId] = useState(userData.user.id || "");
-  const [email, setEmail] = useState(userData.user.email || "");
-  const [name, setName] = useState(userData.user.name || "");
+  const [id] = useState(userData.user.id || '');
+  const [email] = useState(userData.user.email || '');
+  const [name, setName] = useState(userData.user.name || '');
   const [shouldRefresh, setShouldRefresh] = useState(false);
 
   return (
     <div className="container-main">
-      <Header pathname={history.location.pathname} />
+      <Header pathname={ history.location.pathname } />
       <div className="container-page">
         <strong>Perfil</strong>
         <form>
@@ -26,32 +24,36 @@ function Profile({ history, userData, updateUser }) {
           <input
             type="text"
             data-testid="profile-name-input"
-            value={name}
-            onChange={(event) => changeInput(event, setName)}
-            data-testid="profile-name-input"
+            value={ name }
+            onChange={ (event) => changeInput(event, setName) }
           />
           <p>Email :</p>
           <input
             type="email"
             data-testid="profile-email-input"
-            value={email}
+            value={ email }
             readOnly
           />
         </form>
-        <button disabled={userData.user.name === name} data-testid="profile-save-btn" onClick={() => {
-          updateUser({id, name})
-          setShouldRefresh(true);
-          }} type="button">
+        <button
+          disabled={ userData.user.name === name }
+          data-testid="profile-save-btn"
+          onClick={ () => {
+            updateUser({ id, name });
+            setShouldRefresh(true);
+          } }
+          type="button"
+        >
           Salvar
         </button>
-        {shouldRefresh && (<p>Atualização concluída com sucesso</p>) }
-
+        {shouldRefresh && <p>Atualização concluída com sucesso</p>}
       </div>
     </div>
   );
 }
 
 Profile.propTypes = {
+  updateUser: PropTypes.func.isRequired,
   history: PropTypes.shape({
     location: PropTypes.shape({
       pathname: PropTypes.string,
@@ -61,6 +63,7 @@ Profile.propTypes = {
     user: PropTypes.shape({
       name: PropTypes.string,
       email: PropTypes.string,
+      id: PropTypes.number.isRequired,
     }),
   }).isRequired,
 };
