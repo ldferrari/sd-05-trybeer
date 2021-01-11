@@ -4,12 +4,14 @@ import RegisterPage from './pages/general/RegisterPage';
 import HomePage from './pages/general/HomePage';
 import ClientProductPage from './pages/client/ClientProductPage';
 import ClientProfilePage from './pages/client/ClientProfilePage';
+import LoginPage from './pages/general/LoginPage';
 import ClientOrderPage from './pages/client/ClientOrderPage';
 
 function App() {
   return (
     <div className="App">
       <Switch>
+        <Route path="/login" component={ LoginPage } />
         <Route path="/register" component={ RegisterPage } />
         <Route path="/products" component={ ClientProductPage } />
         <Route path="/profile">
