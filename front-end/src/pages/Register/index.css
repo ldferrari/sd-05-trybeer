@@ -33,6 +33,11 @@
   box-shadow: 5px 2px 1px #cccccc;
 }
 
+.email-alert {
+  color: #ff0000;
+  text-decoration: wavy;
+}
+
 .column-register .checkbox {
   text-align: center;
   
