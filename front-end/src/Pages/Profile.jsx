@@ -5,13 +5,9 @@ import Header from '../Components/Header';
 
 import { getUserDataAct } from '../Redux/Actions/user';
 
-function Profile({
-  name, email, refreshUser, history,
-}) {
-  useEffect(() => {
-    refreshUser();
-  }, [refreshUser]); // lint pediu pra por o refreshUser
-
+function Profile({ history, userData }) {
+  useEffect(() => {}, []); // lint pediu pra por o refreshUser
+  const { name, email } = userData.user;
   return (
     <div className="container-main">
       <Header pathname={ history.location.pathname } />
@@ -31,19 +27,21 @@ function Profile({
 }
 
 Profile.propTypes = {
-  email: PropTypes.string.isRequired,
   history: PropTypes.shape({
     location: PropTypes.shape({
       pathname: PropTypes.string,
+    }).isRequired,
+  }).isRequired,
+  userData: PropTypes.shape({
+    user: PropTypes.shape({
+      name: PropTypes.string,
+      email: PropTypes.string,
     }),
   }).isRequired,
-  name: PropTypes.string.isRequired,
-  refreshUser: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({ userRequestReducer }) => ({
-  name: userRequestReducer.userData.name,
-  email: userRequestReducer.userData.email,
+  userData: userRequestReducer.userData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
