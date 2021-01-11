@@ -21,5 +21,7 @@ app.use('/checkout', salesController);
 
 app.use('/details', detailsController);
 
+app.use('/images', express.static('images'));
+
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => console.log(`Yummy, here is ${PORT} port`));
