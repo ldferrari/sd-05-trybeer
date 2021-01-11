@@ -28,7 +28,7 @@ function EachProduct(props) {
       </p>
       <img
         data-testid={`${index}-product-img`}
-        src={`http://localhost:3001/images/${product.name}.jpg`}
+        src={product.url_image}
         alt=""
         width="100"
         height="60"

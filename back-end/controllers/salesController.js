@@ -49,4 +49,14 @@ sales.get('/all-sales', async (_req, res) => {
   }
 });
 
+sales.get('/id', async (req, res) => {
+  try {
+    const { id } = req.query;
+    const sale = await service.getSaleById(id);
+    res.status(201).json(sale);
+  } catch (e) {
+    res.status(500).json({ message: e.message });
+  }
+});
+
 module.exports = sales;
