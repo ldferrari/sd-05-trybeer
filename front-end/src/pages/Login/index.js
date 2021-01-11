@@ -42,7 +42,7 @@ const Login = (props) => {
       role = user.role;
     } catch (error) {
       setAlertLogin('Email e/ou password incorretos');
-      const timeAlert = 1500;
+      const timeAlert = 3500;
       setTimeout(() => {
         setAlertLogin('');
       }, timeAlert);

@@ -49,7 +49,7 @@ const Register = (props) => {
     }
     if (!ok) {
       setEmailUsed('Email já está sendo usado');
-      const timeAlert = 1500;
+      const timeAlert = 3500;
       setTimeout(() => {
         setEmailUsed('');
       }, timeAlert);
