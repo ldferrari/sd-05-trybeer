@@ -14,7 +14,6 @@ const validateEmail = (email) => {
 register.post('/', async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
-    console.log('PASSEI AQUI')
 
     if (!/^[A-Za-z \s]{12,}$/.test(name)) {
       return res.status(401).json({

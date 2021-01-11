@@ -12,6 +12,7 @@ const Register = (props) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [emailUsed, setEmailUsed] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
 
   const validationName = (value) => (/^[A-Za-z \s]{12,}$/.test(value) ? setValidName(true) : setValidName(false));
@@ -47,7 +48,11 @@ const Register = (props) => {
       ok = false;
     }
     if (!ok) {
-      window.alert('Email já está sendo usado');
+      setEmailUsed('Email já está sendo usado');
+      const timeAlert = 1500;
+      setTimeout(() => {
+        setEmailUsed('');
+      }, timeAlert);
     } else {
       if (isAdmin) {
         return props.history.push('/admin/orders');
@@ -94,6 +99,7 @@ const Register = (props) => {
             />
           </label>
         </fieldset>
+        <span className="email-alert">{emailUsed}</span>
         <fieldset className="checkbox">
           <label htmlFor="seller">
             <input

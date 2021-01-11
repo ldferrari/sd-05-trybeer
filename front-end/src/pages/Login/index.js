@@ -14,6 +14,7 @@ const Login = (props) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [alertLogin, setAlertLogin] = useState('');
   const validationEmail = (value) => (/[A-Za-z0-9]+@[A-Za-z]+[A-z]*(\.\w{2,3})+/.test(value)
     ? setValidEmail(true)
     : setValidEmail(false));
@@ -33,7 +34,20 @@ const Login = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { token, role } = await postLogin({ email, password });
+    let token;
+    let role;
+    try {
+      const user = await postLogin({ email, password });
+      token = user.token;
+      role = user.role;
+    } catch (error) {
+      setAlertLogin('Email e/ou password incorretos');
+      const timeAlert = 1500;
+      setTimeout(() => {
+        setAlertLogin('');
+      }, timeAlert);
+      return false;
+    }
     saveToken(token);
     if (role === 'admin') {
       props.history.push('/admin/orders');
@@ -73,6 +87,7 @@ const Login = (props) => {
             />
           </label>
         </fieldset>
+       <span className="email-alert">{alertLogin}</span>
         <button data-testid="no-account-btn" type="button">
           <Link to="/register">Ainda não tenho conta</Link>
         </button>
