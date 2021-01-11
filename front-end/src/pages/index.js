@@ -5,5 +5,5 @@ import Orders from './Orders';
 import Profile from './Profile';
 
 export {
-  Login, Register, Products, Orders, Profile
+  Login, Register, Products, Orders, Profile,
 };

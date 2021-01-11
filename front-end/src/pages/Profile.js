@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 // import { Link } from 'react-router-dom';
-import Header from '../components/Header';
+// import Header from '../components/Header';
 import TryBeerContext from '../context/TryBeerContext';
 import { updateUser } from '../services/ApiTrybeer';
 
@@ -11,17 +11,26 @@ export default function Profile() {
   return (
     <section>
       <form>
-        <label htmlFor="name">Name</label>
-        <input type="text" value={name} data-testid="profile-name-input" onChange={(e) => setName(e.target.value)}/>
-        <label htmlFor="email">Email</label>
-        <input type="email" data-testid="profile-email-input" readOnly />
+        <label htmlFor="name">
+          Name
+        </label>
+        <input
+          type="text"
+          value={ name }
+          data-testid="profile-name-input"
+          onChange={ (e) => setName(e.target.value) }
+        />
+        <label htmlFor="email">
+          Email
+        </label>
+        <input id="email" type="email" data-testid="profile-email-input" readOnly />
         <button
           type="submit"
-          disabled={!MYSQL_PASSWORD, name}
+          disabled={ !name }
           data-testid="profile-save-btn"
-          onClick={() => {
-            updateUser(name)
-          }}
+          onClick={ () => {
+            updateUser(name);
+          } }
         >
           Salvar
         </button>

@@ -7,6 +7,7 @@ async function createToken(payload) {
     algorithm: 'HS256',
   };
   const token = jwt.sign(payload, secret, headers);
+  console.log(secret);
 
   return token;
 }
