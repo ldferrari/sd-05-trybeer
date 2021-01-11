@@ -27,7 +27,9 @@ const CartItem = (props) => {
       <p data-testid={ `${index}-product-qtd-input` }>{ exists.qty ? exists.qty : zero }</p>
       <p data-testid={ `${index}-product-name` }>{ item.name }</p>
       <p data-testid={ `${index}-product-unit-price` }>
-        `R$ ${item.price.toString().replace('.', ',')}`
+        `R$ $
+        {item.price.toString().replace('.', ',')}
+        `
       </p>
       <p data-testid={ `${index}-product-total-value` }>
         { `R$ ${(item.price * item.qty).toString().replace('.', ',')}` }

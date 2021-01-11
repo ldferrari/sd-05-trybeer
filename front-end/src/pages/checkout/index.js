@@ -80,12 +80,12 @@ const Checkout = () => {
         </div>
       </div>
       <button
-        type="button"
+        // type="button"
         data-testid="checkout-finish-btn"
         className="finishBtn"
         type="submit"
         disabled={ !(rua && numero) }
-        onClick={ () => {alert(`pedido criado! ${cart} no endereço ${rua},${numero}, agora precisa zerar localstorage e redirecionar para a pagina de produtos`) }}
+        onClick={ () => { alert(`pedido criado! ${cart} no endereço ${rua},${numero}, agora precisa zerar localstorage e redirecionar para a pagina de produtos`); } }
       >
         Finalizar Pedido
       </button>
