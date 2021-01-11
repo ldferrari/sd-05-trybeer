@@ -15,7 +15,7 @@ products.get('/', async (_req, res) => {
 
 products.get('/id', async (req, res) => {
   try {
-    const product = await service.getById(req.body);
+    const product = await service.getById(req.query);
     return res.status(200).json(product);
   } catch (e) {
     res.status(500).json({ message: e.message });

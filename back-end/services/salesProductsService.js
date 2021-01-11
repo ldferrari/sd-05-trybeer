@@ -1,8 +1,6 @@
 const model = require('../models/salesProductsModel');
 
-const getSaleDetails = async (body) => {
-  const { id } = body;
-
+const getSaleDetails = async (id) => {
   if (!id) {
     throw { err: { code: 401, message: 'error' } };
   }
