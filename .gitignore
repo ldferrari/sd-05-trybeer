@@ -178,6 +178,7 @@ node_modules/
 back-end/node_modules
 front-end/node_modules
 jspm_packages/
+front-end/src/serviceWorker.js
 
 # TypeScript v1 declaration files
 typings/
