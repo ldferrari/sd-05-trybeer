@@ -80,6 +80,7 @@ const Login = (props) => {
           type="submit"
           disabled={ !(validEmail && validPassword) }
           onClick={ handleSubmit }
+          className={ (validEmail && validPassword) ? 'ready' : '' }
           data-testid="signin-btn"
         >
           ENTRAR

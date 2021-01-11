@@ -1,10 +1,10 @@
-/* * {
+ * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.column {
+.column-register {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,25 +14,32 @@
   vertical-align: middle;
 }
 
-.column fieldset {
+.column-register fieldset {
   border: 0;
-  width: 80%;
+  width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
-.column label {
+.column-register label {
+  font-size: large;
   margin: 5px 0;
-  vertical-align: baseline;
+  width: 80%;
 }
 
-.column input {
+.column-register input {
   margin: 5px 0;
   border-radius: 5px;
   box-shadow: 5px 2px 1px #cccccc;
 }
 
-.column button {
+.column-register .checkbox {
+  text-align: center;
+  
+}
+
+.column-register button {
+  font-size: larger;
   position: absolute;
   bottom: 10px;
   margin: 5px;
@@ -44,6 +51,15 @@
   background-color: #dddddd;
 }
 
+label input:not([type='checkbox']) {
+  padding: 5px;
+  width: 100%;
+}
+
+label input[type='checkbox'] {
+  margin: 10px;
+}
+
 button.ready {
   background-color: #00ff00;
 }
@@ -51,4 +67,4 @@ button.ready {
 a {
   text-decoration: none;
   color: black;
-} */
+}

@@ -60,7 +60,7 @@ const Register = (props) => {
 
   return (
     <div>
-      <form className="column">
+      <form className="column-register">
         <fieldset>
           <label htmlFor="name">
             Nome:
@@ -94,14 +94,17 @@ const Register = (props) => {
             />
           </label>
         </fieldset>
-        <label htmlFor="seller">
-          <input
-            type="checkbox"
-            onClick={ adminFunction }
-            data-testid="signup-seller"
-          />
-          Quero Vender
-        </label>
+        <fieldset className="checkbox">
+          <label htmlFor="seller">
+            <input
+              id="seller"
+              type="checkbox"
+              onClick={ adminFunction }
+              data-testid="signup-seller"
+            />
+            Quero Vender
+          </label>
+        </fieldset>
         <button
           type="submit"
           disabled={ !(validEmail && validPassword && validName) }
