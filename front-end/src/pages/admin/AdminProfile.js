@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 function AdminProfile() {
@@ -11,8 +10,8 @@ function AdminProfile() {
     return (
       <div>
         <h1>Perfil</h1>
-        <div data-testid="profile-name">Nome: {admin.name}</div>
-        <div>Email: {admin.email}</div>
+        <div data-testid="profile-name">Nome: { admin.name }</div>
+        <div>Email: { admin.email }</div>
       </div>
     );
   };
