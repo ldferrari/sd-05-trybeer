@@ -2,6 +2,7 @@ const { Router } = require('express');
 // const rescue = require('express-rescue');
 const registerService = require('../services/registerService');
 
+// https://bit.ly/2VxAplp
 const registerRouter = Router();
 
 registerRouter.post('/', async (req, res) => {
@@ -18,7 +19,7 @@ registerRouter.post('/', async (req, res) => {
     if (err.code === 'invalid_data') {
       return res.status(400).json({ message: 'Registration failed!' });
     }
-    
+
     res.status(500).json({ message: 'Something went wrong!' });
   }
 });
