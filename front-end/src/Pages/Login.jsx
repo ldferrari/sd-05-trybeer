@@ -5,13 +5,12 @@ import { Redirect } from 'react-router-dom';
 import Input from '../Components/Input';
 import { getUserDataAct } from '../Redux/Actions/user';
 
-const Login = ({ submitLogin, shouldRedirect, userData }) => {
+const Login = ({ submitLogin, userData }) => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [isDisabled, isSetDisabled] = useState(true);
   const [register, setRegister] = useState(false);
   const [isAnInvalidEmail, setIsAnInvalidEmail] = useState(false);
-
 
   function validaInput(xEmail, xSenha) {
     const regexEmail = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/;
@@ -77,7 +76,6 @@ const Login = ({ submitLogin, shouldRedirect, userData }) => {
 };
 
 Login.propTypes = {
-  shouldRedirect: PropTypes.bool.isRequired,
   submitLogin: PropTypes.func.isRequired,
   userData: PropTypes.shape({
     message: PropTypes.string,
