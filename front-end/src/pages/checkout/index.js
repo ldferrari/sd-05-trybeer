@@ -12,10 +12,10 @@ const Checkout = () => {
   const logged = localStorage.getItem('token');
   const { cart } = useContext(AppContext);
 
-  const zero = 0;
+  const nada = 0;
   const dois = 2;
   const cartSum = cart
-    .reduce((acc, cv) => acc + cv.price * cv.qty, zero)
+    .reduce((acc, cv) => acc + cv.price * cv.qty, nada)
     .toFixed(dois);
 
   // const lCart = localStorage.getItem('cart');
@@ -27,7 +27,7 @@ const Checkout = () => {
   useEffect(() => {
     fetchCart();
   },
-  []);
+  [cartHere]);
 
   if (!logged) {
     return <Redirect to="/login" />;
@@ -47,25 +47,25 @@ const Checkout = () => {
         <div className="cartItems">
           {
           cartHere
-            .map((item, index) => <CartItem key={ item.id} item={ item } index={ index } />)
+            .map((item, index) => <CartItem key={ item.id } item={ item } index={ index } />)
           }
         </div>
       </div>
-      <h3 data-testid='order-total-value' className="total">
-        { `TOTAL: R$ ${ cartSum.toString().replace('.', ',') }` }
+      <h3 data-testid="order-total-value" className="total">
+        { `TOTAL: R$ ${cartSum.toString().replace('.', ',')}` }
       </h3>
       <div className="deliveryForm">
         <h2 className="checkoutitle">Endereço:</h2>
         <div className="inputs">
           <h4>Rua</h4>
-          <input data-testid="checkout-street-input"/>
+          <input data-testid="checkout-street-input" />
         </div>
         <div className="inputs">
-          <h4 data-testid='checkout-house-number-input'>Número</h4>
+          <h4 data-testid="checkout-house-number-input">Número</h4>
           <input />
         </div>
       </div>
-      <button type='button' data-testid='checkout-finish-btn' className="finishBtn">
+      <button type="button" data-testid="checkout-finish-btn" className="finishBtn">
         Finalizar Pedido
       </button>
       <Footer />

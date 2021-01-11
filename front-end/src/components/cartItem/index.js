@@ -22,7 +22,6 @@ const CartItem = (props) => {
     }
     return null;
   };
-  const zero = 0;
   return (
     <div className="cartItem" key={ item.name }>
       <p data-testid={ `${index}-product-qtd-input` }>{ exists.qty ? exists.qty : zero }</p>
