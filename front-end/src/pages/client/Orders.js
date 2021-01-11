@@ -1,20 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ClientMenu from '../../components/client/ClientMenu';
 import { getUser } from '../../services/localStorage';
-// import { getUserSales } from '../../services/fetch';
+import { getUserSales } from '../../services/fetch';
+import OrderCard from '../../components/client/OrderCard';
 
 function Orders() {
-  // const [bla, setBla] = useState(initialstatetrueorfalse);
-  // const { blu, bli } = useContext(TrybeerContext);
+  const [orders, setOrders] = useState([]);
   useEffect(() => {
     const user = getUser();
-    const email = user.email;
-    console.log(email);
+
+    getUserSales(user.email).then((response) => setOrders(response));
   }, []);
 
 return (
   <div>
     <ClientMenu title="Meus Pedidos" />
+    {orders.map((order, index) => <OrderCard key={index} order={order} index={index} />)}
   </div>
 );
 }

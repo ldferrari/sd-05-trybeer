@@ -7,7 +7,7 @@ import ClientProfile from './pages/client/ClientProfile';
 import Products from './pages/client/Products';
 import Checkout from './pages/client/Checkout';
 import Orders from './pages/client/Orders';
-// import OrdersDetails from './pages/client/OrdersDetails';
+import OrdersDetails from './pages/client/OrdersDetails';
 import AdminProfile from './pages/admin/AdminProfile';
 import PendingOrders from './pages/admin/PendingOrders';
 import AdminOrdersDetails from './pages/admin/AdminOrdersDetails';
@@ -24,11 +24,10 @@ function App() {
         <Route exact path="/products" component={Products} />
         <Route exact path="/checkout" component={Checkout} />
         <Route exact path="/orders" component={Orders} />
-        {/* <Route
-          exact
-          path="/orders/:orderNumber"
+        <Route
+          exact path="/orders/:orderNumber"
           render={ (props) => <OrdersDetails { ...props } /> }
-        /> */}
+        />
         {/* Problem ESLINT "Prop spreading is forbidden" */}
         <Route exact path="/admin/profile" component={AdminProfile} />
         <Route exact path="/admin/orders" component={PendingOrders} />
