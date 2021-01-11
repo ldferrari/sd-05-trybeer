@@ -5,9 +5,9 @@ import { apiRegister } from '../services/ApiTrybeer';
 import TryBeerContext from '../context/TryBeerContext';
 
 const Register = () => {
-  const { email, password, name, checked, setEmail, setPassword, setName, setChecked } = useContext(
-    TryBeerContext,
-  );
+  const {
+    email, password, name, checked, setEmail, setPassword, setName, setChecked,
+  } = useContext(TryBeerContext);
   const [thisEmailAlreadyExists, setThisEmailAlreadyExists] = useState('');
   const history = useHistory();
   const unprocessable = 422;
@@ -31,9 +31,9 @@ const Register = () => {
         <input
           data-testid="signup-name"
           type="text"
-          value={name}
+          value={ name }
           placeholder="Name"
-          onChange={(e) => setName(e.target.value)}
+          onChange={ (e) => setName(e.target.value) }
         />
       </label>
       <label htmlFor="signup-email">
@@ -41,9 +41,9 @@ const Register = () => {
         <input
           data-testid="signup-email"
           type="email"
-          value={email}
+          value={ email }
           placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={ (e) => setEmail(e.target.value) }
         />
       </label>
       <label htmlFor="signup-password">
@@ -51,24 +51,24 @@ const Register = () => {
         <input
           data-testid="signup-password"
           type="password"
-          value={password}
+          value={ password }
           placeholder="Senha"
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={ (e) => setPassword(e.target.value) }
         />
       </label>
       <label htmlFor="signup-seller">
-        <input data-testid="signup-seller" type="checkbox" onClick={handleClick} />
+        <input data-testid="signup-seller" type="checkbox" onClick={ handleClick } />
         Quero Vender
       </label>
       <button
         data-testid="signup-btn"
         type="button"
-        disabled={!validate(email, password, name)}
-        onClick={(e) => handleSubmit(e)}
+        disabled={ !validate(email, password, name) }
+        onClick={ (e) => handleSubmit(e) }
       >
         Cadastrar
       </button>
-      <span>{thisEmailAlreadyExists}</span>
+      <span>{ thisEmailAlreadyExists }</span>
     </form>
   );
 };
