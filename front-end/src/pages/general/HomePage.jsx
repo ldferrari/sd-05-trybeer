@@ -4,7 +4,7 @@ import GeneralContext from '../../context/general/GeneralContext';
 import loginData from '../../services/general/fetchLoginData';
 import validateEmail from '../../services/general/validateEmail';
 import validatePassword from '../../services/general/validatePassword';
-import '../../css/loginPage.css'
+import '../../css/loginPage.css';
 
 export default function LoginPage() {
   const [emailValidate, setEmailValidate] = useState(false);
