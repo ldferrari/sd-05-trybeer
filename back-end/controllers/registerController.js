@@ -13,7 +13,6 @@ registerRouter.post('/', async (req, res) => {
     //   return res.status(200).json(newUser)
     // }
     res.status(200).json(newUser);
-    
   } catch (err) {
     if (err.message === 'invalid_email') {
       console.log(err);
