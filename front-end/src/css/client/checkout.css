@@ -1,0 +1,10 @@
+
+.orders-list {
+  display: flex;
+  justify-content: space-around;
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+}
