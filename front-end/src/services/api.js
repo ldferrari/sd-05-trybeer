@@ -75,6 +75,5 @@ export const getProducts = async (email, token) => {
   };
   const response = await fetch(`${url}/products?email=${email}`, updateReq)
     .then((products) => products.json());
-    // console.log(response)
   return response || undefined;
 };

@@ -37,9 +37,22 @@ const getUserByEmail = async (email) => {
   return user[0][0].name || undefined;
 };
 
+const getUserId = async (email) => {
+  const user = await model.checkUser(email);
+  if (!user) {
+    return {
+      error: true,
+      statusCode: 400,
+      message: 'User not found',
+    };
+  }
+  return user[0][0].id || undefined;
+};
+
 module.exports = {
   checkUser,
   createUser,
   updateUser,
   getUserByEmail,
+  getUserId,
 };

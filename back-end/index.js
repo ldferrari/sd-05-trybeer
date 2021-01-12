@@ -5,6 +5,7 @@ const path = require('path');
 const users = require('./controllers/usersController');
 const login = require('./controllers/loginController');
 const products = require('./controllers/productsController');
+const orders = require('./controllers/ordersController');
 
 // require('dotenv').config({ path: `${__dirname}/../.env` });
 require('dotenv').config();
@@ -17,6 +18,7 @@ app.use('/users', users);
 app.use('/login', login);
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/products', products);
+app.use('/orders', orders);
 
 app.get('/', (_request, response) => {
   response.send();
