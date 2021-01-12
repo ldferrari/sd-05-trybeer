@@ -8,17 +8,18 @@ const ProdCard = (props) => {
   const { product, index } = props;
 
   return (
-    <div key={ product.id }>
+    <div key={ product.id } className="card-body">
       <img
         height='60px' 
         src={ product.url_image }
         data-testid={ `${index}-product-img` }
+        className="card-image"
         alt={product.name}
       />
-      <div data-testid={ `${index}-product-name` }>
+      <div data-testid={ `${index}-product-name` } className="cart-name">
         { product.name }
       </div>
-      <div data-testid={ `${index}-product-price` }>
+      <div data-testid={ `${index}-product-price` } className="cart-price">
         <div>
           { `R$ ${product.price.toString().replace('.', ',')}` }
         </div>

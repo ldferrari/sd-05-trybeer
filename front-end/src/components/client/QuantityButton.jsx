@@ -45,9 +45,9 @@ export default function QuantityButton(props) {
         -
       </button>
       <span
-        className="shopping-cart-product-quantity"
-        key="shopping-cart-product-quantity"
-        data-testid="shopping-cart-product-quantity"
+        className="cart-product-quantity"
+        key="cart-product-quantity"
+        data-testid="cart-product-quantity"
       >
         {quantity}
       </span>

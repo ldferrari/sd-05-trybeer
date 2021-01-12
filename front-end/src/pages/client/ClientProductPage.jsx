@@ -4,6 +4,7 @@ import ProdCard from '../../components/client/ProductCard';
 import { ClientContext } from '../../context/client/ClientProvider';
 import productsApi from '../../services/client/api';
 import Menu from '../../components/client/Menu';
+import '../../css/clientProductPage.css';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -45,7 +46,7 @@ const Products = () => {
   return (
     <div>
       <Menu title="Trybeer" />
-      <div>
+      <div className="listProducts marginTop">
         {products.map((product, index) => (
           <ProdCard index={index} product={product} />
         ))}
@@ -53,7 +54,7 @@ const Products = () => {
       <div>
         <button type="button" data-testid="checkout-bottom-btn">
           <Link to="/checkout">
-            <button>
+            <button className="ver-carrinho">
               Ver carrinho
               <span data-testid="checkout-bottom-btn-value">
               {cart}
