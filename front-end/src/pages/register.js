@@ -4,6 +4,8 @@ import { Redirect } from 'react-router-dom';
 import Context from '../context/Context';
 import { registerUser } from '../services/api';
 import { validateRegister } from '../services/validateRegister';
+import logo from '../images/logo.png';
+import './css/register.css';
 
 const Register = () => {
   // const [email, setEmail] = useContext(Context);
@@ -47,7 +49,8 @@ const Register = () => {
   };
 
   return (
-    <div>
+    <div className="form-register">
+      <img src={ logo } alt="logo" className="logo" />
       { designatedRoute !== undefined ? <Redirect to={ designatedRoute } /> : null }
       <form id="register-form">
         <label htmlFor="name">
@@ -83,7 +86,7 @@ const Register = () => {
             onChange={ (event) => setPassword(event.target.value) }
           />
         </label>
-        <label htmlFor="seller">
+        <label htmlFor="seller" className="seller">
           <input
             name="seller"
             type="checkbox"
@@ -97,6 +100,7 @@ const Register = () => {
           data-testid="signup-btn"
           disabled={ !validateRegister(userData) }
           onClick={ (e) => handleRegister(userData, e) }
+          className="user-register"
         >
           Cadastrar
         </button>

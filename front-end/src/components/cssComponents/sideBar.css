@@ -1,0 +1,19 @@
+.side-container {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    background-color: black;
+    width: fit-content;
+}
+
+.side-container a {
+    display: flex;
+    flex-flow: column;
+    color: white;
+    font-size: larger;
+    text-decoration: none;
+    margin: auto 25x;
+    padding: 5px;
+    /* width: fit-content; */
+}

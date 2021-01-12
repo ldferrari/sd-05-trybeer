@@ -3,6 +3,7 @@ import { Redirect, Link } from 'react-router-dom';
 import Header from '../components/Header';
 import { getProducts } from '../services/api';
 import Context from '../context/Context';
+import './css/products.css';
 
 const Products = () => {
   const {
@@ -77,14 +78,14 @@ const Products = () => {
     return <Redirect to="/login" />;
   }
   return (
-    <div>
+    <div className="background">
       <Header>Products</Header>
-      <div>
-        <Link to="/checkout">
-          <button disabled={ !cartBtn } type="submit" data-testid="checkout-bottom-btn">
+      <div className="corpo">
+        <button className="verCarrinho" disabled={ !cartBtn } type="submit" data-testid="checkout-bottom-btn">
+          <Link to="/checkout">
             Ver Carrinho
-          </button>
-        </Link>
+          </Link>
+        </button>
         <span data-testid="checkout-bottom-btn-value">{`Preço total: R$ ${total}`}</span>
         {beers.map((element, index) => (
           <div key={ element.name }>
@@ -92,24 +93,24 @@ const Products = () => {
             <p data-testid={ `${index}-product-price` }>{`R$ ${element.price.replace('.', ',')}`}</p>
             <img
               data-testid={ `${index}-product-img` }
-              width="30px"
-              height="30x"
+              width="50px"
+              height="50px"
               src={ element.url_image }
               alt={ element.name }
             />
-            <button
-              onClick={ (e) => handleClick(e, 'add', index) }
-              data-testid={ `${index}-product-plus` }
-              type="button"
-            >
-              +
-            </button>
             <button
               type="button"
               onClick={ (e) => handleClick(e, 'sub', index) }
               data-testid={ `${index}-product-minus` }
             >
               -
+            </button>
+            <button
+              onClick={ (e) => handleClick(e, 'add', index) }
+              data-testid={ `${index}-product-plus` }
+              type="button"
+            >
+              +
             </button>
             <span data-testid={ `${index}-product-qtd` } id={ `product-${index}` }>
               {element.qty}
