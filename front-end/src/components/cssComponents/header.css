@@ -1,0 +1,24 @@
+.xtudo {
+  position: sticky;
+  top: 0;
+}
+.sandubao {
+  display: flex;
+  align-content: flex-start;
+  background-color: rgb(255, 226, 175);
+}
+
+.bamburguer {
+  background-color: rgb(94, 203, 94);
+  border: solid rgb(76, 196, 76) 1px;
+}
+
+.title {
+  font-size: 35px;
+  display: flex;
+  margin-left: 50px;
+  margin-top: 20px;
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0.6);
+  text-shadow: 2px 8px 6px rgba(0, 0, 0, 0.2), 0px -5px 35px rgba(255, 255, 255, 0.3);
+}

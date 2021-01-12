@@ -1,23 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import './cssComponents/sideBar.css';
 
 export default function SideBar({ userRole, active }) {
   return (
     <aside className={ `side-container ${active && 'appear'}` }>
       {userRole === 'client' && (
         <div className={ `${active && 'side-menu-container'} side-bar` }>
-          <div>
-            <Link to="/products" data-testid="side-menu-item-products">
-              Produtos
-            </Link>
-            <Link to="/orders" data-testid="side-menu-item-my-orders">
-              Meus pedidos
-            </Link>
-            <Link to="/profile" data-testid="side-menu-item-my-profile">
-              Meu perfil
-            </Link>
-          </div>
+          <Link to="/products" data-testid="side-menu-item-products">
+            Produtos
+          </Link>
+          <Link to="/orders" data-testid="side-menu-item-my-orders">
+            Meus pedidos
+          </Link>
+          <Link to="/profile" data-testid="side-menu-item-my-profile">
+            Meu perfil
+          </Link>
           <Link to="/login" data-testid="side-menu-item-logout">
             Sair
           </Link>

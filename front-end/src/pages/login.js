@@ -4,7 +4,7 @@ import validateLogin from '../services/validateLogin';
 import { checkUser } from '../services/api';
 import Context from '../context/Context';
 import './css/login.css';
-import logo2 from '../images/logo2.png';
+import logo from '../images/logo.png';
 
 // gambi pra passar no requisito 10 ARRUMAR dps da entrega 1
 // localStorage.removeItem('role');
@@ -44,35 +44,46 @@ const Login = () => {
   };
 
   return (
-    <div className="input">
-      <h2>Email</h2>
-      <input
-        data-testid="email-input"
-        type="text"
-        onChange={ (event) => setUserEmail(event.target.value) }
-      />
-      <h2>Senha</h2>
-      <input
-        data-testid="password-input"
-        type="password"
-        onChange={ (event) => setPassword(event.target.value) }
-      />
-      <button
-        type="submit"
-        data-testid="signin-btn"
-        disabled={ !isLoginValid }
-        onClick={ () => handleRoute(userEmail, password) }
-      >
-        ENTRAR
-      </button>
-      { designatedRoute !== undefined ? <Redirect to={ designatedRoute } /> : null }
-      <Link to="/register">
-        <button type="submit" data-testid="no-account-btn">
-          Ainda não tenho conta
-        </button>
-      </Link>
+    <div className="login">
+      <div className="input-data">
+        <label htmlFor="email-input">
+          Email
+          <input
+            data-testid="email-input"
+            name="email-input"
+            type="text"
+            onChange={ (event) => setUserEmail(event.target.value) }
+          />
+        </label>
+        <label htmlFor="password-input">
+          Senha
+          <input
+            name="password-input"
+            data-testid="password-input"
+            type="password"
+            onChange={ (event) => setPassword(event.target.value) }
+          />
+        </label>
+        <div className="buttons">
+          <button
+            type="submit"
+            data-testid="signin-btn"
+            className="btn-login"
+            disabled={ !isLoginValid }
+            onClick={ () => handleRoute(userEmail, password) }
+          >
+            ENTRAR
+          </button>
+          {designatedRoute !== undefined ? <Redirect to={ designatedRoute } /> : null}
+          <button type="submit" data-testid="no-account-btn" className="btn-register">
+            <Link to="/register">
+              Ainda não tenho conta
+            </Link>
+          </button>
+        </div>
+      </div>
       {/* se gostarem eu tiro a marca dagua depois */}
-      <img src={ logo2 } alt="logo" width="65%" />
+      <img src={ logo } alt="logo" className="logo" />
     </div>
   );
 };
