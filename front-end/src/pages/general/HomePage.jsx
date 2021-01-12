@@ -23,48 +23,55 @@ export default function LoginPage() {
   if (userData.role === 'client') return <Redirect to="/products" />;
   return (
     <div className="login">
-      <label htmlFor="email" className="label">
-        Email
-        <input
-          type="text"
-          id="email"
-          data-testid="email-input"
-          className="input"
-          onChange={ (event) => {
-            if (validateEmail(event.target.value)) {
-              setEmailValidate(true);
-              setUserData({ ...userData, email: event.target.value });
-            }
-          } }
-        />
-      </label>
-      <label htmlFor="senha" className="label">
-        Senha
-        <input
-          type="password"
-          id="senha"
-          data-testid="password-input"
-          className="input"
-          onChange={ (event) => {
-            if (validatePassword(event.target.value)) {
-              setPasswordValidate(true);
-              setUserData({ ...userData, password: event.target.value });
-            }
-          } }
-        />
-      </label>
+      <div className="inputs">
+        <label htmlFor="email" className="label">
+          Email
+          <input
+            type="text"
+            id="email"
+            data-testid="email-input"
+            className="input"
+            onChange={ (event) => {
+              if (validateEmail(event.target.value)) {
+                setEmailValidate(true);
+                setUserData({ ...userData, email: event.target.value });
+              }
+            } }
+          />
+        </label>
+        <label htmlFor="senha" className="label">
+          Senha
+          <input
+            type="password"
+            id="senha"
+            data-testid="password-input"
+            className="input"
+            onChange={ (event) => {
+              if (validatePassword(event.target.value)) {
+                setPasswordValidate(true);
+                setUserData({ ...userData, password: event.target.value });
+              }
+            } }
+          />
+        </label>
+      </div>
       <button
         type="button"
         data-testid="signin-btn"
         disabled={ !emailValidate || !passwordValidate }
+        className="entrar"
         onClick={ () => {
           login(userData);
         } }
       >
         ENTRAR
       </button>
-      <button type="button" data-testid="no-account-btn">
-        <Link to="/register">Ainda não tenho conta</Link>
+      <button
+        type="button"
+        data-testid="no-account-btn"
+        className="semConta"
+      >
+        <Link to="/register" className="link">Ainda não tenho conta</Link>
       </button>
     </div>
   );
