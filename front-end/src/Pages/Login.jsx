@@ -5,11 +5,12 @@ import { Redirect } from 'react-router-dom';
 import Input from '../Components/Input';
 import { getUserDataAct } from '../Redux/Actions/user';
 
-const Login = ({ submitLogin, shouldRedirect, userData }) => {
+const Login = ({ submitLogin, userData }) => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [isDisabled, isSetDisabled] = useState(true);
   const [register, setRegister] = useState(false);
+  const [isAnInvalidEmail, setIsAnInvalidEmail] = useState(false);
 
   function validaInput(xEmail, xSenha) {
     const regexEmail = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/;
@@ -23,11 +24,11 @@ const Login = ({ submitLogin, shouldRedirect, userData }) => {
 
   useEffect(() => {
     validaInput(email, password);
-  }, [email, password, shouldRedirect]);
+  }, [email, password]);
 
   if (register) return <Redirect to="/register" />;
-  if (shouldRedirect && userData) {
-    if (userData.message) return <Redirect to="/login" />;
+  if (userData.message && isAnInvalidEmail === false) return setIsAnInvalidEmail(true);
+  if (userData.user) {
     if (userData.user.role === 'client') return <Redirect to="/products" />;
     if (userData.user.role === 'administrator') {
       return <Redirect to="/admin/orders" />;
@@ -69,12 +70,12 @@ const Login = ({ submitLogin, shouldRedirect, userData }) => {
       >
         Ainda não tenho conta
       </button>
+      {isAnInvalidEmail && (<p>Email ou senha inválidos</p>) }
     </div>
   );
 };
 
 Login.propTypes = {
-  shouldRedirect: PropTypes.bool.isRequired,
   submitLogin: PropTypes.func.isRequired,
   userData: PropTypes.shape({
     message: PropTypes.string,

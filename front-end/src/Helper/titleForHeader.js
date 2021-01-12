@@ -1,5 +1,5 @@
 export default (pathname) => ({
-  '/profile': 'Meu Perfil',
+  '/profile': 'Meu perfil',
   '/products': 'Trybeer',
   '/checkout': 'Finalizar Pedido',
   '/orders': 'Meus Pedidos',
