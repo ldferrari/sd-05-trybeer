@@ -12,7 +12,7 @@ export default function AdminProductsList({ sale, index }) {
     setTotalPrice(initialPrice);
     getProductById(sale.product_id)
       .then((r) => setProduct(r[0]) || setTotalPrice((cur) => cur + (r[0].price) * sale.quantity));
-  }, []);
+  }, [sale.product_id, sale.quantity, setTotalPrice]);
 
   const two = 2;
 
@@ -30,6 +30,9 @@ export default function AdminProductsList({ sale, index }) {
 }
 
 AdminProductsList.propTypes = {
-  sale: PropTypes.object.isRequired,
+  sale: PropTypes.shape({
+    quantity: PropTypes.number.isRequired,
+    product_id: PropTypes.number.isRequired,
+  }).isRequired,
   index: PropTypes.string.isRequired,
 };

@@ -1,5 +1,5 @@
-import React from 'react';
-import { useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
+
 import PropTypes from 'prop-types';
 import TrybeerContext from '../../context/TrybeerContext';
 import { saveProductsMore, saveProductsLess } from '../../services/localStorage';
@@ -22,42 +22,44 @@ function EachProduct(props) {
     setCountProduct(countProduct + 1);
     setTotalPrice(totalPrice + Number(product.price));
     saveProductsMore(product);
-    localStorage.setItem('totalPrice', totalPrice + Number(product.price))
+    localStorage.setItem('totalPrice', totalPrice + Number(product.price));
   };
 
   return (
     <div className="eachCard">
-      <p data-testid={`${index}-product-price`}>
+      <p data-testid={ `${index}-product-price` }>
         {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(
-          product.price
+          product.price,
         )}
       </p>
       <img
-        data-testid={`${index}-product-img`}
-        src={product.url_image}
+        data-testid={ `${index}-product-img` }
+        src={ product.url_image }
         alt=""
         width="100"
         height="60"
       />
-      <p key={product.id} data-testid={`${index}-product-name`}>
+      <p key={ product.id } data-testid={ `${index}-product-name` }>
         {product.name}
       </p>
       <div className="controlQty">
         <button
           type="button"
-          key={product.id}
-          data-testid={`${index}-product-minus`}
-          onClick={() => oneLess()}>
+          key={ product.id }
+          data-testid={ `${index}-product-minus` }
+          onClick={ () => oneLess() }
+        >
           -
         </button>
-        <p data-testid={`${index}-product-qtd`} id={`${index}-price`}>
+        <p data-testid={ `${index}-product-qtd` } id={ `${index}-price` }>
           {countProduct}
         </p>
         <button
           type="button"
-          key={product.id}
-          data-testid={`${index}-product-plus`}
-          onClick={() => oneMore()}>
+          key={ product.id }
+          data-testid={ `${index}-product-plus` }
+          onClick={ () => oneMore() }
+        >
           +
         </button>
       </div>

@@ -24,7 +24,6 @@
   "homepage": "https://github.com/betrybe/sd-0x-trybeer#readme",
   "dependencies": {
     "axios": "^0.21.1",
-    "eslint": "^7.17.0",
     "mysql2": "^2.1.0",
     "prop-types": "^15.7.2",
     "react-axios": "^2.0.4",

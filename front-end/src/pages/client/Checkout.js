@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import TrybeerContext from '../../context/TrybeerContext';
 import ClientMenu from '../../components/client/ClientMenu';
-import { CheckoutCard } from '../../components/checkoutCard';
+import CheckoutCard from '../../components/checkoutCard';
 import '../../css/client/checkout.css';
 import { createNewSale } from '../../services/fetch';
 

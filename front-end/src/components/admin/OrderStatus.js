@@ -8,7 +8,7 @@ export default function OrderStatus({ id }) {
 
   useEffect(() => {
     getSaleById(id).then((response) => setStatus(response[0].status));
-  }, []);
+  }, [id, setStatus]);
 
   if (!status) return <div>Carregando...</div>;
 

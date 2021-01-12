@@ -15,10 +15,30 @@ const gerarDados = () => {
     name: 'Userdois userdois userdois', email: 'user2@gmail.com', password: '123456', role: 'client',
   };
 
-  createUser(admin.name, admin.email, admin.password, admin.role).then((response) => console.log(response));
-  createUser(testuser.name, testuser.email, testuser.password, testuser.role).then((response) => console.log(response));
-  createUser(user1.name, user1.email, user1.password, user1.role).then((response) => console.log(response));
-  createUser(user2.name, user2.email, user2.password, user2.role).then((response) => console.log(response));
+  createUser(
+    admin.name,
+    admin.email,
+    admin.password,
+    admin.role,
+  ).then((response) => console.log(response));
+  createUser(
+    testuser.name,
+    testuser.email,
+    testuser.password,
+    testuser.role,
+  ).then((response) => console.log(response));
+  createUser(
+    user1.name,
+    user1.email,
+    user1.password,
+    user1.role,
+  ).then((response) => console.log(response));
+  createUser(
+    user2.name,
+    user2.email,
+    user2.password,
+    user2.role,
+  ).then((response) => console.log(response));
 
   const vendas = [
     {
@@ -58,14 +78,21 @@ const gerarDados = () => {
   ];
 
   vendas.forEach((venda) => {
-    createNewSale(venda.email, venda.totalPrice, venda.address, venda.addressNumber, venda.saleDate, venda.products).then((response) => console.log(response));
+    createNewSale(
+      venda.email,
+      venda.totalPrice,
+      venda.address,
+      venda.addressNumber,
+      venda.saleDate,
+      venda.products,
+    ).then((response) => console.log(response));
   });
 };
 
 export default function SqlBtn() {
   return (
     <div>
-      <button onClick={ () => gerarDados() }> Gerar dados</button>
+      <button type="button" onClick={ () => gerarDados() }> Gerar dados</button>
     </div>
   );
 }
