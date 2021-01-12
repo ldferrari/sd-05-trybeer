@@ -4,7 +4,7 @@ import { checkEmail, checkPassword } from '../services/checkUserData';
 import TrybeerContext from '../context/TrybeerContext';
 import { login } from '../services/fetch';
 import { withRouter } from 'react-router-dom';
-
+import './Login.css'
 import SqlBtn from '../components/sqlBtn';
 
 function inputEmail(handleEmailChange) {
@@ -12,9 +12,10 @@ function inputEmail(handleEmailChange) {
     <div className="login-input">
       <p>Email</p>
       <input
-        type="email"
-        data-testid="email-input"
-        onChange={(e) => handleEmailChange(e)}
+      className="input-layout"
+      type="email"
+      data-testid="email-input"
+      onChange={(e) => handleEmailChange(e)}
       />
     </div>
   );
@@ -25,6 +26,7 @@ function inputPassword(handlePasswordChange) {
     <div className="login-input">
       <p>Senha</p>
       <input
+        className="input-layout"
         type="password"
         data-testid="password-input"
         name="password"
@@ -65,17 +67,19 @@ function Login({ history }) {
   };
 
   return (
-    <div className="login-page" data-testid="">
+    <div className="login-page login-container" data-testid="">
+      <div className="form-container">
       {inputEmail(handleEmailChange)}
       {inputPassword(handlePasswordChange)}
       <button
+        className="btn-layout"
         type="button"
         data-testid="signin-btn"
         disabled={!(checkedEmail && checkedPassword)}
         onClick={() =>
           login(email, password).then((result) => handleResult(result))
         }
-      >
+        >
         ENTRAR
       </button>
       <Link to="/register">
@@ -84,6 +88,7 @@ function Login({ history }) {
         </button>
       </Link>
       <SqlBtn />
+      </div>
     </div>
   );
 }
