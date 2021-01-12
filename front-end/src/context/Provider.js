@@ -6,7 +6,7 @@ const Provider = ({ children }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-  const [checked, setChecked] = useState(false);
+  const [role, setRole] = useState('client');
 
   const contextValue = {
     email,
@@ -15,11 +15,15 @@ const Provider = ({ children }) => {
     setPassword,
     name,
     setName,
-    checked,
-    setChecked,
+    role,
+    setRole,
   };
 
-  return <TryBeerContext.Provider value={ contextValue }>{children}</TryBeerContext.Provider>;
+  return (
+    <TryBeerContext.Provider value={ contextValue }>
+      {children}
+    </TryBeerContext.Provider>
+  );
 };
 
 export default Provider;

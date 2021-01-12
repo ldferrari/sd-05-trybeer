@@ -38,7 +38,10 @@
     ],
     "no-param-reassign": ["off"],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/default-props-match-prop-types": ["error", { "allowRequiredDefaults": false }],
+    "react/default-props-match-prop-types": [
+      "error",
+      { "allowRequiredDefaults": false }
+    ],
     "react/destructuring-assignment": ["error", "always"],
     "react/forbid-component-props": ["error"],
     "react/forbid-prop-types": ["error"],
@@ -72,7 +75,10 @@
     ],
     "react/jsx-indent-props": ["error", 2],
     "react/jsx-key": ["error"],
-    "react/jsx-max-props-per-line": ["error", { "maximum": 1, "when": "multiline" }],
+    "react/jsx-max-props-per-line": [
+      "error",
+      { "maximum": 1, "when": "multiline" }
+    ],
     "react/jsx-tag-spacing": [
       "error",
       {
@@ -94,7 +100,7 @@
         "prop": "ignore"
       }
     ],
-      "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "error"
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error"
   }
 }
