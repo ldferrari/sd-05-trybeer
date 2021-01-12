@@ -1,6 +1,7 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 // import ClientContext from '../../context/client/ClientContext';
-import QuantityButton from '../../components/client/QuantityButton';
+import QuantityButton from './QuantityButton';
 
 const ProdCard = (props) => {
   
@@ -24,7 +25,11 @@ const ProdCard = (props) => {
       </div>
       <QuantityButton price={product.price} />
     </div>
-  )
+  );
 }
+
+ProdCard.propTypes = {
+  product: PropTypes.object.isRequired,
+};
 
 export default ProdCard;
