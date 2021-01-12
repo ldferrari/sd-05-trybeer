@@ -4,7 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import ClientMenu from '../../components/client/ClientMenu';
 import { getProducts } from '../../services/fetch';
 import TrybeerContext from '../../context/TrybeerContext';
-import EachProduct from './EachProduct';
+import EachProduct from '../../components/client/EachProduct';
 import '../../css/client/products.css';
 
 function Products() {
@@ -24,13 +24,14 @@ function Products() {
         {/* {fetching && <p>Loading...</p>} */}
         {/* BACK - como ver que o fetch acabou? */}
         {dataProducts.map((product, index) => (
-          <EachProduct product={ product } index={ index } key={ index } />
+          <EachProduct product={ product } index={ index } />
         ))}
       </div>
       <Link to="/checkout">
         <button
+          type="button"
           data-testid="checkout-bottom-btn"
-          disabled={ totalPrice === 0 }
+          disabled={ !totalPrice }
         >
           Ver Carrinho
           <p data-testid="checkout-bottom-btn-value">
