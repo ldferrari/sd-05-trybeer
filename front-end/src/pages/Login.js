@@ -9,9 +9,9 @@ import SqlBtn from '../components/sqlBtn';
 
 function inputEmail(handleEmailChange) {
   return (
-    <div className="login-input">
-      <p>Email</p>
+    <div className="div-input">
       <input
+      placeholder="Email"
       className="input-layout"
       type="email"
       data-testid="email-input"
@@ -23,9 +23,9 @@ function inputEmail(handleEmailChange) {
 
 function inputPassword(handlePasswordChange) {
   return (
-    <div className="login-input">
-      <p>Senha</p>
+    <div className="div-input">
       <input
+      placeholder="Senha"
         className="input-layout"
         type="password"
         data-testid="password-input"
@@ -69,10 +69,11 @@ function Login({ history }) {
   return (
     <div className="login-page login-container" data-testid="">
       <div className="form-container">
+        <h1 className="white-text">Trybeer</h1>
       {inputEmail(handleEmailChange)}
       {inputPassword(handlePasswordChange)}
       <button
-        className="btn-layout"
+        className="btn-style white-text"
         type="button"
         data-testid="signin-btn"
         disabled={!(checkedEmail && checkedPassword)}
@@ -80,13 +81,13 @@ function Login({ history }) {
           login(email, password).then((result) => handleResult(result))
         }
         >
-        ENTRAR
+        Entrar
       </button>
-      <Link to="/register">
-        <button type="button" data-testid="no-account-btn">
+        <button className="btn-style white-text" type="button" data-testid="no-account-btn">
+      <Link to="/register" className="white-text">
           Ainda não tenho conta
-        </button>
       </Link>
+        </button>
       <SqlBtn />
       </div>
     </div>

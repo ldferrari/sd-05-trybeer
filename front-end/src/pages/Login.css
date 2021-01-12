@@ -1,19 +1,35 @@
 .login-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     min-height: 100vmax;
     background-image: url("../images/backgroundLogin.png");
     background-position: center;
     background-size: cover;
 }
 
+.div-input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
 .form-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     height: 50%;
     width: 100%;
+    margin-bottom: 40px;
+}
+
+.white-text {
+    color: white !important;
+    text-decoration: none;
 }
 
 .input-layout {
@@ -21,25 +37,20 @@
     border-radius: 30px !important;
     padding-left: 16px !important;
     border: none !important;
-    max-width: 90% !important;
+    width: 90%;
+    height: 30px;
   }
 
-.s-btn {
-    border-radius: 30px;
-    border: none;
-    font-size: 1rem;
-    font-weight: 700;
-    margin: 10px 5px;
-    padding: 12px 25px;
-    width: 95%;
-  }
-  
-  .btn-style {
+
+.btn-style {
     font-size: 1rem;
     border-radius: 30px;
     padding-left: 16px;
     border: none;
-    max-width: 90%;
+    width: 60% !important;
+    height: 40px;
+    margin-bottom: 15px;
+    background-color: #D75B49;
   }
 
 
