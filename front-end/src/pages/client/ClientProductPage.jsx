@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import ProdCard from '../../components/client/ProductCard';
 import { ClientContext } from '../../context/client/ClientProvider';
