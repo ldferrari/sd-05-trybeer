@@ -27,4 +27,17 @@ profile.put('/', async (req, res) => {
   }
 });
 
+profile.get('/', async (req, res) => {
+  try {
+    const { email } = req.payload;
+    const emailExists = await userModel.getByEmail(email);
+    delete emailExists.password;
+    console.log(emailExists);
+    return res.status(200).json({ user: emailExists });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Algo deu errado.' });
+  }
+});
+
 module.exports = profile;
