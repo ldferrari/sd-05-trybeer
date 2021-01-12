@@ -11,7 +11,7 @@ const update = async (id, name) => {
   }
 
   await models.update(id, name);
-  return ({ id, name });
+  return ({ id, name, message: 'success' });
 };
 
 module.exports = {

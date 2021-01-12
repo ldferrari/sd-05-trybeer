@@ -15,10 +15,7 @@ function App() {
         <Route path="/login" component={ LoginPage } />
         <Route path="/register" component={ RegisterPage } />
         <Route path="/products" component={ ClientProductPage } />
-        <Route path="/profile">
-          <ClientProfilePage />
-          {/* {!loggedIn ? <Redirect to="/login" /> : <ClientProfilePage />} */}
-        </Route>
+        <Route path="/profile" component={ ClientProfilePage } />
         <Route path="/orders" component={ ClientOrderPage } />
         <Route path="/" component={ HomePage } />
       </Switch>

@@ -50,7 +50,7 @@ const validationUser = async (body) => {
   }
 
   const token = crypto.randomBytes(8).toString('hex');
-  return { token, role: user.role, message: 'Token gerado' };
+  return { token, id: user.id, name: user.name, email: user.email, role: user.role, message: 'Token gerado' };
 };
 
 module.exports = {
