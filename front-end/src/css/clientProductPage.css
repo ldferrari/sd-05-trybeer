@@ -21,9 +21,8 @@
 
 .card-image {
   border-radius: 10px 10px 0 0;
-  max-height:70px;
+  height:70px;
   max-width:160px;
-  height: auto;
   width: auto;
 }
 

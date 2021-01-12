@@ -3,10 +3,10 @@
 }
 
 .menuSuperior {
-width:100%;
-padding:10px 18px;
-box-shadow:0px 1px 1px rgba(0,0,0,0.15);
-background:#073416;
+	background:#073416;
+	box-shadow:0px 1px 1px rgba(0,0,0,0.15);
+	padding:10px 18px;
+	width:100%;
 }
 
 #check {
