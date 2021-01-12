@@ -12,13 +12,17 @@ export default function OrderCard({ item, index }) {
     );
   }, []);
 
+  const handlePrice = (price) => {
+    return price.replace('.', ',')
+  }
+
   return (
     <div>
       <p data-testid={`${index}-product-qtd`}>{item.quantity} - </p>
-      {console.log(productDetail)}
+      {/* {console.log(productDetail)} */}
       <p data-testid={`${index}-product-name`}>{productDetail.name}</p>
       <p data-testid={`${index}-product-total-value`}>
-        R$ {productDetail.price}
+        R$ {!productDetail.price ? null : handlePrice(productDetail.price)}
       </p>
     </div>
   );

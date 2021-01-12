@@ -4,7 +4,7 @@ const salesProductsModel = require('../models/salesProductsModel');
 
 const createSale = async (newSale) => {
   const { email, totalPrice, address, addressNumber, saleDate, products } = newSale;
-
+  console.log(newSale)
   if (totalPrice <= 0) {
     throw { err: { code: 404, message: 'total price is invalid' } }; 
   }
@@ -13,7 +13,7 @@ const createSale = async (newSale) => {
     throw { err: { code: 404, message: 'address is invalid' } };
   }
 
-  if (typeof addressNumber !== 'number' || !addressNumber) {
+  if (!addressNumber) {
     throw { err: { code: 404, message: 'address number is invalid' } };
   }
 
@@ -40,7 +40,7 @@ const createSale = async (newSale) => {
   const insertedId = createdSale[0].insertId;
 
   products.forEach(async (product) => {
-    await salesProductsModel.createSalesProducts(insertedId, product.product_id, product.quantity);
+    await salesProductsModel.createSalesProducts(insertedId, product.product_id || product.id, product.quantity);
   });
 
   return createdSale;

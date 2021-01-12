@@ -4,6 +4,7 @@ import TrybeerContext from '../../context/TrybeerContext';
 import ClientMenu from '../../components/client/ClientMenu';
 import { CheckoutCard } from '../../components/checkoutCard';
 import '../../css/client/checkout.css';
+import { createNewSale } from '../../services/fetch'
 
 function Checkout() {
   const [isLogged, setIsLogged] = useState(true);
@@ -11,7 +12,15 @@ function Checkout() {
   const [houseNum, setHouseNum] = useState(0);
   const [statusSale, setStatusSale] = useState(false);
   const { totalPrice } = useContext(TrybeerContext);
+
   const products = JSON.parse(localStorage.getItem('cart'));
+  const user = JSON.parse(localStorage.getItem('user'));
+  const now = new Date();
+  const year = now.getFullYear()
+  const month = now.getMonth() === 0 ? '01' : now.getMonth();
+  const day = now.getDate()
+  const date = `${day}/${month}/${year}`
+
 
   useEffect(() => {
     if (localStorage.getItem('user') === null) setIsLogged(false);
@@ -26,9 +35,11 @@ function Checkout() {
     // tb mandar para bd?
   };
 
-  const done = () => {
-    document.getElementById('sucess').innerHTML = 'Compra realizada com sucesso!';
-    setTimeout(() => {setStatusSale(true)}, 1000);
+  const handleResult = (result) => {
+    if (result.message === 'Created') {
+      document.getElementById('sucess').innerHTML = 'Compra realizada com sucesso!';
+      setTimeout(() => {setStatusSale(true)}, 1000);
+    } 
   }
 
   return (
@@ -72,8 +83,8 @@ function Checkout() {
       <button
         data-testid="checkout-finish-btn"
         disabled={totalPrice === 0 || houseNum === 0 || street === ''}
-        onClick={() => done()}
-        // onClick={function para disparar o closeSale do fetch.js, com id}
+        // onClick={() => done()}
+        onClick={() => createNewSale(user.email, totalPrice, street, houseNum, date, products).then(result => handleResult(result))}
       >
         Finalizar pedido
       </button>
@@ -85,3 +96,10 @@ function Checkout() {
 }
 
 export default Checkout;
+
+// email,
+//   totalPrice,
+//   address,
+//   addressNumber,
+//   saleDate,
+//   products

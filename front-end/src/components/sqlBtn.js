@@ -4,7 +4,7 @@ import { createUser, createNewSale } from '../services/fetch';
 const gerarDados = () => {
   const admin = { name: "Tryber Admin", email: "tryber@trybe.com.br", password: "123456", role: "administrator" };
   const testuser = { name: "testuser", email: "user@test.com", password: "test123", role: "client" };
-  const user1 = { name: "Viginia Menezes Duca", email: "user1@gmail.com", password: "123456", role: "client" };
+  const user1 = { name: "virginia menezes duca", email: "user1@gmail.com", password: "123456", role: "client" };
   const user2 = { name: "Userdois userdois userdois", email: "user2@gmail.com", password: "123456", role: "client" };
 
   createUser(admin.name, admin.email, admin.password, admin.role).then((response) => console.log(response));
