@@ -1,38 +1,30 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
+import PropTypes from 'prop-types';
 import { ClientContext } from '../../context/client/ClientProvider';
-// import ClientProvider from '../../context/client/ClientProvider';
 
 export default function QuantityButton(props) {
-  const [quantity, setQuantity] = useState(0);
-  const {cart, setCart} = useContext(ClientContext);
-  const { price } = props;
-  const { product, index } = props;
-
-  const dois = 2;
+  const intialQuantity = 0;
+  const [quantity, setQuantity] = useState(intialQuantity);
+  const { cart, setCart } = useContext(ClientContext);
+  const { price, index } = props;
 
   const updateCart = () => {
     localStorage.setItem('cart', (cart).toString());
-  }
+  };
 
-  // useEffect(() => {
-  //   console.log(typeof cart);
-  //   setCart(parseFloat(cart, 10));
-  // }, [quantity]);
-  
   function increaseItem() {
     setQuantity(quantity + 1);
     setCart(cart + Number(price));
     updateCart();
   }
-  
+
   function decreaseItem() {
-    if (quantity > 0) {
-    setQuantity(quantity - 1);
-    setCart(cart - Number(price));
+    if (quantity > intialQuantity) {
+      setQuantity(quantity - 1);
+      setCart(cart - Number(price));
     }
     updateCart();
   }
-  console.log(cart);
 
   return (
     <div className="quantity-container">
@@ -40,7 +32,7 @@ export default function QuantityButton(props) {
         type="button"
         className="product-decrease-quantity"
         data-testid={ `${index}-product-minus` }
-        onClick={() => { decreaseItem() }}
+        onClick={ () => { decreaseItem(); } }
       >
         -
       </button>
@@ -55,10 +47,16 @@ export default function QuantityButton(props) {
         type="button"
         className="product-increase-quantity"
         data-testid={ `${index}-product-plus` }
-        onClick={() => { increaseItem() }}
+        onClick={ () => { increaseItem(); } }
       >
         +
       </button>
     </div>
   );
 }
+
+QuantityButton.propTypes = {
+  price: PropTypes.number.isRequired,
+  product: PropTypes.arrayOf(PropTypes.object),
+  index: PropTypes.string.isRequired,
+};

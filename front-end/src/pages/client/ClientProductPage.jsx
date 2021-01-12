@@ -8,30 +8,29 @@ import '../../css/clientProductPage.css';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-  const {cart, setCart} = useContext(ClientContext);
-  
-  console.log(products);
+  const { cart, setCart } = useContext(ClientContext);
 
   // const initialCart = localStorage.getItem('cart');
-  
+
   // useEffect(() => {
   //   // const cartValue = (parseFloat(localStorage.getItem('cart')) || 0) + cart;
-  //   // console.log(typeof cartValue);    
+  //   // console.log(typeof cartValue);
   //   if (cart !== 0) {
   //     localStorage.setItem('cart', (cart).toString())
   //   }}, [cart]);
 
   useEffect(() => {
     // const cartValue = (parseFloat(localStorage.getItem('cart')) || 0) + cart;
-    // console.log(typeof cartValue);    
+    // console.log(typeof cartValue);
     if (cart >= 0) {
-      localStorage.setItem('cart', (cart).toString())
-    }}, [cart]);
+      localStorage.setItem('cart', (cart).toString());
+    }
+  }, [cart]);
 
   useEffect(() => {
-    productsApi().then(response => setProducts(response));
+    productsApi().then((response) => setProducts(response));
     const cartValue = (parseFloat(localStorage.getItem('cart')) || 0);
-    setCart(cartValue)
+    setCart(cartValue);
   }, []);
 
   // useEffect(() => {
@@ -39,8 +38,7 @@ const Products = () => {
   //   const cartValue = (parseFloat(localStorage.getItem('cart')) || 0);
   //   setCart(cartValue)
   // }, []);
-  
-  console.log(products);
+
   // if (isLoading) return <div>Carregando...</div>;
 
   return (
@@ -48,16 +46,16 @@ const Products = () => {
       <Menu title="Trybeer" />
       <div className="listProducts marginTop">
         {products.map((product, index) => (
-          <ProdCard index={index} product={product} />
+          <ProdCard index={ index } product={ product } />
         ))}
       </div>
       <div className="ver-carrinho">
         <button type="button" data-testid="checkout-bottom-btn" className="buttonCart">
           <Link to="/checkout" className="linkCar">
-              Ver carrinho
-              <span data-testid="checkout-bottom-btn-value" className="somaCart">
-              {cart}
-              </span>
+            Ver carrinho
+            <span data-testid="checkout-bottom-btn-value" className="somaCart">
+            {cart}
+            </span>
           </Link>
         </button>
       </div>

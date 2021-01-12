@@ -4,18 +4,16 @@ import PropTypes from 'prop-types';
 import QuantityButton from './QuantityButton';
 
 const ProdCard = (props) => {
-  
   const { product, index } = props;
-
   return (
     <div key={ product.id } className="card-body">
       <div className="divImage">
         <img
-          height='70px' 
+          height="70px"
           src={ product.url_image }
           data-testid={ `${index}-product-img` }
           className="card-image"
-          alt={product.name}
+          alt={ product.name }
         />
       </div>
       <div data-testid={ `${index}-product-name` } className="cart-name">
@@ -26,13 +24,14 @@ const ProdCard = (props) => {
           { `R$ ${product.price.toString().replace('.', ',')}` }
         </div>
       </div>
-      <QuantityButton price={product.price} />
+      <QuantityButton price={ product.price } />
     </div>
   );
-}
+};
 
 ProdCard.propTypes = {
-  product: PropTypes.object.isRequired,
+  product: PropTypes.arrayOf(PropTypes.object),
+  index: PropTypes.string.isRequired,
 };
 
 export default ProdCard;
