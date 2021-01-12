@@ -24,20 +24,18 @@ const CartButton = (props) => {
   } */
 
   return (
-    <div className="checkoutBtn">
-      <button
-        type="button"
-        data-testid="checkout-bottom-btn"
-        className="checkoutLink"
-        disabled={ !cartBtn }
-        onClick={ () => props.history.push('/checkout') }
-      >
-        <p>Ver Carrinho</p>
-        <p data-testid="checkout-bottom-btn-value">
-          {`R$ ${cartSum.toString().replace('.', ',')}`}
-        </p>
-      </button>
-    </div>
+    <button
+      type="button"
+      data-testid="checkout-bottom-btn"
+      className="checkoutBtn"
+      disabled={ !cartBtn }
+      onClick={ () => props.history.push('/checkout') }
+    >
+      <p>Ver Carrinho</p>
+      <p data-testid="checkout-bottom-btn-value">
+        {`R$ ${cartSum.toString().replace('.', ',')}`}
+      </p>
+    </button>
   );
 };
 

@@ -23,9 +23,16 @@
 }
 
 .checkoutBtn {
+  align-items: center;
   background-color: darkgreen;
   color: white;
-  width: 83%;
+  display: flex;
+  font-size: large;
+  justify-content: space-between;
+  text-align: center;
+  text-decoration: none;
+  padding: 2%;
+  width: 73%;
   margin: auto;
   /* position:fixed */
  }

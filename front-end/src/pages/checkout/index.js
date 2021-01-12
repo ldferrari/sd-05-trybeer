@@ -5,14 +5,15 @@ import AppContext from '../../context/AppContext';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
 import CartItem from '../../components/cartItem';
+import { postOrder } from '../../services/requestAPI';
 
-const Checkout = () => {
+const Checkout = (props) => {
   const [cartHere, setCartHere] = useState([]);
   const [rua, setRua] = useState();
   const [numero, setNumero] = useState();
   // const theToken = localStorage.getItem("token");
   const logged = localStorage.getItem('token');
-  const { cart } = useContext(AppContext);
+  const { cart, setCart } = useContext(AppContext);
 
   const nada = 0;
   const dois = 2;
@@ -34,6 +35,20 @@ const Checkout = () => {
   if (!logged) {
     return <Redirect to="/login" />;
   }
+  
+  const handleSubmit = async () => { // async () =>
+    const cartProducts = { "products": [ cart ] };
+    const userData = { "deliveryAddress": rua, "deliveryNumber": numero };
+    await postOrder(cartProducts, userData);
+    // alert(userData);
+    localStorage.removeItem("cart");
+    setCart([]);
+
+    // <Redirect to="/products" />
+    return props.history.push('/products') // handleHandleSubmit
+  }
+  // const handleHandleSubmit = () => // props.history.push('/products') // <Redirect to="/products" />;
+
   return (
     <div className="Checkout">
       <Header>Finalizar Pedido</Header>
@@ -57,7 +72,7 @@ const Checkout = () => {
         { `TOTAL: R$ ${cartSum.toString().replace('.', ',')}` }
       </h3>
       <div className="deliveryForm">
-        <h2 className="checkoutitle">Endereço:</h2>
+        <h2 className="checkoutitle">Endereço de entrega:</h2>
         <div className="inputs">
           <h4>Rua</h4>
           <input
@@ -85,7 +100,7 @@ const Checkout = () => {
         className="finishBtn"
         type="submit"
         disabled={ !(rua && numero) }
-        onClick={ () => { alert(`pedido criado! ${cart} no endereço ${rua},${numero}, agora precisa zerar localstorage e redirecionar para a pagina de produtos`); } }
+        onClick={ handleSubmit }
       >
         Finalizar Pedido
       </button>
