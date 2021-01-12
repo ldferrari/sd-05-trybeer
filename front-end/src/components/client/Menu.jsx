@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import '../../css/menu.css';
+import { Link } from 'react-router-dom';
 
 export default function Menu(props) {
   const { title } = props;
@@ -26,12 +27,12 @@ export default function Menu(props) {
         <div className="side-menu-container">
           <nav className="menuLateral">
             <div className="menuButton">
-              <a href="/products" data-testid="side-menu-item-products" className="buttonLateral">Produtos</a>
-              <a href="/orders" data-testid="side-menu-item-my-orders" className="buttonLateral">Meus Pedidos</a>
-              <a href="/profile" data-testid="side-menu-item-my-profile" className="buttonLateral">Meu Perfil</a>
+              <Link to="/products" data-testid="side-menu-item-products" className="buttonLateral">Produtos</Link>
+              <Link to="/orders" data-testid="side-menu-item-my-orders" className="buttonLateral">Meus Pedidos</Link>
+              <Link to="/profile" data-testid="side-menu-item-my-profile" className="buttonLateral">Meu Perfil</Link>
             </div>
             <div className="menuButton textCenter">
-              <a href="/login" data-testid="side-menu-item-logout" className="buttonLateral">Sair</a>
+              <Link to="/login" data-testid="side-menu-item-logout" className="buttonLateral">Sair</Link>
             </div>
           </nav>
         </div>

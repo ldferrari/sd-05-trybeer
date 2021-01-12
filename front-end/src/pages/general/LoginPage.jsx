@@ -12,7 +12,7 @@ export default function LoginPage() {
 
   const login = async (data) => {
       const usuario = await loginData(data)
-      await setUserData({ ...userData, role: usuario.role, name: usuario.name });
+      setUserData({ ...userData, id: usuario.id, role: usuario.role, name: usuario.name });
       setLoggedIn(true);
       localStorage.setItem("user", JSON.stringify({ email: usuario.email, role: usuario.role, name: usuario.name }));
   };

@@ -1,31 +1,32 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import validateName from '../../services/general/validateName';
 import Menu from '../../components/client/Menu';
 import GeneralContext from '../../context/general/GeneralContext';
-// import updateUserAPI from '../../services/apis';
+import updateUserNameAPI from '../../services/apis';
 
 export default function ClientProfilePage() {
-  /*  useEffect(() => {
-    return () => {
-      document.title = 'BLA';
-    };
-  }); */
-
   const { userData, setUserData, loggedIn } = useContext(GeneralContext);
-  const userEmail = JSON.parse(localStorage.getItem('user')).email || { email: '' };
-  const userName = JSON.parse(localStorage.getItem('user')).name || { name: '' };
-  const [nameEqual, setNameEqual] = useState(false)
+  const [nameEqual, setNameEqual] = useState(true)
+  const [localName, setLocalName] = useState(userData.name)
+  const [apiSuccess, setApiSuccess] = useState(false)
 
-  /* function fetchAPI(id) {
-    return updateUserAPI(id);
-  } */
+  if (!loggedIn) return <Redirect to="/login" />;
 
-  //if (!loggedIn) return <Redirect to="/login" />;
   const handleChange = (e) => {
-    validateName(setUserData({ name: e.target.value }));
-    if (e.target.value === userName) {
+    setNameEqual(false);
+    validateName(setLocalName(e.target.value));
+    if (e.target.value === userData.name) {
       setNameEqual(true);
+    }
+  }
+
+  const handleClick = async() => {
+    setUserData({ ...userData, name: localName });
+    localStorage.setItem("user", JSON.stringify({ email: userData.email, name: localName, role: userData.role }));
+    const api = await updateUserNameAPI(userData.id, { ...userData, name: localName } );
+    if (api.message === 'success') {
+      setApiSuccess(true)
     }
   }
 
@@ -39,7 +40,7 @@ export default function ClientProfilePage() {
           type="text"
           id="email"
           name="email"
-          value={ userEmail }
+          value={ userData.email }
           readOnly
         />
       </label>
@@ -50,19 +51,19 @@ export default function ClientProfilePage() {
           type="text"
           id="name"
           name="name"
-          value= { userData.name }
+          value= { localName }
           onChange={ handleChange }
         />
       </label>
       <button
         data-testid="profile-save-btn"
         type="button"
-        // onClick={() => fetchAPI(id)}
-        // segundo name vai vir da tela de login para comparar
+        onClick={ handleClick }
         disabled={ nameEqual }
       >
         Salvar
       </button>
+      {apiSuccess&& <div>Atualização concluída com sucesso</div>}
     </div>
   );
 }
