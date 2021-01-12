@@ -11,12 +11,12 @@ const CartItem = (props) => {
   const exists = cart.find((produto) => produto.id === item.id);
 
   const zero = 0;
-  if (exists.qty === zero) {
+  if (!exists || exists.quantity === zero) {
     return null;
   }
 
   const exclude = () => {
-    const itemZero = (e) => ({ ...e, qty: zero });
+    const itemZero = (e) => ({ ...e, quantity: zero });
     if (exists) {
       setCart(cart.map((e) => (e.id === item.id ? itemZero(e) : e)));
     }
@@ -24,13 +24,15 @@ const CartItem = (props) => {
   };
   return (
     <div className="cartItem" key={ item.name }>
-      <p data-testid={ `${index}-product-qtd-input` }>{ exists.qty ? exists.qty : zero }</p>
+      <p data-testid={ `${index}-product-qtd-input` }>{ exists.quantity ? exists.quantity : zero }</p>
       <p data-testid={ `${index}-product-name` }>{ item.name }</p>
       <p data-testid={ `${index}-product-unit-price` }>
-        `R$ ${item.price.toString().replace('.', ',')}`
+        `R$ $
+        {item.price.toString().replace('.', ',')}
+        `
       </p>
       <p data-testid={ `${index}-product-total-value` }>
-        { `R$ ${(item.price * item.qty).toString().replace('.', ',')}` }
+        { `R$ ${(item.price * item.quantity).toString().replace('.', ',')}` }
       </p>
       <button
         type="button"
@@ -48,7 +50,7 @@ export default CartItem;
 CartItem.propTypes = {
   item: PropTypes.shape({
     id: PropTypes.number,
-    qty: PropTypes.number,
+    quantity: PropTypes.number,
     name: PropTypes.string,
     price: PropTypes.number,
   }).isRequired,
