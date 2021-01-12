@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import GeneralContext from '../../context/general/GeneralContext';
 import loginData from '../../services/general/fetchLoginData';
 import validateEmail from '../../services/general/validateEmail';
 import validatePassword from '../../services/general/validatePassword';
@@ -7,15 +8,25 @@ import validatePassword from '../../services/general/validatePassword';
 export default function LoginPage() {
   const [emailValidate, setEmailValidate] = useState(false);
   const [passwordValidate, setPasswordValidate] = useState(false);
-  const [userData, setUserData] = useState({
-    email: '',
-    password: '',
-    role: '',
-  });
+  const { userData, setUserData, setLoggedIn } = useContext(GeneralContext);
 
   const login = async (data) => {
     const usuario = await loginData(data);
-    setUserData({ ...userData, role: usuario.role });
+    setUserData({
+      ...userData,
+      id: usuario.id,
+      role: usuario.role,
+      name: usuario.name,
+    });
+    setLoggedIn(true);
+    localStorage.setItem(
+      'user',
+      JSON.stringify({
+        email: usuario.email,
+        role: usuario.role,
+        name: usuario.name,
+      }),
+    );
   };
 
   if (userData.role === 'administrator') return <Redirect to="/admin/orders" />;
