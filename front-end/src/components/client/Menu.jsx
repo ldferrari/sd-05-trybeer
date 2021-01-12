@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import '../../css/menu.css';
 import { Link } from 'react-router-dom';
+import GeneralContext from '../../context/general/GeneralContext';
 
 export default function Menu(props) {
   const { title } = props;
   const [isVisible, setIsVisible] = useState(false);
+  const { setLoggedIn, setUserData, initialUser } = useContext(GeneralContext);
 
   function menuChecked() {
     if (document.getElementById('check').checked) {
@@ -32,7 +34,14 @@ export default function Menu(props) {
               <Link to="/profile" data-testid="side-menu-item-my-profile" className="buttonLateral">Meu Perfil</Link>
             </div>
             <div className="menuButton textCenter">
-              <Link to="/login" data-testid="side-menu-item-logout" className="buttonLateral">Sair</Link>
+              <Link
+                to="/login"
+                data-testid="side-menu-item-logout"
+                className="buttonLateral"
+                onClick={ () => {setLoggedIn(false); setUserData({ initialUser })} }
+              >
+                Sair
+              </Link>
             </div>
           </nav>
         </div>
