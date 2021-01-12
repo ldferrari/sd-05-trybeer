@@ -62,9 +62,6 @@ const Products = () => {
           </Link>
         </button>
       </div>
-    </div>
-    //   {console.log(products)}
-    // </div>
   );
 };
 

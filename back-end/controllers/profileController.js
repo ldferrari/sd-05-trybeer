@@ -7,7 +7,6 @@ const profileRouter = Router();
 profileRouter.put('/:id', rescue(async (req, res) => {
   const { id } = req.params;
   const { name } = req.body;
-
   try {
     const response = await profileService.update(id, name);
     return res.status(200).json(response);
