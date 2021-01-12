@@ -11,8 +11,9 @@ const TrybeerProvider = ({ children }) => {
   const [name, setName] = useState('');
   const [admin, setAdmin] = useState(false);
   const [click, setClick] = useState(false);
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(Number(localStorage.getItem('totalPrice') || 0));
   const [status, setStatus] = useState();
+
   const context = {
     name,
     setName,

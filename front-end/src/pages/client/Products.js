@@ -31,14 +31,13 @@ function Products() {
         <button
           data-testid="checkout-bottom-btn"
           disabled={totalPrice===0}
-        // onClick={() => createCart()}
         >
           Ver Carrinho
           <p data-testid="checkout-bottom-btn-value">
             {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(
               totalPrice
             )}
-            {/* fonte sobre currency https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat */}
+            {/* fonte sobre currency https://developer.mozilla.org/en-US/docs/Web/Java/Reference/Global_Objects/Intl/NumberFormat/NumberFormat */}
           </p>
         </button>
       </Link>
@@ -48,7 +47,3 @@ function Products() {
 }
 
 export default Products;
-
-// backlog 08.01 noite
-// - imagens do .gz
-// - mandar para card da tela Checkout (carrinho)

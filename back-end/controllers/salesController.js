@@ -6,10 +6,12 @@ const sales = Router();
 
 sales.post('/', async (req, res) => {
   try {
+    console.log(req.body)
     await service.createSale(req.body);
     res.status(201).json({ message: 'Created' });
   } catch (e) {
     res.status(500).json({ message: e.message });
+    console.log(e)
   }
 });
 
@@ -49,10 +51,11 @@ sales.get('/all-sales', async (_req, res) => {
   }
 });
 
-sales.get('/id', async (req, res) => {
+sales.get('/:id', async (req, res) => {
   try {
     const { id } = req.query;
     const sale = await service.getSaleById(id);
+    console.log(sale)
     res.status(201).json(sale);
   } catch (e) {
     res.status(500).json({ message: e.message });

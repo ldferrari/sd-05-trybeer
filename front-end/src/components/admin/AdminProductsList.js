@@ -25,6 +25,7 @@ export default function AdminProductsList({ sale, index }) {
   )
 };
 
+
 AdminProductsList.propTypes = {
   sale: PropTypes.object.isRequired,
 };
