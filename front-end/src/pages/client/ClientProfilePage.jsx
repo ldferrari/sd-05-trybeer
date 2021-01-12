@@ -4,6 +4,7 @@ import validateName from '../../services/general/validateName';
 import Menu from '../../components/client/Menu';
 import GeneralContext from '../../context/general/GeneralContext';
 import updateUserNameAPI from '../../services/apis';
+import '../../css/clientProfilePage.css';
 
 export default function ClientProfilePage() {
   const { userData, setUserData, loggedIn } = useContext(GeneralContext);
@@ -43,37 +44,42 @@ export default function ClientProfilePage() {
   return (
     <div>
       <Menu title="Meu perfil" data-testid="top-title" />
-      <label htmlFor="email">
-        Email
-        <input
-          data-testid="profile-email-input"
-          type="text"
-          id="email"
-          name="email"
-          value={ userData.email }
-          readOnly
-        />
-      </label>
-      <label htmlFor="name">
-        Name
-        <input
-          data-testid="profile-name-input"
-          type="text"
-          id="name"
-          name="name"
-          value={ localName }
-          onChange={ handleChange }
-        />
-      </label>
-      <button
-        data-testid="profile-save-btn"
-        type="button"
-        onClick={ handleClick }
-        disabled={ nameEqual }
-      >
-        Salvar
-      </button>
-      {apiSuccess && <div>Atualização concluída com sucesso</div>}
+      <div className="bodyProfile">
+        <label htmlFor="email" className="labelProfile">
+          Email
+          <input
+            data-testid="profile-email-input"
+            className="inputProfile"
+            type="text"
+            id="email"
+            name="email"
+            value={ userData.email }
+            readOnly
+          />
+        </label>
+        <label htmlFor="name" className="labelProfile">
+          Name
+          <input
+            data-testid="profile-name-input"
+            className="inputProfile"
+            type="text"
+            id="name"
+            name="name"
+            value={ localName }
+            onChange={ handleChange }
+          />
+        </label>
+        <button
+          data-testid="profile-save-btn"
+          className="salvar"
+          type="button"
+          onClick={ handleClick }
+          disabled={ nameEqual }
+        >
+          Salvar
+        </button>
+      </div>
+      {apiSuccess && <div className="sucesso">Atualização concluída com sucesso</div>}
     </div>
   );
 }

@@ -51,15 +51,13 @@ const Products = () => {
           <ProdCard index={index} product={product} />
         ))}
       </div>
-      <div>
-        <button type="button" data-testid="checkout-bottom-btn">
-          <Link to="/checkout">
-            <button className="ver-carrinho">
+      <div className="ver-carrinho">
+        <button type="button" data-testid="checkout-bottom-btn" className="buttonCart">
+          <Link to="/checkout" className="linkCar">
               Ver carrinho
-              <span data-testid="checkout-bottom-btn-value">
+              <span data-testid="checkout-bottom-btn-value" className="somaCart">
               {cart}
               </span>
-            </button>
           </Link>
         </button>
       </div>
