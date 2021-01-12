@@ -3,6 +3,8 @@ import { Link, Redirect } from 'react-router-dom';
 import validateLogin from '../services/validateLogin';
 import { checkUser } from '../services/api';
 import Context from '../context/Context';
+import './css/login.css';
+import logo2 from '../images/logo2.png';
 
 // gambi pra passar no requisito 10 ARRUMAR dps da entrega 1
 // localStorage.removeItem('role');
@@ -69,6 +71,8 @@ const Login = () => {
           Ainda não tenho conta
         </button>
       </Link>
+      {/* se gostarem eu tiro a marca dagua depois */}
+      <img src={logo2} alt="logo" width="65%"/>
     </div>
   );
 };

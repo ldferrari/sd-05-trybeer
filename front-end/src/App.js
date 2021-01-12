@@ -13,6 +13,7 @@ import Register from './pages/register';
 import Profile from './pages/profile';
 import Orders from './pages/orders';
 import Checkout from './pages/checkout';
+import './App.css';
 
 function App() {
   return (
