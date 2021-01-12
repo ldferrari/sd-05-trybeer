@@ -1,12 +1,5 @@
 const userModel = require('../models/userModel');
 
-// class CodeError extends Error {
-//   constructor(message, code) {
-//     super(message);
-//     this.code = code;
-//   }
-// }
-
 const createUser = async (name, email, password, role) => {
   const thisEmailAlreadyExists = await userModel.getByEmail(email);
   // if (thisEmailAlreadyExists) {
