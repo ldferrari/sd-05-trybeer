@@ -23,6 +23,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const result = await apiRegister(name, email, password, role);
+    // console.log(result.response.data.message)
     const response = result.message && +result.message.split(' ').slice(reverse)[0];
     // localStorage.setItem(
     //   'user',

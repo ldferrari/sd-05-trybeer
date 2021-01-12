@@ -9,14 +9,18 @@ registerRouter.post('/', async (req, res) => {
   const { name, email, password, role } = req.body;
   try {
     const newUser = await registerService.createUser(name, email, password, role);
+    // if (newUser.err) {
+    //   return res.status(200).json(newUser)
+    // }
     res.status(200).json(newUser);
+    
   } catch (err) {
-    if (err.code === 'invalid_email') {
+    if (err.message === 'invalid_email') {
       console.log(err);
       return res.status(422).json({ message: 'E-mail already in database.' });
     }
 
-    if (err.code === 'invalid_data') {
+    if (err.message === 'invalid_data') {
       return res.status(400).json({ message: 'Registration failed!' });
     }
 
