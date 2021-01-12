@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getProductsAct } from './Redux/Actions/index';
 import Login from './Pages/Login';
@@ -20,6 +20,9 @@ function App({ ProductsAPI }) {
   return (
     <div>
       <Switch>
+        <Route exact path="/">
+          <Redirect to="/login" />
+        </Route>
         <Route exact path="/login" component={ Login } />
         <Route exact path="/profile" component={ Profile } />
         <Route exact path="/products" component={ Products } />

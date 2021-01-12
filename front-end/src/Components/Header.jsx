@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import titleForHeader from '../Helper/titleForHeader';
 import SideBar from './SideBar';
@@ -19,22 +20,23 @@ const h1Style = {
   color: 'white',
 };
 
-export default ({ pathname }) => {
+const Header = ({ pathname }) => {
   const [showSideBar, setShowSideBar] = useState(false);
 
   // func que retorna o título do header baseado no caminho
-  let title = titleForHeader(pathname);
+  const title = titleForHeader(pathname);
 
   return (
     <div>
-      <header style={headerStyle}>
+      <header style={ headerStyle }>
         <button
-          onClick={() => setShowSideBar(!showSideBar)}
+          type="button"
+          onClick={ () => setShowSideBar(!showSideBar) }
           data-testid="top-hamburguer"
         >
           abrir menu
         </button>
-        <h1 data-testid="top-title" style={h1Style}>
+        <h1 data-testid="top-title" style={ h1Style }>
           {title}
         </h1>
       </header>
@@ -42,3 +44,9 @@ export default ({ pathname }) => {
     </div>
   );
 };
+
+Header.propTypes = {
+  pathname: PropTypes.string.isRequired,
+};
+
+export default Header;

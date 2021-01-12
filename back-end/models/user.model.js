@@ -19,10 +19,10 @@ const findUserById = (id) => connection
   .query('SELECT id, name, email, role FROM users WHERE ID = ? ', [id]);
 
 // prettier-ignore
-const updateUser = (id, name, email, password, role) => (
+const updateUser = ({ id, name }) => (
   connection.query(
-    'UPDATE users SET name = ?, email = ?, password = ?, role = ? WHERE id = ?',
-    [name, email, password, role, id],
+    'UPDATE users SET name = ? WHERE id = ?',
+    [name, id],
   )
 );
 
