@@ -36,7 +36,7 @@ const checkout = async (products, deliveryAddress, deliveryNumber, id) => {
   // console.log(total);
   const sales = await model.createSale(id, total, deliveryAddress, deliveryNumber);
   const productList = products.map(
-    (product) => model.createProductSale(sales.insertId, product.productId, product.quantity),
+    (product) => model.createProductSale(sales.insertId, product.id, product.quantity),
   );
   // console.log(sales.insertId);
   const respostaLista = await Promise.all(productList);
