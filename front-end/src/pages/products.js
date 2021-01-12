@@ -5,7 +5,14 @@ import { getProducts } from '../services/api';
 import Context from '../context/Context';
 
 const Products = () => {
-  const { beers, total, setBeers, setTotal, cart, setCart } = useContext(Context);
+  const {
+    beers,
+    setBeers,
+    total,
+    setTotal,
+    cart,
+    setCart,
+  } = useContext(Context);
 
   // const [cart, setCart] = useState([]);
   const [cartBtn, setCartBtn] = useState(false);
@@ -13,9 +20,8 @@ const Products = () => {
   const casasDecimais = 2;
 
   async function starter() {
-    await getProducts(localStorage.getItem('email'), localStorage.getItem('token')).then((data) =>
-      setBeers(data)
-    );
+    await getProducts(localStorage.getItem('email'), localStorage.getItem('token'))
+      .then((data) => setBeers(data));
     const lsCart = localStorage.getItem('cart');
     const lsBeer = localStorage.getItem('beer');
     if (lsCart.length > tam) {
@@ -36,7 +42,7 @@ const Products = () => {
         .map((products) => products.qty * products.price)
         .reduce((a, b) => a + b, tam)
         .toFixed(casasDecimais)
-        .replace('.', ',')
+        .replace('.', ','),
     );
   }, [cart, setTotal]);
 
@@ -75,37 +81,37 @@ const Products = () => {
       <Header>Products</Header>
       <div>
         <Link to="/checkout">
-          <button disabled={!cartBtn} type="submit" data-testid="checkout-bottom-btn">
+          <button disabled={ !cartBtn } type="submit" data-testid="checkout-bottom-btn">
             Ver Carrinho
           </button>
         </Link>
         <span data-testid="checkout-bottom-btn-value">{`Preço total: R$ ${total}`}</span>
         {beers.map((element, index) => (
-          <div key={element.name}>
-            <p data-testid={`${index}-product-name`}>{element.name}</p>
-            <p data-testid={`${index}-product-price`}>{`R$ ${element.price.replace('.', ',')}`}</p>
+          <div key={ element.name }>
+            <p data-testid={ `${index}-product-name` }>{element.name}</p>
+            <p data-testid={ `${index}-product-price` }>{`R$ ${element.price.replace('.', ',')}`}</p>
             <img
-              data-testid={`${index}-product-img`}
+              data-testid={ `${index}-product-img` }
               width="30px"
               height="30x"
-              src={element.url_image}
-              alt={element.name}
+              src={ element.url_image }
+              alt={ element.name }
             />
             <button
-              onClick={(e) => handleClick(e, 'add', index)}
-              data-testid={`${index}-product-plus`}
+              onClick={ (e) => handleClick(e, 'add', index) }
+              data-testid={ `${index}-product-plus` }
               type="button"
             >
               +
             </button>
             <button
               type="button"
-              onClick={(e) => handleClick(e, 'sub', index)}
-              data-testid={`${index}-product-minus`}
+              onClick={ (e) => handleClick(e, 'sub', index) }
+              data-testid={ `${index}-product-minus` }
             >
               -
             </button>
-            <span data-testid={`${index}-product-qtd`} id={`product-${index}`}>
+            <span data-testid={ `${index}-product-qtd` } id={ `product-${index}` }>
               {element.qty}
             </span>
           </div>
