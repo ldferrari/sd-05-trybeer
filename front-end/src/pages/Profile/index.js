@@ -1,37 +1,36 @@
-import React, { useContext, useState } from 'react';
 import axios from 'axios';
+import Header from '../../components/header';
 import AppContext from '../../context/AppContext';
+import React, { useEffect, useState } from 'react';
 
 import './index.css';
+import { getProfileInfo, postProfileInfo } from '../../services/requestAPI';
 
 const Perfil = () => {
   const [disabled, setDisable] = useState(true);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const token = localStorage.getItem('token');
 
-  const {
-    nomeProfile,
-    setNomeProfile,
-    emailProfile,
-  } = useContext(AppContext);
-
-  const submitChange = async () => {
-    axios.post('http://localhost:3001/api/insert', {
-      name: nomeProfile,
-    }).then(() => 'Sucesso!');
-  };
+  useEffect(async () => {
+    const info = await getProfileInfo(token);
+    console.log(info)
+  }, []);
 
   const handleChanged = (e) => {
-    setNomeProfile(e.target.value);
+    setName(e.target.value);
     const lengthName = 3;
-    if (nomeProfile.length > lengthName) {
+    if (name.length > lengthName) {
       setDisable(false);
     } else {
       setDisable(true);
     }
   };
 
-  const nomes = nomeProfile;
+  const nomes = name;
   return (
     <div className="App">
+      <Header>Profile</Header>
       <h1 data-testid="top-title">Perfil</h1>
       <div className="form">
         <p>Nome</p>
@@ -48,7 +47,7 @@ const Perfil = () => {
           type="email"
           id="email"
           name="email-id"
-          placeholder={ emailProfile }
+          placeholder={ email }
           data-testid="profile-email-input"
           readOnly
         />
@@ -56,7 +55,7 @@ const Perfil = () => {
           type="submit"
           data-testid="profile-save-btn"
           disabled={ disabled }
-          onClick={ submitChange }
+          onClick={ postProfileInfo }
         >
           Cadastrar
         </button>
