@@ -47,7 +47,7 @@ function EachProduct(props) {
 
   return (
     <div className="product-card">
-      <p data-testid={`${index}-product-price`}>
+      <p data-testid={`${index}-product-price`} className="grey-text">
         {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(
           product.price
         )}
@@ -60,17 +60,17 @@ function EachProduct(props) {
         height="60"
       />
       {/* FALTA: conectar a imagem com o images.tar.gz */}
-      <p key={product.id} data-testid={`${index}-product-name`}>
+      <p key={product.id} data-testid={`${index}-product-name`} className="grey-text">
         {product.name}
       </p>
       <div className="controlQty">
-        <button key={product.id} data-testid={`${index}-product-minus`} onClick={() => oneLess()}>
+        <button key={product.id} data-testid={`${index}-product-minus`} onClick={() => oneLess()} className="round-btn">
           -
         </button>
-        <p data-testid={`${index}-product-qtd`} id={`${index}-price`}>
+        <p data-testid={`${index}-product-qtd`} id={`${index}-price`} className="grey-text">
           {countProduct}
         </p>
-        <button key={product.id} data-testid={`${index}-product-plus`} onClick={() => oneMore()}>
+        <button key={product.id} data-testid={`${index}-product-plus`} onClick={() => oneMore()} className="round-btn">
           +
         </button>
       </div>

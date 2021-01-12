@@ -32,9 +32,28 @@
     display: flex;
     flex-direction: column;
     background-color: white;
-    height: 30%;
-    width: 30%;
+    justify-content: space-evenly;
+    height: 170px;
+    width: 170px;
     align-items: center;
     margin-top: 15px;
     margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 10px 10px 5px rgb(128, 125, 125);
+}
+
+.round-btn {
+    border-radius: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: #D75B49;
+    border: 0;
+    height: 30px;
+    width: 30px;
+    color:white;
+}
+
+.grey-text {
+    color: gray;
+    margin: 0;
 }
