@@ -62,6 +62,7 @@ const Products = () => {
           </Link>
         </button>
       </div>
+    </div>
   );
 };
 
