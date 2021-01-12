@@ -3,6 +3,12 @@ import PropTypes from 'prop-types';
 import GeneralContext from './GeneralContext';
 
 const GeneralProvider = ({ children }) => {
+  const [initialUser] = useState({
+    email: '',
+    password: '',
+    role: '',
+    name: '',
+  });
   const [userData, setUserData] = useState({
     email: '',
     password: '',
@@ -12,6 +18,7 @@ const GeneralProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false);
 
   const context = {
+    initialUser,
     userData,
     setUserData,
     loggedIn,
