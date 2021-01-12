@@ -17,7 +17,7 @@ export default function OrderCard({ item, index }) {
   }
 
   return (
-    <div>
+    <div className="order-detail-card">
       <p data-testid={`${index}-product-qtd`}>{item.quantity} - </p>
       {/* {console.log(productDetail)} */}
       <p data-testid={`${index}-product-name`}>{productDetail.name}</p>

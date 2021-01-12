@@ -42,21 +42,25 @@ function OrdersDetails({ history, location: { pathname } }) {
   }
 
   return (
-    <div>
+    <div className="div-container-orders yellow-background">
       <ClientMenu title="Detalhes de Pedido" data-testid="top-title" />
       {/* {console.log(orderInfo)} */}
-      <div data-testid="order-number">Pedido {orderInfo.id}</div>
-      <div data-testid="order-date">{getDate(orderInfo.sale_date)}</div>
-      <div>
+      <div className="order-info-container">
+        <div className="date-order">
+      <h2 data-testid="order-number" className="white-text">Pedido {orderInfo.id}</h2>
+      <h2 data-testid="order-date" className="white-text">{getDate(orderInfo.sale_date)}</h2>
+        </div>
+      <div className="order-detail-card-container">
         {productsDetails.map((item, index) => (
           <OrderDetailCard key={index} item={item} index={index} />
-        ))}
+          ))}
       </div>
       {console.log(productsDetails)}
-      <div data-testid="order-total-value">
+      <h2 data-testid="order-total-value" className="white-text">
         Total: R$ {!orderInfo.total_price ? null : handlePrice(orderInfo.total_price)}
-      </div>
+      </h2>
       {!isLogged && <Redirect to="/login" />}
+      </div>
     </div>
   );
 }
