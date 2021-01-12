@@ -43,7 +43,9 @@ const login = rescue(async (req, _res, next) => {
 const register = rescue(async (req, _res, next) => {
   const { error } = REGISTER_SCHEMA.validate(req.body);
   if (error) throw new Error(error);
-  req.data = await userModel.createUser(req.body);
+  await userModel.createUser(req.body);
+  const {password, ...userWithoutPassword }= req.body;
+  req.data = userWithoutPassword
   // console.log(req.data);
   next();
 });

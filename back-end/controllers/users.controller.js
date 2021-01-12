@@ -9,7 +9,7 @@ user.get('/', (_req, res) => {
 
 // endpoint de registro
 user.post('/register', userServices.register, (req, res) => {
-  res.status(201).json({ message: req.data });
+  res.status(201).json(req.data);
 });
 
 user.post('/update', userServices.update, (req, res) => {
