@@ -22,7 +22,14 @@ const SideBar = () => (
     </ul>
     <ul>
       <li className="menuBtn">
-        <Link Link to="/" className="menuBtn" data-testid="side-menu-item-logout">Sair</Link>
+        <Link
+          Link to="/"
+          className="menuBtn"
+          data-testid="side-menu-item-logout"
+          onClick ={() => {localStorage.removeItem("token")}} 
+        >
+          Sair
+        </Link>
       </li>
     </ul>
   </aside>
