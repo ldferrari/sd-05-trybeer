@@ -1,45 +1,55 @@
 const model = require('../Models/checkoutModel');
 
-// const userModel = require('../Models/userModel');
-
-/* const validateEmail = (email) => {
-  const regexEmail = RegExp(/\S+@\S+\.\S+/, 'i');
-  return regexEmail.test(email);
-}; */
-
-const getCheckout = async () => model.getCheckout();
-
-/* const getCheckout = async (email, password) => {
-  const emailExists = await userModel.getByEmail(email);
-  if (!emailExists) {
+const checkout = async (products, deliveryAddress, deliveryNumber, id) => {
+  // const id = await userId.getById(email);
+  // const { id } = loginController.token.findUser;
+  // console.log('FindUser =>', loginController.token.findUser);
+  // console.log('service', products, deliveryAddress, deliveryNumber, id);
+  if (!products || !deliveryAddress || !deliveryNumber || !id) {
     return {
       error: true,
-      code: 'Email inválido',
-      message: 'Email não encontrado.',
+      code: 'field_not_filled',
+      message: 'Verifique se todos os campos foram preenchidos.',
       statusCode: 401,
     };
   }
 
-  if (!validateEmail) {
+  /* if (typeof quantity !== 'number') {
     return {
       error: true,
-      code: 'Email inválido',
-      message: 'Email inválido. Um email válido possui o formato <nome>@<domínio>',
-      statusCode: 400,
+      code: 'Invalid_value',
+      message: 'Informe um número para quantidade.',
+      statusCode: 401,
     };
-  }
+  } */
 
-  if (password.length < 6) {
+  if (typeof deliveryNumber !== 'number') {
     return {
       error: true,
-      code: 'Email inválido',
-      message: 'Email ou senha incorreto.',
+      code: 'Invalid_value',
+      message: 'Informe um número para o número do endereço.',
       statusCode: 401,
     };
   }
-  return model.getCheckout(email, password);
-}; */
+
+  const total = products.reduce((acc, cur) => acc + cur.price * cur.quantity, 0);
+  // console.log(total);
+  const sales = await model.createSale(id, total, deliveryAddress, deliveryNumber);
+  const productList = products.map(
+    (product) => model.createProductSale(sales.insertId, product.productId, product.quantity),
+  );
+  // console.log(sales.insertId);
+  const respostaLista = await Promise.all(productList);
+  return {
+    Produtos_adicionados: respostaLista.filter((e) => e.affectedRows).length,
+    Total_Produtos: respostaLista.length,
+  };
+  // 'Total_Produtos':respostaLista.length-->
+  // --> total de produtos enviados para serem acrescentados no banco
+  // 'Produtos_adicionados':respostaLista.filter((e) => e.affectedRows).length -->
+  // --> produtos que realmente foram acrescentados
+};
 
 module.exports = {
-  getCheckout,
+  checkout,
 };

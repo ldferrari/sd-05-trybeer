@@ -1,6 +1,6 @@
 const { Router } = require('express');
 
-const User = require('../Models/userModel');
+const userModel = require('../Models/userModel');
 
 const emailMiddleware = require('../Middlewares/emailMiddleware');
 
@@ -21,14 +21,16 @@ login.post('/', async (req, res) => {
     if (password.length < 6) {
       return res.status(401).json({ message: 'Senha inválida.', ok: false });
     }
-    const findUser = await User.getByEmail(email);
+    const findUser = await userModel.getByEmail(email);
+    // console.log(findEmail);
     if (!findUser) {
       return res.status(401).json({ message: 'Email não encontrado.', ok: false });
     }
-    if (findUser.password !== password ) {
-      return res.status(401).json({ message: 'Email e/ou password incorretos.', ok:false });
+    if (findUser.password !== password) {
+      return res.status(401).json({ message: 'Email e/ou password incorretos.', ok: false });
     }
     const token = createToken({
+      id: findUser.id,
       email,
       role: findUser.role,
       iss: 'post_api',
