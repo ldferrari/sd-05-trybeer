@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import AppContext from '../../context/AppContext';
+import propTypes from 'prop-types';
 
-const CartButton = () => {
+const CartButton = (props) => {
   const { cart } = useContext(AppContext);
   const [cartBtn, setCartBtn] = useState(false);
   const zero = 0;
@@ -19,25 +19,30 @@ const CartButton = () => {
   },
   [cartSum]);
 
-  if (!cartBtn) {
+  /* if (!cartBtn) {
     return null;
-  }
+  } */
 
   return (
     <div className="checkoutBtn">
-      <Link
-        to="/checkout"
+      <button
+        type="button"
         data-testid="checkout-bottom-btn"
         className="checkoutLink"
+        disabled={ !cartBtn }
+        onClick={ () => props.history.push('/checkout') }
       >
         <p>Ver Carrinho</p>
         <p data-testid="checkout-bottom-btn-value">
-          R$
-          {cartSum}
+          {`R$ ${cartSum.toString().replace('.', ',')}`}
         </p>
-      </Link>
+      </button>
     </div>
   );
 };
 
 export default CartButton;
+
+CartButton.propTypes = {
+  history: propTypes.func.isRequired,
+}
