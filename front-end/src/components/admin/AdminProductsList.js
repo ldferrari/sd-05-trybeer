@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { getProductById } from '../../services/fetch';
 import PropTypes from 'prop-types';
+import { getProductById } from '../../services/fetch';
 
 export default function AdminProductsList({ sale }) {
   const [product, setProduct] = useState([]);
@@ -10,9 +10,14 @@ export default function AdminProductsList({ sale }) {
   }, []);
 
   return (
-    <li>{sale.quantity} - {product.name} - R$ <span>{product.price}</span></li>
-  )
-};
+    <li>
+      {sale.quantity}
+      -
+      {product.name}
+      - R$
+      <span>{product.price}</span></li>
+  );
+}
 
 AdminProductsList.propTypes = {
   sale: PropTypes.object.isRequired,
