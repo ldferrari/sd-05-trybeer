@@ -1,4 +1,4 @@
-.button {
+/* .button {
   border-radius: 8px;
   color: black;
   display: inline-block;
@@ -59,4 +59,30 @@
   color: green;
   font-size: 200%;
   margin-bottom: 30px;
+} */
+
+.container {
+  display: flex;
+  flex-flow: column;
 }
+.containerA {
+  /* padding-left: 0.5%; */
+  align-items: center;
+  align-content: center;
+  display: flex;
+  flex-flow: column;
+}
+.footer{
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  display: flex;
+  flex-flow: row;
+}
+/* #containerB {
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+} */

@@ -20,36 +20,40 @@ const Login = ({ history }) => {
   };
 
   return (
+    <div className="container">
+      <div className="containerA">
+      <img src={logo} alt={'garrafamóvel'} className="logo"/>
+      </div>
     <section>
       <form className='login-container'>
-      <img src={logo} alt={'garrafamóvel'} className="logo"/>       
+      <div className="containerA">  
         <span className='login-container title'>TryBeer</span>
         <label htmlFor="email-input" className='login-container'>
           Email
           <input
           className='input lesserMargin'
-            data-testid="email-input"
-            type="email"
-            placeholder="Email"
-            onChange={(event) => setEmail(event.target.value)}
+          data-testid="email-input"
+          type="email"
+          placeholder="Email"
+          onChange={(event) => setEmail(event.target.value)}
           />
         </label>
         <label htmlFor="password-input" className='login-container'>
           Senha
           <input
           className='input lesserMargin'
-            data-testid="password-input"
-            type="password"
-            placeholder="Senha"
-            onChange={(event) => setPassword(event.target.value)}
+          data-testid="password-input"
+          type="password"
+          placeholder="Senha"
+          onChange={(event) => setPassword(event.target.value)}
           />
         </label>
         <button
         className='button margin-top green'
-          data-testid="signin-btn"
-          type="button"
-          disabled={!validEmail || password.length < passwordLength}
-          onClick={() => fetchLogin(email, password).then((result) => handleLogin(result))}
+        data-testid="signin-btn"
+        type="button"
+        disabled={!validEmail || password.length < passwordLength}
+        onClick={() => fetchLogin(email, password).then((result) => handleLogin(result))}
         >
           ENTRAR
         </button>
@@ -58,12 +62,14 @@ const Login = ({ history }) => {
             Ainda não tenho conta
           </button>
         </Link>
+    </div>
+      </form>
+    </section>
         <div className="footer">
           <p>Termos de uso Política de privacidade
 © 2021 TryBeer - Todos os direitos reservados.</p>
         </div>
-      </form>
-    </section>
+    </div>
   );
 };
 
