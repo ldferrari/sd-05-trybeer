@@ -4,6 +4,7 @@ import ProdCard from '../../components/client/ProductCard';
 import { ClientContext } from '../../context/client/ClientProvider';
 import productsApi from '../../services/client/api';
 import Menu from '../../components/client/Menu';
+import '../../css/clientProductPage.css';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -12,23 +13,24 @@ const Products = () => {
   console.log(products);
 
   // const initialCart = localStorage.getItem('cart');
-  
+
   // useEffect(() => {
   //   // const cartValue = (parseFloat(localStorage.getItem('cart')) || 0) + cart;
-  //   // console.log(typeof cartValue);    
+  //   // console.log(typeof cartValue);
   //   if (cart !== 0) {
   //     localStorage.setItem('cart', (cart).toString())
   //   }}, [cart]);
 
   useEffect(() => {
     // const cartValue = (parseFloat(localStorage.getItem('cart')) || 0) + cart;
-    // console.log(typeof cartValue);    
+    // console.log(typeof cartValue);
     if (cart >= 0) {
-      localStorage.setItem('cart', (cart).toString())
-    }}, [cart]);
+      localStorage.setItem('cart', (cart).toString());
+    }
+  }, [cart]);
 
   useEffect(() => {
-    productsApi().then(response => setProducts(response));
+    productsApi().then((response) => setProducts(response));
     const cartValue = (parseFloat(localStorage.getItem('cart')) || 0);
     setCart(cartValue);
     const cartIt = JSON.parse(localStorage.getItem('cart itens')) || [];
@@ -40,33 +42,28 @@ const Products = () => {
   //   const cartValue = (parseFloat(localStorage.getItem('cart')) || 0);
   //   setCart(cartValue)
   // }, []);
-  
-  console.log(products);
+
   // if (isLoading) return <div>Carregando...</div>;
 
   return (
     <div>
       <Menu title="Trybeer" />
-      <div>
+      <div className="listProducts marginTop">
         {products.map((product, index) => (
-          <ProdCard index={index} product={product} />
+          <ProdCard index={ index } product={ product } />
         ))}
       </div>
-      <div>
-        <button type="button" data-testid="checkout-bottom-btn">
-          <Link to="/checkout">
-            <button>
-              Ver carrinho
-              <span data-testid="checkout-bottom-btn-value">
-              {cart}
-              </span>
-            </button>
+      <div className="ver-carrinho">
+        <button type="button" data-testid="checkout-bottom-btn" className="buttonCart">
+          <Link to="/checkout" className="linkCar">
+            Ver carrinho
+            <span data-testid="checkout-bottom-btn-value" className="somaCart">
+            {cart}
+            </span>
           </Link>
         </button>
       </div>
     </div>
-    //   {console.log(products)}
-    // </div>
   );
 };
 

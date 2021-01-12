@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import '../../css/menu.css';
+import { Link } from 'react-router-dom';
+import GeneralContext from '../../context/general/GeneralContext';
 
 export default function Menu(props) {
   const { title } = props;
+  const [isVisible, setIsVisible] = useState(false);
+  const { setLoggedIn, setUserData, initialUser } = useContext(GeneralContext);
 
   function menuChecked() {
     if (document.getElementById('check').checked) {
-      document.getElementsByClassName('side-menu-container')[0].style.left = '0%';
+      setIsVisible(true);
     }
     if (!document.getElementById('check').checked) {
-      document.getElementsByClassName('side-menu-container')[0].style.left = '-40%';
+      setIsVisible(false);
     }
   }
 
@@ -21,18 +25,27 @@ export default function Menu(props) {
         <input type="checkbox" id="check" onChange={ () => menuChecked() } />
       </label>
       <h1 className="topTitle" data-testid="top-title">{title}</h1>
-      <div className="side-menu-container">
-        <nav className="menuLateral">
-          <div className="menuButton">
-            <a href="/products" data-testid="side-menu-item-products" className="buttonLateral">Produtos</a>
-            <a href="/orders" data-testid="side-menu-item-my-orders" className="buttonLateral">Meus Pedidos</a>
-            <a href="/profile" data-testid="side-menu-item-my-profile" className="buttonLateral">Meu Perfil</a>
-          </div>
-          <div className="menuButton textCenter">
-            <a href="/login" data-testid="side-menu-item-logout" className="buttonLateral">Sair</a>
-          </div>
-        </nav>
-      </div>
+      {isVisible && (
+        <div className="side-menu-container">
+          <nav className="menuLateral">
+            <div className="menuButton">
+              <Link to="/products" data-testid="side-menu-item-products" className="buttonLateral">Produtos</Link>
+              <Link to="/orders" data-testid="side-menu-item-my-orders" className="buttonLateral">Meus Pedidos</Link>
+              <Link to="/profile" data-testid="side-menu-item-my-profile" className="buttonLateral">Meu Perfil</Link>
+            </div>
+            <div className="menuButton textCenter">
+              <Link
+                to="/login"
+                data-testid="side-menu-item-logout"
+                className="buttonLateral"
+                onClick={ () => { setLoggedIn(false); setUserData({ initialUser }); } }
+              >
+                Sair
+              </Link>
+            </div>
+          </nav>
+        </div>
+      ) }
     </header>
   );
 }
