@@ -2,3 +2,7 @@ html, body, #root, .App {
   height: 100%;
   margin: 0;
 }
+
+body {
+  background-color: rgb(248, 242, 230);;
+}
