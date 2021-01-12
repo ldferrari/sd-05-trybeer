@@ -38,7 +38,7 @@ export default function Menu(props) {
                 to="/login"
                 data-testid="side-menu-item-logout"
                 className="buttonLateral"
-                onClick={ () => {setLoggedIn(false); setUserData({ initialUser })} }
+                onClick={ () => { setLoggedIn(false); setUserData({ initialUser }); } }
               >
                 Sair
               </Link>
