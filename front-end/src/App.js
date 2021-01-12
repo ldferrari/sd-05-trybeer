@@ -6,7 +6,7 @@ import ClientProductPage from './pages/client/ClientProductPage';
 import ClientProfilePage from './pages/client/ClientProfilePage';
 import LoginPage from './pages/general/LoginPage';
 import ClientOrderPage from './pages/client/ClientOrderPage';
-import './css/app.css'
+import './css/app.css';
 
 function App() {
   return (
