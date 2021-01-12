@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
+import propTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import './index.css';
 import AppContext from '../../context/AppContext';
