@@ -12,7 +12,7 @@ export default function ClientProfilePage() {
   const [localName, setLocalName] = useState(userData.name);
   const [apiSuccess, setApiSuccess] = useState(false);
 
-  /* if (!loggedIn) return <Redirect to="/login" />; */
+  if (!loggedIn) return <Redirect to="/login" />;
 
   const handleChange = (e) => {
     setNameEqual(false);
