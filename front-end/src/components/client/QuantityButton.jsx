@@ -4,25 +4,59 @@ import { ClientContext } from '../../context/client/ClientProvider';
 
 export default function QuantityButton(props) {
   const [quantity, setQuantity] = useState(0);
-  const {cart, setCart} = useContext(ClientContext);
-  const { price } = props;
-  const { product, index } = props;
+  const {cart, cartItens, setCart, setCartItens} = useContext(ClientContext);
+  const { id, index, price } = props;
 
-  const dois = 2;
+  // const dois = 2;
 
   const updateCart = () => {
     localStorage.setItem('cart', (cart).toString());
+    // localStorage.setItem('quantity', JSON.stringify([{index, qty}]));
   }
+
+  // const updateQuantity = () => {
+  //   setQuantity(quantity + 1);
+  // }
 
   // useEffect(() => {
   //   console.log(typeof cart);
   //   setCart(parseFloat(cart, 10));
   // }, [quantity]);
+
+  useEffect(() => {
+    // const qty = JSON.parse(localStorage.getItem('quantity')) || {};
+    // console.log(qty);
+    // qty[index]=quantity;
+    const prodIndex = cartItens.findIndex((i) => i.id === id);
+    if (prodIndex !== -1) {
+      if (quantity === 0) {
+        cartItens.splice(index, 1);
+      } else {
+        cartItens[prodIndex] = {id, quantity};
+      }
+      setCartItens(cartItens);      
+    } else {
+      setCartItens([...cartItens, {id, quantity}]);
+      console.log(2);
+    }
+    localStorage.setItem('cart itens', JSON.stringify(cartItens));
+  }, [quantity, cartItens]);
+
+  useEffect(() => {
+    setCartItens([]);
+    const qteItens = JSON.parse(localStorage.getItem('cart itens')) || [];
+    setCartItens(qteItens);
+    localStorage.setItem('cart itens', []);
+  }, []);
   
   function increaseItem() {
+    // setQty([...qty, {index, quantity}])
     setQuantity(quantity + 1);
     setCart(cart + Number(price));
+    // console.log(prodIndex);
     updateCart();
+    localStorage.setItem('cart itens', JSON.stringify(cartItens));
+    // updateQuantity();
   }
   
   function decreaseItem() {
@@ -31,8 +65,8 @@ export default function QuantityButton(props) {
     setCart(cart - Number(price));
     }
     updateCart();
+    localStorage.setItem('cart itens', JSON.stringify(cartItens));
   }
-  console.log(cart);
 
   return (
     <div className="quantity-container">

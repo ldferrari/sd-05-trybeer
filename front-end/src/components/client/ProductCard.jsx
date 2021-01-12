@@ -23,7 +23,10 @@ const ProdCard = (props) => {
           { `R$ ${product.price.toString().replace('.', ',')}` }
         </div>
       </div>
-      <QuantityButton price={product.price} />
+      <QuantityButton 
+        index={index}
+        id={product.id}
+        price={product.price} />
     </div>
   );
 }

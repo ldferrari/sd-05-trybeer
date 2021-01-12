@@ -7,7 +7,7 @@ import Menu from '../../components/client/Menu';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-  const {cart, setCart} = useContext(ClientContext);
+  const {cart, setCart, cartItens, setCartItens} = useContext(ClientContext);
   
   console.log(products);
 
@@ -30,7 +30,9 @@ const Products = () => {
   useEffect(() => {
     productsApi().then(response => setProducts(response));
     const cartValue = (parseFloat(localStorage.getItem('cart')) || 0);
-    setCart(cartValue)
+    setCart(cartValue);
+    const cartIt = JSON.parse(localStorage.getItem('cart itens')) || [];
+    setCartItens(cartIt);
   }, []);
 
   // useEffect(() => {
