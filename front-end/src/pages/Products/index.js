@@ -11,29 +11,13 @@ import { postGetItems } from '../../services/requestAPI';
 const Products = (props) => {
   const [theProducts, setProducts] = useState([]);
   const theToken = localStorage.getItem('token');
-  // const fetchProducts = async () => {
-  //   const { data } = await postGetItems(theToken);
-  //   setProducts(data);
-  // };
-  // const fetchProducts = async () => {
-  //   axios.get(URL, { headers: { Authorization: theToken } })
-  // .then(response => {
-  //     setProducts(response.data);
-  //     console.log(response.data);
-  //   })
-  // .catch((error) => {
-  //     console.log('error ' + error);
-  //   });
-  // };
-
+ 
   useEffect(() => {
     async function fetchProducts() {
       const {data} = await postGetItems(theToken);
       setProducts(data)
     }
     fetchProducts();
-    // const { data } = await postGetItems(theToken);
-    // setProducts(data);
   }, [theToken]);
 
   const logged = localStorage.getItem('token');

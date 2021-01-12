@@ -23,12 +23,6 @@ const Checkout = (props) => {
     .toFixed(dois);
   const fullCart = cartSum > 0;
 
-  // const lCart = localStorage.getItem('cart');
-
-  // const fetchCart = () => {
-  //   setCartHere(cart);
-  // };
-
   useEffect(() => {
     setCartHere(cart);
   },
@@ -45,7 +39,6 @@ const Checkout = (props) => {
     localStorage.removeItem('cart');
     setCart([]);
     alert('Compra realizada com sucesso!');
-
     // <Redirect to="/products" />
     return props.history.push('/products'); // handleHandleSubmit
   };
