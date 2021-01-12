@@ -1,4 +1,5 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import {
   checkName,
@@ -6,13 +7,13 @@ import {
   checkPassword,
 } from '../services/checkUserData';
 import TrybeerContext from '../context/TrybeerContext';
-import { createUser, login } from '../services/fetch';
+import { createUser } from '../services/fetch';
 
 function Register({ history }) {
   const [checkedName, setCheckedName] = useState(false);
   const [checkedEmail, setCheckedEmail] = useState(false);
   const [checkedPassword, setCheckedPassword] = useState(false);
-  const [clickRegister, setClickRegister] = useState(false);
+  // const [clickRegister, setClickRegister] = useState(false);
   const [emailExistis, setEmailExists] = useState(false);
   const {
     name,
@@ -44,12 +45,6 @@ function Register({ history }) {
     }
   };
 
-  const handleClickRegister = async () => {
-    setClickRegister(true);
-    const role = admin ? 'administrator' : 'client';
-    await createUser(name, email, password, role).then((result) => handleResult(result));
-  };
-
   const handleResult = async (result) => {
     if (result.message === 'E-mail already in database') {
       setEmailExists(true);
@@ -61,6 +56,12 @@ function Register({ history }) {
     if (result.role === 'client') {
       history.push('/products');
     }
+  };
+
+  const handleClickRegister = async () => {
+    // setClickRegister(true);
+    const role = admin ? 'administrator' : 'client';
+    await createUser(name, email, password, role).then((result) => handleResult(result));
   };
 
   return (
@@ -84,13 +85,13 @@ function Register({ history }) {
         onChange={ (e) => handlePasswordChange(e) }
       />
       <div>
-        <label htmlFor="vender">Quero Vender</label>
         <input
           data-testid="signup-seller"
           type="checkbox"
           id="vender"
           onClick={ () => setAdmin(true) }
         />
+        <label htmlFor="vender">Quero Vender</label>
       </div>
       <button
         type="button"
@@ -106,3 +107,7 @@ function Register({ history }) {
 }
 
 export default withRouter(Register);
+
+Register.propTypes = {
+  history: PropTypes.arrayOf(Object).isRequired,
+};
