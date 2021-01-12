@@ -13,6 +13,7 @@ const Perfil = () => {
   const token = localStorage.getItem('token');
 
   useEffect(async () => {
+    console.log(token)
     const info = await getProfileInfo(token);
     console.log(info)
   }, []);
