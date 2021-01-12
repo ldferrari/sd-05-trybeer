@@ -67,8 +67,8 @@ function Login({ history }) {
   };
 
   return (
-    <div className="login-page login-container" data-testid="">
-      <div className="form-container">
+    <div className="login-page login-container beer-background" data-testid="">
+      <div className="login-form-container">
         <h1 className="white-text">Trybeer</h1>
       {inputEmail(handleEmailChange)}
       {inputPassword(handlePasswordChange)}

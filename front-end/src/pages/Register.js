@@ -7,6 +7,7 @@ import {
 import TrybeerContext from '../context/TrybeerContext';
 import { createUser, login } from '../services/fetch';
 import { withRouter } from 'react-router-dom';
+import './Login.css'
 
 function Register({ history }) {
   const [checkedName, setCheckedName] = useState(false);
@@ -66,40 +67,46 @@ function Register({ history }) {
   };
 
   return (
-    <div>
-      <div>Nome</div>
+      <div className="form-container yellow-background">
+      <h1 className="white-text">Cadastro</h1>
       <input
+      placeholder="Nome"
+      className="input-layout"
         data-testid="signup-name"
         type="text"
         onChange={(e) => handleNameChange(e)}
-      />
-      <div>Email</div>
+        />
       <input
+      placeholder="Email"
+      className="input-layout"
         data-testid="signup-email"
         type="text"
         onChange={(e) => handleEmailChange(e)}
-      />
-      <div>Senha</div>
+        />
       <input
+      placeholder="Senha"
+      className="input-layout"
         data-testid="signup-password"
         type="password"
         onChange={(e) => handlePasswordChange(e)}
-      />
-      <div>
-        <label htmlFor="vender">Quero Vender</label>
+        />
+      <div className="checkbox-layout">
+        <label htmlFor="vender" className="white-text">Quero Vender</label>
         <input
+      
           data-testid="signup-seller"
           type="checkbox"
           id="vender"
           onClick={() => setAdmin(true)}
-        />
+          />
       </div>
       <button
+      className="btn-style white-text"
         type="button"
         data-testid="signup-btn"
         disabled={!(checkedName && checkedEmail && checkedPassword)}
         onClick={() => handleClickRegister()}
-      >
+        >
         Cadastrar
       </button>
       {emailExistis ? <div>E-mail already in database.</div> : null}
