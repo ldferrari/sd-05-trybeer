@@ -29,7 +29,7 @@ const createUser = async (name, email, password, role) => {
   //   message: `Batata with ID ${id} was not found`
   //   }
   // }
-  console.log(`${email} doesn't exist`);
+  // console.log(`${email} doesn't exist`);
   const newUser = await userModel.createUser(name, email, password, role);
   return newUser;
 };
