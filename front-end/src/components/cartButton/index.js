@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
-import AppContext from '../../context/AppContext';
 import propTypes from 'prop-types';
+import AppContext from '../../context/AppContext';
 
 const CartButton = (props) => {
   const { cart } = useContext(AppContext);
@@ -43,4 +43,4 @@ export default CartButton;
 
 CartButton.propTypes = {
   history: propTypes.func.isRequired,
-}
+};

@@ -23,10 +23,10 @@ const SideBar = () => (
     <ul>
       <li className="menuBtn">
         <Link
-          Link to="/"
+          to="/"
           className="menuBtn"
           data-testid="side-menu-item-logout"
-          onClick ={() => {localStorage.removeItem("token")}} 
+          onClick={ () => { localStorage.removeItem('token'); } }
         >
           Sair
         </Link>

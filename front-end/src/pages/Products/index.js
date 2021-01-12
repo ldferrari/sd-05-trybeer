@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-import axios from 'axios';
 import './index.css';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
@@ -50,3 +50,5 @@ const Products = (props) => {
 };
 
 export default Products;
+
+Products.propTypes = { history: PropTypes.instanceOf(Object).isRequired };

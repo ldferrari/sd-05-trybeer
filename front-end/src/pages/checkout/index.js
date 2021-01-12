@@ -35,19 +35,18 @@ const Checkout = (props) => {
   if (!logged) {
     return <Redirect to="/login" />;
   }
-  
-  const handleSubmit = async () => { // async () =>
-    const cartProducts = { "products": [ cart ] };
-    const userData = { "deliveryAddress": rua, "deliveryNumber": numero };
+
+  const handleSubmit = async () => {
+    const cartProducts = { products: [cart] };
+    const userData = { deliveryAddress: rua, deliveryNumber: numero };
     await postOrder(cartProducts, userData);
     // alert(userData);
-    localStorage.removeItem("cart");
+    localStorage.removeItem('cart');
     setCart([]);
 
     // <Redirect to="/products" />
-    return props.history.push('/products') // handleHandleSubmit
-  }
-  // const handleHandleSubmit = () => // props.history.push('/products') // <Redirect to="/products" />;
+    return props.history.push('/products'); // handleHandleSubmit
+  };
 
   return (
     <div className="Checkout">
@@ -110,3 +109,7 @@ const Checkout = (props) => {
 };
 
 export default Checkout;
+
+Checkout.propTypes = {
+  history: propTypes.func.isRequired,
+};
