@@ -8,7 +8,7 @@ const CartButton = (props) => {
   const zero = 0;
   const dois = 2;
   const cartSum = cart
-    .reduce((acc, cv) => acc + cv.price * cv.qty, zero)
+    .reduce((acc, cv) => acc + cv.price * cv.quantity, zero)
     .toFixed(dois);
 
   useEffect(() => {

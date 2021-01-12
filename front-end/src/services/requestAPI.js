@@ -28,8 +28,8 @@ const postRegister = async ({
   role,
 });
 
-const postOrder = async ({ userData, cartProducts }) => axios
-  .post('http://localhost:3001/checkout', { userData, cartProducts });
+const postOrder = async (token, products, userData) => axios
+  .post('http://localhost:3001/checkout', { products, userData }, config(token));
 
 export {
   postLogin, postRegister, postGetItems, postOrder,

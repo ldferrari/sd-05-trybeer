@@ -19,7 +19,7 @@ const Checkout = (props) => {
   const nada = 0;
   const dois = 2;
   const cartSum = cart
-    .reduce((acc, cv) => acc + cv.price * cv.qty, nada)
+    .reduce((acc, cv) => acc + cv.price * cv.quantity, nada)
     .toFixed(dois);
 
   // const lCart = localStorage.getItem('cart');
@@ -38,12 +38,12 @@ const Checkout = (props) => {
   }
 
   const handleSubmit = async () => {
-    const cartProducts = { products: [cart] };
+    const token = localStorage.getItem('token');
     const userData = { deliveryAddress: rua, deliveryNumber: numero };
-    await postOrder(cartProducts, userData);
-    // alert(userData);
+    await postOrder(token, cart, userData);
     localStorage.removeItem('cart');
     setCart([]);
+    alert('Pedido efetuado com sucesso!');
 
     // <Redirect to="/products" />
     return props.history.push('/products'); // handleHandleSubmit
@@ -89,7 +89,7 @@ const Checkout = (props) => {
             data-testid="checkout-house-number-input"
             type="number"
             name="numero"
-            onChange={ ({ target: { value } }) => setNumero(value) }
+            onChange={ ({ target: { value } }) => setNumero(Number(value)) }
             value={ numero }
           />
         </div>
