@@ -22,10 +22,12 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.use('/login', (req,res,next)=>{
+/* app.use('/login', (req,res,next)=>{
   console.log(req.body)
-  next()
-}, loginController);
+  next();
+}, loginController); */
+
+app.use('/login', loginController);
 
 app.use('/register', registerController);
 
