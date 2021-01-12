@@ -13,7 +13,7 @@ export default function OrderStatus({ id }) {
   if (!status) return <div>Carregando...</div>;
 
   return (
-    <span>{status}</span>
+    <span data-testid="order-status">{status}</span>
   )
 };
 

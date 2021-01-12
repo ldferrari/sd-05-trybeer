@@ -11,6 +11,7 @@ export default function BtnStatus({ id }) {
   return (
     <button
       type="button"
+      data-testid="mark-as-delivered-btn"
       onClick={() => closeSale(id).then(window.location.reload(true))}
     >
       Marcar como entregue

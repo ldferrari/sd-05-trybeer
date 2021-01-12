@@ -3,7 +3,7 @@ import { getProductById } from '../../services/fetch';
 import PropTypes from 'prop-types';
 import TrybeerContext from '../../context/TrybeerContext';
 
-export default function AdminProductsList({ sale }) {
+export default function AdminProductsList({ sale, index }) {
   const [product, setProduct] = useState([]);
   const { setTotalPrice } = useContext(TrybeerContext);
 
@@ -13,7 +13,15 @@ export default function AdminProductsList({ sale }) {
   }, []);
 
   return (
-    <li>{sale.quantity} - {product.name} - R$ <span>{product.price}</span></li>
+    <li>
+      <span data-testid={`${index}-product-qtd`}>{sale.quantity}</span>
+       - 
+      <span data-testid={`${index}-product-name`}>{product.name}</span>
+       - R$ 
+       <span data-testid={`${index}-order-unit-price`}>{product.price}</span>
+       -
+      <span data-testid={`${index}-product-total-value`}>{(sale.quantity * product.price).toFixed(2)}</span>
+    </li>
   )
 };
 

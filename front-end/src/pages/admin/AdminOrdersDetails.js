@@ -29,9 +29,9 @@ function AdminOrdersDetails() {
       </div>
       <div>
         <ul>
-          {saleDetails.map((sale, index) => <AdminProductsList key={index} sale={sale} />)}
+          {saleDetails.map((sale, index) => <AdminProductsList key={index} sale={sale} index={index} />)}
         </ul>
-        <span>Total: R$ {totalPrice}</span>
+        <span data-testid="order-total-value">Total: R$ {totalPrice.toFixed(2)}</span>
       </div>
       <BtnStatus id={saleNumber} />
     </div>
