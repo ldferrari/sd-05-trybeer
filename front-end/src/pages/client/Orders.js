@@ -13,7 +13,7 @@ function Orders() {
   }, []);
 
 return (
-  <div>
+  <div className="div-container-orders yellow-background">
     <ClientMenu title="Meus Pedidos" />
     {orders.map((order, index) => <OrderCard key={index} order={order} index={index} />)}
   </div>
