@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { useState, useContext, useEffect } from 'react';
+
 import ClientMenu from '../../components/client/ClientMenu';
 import { getProducts } from '../../services/fetch';
 import TrybeerContext from '../../context/TrybeerContext';
@@ -24,18 +24,18 @@ function Products() {
         {/* {fetching && <p>Loading...</p>} */}
         {/* BACK - como ver que o fetch acabou? */}
         {dataProducts.map((product, index) => (
-          <EachProduct product={product} index={index} key={index} />
+          <EachProduct product={ product } index={ index } key={ index } />
         ))}
       </div>
       <Link to="/checkout">
         <button
           data-testid="checkout-bottom-btn"
-          disabled={totalPrice===0}
+          disabled={ totalPrice === 0 }
         >
           Ver Carrinho
           <p data-testid="checkout-bottom-btn-value">
             {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(
-              totalPrice
+              totalPrice,
             )}
             {/* fonte sobre currency https://developer.mozilla.org/en-US/docs/Web/Java/Reference/Global_Objects/Intl/NumberFormat/NumberFormat */}
           </p>

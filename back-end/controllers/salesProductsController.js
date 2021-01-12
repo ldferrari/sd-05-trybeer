@@ -9,11 +9,11 @@ details.get('/', async (req, res) => {
     // console.log(req.query);
     const { id } = req.query;
     const saleDetails = await service.getSaleDetails(id);
-    console.log(saleDetails)
+    console.log(saleDetails);
     res.status(201).json(saleDetails);
   } catch (e) {
     res.status(500).json({ message: e.message });
-    console.log(e)
+    console.log(e);
   }
 });
 

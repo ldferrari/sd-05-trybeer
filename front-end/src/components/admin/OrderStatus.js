@@ -14,8 +14,8 @@ export default function OrderStatus({ id }) {
 
   return (
     <span data-testid="order-status">{status}</span>
-  )
-};
+  );
+}
 
 OrderStatus.propTypes = {
   id: PropTypes.number.isRequired,

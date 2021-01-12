@@ -14,7 +14,7 @@ function PendingOrders() {
   return (
     <div>
       <AdminMenu />
-      {allSales.map((order, index) => <OrderCard key={order.id} order={order} index={index} />)}
+      {allSales.map((order, index) => <OrderCard key={ order.id } order={ order } index={ index } />)}
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
 import {
   checkName,
   checkEmail,
@@ -6,7 +7,6 @@ import {
 } from '../services/checkUserData';
 import TrybeerContext from '../context/TrybeerContext';
 import { createUser, login } from '../services/fetch';
-import { withRouter } from 'react-router-dom';
 
 function Register({ history }) {
   const [checkedName, setCheckedName] = useState(false);
@@ -47,9 +47,7 @@ function Register({ history }) {
   const handleClickRegister = async () => {
     setClickRegister(true);
     const role = admin ? 'administrator' : 'client';
-    await createUser(name, email, password, role).then((result) =>
-      handleResult(result)
-    );
+    await createUser(name, email, password, role).then((result) => handleResult(result));
   };
 
   const handleResult = async (result) => {
@@ -71,19 +69,19 @@ function Register({ history }) {
       <input
         data-testid="signup-name"
         type="text"
-        onChange={(e) => handleNameChange(e)}
+        onChange={ (e) => handleNameChange(e) }
       />
       <div>Email</div>
       <input
         data-testid="signup-email"
         type="text"
-        onChange={(e) => handleEmailChange(e)}
+        onChange={ (e) => handleEmailChange(e) }
       />
       <div>Senha</div>
       <input
         data-testid="signup-password"
         type="password"
-        onChange={(e) => handlePasswordChange(e)}
+        onChange={ (e) => handlePasswordChange(e) }
       />
       <div>
         <label htmlFor="vender">Quero Vender</label>
@@ -91,14 +89,14 @@ function Register({ history }) {
           data-testid="signup-seller"
           type="checkbox"
           id="vender"
-          onClick={() => setAdmin(true)}
+          onClick={ () => setAdmin(true) }
         />
       </div>
       <button
         type="button"
         data-testid="signup-btn"
-        disabled={!(checkedName && checkedEmail && checkedPassword)}
-        onClick={() => handleClickRegister()}
+        disabled={ !(checkedName && checkedEmail && checkedPassword) }
+        onClick={ () => handleClickRegister() }
       >
         Cadastrar
       </button>

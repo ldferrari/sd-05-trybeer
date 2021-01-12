@@ -7,17 +7,20 @@ const createUser = async (newUser) => {
   const { name, email, password, role } = newUser;
 
   if (!name.match(regexName) || name.length < 12) {
-    throw { err: { code: 404, message: 'name format invalid' } };
+    const err = { err: { code: 404, message: 'name format invalid' } };
+    throw err;
   }
 
   if (!email.match(regexEmail)) {
-    throw { err: { code: 404, message: 'email format invalid' } };
+    const err = { err: { code: 404, message: 'email format invalid' } };
+    throw err;
   }
 
   console.log(password);
 
   if (toString(password).length < 6) {
-    throw { err: { code: 404, message: 'password format invalid' } };
+    const err = { err: { code: 404, message: 'password format invalid' } };
+    throw err;
   }
 
   const emailExists = await model.logIn(email);
@@ -29,7 +32,8 @@ const createUser = async (newUser) => {
   const createdUser = await model.createUser(name, email, password, role);
 
   if (!createdUser) {
-    throw { err: { code: 401, message: 'error' } };
+    const err = { err: { code: 401, message: 'error' } };
+    throw err;
   }
 
   return createdUser;
@@ -39,11 +43,13 @@ const logIn = async (email, password1) => {
   const userFound = await model.logIn(email);
 
   if (!userFound || userFound.length === 0) {
-    throw { err: { code: 404, message: 'user email do not exist' } };
+    const err = { err: { code: 404, message: 'user email do not exist' } };
+    throw err;
   }
 
   if (password1 !== userFound[0].password) {
-    throw { err: { code: 401, message: 'password incorrect' } };
+    const err = { err: { code: 401, message: 'password incorrect' } };
+    throw err;
   }
 
   const { id, password, ...user } = userFound[0];
@@ -54,10 +60,11 @@ const logIn = async (email, password1) => {
 
 const updateUserName = async (name, email) => {
   const newName = await model.updateUserName(name, email);
-  if (!name.match(regexName) || name.length < 12)
-    throw { err: { code: 404, message: 'name format invalid' } };
+  const err1 = { err: { code: 404, message: 'name format invalid' } };
+  if (!name.match(regexName) || name.length < 12) throw err1;
   if (!newName) {
-    throw { err: { code: 404, message: 'operation fail' } };
+    const err = { err: { code: 404, message: 'operation fail' } };
+    throw err;
   }
   return newName;
 };
