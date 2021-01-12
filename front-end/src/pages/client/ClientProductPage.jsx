@@ -23,7 +23,7 @@ const Products = () => {
   useEffect(() => {
     // const cartValue = (parseFloat(localStorage.getItem('cart')) || 0) + cart;
     // console.log(typeof cartValue);    
-    if (cart !== 0) {
+    if (cart >= 0) {
       localStorage.setItem('cart', (cart).toString())
     }}, [cart]);
 
@@ -46,17 +46,19 @@ const Products = () => {
     <div>
       <Menu title="Trybeer" />
       <div>
-        {products.map(product => (
-          <ProdCard key={product.id} product={product} />
+        {products.map((product, index) => (
+          <ProdCard index={index} product={product} />
         ))}
       </div>
       <div>
         <button type="button" data-testid="checkout-bottom-btn">
           <Link to="/checkout">
-            Ver carrinho
-            <span data-testid="checkout-bottom-btn-value">
+            <button>
+              Ver carrinho
+              <span data-testid="checkout-bottom-btn-value">
               {cart}
-            </span>
+              </span>
+            </button>
           </Link>
         </button>
       </div>

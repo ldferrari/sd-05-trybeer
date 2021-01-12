@@ -6,21 +6,31 @@ export default function QuantityButton(props) {
   const [quantity, setQuantity] = useState(0);
   const {cart, setCart} = useContext(ClientContext);
   const { price } = props;
+  const { product, index } = props;
 
-  const zero = 0;
   const dois = 2;
 
-  useEffect(() => {
-    setCart(parseFloat((cart + (quantity*price)).toFixed(dois)));
-  }, [quantity]);
+  const updateCart = () => {
+    localStorage.setItem('cart', (cart).toString());
+  }
+
+  // useEffect(() => {
+  //   console.log(typeof cart);
+  //   setCart(parseFloat(cart, 10));
+  // }, [quantity]);
   
   function increaseItem() {
     setQuantity(quantity + 1);
+    setCart(cart + Number(price));
+    updateCart();
   }
   
   function decreaseItem() {
-    if (quantity > 0) setQuantity(quantity - 1);
-    setCart(cart - (quantity*price));
+    if (quantity > 0) {
+    setQuantity(quantity - 1);
+    setCart(cart - Number(price));
+    }
+    updateCart();
   }
   console.log(cart);
 
@@ -29,7 +39,7 @@ export default function QuantityButton(props) {
       <button
         type="button"
         className="product-decrease-quantity"
-        data-testid="product-decrease-quantity"
+        data-testid={ `${index}-product-minus` }
         onClick={() => { decreaseItem() }}
       >
         -
@@ -44,7 +54,7 @@ export default function QuantityButton(props) {
       <button
         type="button"
         className="product-increase-quantity"
-        data-testid="product-increase-quantity"
+        data-testid={ `${index}-product-plus` }
         onClick={() => { increaseItem() }}
       >
         +

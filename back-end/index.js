@@ -21,7 +21,7 @@ app.use(errorMiddleware);
 
 app.use('/products', productsController);
 
-app.use('/images/', express.static(path.join(__dirname, '..', 'images')));
+app.use('/images/', express.static(path.join(__dirname, '/images')));
 
 const PORT = 3001;
 app.listen(PORT, () => console.log(`Ouvindo na porta ${PORT}`));

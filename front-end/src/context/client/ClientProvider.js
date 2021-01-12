@@ -9,7 +9,7 @@ const ClientProvider = ({ children }) => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState(0);
+  const [cart, setCart] = useState(localStorage.getItem('cart') || 0);
 
   const context = {
     email,

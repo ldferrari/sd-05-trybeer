@@ -4,20 +4,23 @@ import QuantityButton from '../../components/client/QuantityButton';
 
 const ProdCard = (props) => {
   
-  const { product } = props;
+  const { product, index } = props;
 
   return (
     <div key={ product.id }>
-      <img 
+      <img
+        height='60px' 
         src={ product.url_image }
-        data-testid={ `${product.id}-product-img` }
+        data-testid={ `${index}-product-img` }
         alt={product.name}
       />
-      <div data-testid={ `${product.id}-product-name` }>
+      <div data-testid={ `${index}-product-name` }>
         { product.name }
       </div>
-      <div data-testid={ `${product.id}-product-price` }>
-        R$ { product.price }               
+      <div data-testid={ `${index}-product-price` }>
+        <div>
+          { `R$ ${product.price.toString().replace('.', ',')}` }
+        </div>
       </div>
       <QuantityButton price={product.price} />
     </div>
