@@ -1,5 +1,4 @@
-const updateUser = (id, name) =>
-  fetch(`http://localhost:3001/profile/${id}`, {
+const updateUser = (id, name) => fetch(`http://localhost:3001/profile/${id}`, {
     method: 'PUT',
     headers: {
       Accept: 'application/json',
