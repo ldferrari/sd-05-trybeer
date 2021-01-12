@@ -5,6 +5,7 @@ import ClientMenu from '../../components/client/ClientMenu';
 import { CheckoutCard } from '../../components/checkoutCard';
 import '../../css/client/checkout.css';
 import { createNewSale } from '../../services/fetch'
+import './products.css'
 
 function Checkout() {
   const [isLogged, setIsLogged] = useState(true);
@@ -43,44 +44,43 @@ function Checkout() {
   }
 
   return (
-    <div>
+    <div className="div-container-products yellow-background">
       <ClientMenu data-testid="top-title" title="Finalizar pedido" />
-      <h3>Produtos</h3>
+      <h2 className="white-text">Produtos</h2>
       {totalPrice === 0 && <h2>Não há produtos no carrinho</h2>}
       {totalPrice !== 0 && (
-        <div className="orders-list">
+        <div className="orders-list info-container">
           {products.map((item, index) => <CheckoutCard item={item} index={index} />)}
         </div>
       )}
-      <p data-testid="order-total-value">
+      <h2 data-testid="order-total-value" className="white-text">
         Total:{' '}
         {new Intl.NumberFormat('pt-BR', {
           style: 'currency',
           currency: 'BRL',
         }).format(totalPrice)}
-      </p>
-      <div className="address">
-        <h3>Endereço</h3>
-        <label htmlFor="street">
-          Rua:
+      </h2>
+      <div className="address-container">
+        <h3 className="white-text">Endereço</h3>
           <input
+          placeholder="Rua"
+          className="input-layout"
             data-testid="checkout-street-input"
             type="input"
             id="street"
             onChange={(e) => handleStreetInput(e.target.value)}
           />
-        </label>
-        <label htmlFor="house">
-          Número da casa:
           <input
+          className="input-layout"
+          placeholder="Número da casa"
             data-testid="checkout-house-number-input"
             type="input"
             id="house"
             onChange={(e) => handleHouseNumInput(e.target.value)}
           />
-        </label>
       </div>
       <button
+      className="btn-style white-text"
         data-testid="checkout-finish-btn"
         disabled={totalPrice === 0 || houseNum === 0 || street === ''}
         // onClick={() => done()}

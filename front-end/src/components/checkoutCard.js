@@ -15,7 +15,7 @@ export function CheckoutCard(props) {
   }
 
   return (
-    <div>
+    <div className="checkout-card">
       <p data-testid={`${index}-product-qtd-input`}>{quantity}</p>
       <p data-testid={`${index}-product-name`}>{item.name}</p>
       <p data-testid={`${index}-product-total-value`}>

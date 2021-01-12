@@ -57,3 +57,31 @@
     color: gray;
     margin: 0;
 }
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 50%;
+    width: 100%;
+}
+
+.checkout-card {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+    margin-left: 30px !important;
+    margin-right: 30px !important;
+    margin-top: 20px;
+    background-color: white;
+    color: gray;
+}
+
+.address-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
