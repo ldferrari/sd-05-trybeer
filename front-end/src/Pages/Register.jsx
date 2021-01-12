@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Input from '../Components/Input';
+import { registerUserAct } from '../../src/Redux/Actions/user';
+import { connect } from 'react-redux';
 
-const Register = () => {
+const Register = ({ registerUser }) => {
   const [name, setName] = useState(null);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
@@ -9,7 +11,7 @@ const Register = () => {
   const [isDisabled, isSetDisabled] = useState(true);
 
   function validate() {
-    const validName =  /^[a-zA-Z ]{12}[a-zA-Z ]*$/.test(name);
+    const validName = /^[a-zA-Z ]{12}[a-zA-Z ]*$/.test(name);
     const validEmail = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/.test(email);
     const validSenha = /^[^W_]{7,100}$/.test(password);
     if (validName && validEmail && validSenha) isSetDisabled(false);
@@ -19,6 +21,11 @@ const Register = () => {
   useEffect(() => {
     validate();
   }, [name, email, password]);
+
+  function registerHandle() {
+    const role = isSeller ? 'administrator' : 'client';
+    registerUser({ name, email, password, role });
+  }
 
   return (
     <div className="container-main" id="Register">
@@ -55,7 +62,11 @@ const Register = () => {
             setIsSeller(checked);
           }}
         />
-        <button disabled={isDisabled} data-testid="signup-btn">
+        <button
+          disabled={isDisabled}
+          data-testid="signup-btn"
+          onClick={() => registerHandle()}
+        >
           Cadastrar
         </button>
       </div>
@@ -63,4 +74,15 @@ const Register = () => {
   );
 };
 
-export default Register;
+//
+// Cadastrar e redirecionar para a tela do cliente ou admin
+
+// const mapStateToProps = ({ userRequestReducer }) => ({
+//   userData: userRequestReducer.userData,
+// });
+
+const mapDispatchToProps = (dispatch) => ({
+  registerUser: (newUserData) => dispatch(registerUserAct(newUserData)),
+});
+
+export default connect(null, mapDispatchToProps)(Register);

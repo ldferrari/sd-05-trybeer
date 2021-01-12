@@ -60,10 +60,18 @@ export const updateUser = (data) =>
   );
 
 export const registerUser = (data) => {
-  fetch(`${localhostURL}/register`, myInitWithBody(data)).then((response) =>
+  console.log('register user');
+  return fetch(`${localhostURL}/register`, myInitWithBody(data)).then((response) =>
     response
       .json()
-      .then((json) => Promise.resolve(json))
+      .then((json) => {
+        console.log('entrou no then do register user');
+        console.log(json);
+        if (json.message) {
+          return Promise.reject(json.message)
+        }
+        return Promise.resolve(json);
+      })
       .catch((err) => Promise.reject(err)),
   );
 };
