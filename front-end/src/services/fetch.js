@@ -18,7 +18,7 @@ export const getProducts = () => {
 
 /*
 
-Fazer o Log in (client/administrator): 
+Fazer o Log in (client/administrator):
 Params:
   - email: string
   - password: string
@@ -35,7 +35,7 @@ export const login = (email, password) => {
 
 /*
 
-Registrar um novo usuário (client/administrator): 
+Registrar um novo usuário (client/administrator):
 Params:
   - name: string
   - email: string
@@ -46,7 +46,9 @@ Params:
 
 export const createUser = (name, email, password, role) => {
   const newUser = axios
-    .post(`${API_URL}/users/register`, { name, email, password, role })
+    .post(`${API_URL}/users/register`, {
+      name, email, password, role,
+    })
     .then((response) => response.data)
     .catch((err) => err);
   return newUser;
@@ -54,7 +56,7 @@ export const createUser = (name, email, password, role) => {
 
 /*
 
-Mudar o nome de usuário (client/administrator): 
+Mudar o nome de usuário (client/administrator):
 Params:
   - name: string
   - email: string
@@ -87,10 +89,12 @@ export const createNewSale = (
   address,
   addressNumber,
   saleDate,
-  products
+  products,
 ) => {
   const newSale = axios
-    .post(`${API_URL}/checkout`, { email, totalPrice, address, addressNumber, saleDate, products })
+    .post(`${API_URL}/checkout`, {
+      email, totalPrice, address, addressNumber, saleDate, products,
+    })
     .then((response) => response.data)
     .catch((err) => err);
   return newSale;
@@ -115,7 +119,7 @@ export const closeSale = (id) => {
 /*
 Buscar todos pedidos do usuário
 
-Params: 
+Params:
 
 - email do usuario -- String
 
@@ -196,4 +200,3 @@ export const getSaleById = (id) => {
     .catch((err) => err);
   return sale;
 };
-

@@ -4,43 +4,56 @@ const salesProductsModel = require('../models/salesProductsModel');
 
 const createSale = async (newSale) => {
   const { email, totalPrice, address, addressNumber, saleDate, products } = newSale;
-  console.log(newSale)
+  console.log(newSale);
   if (totalPrice <= 0) {
-    throw { err: { code: 404, message: 'total price is invalid' } }; 
+    const err = { err: { code: 404, message: 'total price is invalid' } };
+    throw err;
   }
 
   if (typeof address !== 'string' || !address.length) {
-    throw { err: { code: 404, message: 'address is invalid' } };
+    const err = { err: { code: 404, message: 'address is invalid' } };
+    throw err;
   }
 
   if (!addressNumber) {
-    throw { err: { code: 404, message: 'address number is invalid' } };
+    const err = { err: { code: 404, message: 'address number is invalid' } };
+    throw err;
   }
 
   if (!saleDate) {
-    throw { err: { code: 404, message: 'date is invalid' } };
+    const err = { err: { code: 404, message: 'date is invalid' } };
+    throw err;
   }
 
   const dateArray = saleDate.split('/');
   const dataValidFormat = new Date(dateArray[2], dateArray[1] - 1, dateArray[0]);
 
   if (!email) {
-    throw { err: { code: 404, message: 'email is invalid' } };
+    const err = { err: { code: 404, message: 'email is invalid' } };
+    throw err;
   }
 
   const userFound = await usersModel.logIn(email);
   const { id } = userFound[0];
 
-  const createdSale = await model.createSale(id, totalPrice, address, addressNumber, dataValidFormat);
+  const createdSale = await model.createSale(
+    id,
+    totalPrice,
+    address,
+    addressNumber,
+    dataValidFormat,
+  );
 
   if (!createdSale) {
-    throw { err: { code: 401, message: 'error' } };
+    const err = { err: { code: 401, message: 'error' } };
+    throw err;
   }
 
   const insertedId = createdSale[0].insertId;
 
   products.forEach(async (product) => {
-    await salesProductsModel.createSalesProducts(insertedId, product.product_id || product.id, product.quantity);
+    await salesProductsModel.createSalesProducts(insertedId,
+      product.product_id || product.id, product.quantity);
   });
 
   return createdSale;
@@ -50,7 +63,8 @@ const closeSale = async (body) => {
   const { id } = body;
 
   if (!id) {
-    throw { err: { code: 404, message: 'sale id is invalid' } };
+    const err = { err: { code: 404, message: 'sale id is invalid' } };
+    throw err;
   }
 
   return model.closeSale(id);
@@ -60,7 +74,8 @@ const getByUserId = async (body) => {
   const { email } = body;
 
   if (!email) {
-    throw { err: { code: 404, message: 'email is invalid' } };
+    const err = { err: { code: 404, message: 'email is invalid' } };
+    throw err;
   }
 
   const userFound = await usersModel.logIn(email);
@@ -69,7 +84,8 @@ const getByUserId = async (body) => {
   const userSales = await model.getByUserId(id);
 
   if (!userSales) {
-    throw { err: { code: 404, message: 'error' } };
+    const err = { err: { code: 404, message: 'error' } };
+    throw err;
   }
 
   return userSales[0];
@@ -79,35 +95,39 @@ const getAllOpen = async () => {
   const allSalesOpen = await model.getAllOpen();
 
   if (!allSalesOpen) {
-    throw { err: { code: 404, message: 'error' } };
+    const err = { err: { code: 404, message: 'error' } };
+    throw err;
   }
 
   return allSalesOpen[0];
-}
+};
 
 const getAllSales = async () => {
   const allSales = await model.getAll();
 
   if (!allSales) {
-    throw { err: { code: 404, message: 'error' } };
+    const err = { err: { code: 404, message: 'error' } };
+    throw err;
   }
 
   return allSales[0];
-}
+};
 
 const getSaleById = async (id) => {
   if (!id) {
-    throw { err: { code: 404, message: 'invalid id' } };
+    const err = { err: { code: 404, message: 'invalid id' } };
+    throw err;
   }
 
   const sale = await model.getSaleById(id);
 
   if (!sale) {
-    throw { err: { code: 404, message: 'sale not found' } };
+    const err = { err: { code: 404, message: 'sale not found' } };
+    throw err;
   }
 
   return sale[0];
-}
+};
 
 module.exports = {
   createSale,

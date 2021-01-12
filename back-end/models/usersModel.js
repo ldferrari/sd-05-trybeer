@@ -3,7 +3,7 @@ const connection = require('./connection');
 const createUser = async (name, email, password, role) => {
   connection.execute(
     'INSERT INTO users (name, email, password, role) VALUES (?,?,?,?)',
-    [name, email, password, role]
+    [name, email, password, role],
   );
   return { message: 'created' };
 };
@@ -23,7 +23,7 @@ const createUser = async (name, email, password, role) => {
 const logIn = async (email) => {
   const [user] = await connection.query(
     'SELECT * FROM users WHERE email = ? ',
-    [email]
+    [email],
   );
 
   if (!user) return null;

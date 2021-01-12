@@ -1,9 +1,8 @@
 import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { checkEmail, checkPassword } from '../services/checkUserData';
 import TrybeerContext from '../context/TrybeerContext';
 import { login } from '../services/fetch';
-import { withRouter } from 'react-router-dom';
 
 import SqlBtn from '../components/sqlBtn';
 
@@ -14,7 +13,7 @@ function inputEmail(handleEmailChange) {
       <input
         type="email"
         data-testid="email-input"
-        onChange={(e) => handleEmailChange(e)}
+        onChange={ (e) => handleEmailChange(e) }
       />
     </div>
   );
@@ -28,7 +27,7 @@ function inputPassword(handlePasswordChange) {
         type="password"
         data-testid="password-input"
         name="password"
-        onChange={(e) => handlePasswordChange(e)}
+        onChange={ (e) => handlePasswordChange(e) }
       />
     </div>
   );
@@ -37,7 +36,9 @@ function inputPassword(handlePasswordChange) {
 function Login({ history }) {
   const [checkedEmail, setCheckedEmail] = useState('');
   const [checkedPassword, setCheckedPassword] = useState('');
-  const { setEmail, setPassword, email, password } = useContext(TrybeerContext);
+  const {
+    setEmail, setPassword, email, password,
+  } = useContext(TrybeerContext);
 
   const handleEmailChange = (e) => {
     setCheckedEmail(checkEmail(e.target.value));
@@ -71,10 +72,8 @@ function Login({ history }) {
       <button
         type="button"
         data-testid="signin-btn"
-        disabled={!(checkedEmail && checkedPassword)}
-        onClick={() =>
-          login(email, password).then((result) => handleResult(result))
-        }
+        disabled={ !(checkedEmail && checkedPassword) }
+        onClick={ () => login(email, password).then((result) => handleResult(result)) }
       >
         ENTRAR
       </button>

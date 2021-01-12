@@ -32,7 +32,7 @@ const TrybeerProvider = ({ children }) => {
   };
 
   return (
-    <TrybeerContext.Provider value={context}>
+    <TrybeerContext.Provider value={ context }>
       {children}
     </TrybeerContext.Provider>
   );

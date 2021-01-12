@@ -4,7 +4,7 @@ import TrybeerContext from '../../context/TrybeerContext';
 import ClientMenu from '../../components/client/ClientMenu';
 import { CheckoutCard } from '../../components/checkoutCard';
 import '../../css/client/checkout.css';
-import { createNewSale } from '../../services/fetch'
+import { createNewSale } from '../../services/fetch';
 
 function Checkout() {
   const [isLogged, setIsLogged] = useState(true);
@@ -16,11 +16,10 @@ function Checkout() {
   const products = JSON.parse(localStorage.getItem('cart'));
   const user = JSON.parse(localStorage.getItem('user'));
   const now = new Date();
-  const year = now.getFullYear()
+  const year = now.getFullYear();
   const month = now.getMonth() === 0 ? '01' : now.getMonth();
-  const day = now.getDate()
-  const date = `${day}/${month}/${year}`
-
+  const day = now.getDate();
+  const date = `${day}/${month}/${year}`;
 
   useEffect(() => {
     if (localStorage.getItem('user') === null) setIsLogged(false);
@@ -38,9 +37,9 @@ function Checkout() {
   const handleResult = (result) => {
     if (result.message === 'Created') {
       document.getElementById('sucess').innerHTML = 'Compra realizada com sucesso!';
-      setTimeout(() => {setStatusSale(true)}, 1000);
-    } 
-  }
+      setTimeout(() => { setStatusSale(true); }, 1000);
+    }
+  };
 
   return (
     <div>
@@ -49,11 +48,12 @@ function Checkout() {
       {totalPrice === 0 && <h2>Não há produtos no carrinho</h2>}
       {totalPrice !== 0 && (
         <div className="orders-list">
-          {products.map((item, index) => <CheckoutCard item={item} index={index} />)}
+          {products.map((item, index) => <CheckoutCard item={ item } index={ index } />)}
         </div>
       )}
       <p data-testid="order-total-value">
-        Total:{' '}
+        Total:
+        {' '}
         {new Intl.NumberFormat('pt-BR', {
           style: 'currency',
           currency: 'BRL',
@@ -67,7 +67,7 @@ function Checkout() {
             data-testid="checkout-street-input"
             type="input"
             id="street"
-            onChange={(e) => handleStreetInput(e.target.value)}
+            onChange={ (e) => handleStreetInput(e.target.value) }
           />
         </label>
         <label htmlFor="house">
@@ -76,20 +76,20 @@ function Checkout() {
             data-testid="checkout-house-number-input"
             type="input"
             id="house"
-            onChange={(e) => handleHouseNumInput(e.target.value)}
+            onChange={ (e) => handleHouseNumInput(e.target.value) }
           />
         </label>
       </div>
       <button
         data-testid="checkout-finish-btn"
-        disabled={totalPrice === 0 || houseNum === 0 || street === ''}
+        disabled={ totalPrice === 0 || houseNum === 0 || street === '' }
         // onClick={() => done()}
-        onClick={() => createNewSale(user.email, totalPrice, street, houseNum, date, products).then(result => handleResult(result))}
+        onClick={ () => createNewSale(user.email, totalPrice, street, houseNum, date, products).then((result) => handleResult(result)) }
       >
         Finalizar pedido
       </button>
-      <div id='sucess'></div>
-      {statusSale && <Redirect to='/products' />}
+      <div id="sucess" />
+      {statusSale && <Redirect to="/products" />}
       {!isLogged && <Redirect to="/login" />}
     </div>
   );

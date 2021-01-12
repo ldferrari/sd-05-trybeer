@@ -8,11 +8,12 @@ export default function OrderCard({ order, index }) {
     <div className="order-card">
       <Link className="order-link" to={ `/admin/orders/${order.id}` }>
         <p>
-          Pedido 
+          Pedido
           <span data-testid={ `${index}-order-number` }>{order.id}</span>
         </p>
         <p data-testid={ `${index}-order-address` }>
-          {order.delivery_address},
+          {order.delivery_address}
+          ,
           {order.delivery_number}
         </p>
         <p>

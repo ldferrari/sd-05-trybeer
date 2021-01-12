@@ -45,7 +45,7 @@ users.put('/profile', async (req, res) => {
   try {
     const { name, email } = req.body;
     await service.updateUserName(name, email);
-    res.status(200).json({ message: 'name updated', name: name });
+    res.status(200).json({ message: 'name updated', name });
   } catch (e) {
     console.log(e);
     res.status(500).json(e);

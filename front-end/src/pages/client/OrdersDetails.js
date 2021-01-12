@@ -37,24 +37,27 @@ function OrdersDetails({ history, location: { pathname } }) {
     getSaleDetails(array[2]).then((result) => setProductsDetails(result));
   }, []);
 
-  const handlePrice = (price) => {
-    return price.replace('.', ',')
-  }
+  const handlePrice = (price) => price.replace('.', ',');
 
   return (
     <div>
       <ClientMenu title="Detalhes de Pedido" data-testid="top-title" />
       {/* {console.log(orderInfo)} */}
-      <div data-testid="order-number">Pedido {orderInfo.id}</div>
+      <div data-testid="order-number">
+        Pedido
+        {orderInfo.id}
+      </div>
       <div data-testid="order-date">{getDate(orderInfo.sale_date)}</div>
       <div>
         {productsDetails.map((item, index) => (
-          <OrderDetailCard key={index} item={item} index={index} />
+          <OrderDetailCard key={ index } item={ item } index={ index } />
         ))}
       </div>
       {console.log(productsDetails)}
       <div data-testid="order-total-value">
-        Total: R$ {!orderInfo.total_price ? null : handlePrice(orderInfo.total_price)}
+        Total: R$
+        {' '}
+        {!orderInfo.total_price ? null : handlePrice(orderInfo.total_price)}
       </div>
       {!isLogged && <Redirect to="/login" />}
     </div>
