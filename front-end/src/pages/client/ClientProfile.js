@@ -29,34 +29,36 @@ function ClientProfile() {
 
   const myProfile = () => {
     return (
-      <div>
+      <div className="div-container-products yellow-background">
         <ClientMenu title={'Meu perfil'} />
-        Name:
-        <div>
+        <div className="form-container">
+          <h3 className="white-text">Name</h3>
           <input
+          className="input-layout"
             data-testid="profile-name-input"
             defaultValue={name}
             onChange={(e) => handleNameChange(e.target.value)}
             type="text"
-          />
-        </div>
-        Email:
-        <div>
-          <input data-testid="profile-email-input" value={email} readOnly />
-        </div>
+            />
+       
+          <h3 className="white-text">Email</h3>
+          <input data-testid="profile-email-input" value={email} readOnly className="input-layout" />
+      
         <button
+        className="btn-style white-text"
           data-testid="profile-save-btn"
           disabled={(name === name1)}
           /*disabled={name}*/ onClick={() =>
             updateName(name1, email).then((result) =>
-              saveInStorage(result.name),
-              document.getElementById('update').innerHTML = 'Atualização concluída com sucesso'
+            saveInStorage(result.name),
+            document.getElementById('update').innerHTML = 'Atualização concluída com sucesso'
             )
           }
-        >
+          >
           Salvar
         </button>
         <div id="update"></div>
+        </div>
       </div>
     );
   };

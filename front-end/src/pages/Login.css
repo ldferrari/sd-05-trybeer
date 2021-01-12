@@ -39,6 +39,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vmax;
+    width: 100%;
 }
 .login-form-container {
     display: flex;
