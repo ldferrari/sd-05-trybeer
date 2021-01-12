@@ -8,6 +8,7 @@ function Provider({ children }) {
   const [userEmail, setUserEmail] = useState([]);
   const [beers, setBeers] = useState([]);
   const [total, setTotal] = useState(zero);
+  const [cart, setCart] = useState([]);
 
   const dataContext = {
     userName,
@@ -18,6 +19,8 @@ function Provider({ children }) {
     setBeers,
     total,
     setTotal,
+    cart,
+    setCart,
   };
   return <Context.Provider value={ dataContext }>{children}</Context.Provider>;
 }

@@ -10,9 +10,11 @@ const Products = () => {
     total,
     setBeers,
     setTotal,
+    cart,
+    setCart,
   } = useContext(Context);
 
-  const [cart, setCart] = useState([]);
+  // const [cart, setCart] = useState([]);
   const [cartBtn, setCartBtn] = useState(false);
   const tam = 0;
   const casasDecimais = 2;
