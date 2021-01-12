@@ -1,0 +1,40 @@
+.div-container-products {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vmax;
+}
+
+.btn-checkout {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 1rem;
+    border-radius: 30px;
+    padding-left: 16px;
+    border: none;
+    width: 80% !important;
+    height: 40px;
+    margin-bottom: 15px;
+    background-color: #D75B49;
+}
+
+.cards-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    height: 30%;
+    width: 30%;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}

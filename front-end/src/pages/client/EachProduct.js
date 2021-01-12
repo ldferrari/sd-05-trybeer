@@ -46,7 +46,7 @@ function EachProduct(props) {
   // chave totalPrice = totalPrice actual
 
   return (
-    <div className="eachCard">
+    <div className="product-card">
       <p data-testid={`${index}-product-price`}>
         {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(
           product.price

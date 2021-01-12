@@ -1,66 +1,64 @@
+body {
+  margin: 0;
+}
 .menu-superior {
   width: 100%;
-  padding: 5px 20px;
+  margin: 0;
+  background-color: #D75B49
 }
-
 #check {
   display: none;
 }
-
 .top-hamburguer {
-  display: inline-block;
-  color: green;
+  align-self: center;
+  color: #FFB266;
   float: left;
   transition: color linear 0.2s;
   cursor: pointer;
   position: absolute;
+  display: inline-block;
+  font-size: 25px;
+  padding: 15px;
   z-index: 1;
 }
-
 .top-title {
   text-align: center;
-  color: green;
-  font-size: 20px;
+  color: white;
+  font-size: 30px;
+  line-height: 42px;
 }
-
 .side-menu-container {
-  background: blue;
+  background: #D75B49;
   height: 100%;
-  left: -40%;
+  left: 0;
   position: absolute;
   transition: all 0.3s linear;
   width: 40%;
 }
-
 .side-menu-container-changed {
-  background: blue;
+  background: #D75B49;
 }
-
 .side-menu {
-	display: flex;
-	flex-direction: column;
-	height: 100%;
-	justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-around;
 }
-
 .btn-menu {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
-
 nav a{
-	text-decoration: none;
+  text-decoration: none;
 }
-
 .btn-side {
-	background: blueviolet;
-	border-radius:5px;
-	color:white;
-	font-size: 10px;
-	margin: 5%;
-	padding: 5%;
+  background: #D75B49;
+  border-radius:5px;
+  color: white;
+  font-size: 30px;
+  margin: 5%;
+  padding: 5%;
 }
-
 .btn-side:hover{
-	background: black;
+  background: #D75B49;
 }

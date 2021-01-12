@@ -6,6 +6,7 @@ import { getProducts } from '../../services/fetch';
 import TrybeerContext from '../../context/TrybeerContext';
 import EachProduct from './EachProduct';
 import '../../css/client/products.css';
+import './products.css'
 
 function Products() {
   const [dataProducts, setDataProducts] = useState([]);
@@ -18,29 +19,30 @@ function Products() {
   }, []);
 
   return (
-    <section>
-      <ClientMenu title="TryBeer" />
-      <div className="productCards">
+    <section className="div-container-products yellow-background">
+      <ClientMenu title="TryBeer"/>
+      <div className="cards-container">
         {/* {fetching && <p>Loading...</p>} */}
         {/* BACK - como ver que o fetch acabou? */}
         {dataProducts.map((product, index) => (
           <EachProduct product={product} index={index} key={index} />
         ))}
       </div>
-      <Link to="/checkout">
         <button
+         className="btn-checkout"
           data-testid="checkout-bottom-btn"
           disabled={totalPrice===0}
         >
+          <Link to="/checkout" className="white-text">
           Ver Carrinho
-          <p data-testid="checkout-bottom-btn-value">
+          </Link>
+          <p data-testid="checkout-bottom-btn-value" className="white-text">
             {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(
               totalPrice
             )}
             {/* fonte sobre currency https://developer.mozilla.org/en-US/docs/Web/Java/Reference/Global_Objects/Intl/NumberFormat/NumberFormat */}
           </p>
         </button>
-      </Link>
       {!isLogged && <Redirect to="/login" />}
     </section>
   );

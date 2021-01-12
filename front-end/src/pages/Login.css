@@ -53,6 +53,8 @@
 .white-text {
     color: white !important;
     text-decoration: none;
+    padding: 0;
+    margin: 0;
 }
 
 .input-layout {
@@ -85,9 +87,6 @@
     background-color: brown;
   }
   
-.brand-logo {
-    width: 75%;
-}
   
 .container {
     text-align: center;
