@@ -7,10 +7,10 @@ import GeneralProvider from './context/general/GeneralProvider';
 ReactDOM.render(
   <React.StrictMode>
     <GeneralProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-    </GeneralProvider>  
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </GeneralProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
