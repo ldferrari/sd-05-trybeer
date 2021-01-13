@@ -5,7 +5,7 @@ const checkout = async (products, deliveryAddress, deliveryNumber, id) => {
   // const { id } = loginController.token.findUser;
   // console.log('FindUser =>', loginController.token.findUser);
   // console.log('service', products, deliveryAddress, deliveryNumber, id);
-  if (!products || !deliveryAddress || !deliveryNumber || !id) {
+  if (!products || !deliveryAddress || !deliveryNumber) {
     return {
       error: true,
       code: 'field_not_filled',
@@ -31,12 +31,12 @@ const checkout = async (products, deliveryAddress, deliveryNumber, id) => {
       statusCode: 401,
     };
   }
-
+  
   const total = products.reduce((acc, cur) => acc + cur.price * cur.quantity, 0);
-  // console.log(total);
+  // console.log(id);
   const sales = await model.createSale(id, total, deliveryAddress, deliveryNumber);
   const productList = products.map(
-    (product) => model.createProductSale(sales.insertId, product.productId, product.quantity),
+    (product) => model.createProductSale(sales.insertId, product.id, product.quantity),
   );
   // console.log(sales.insertId);
   const respostaLista = await Promise.all(productList);

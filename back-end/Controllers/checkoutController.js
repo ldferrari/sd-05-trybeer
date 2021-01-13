@@ -21,13 +21,14 @@ checkout.post('/', async (req, res) => {
       deliveryAddress,
       deliveryNumber,
       id,
-    );
-
-    if (order && order.error) {
-      return res.status(order.statusCode).json({ message: order.message });
-    }
-    res.status(200).json(order);
-  } catch (error) {
+      );
+      
+      console.log(order);
+      if (order && order.error) {
+        return res.status(order.statusCode).json({ message: order.message });
+      }
+      res.status(200).json(order);
+    } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Algo deu errado.' });
   }
