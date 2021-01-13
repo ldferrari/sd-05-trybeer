@@ -1,9 +1,14 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import { Login, Profile, ProfileAdmin, Products } from './pages';
 import Checkout from './pages/checkout';
 import Register from './pages/Register/Register';
+import {
+  Login,
+  Profile,
+  ProfileAdmin,
+  Products,
+} from './pages';
 
 const Rotas = () => (
   <Switch>

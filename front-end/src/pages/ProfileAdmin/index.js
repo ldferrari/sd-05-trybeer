@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import Header from '../../components/header';
 import './index.css';
-import { getProfileInfo  } from '../../services/requestAPI';
+import { getProfileInfo } from '../../services/requestAPI';
 
 const PerfilAdmin = () => {
   const [name, setName] = useState('');
