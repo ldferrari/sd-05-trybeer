@@ -24,16 +24,17 @@ const ProdCard = (props) => {
           { `R$ ${product.price.toString().replace('.', ',')}` }
         </div>
       </div>
-      <QuantityButton 
-        index={index}
-        id={product.id}
-        price={product.price} />
+      <QuantityButton
+        index={ index }
+        id={ product.id }
+        price={ product.price }
+      />
     </div>
   );
 };
 
 ProdCard.propTypes = {
-  product: PropTypes.arrayOf(PropTypes.object),
+  product: PropTypes.arrayOf(PropTypes.object).isRequired,
   index: PropTypes.string.isRequired,
 };
 

@@ -9,45 +9,33 @@ import GeneralContext from '../../context/general/GeneralContext';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-  const {cart, setCart, cartItens, setCartItens } = useContext(ClientContext);
-  const { loggedIn } = useContext(GeneralContext);
+  const {
+    cart,
+    setCart,
+    cartItens,
+    setCartItens,
+  } = useContext(ClientContext);
   const token = localStorage.getItem('token') || null;
-
+  const zero = 0;
   const dois = 2;
 
   console.log(products);
 
-  // const initialCart = localStorage.getItem('cart');
-
-  // useEffect(() => {
-  //   // const cartValue = (parseFloat(localStorage.getItem('cart')) || 0) + cart;
-  //   // console.log(typeof cartValue);
-  //   if (cart !== 0) {
-  //     localStorage.setItem('cart', (cart).toString())
-  //   }}, [cart]);
-
   useEffect(() => {
-    // const cartValue = (parseFloat(localStorage.getItem('cart')) || 0) + cart;
-    // console.log(typeof cartValue);
-    if (cart >= 0) {
+
+    if (cart >= zero) {
       localStorage.setItem('cart', (cart).toString());
     }
   }, [cart]);
 
   useEffect(() => {
     productsApi().then((response) => setProducts(response));
-    const cartValue = (parseFloat(localStorage.getItem('cart')) || 0);
+    const cartValue = (parseFloat(localStorage.getItem('cart')) || zero);
     setCart(cartValue);
     const cartIt = JSON.parse(localStorage.getItem('cart itens')) || [];
     localStorage.setItem('cart itens', JSON.stringify(cartIt));
     setCartItens(cartIt);
   }, []);
-
-  // useEffect(() => {
-  //   productsApi().then(response => setProducts(response));
-  //   const cartValue = (parseFloat(localStorage.getItem('cart')) || 0);
-  //   setCart(cartValue)
-  // }, []);
 
   if (!token) return <Redirect to="/login" />;
 
@@ -65,7 +53,7 @@ const Products = () => {
             type="button"
             data-testid="checkout-bottom-btn"
             className="buttonCart"
-            disabled={cartItens.length === 0}
+            disabled={ cartItens.length === zero }
           >
             Ver Carrinho
             <span data-testid="checkout-bottom-btn-value" className="somaCart">

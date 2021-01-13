@@ -6,11 +6,12 @@ import PropTypes from 'prop-types';
 export const ClientContext = createContext();
 
 const ClientProvider = ({ children }) => {
+  const initialQuantity = 0;
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [products, setProducts] = useState([]);
   const [cartItens, setCartItens] = useState(localStorage.getItem('cart itens') || []);
-  const [cart, setCart] = useState(localStorage.getItem('cart') || 0);
+  const [cart, setCart] = useState(localStorage.getItem('cart') || initialQuantity);
 
   const context = {
     email,
@@ -24,13 +25,6 @@ const ClientProvider = ({ children }) => {
     cartItens,
     setCartItens,
   };
-
-  // console.log(products);
-
-  // useEffect(() => {
-  //   productsApi()
-  //     .then((products) => { setProducts(products) });
-  // }, []);
 
   return <ClientContext.Provider value={ context }>{children}</ClientContext.Provider>;
 };
