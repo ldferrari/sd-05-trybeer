@@ -17,7 +17,9 @@ export default function QuantityButton(props) {
     setCart,
     setCartItens,
   } = useContext(ClientContext);
-  const { id, index, price } = props;
+  const {
+    id, index, price, name,
+  } = props;
 
   const updateCart = useCallback(() => {
     localStorage.setItem('cart', (cart).toString());
@@ -33,14 +35,18 @@ export default function QuantityButton(props) {
       if (quantity === initialQuantity) {
         cartItens.splice(index, 1);
       } else {
-        cartItens[prodIndex] = { id, quantity };
+        cartItens[prodIndex] = {
+          id, quantity, name, price,
+        };
       }
       setCartItens(cartItens);
     } else {
-      setCartItens([...cartItens, { id, quantity }]);
+      setCartItens([...cartItens, {
+        id, quantity, name, price,
+      }]);
     }
     callback();
-  }, [quantity, cartItens, setCartItens, id, index, negativo]);
+  }, [quantity, cartItens, setCartItens, id, index, negativo, name, price]);
 
   const increaseItem = useCallback(
     () => {
@@ -94,4 +100,5 @@ QuantityButton.propTypes = {
   id: PropTypes.number.isRequired,
   price: PropTypes.number.isRequired,
   index: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
