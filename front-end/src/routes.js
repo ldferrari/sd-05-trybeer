@@ -24,8 +24,6 @@ const Rotas = () => (
     <Route exact path="/orders" component={ Orders } />
     {/* <Route exact path="/orders/:id" component={ OrderDetail } /> */}
     <Route exact path="/" component={ () => <Redirect to="/login" /> } />
-    {/* <Route path="/admin/profile" component={} />
-    <Route path="/admin/orders" component={} /> */}
   </Switch>
 );
 

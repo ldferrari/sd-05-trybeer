@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 // import AppContext from '../../context/AppContext';
 import Footer from '../../components/footer';
 import CardOrder from '../../components/CardOrders';
+import AdminSideBar from '../../components/admin sidebar';
 
 const OrderAdmin = () => {
   const [allOrders, setAllOrders] = useState([]);
@@ -31,6 +32,7 @@ const OrderAdmin = () => {
 
   return (
     <div className="Orders">
+      <AdminSideBar />
       <div className="pedido">
         <h2 className="checkoutitle">Produtos no carrinho:</h2>
         <div className="legenda">

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 
 import Header from '../../components/header';
+import AdminSideBar from '../../components/admin sidebar';
 import './index.css';
 import { getProfileInfo } from '../../services/requestAPI';
 
@@ -27,6 +28,7 @@ const PerfilAdmin = () => {
 
   return (
     <div className="App">
+      <AdminSideBar />
       <Header>Meu perfil</Header>
       <h3 data-testid="profile-name">
         Nome:
