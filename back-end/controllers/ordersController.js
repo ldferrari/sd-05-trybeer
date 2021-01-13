@@ -12,4 +12,15 @@ orders.post('/', validateJWT, async (req, res) => {
   return res.status(sale.statusCode).json(sale.message);
 });
 
+orders.get('/', validateJWT, async (req, res) => {
+  const { email } = req.query;
+  const sale = await service.getOrdersById(email);
+
+  if (sale.error) {
+    return res.status(sale.statusCode).json(sale.message);
+  }
+
+  return res.status(200).json(sale);
+});
+
 module.exports = orders;
