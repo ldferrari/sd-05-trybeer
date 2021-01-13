@@ -49,6 +49,7 @@ function OrdersDetails({ location: { pathname } }) {
       {/* {console.log(orderInfo)} */}
       <div data-testid="order-number">
         Pedido
+        {' '}
         {orderInfo.id}
       </div>
       <div data-testid="order-date">{getDate(orderInfo.sale_date)}</div>
