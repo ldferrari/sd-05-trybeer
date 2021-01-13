@@ -40,7 +40,7 @@ export default function QuantityButton(props) {
       setCartItens([...cartItens, { id, quantity }]);
     }
     callback();
-  }, [quantity, cartItens, setCartItens]);
+  }, [id, index, negativo, quantity, cartItens, setCartItens]);
 
   const increaseItem = useCallback(
     () => {
@@ -49,7 +49,7 @@ export default function QuantityButton(props) {
       updateCart();
       altQuantity(updateCartItens);
     },
-    [setQuantity, setCart, updateCart, altQuantity],
+    [cart, price, quantity, updateCartItens, setQuantity, setCart, updateCart, altQuantity],
   );
 
   function decreaseItem() {

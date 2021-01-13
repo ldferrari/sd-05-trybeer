@@ -5,7 +5,6 @@ import { ClientContext } from '../../context/client/ClientProvider';
 import productsApi from '../../services/client/api';
 import Menu from '../../components/client/Menu';
 import '../../css/clientProductPage.css';
-import GeneralContext from '../../context/general/GeneralContext';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -19,10 +18,7 @@ const Products = () => {
   const zero = 0;
   const dois = 2;
 
-  console.log(products);
-
   useEffect(() => {
-
     if (cart >= zero) {
       localStorage.setItem('cart', (cart).toString());
     }
@@ -35,7 +31,7 @@ const Products = () => {
     const cartIt = JSON.parse(localStorage.getItem('cart itens')) || [];
     localStorage.setItem('cart itens', JSON.stringify(cartIt));
     setCartItens(cartIt);
-  }, []);
+  }, [setCart, setCartItens]);
 
   if (!token) return <Redirect to="/login" />;
 
@@ -44,7 +40,7 @@ const Products = () => {
       <Menu title="TryBeer" />
       <div className="listProducts marginTop">
         {products.map((product, index) => (
-          <ProdCard index={ index } product={ product } />
+          <ProdCard key={ index } index={ index } product={ product } />
         ))}
       </div>
       <div className="ver-carrinho">
