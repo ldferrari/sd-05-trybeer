@@ -1,10 +1,10 @@
 const connection = require('./connection');
 
-const create = async (name) => {
-  const [newName] = await connection.execute('UPDATE users SET name = ?', [name]);
+const update = async (name, email) => {
+  const [newName] = await connection.execute('UPDATE users SET name = ? WHERE email = ?', [name, email]);
   return newName;
 };
 
 module.exports = {
-  create,
+  update,
 };

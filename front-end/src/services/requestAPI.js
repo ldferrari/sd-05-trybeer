@@ -9,6 +9,16 @@ const config = (token) => ({
 
 const postGetItems = async (token) => await axios.get('http://localhost:3001/products', config(token));
 
+const getProfileInfo = async (token) =>  axios.get('http://localhost:3001/profile', config(token));
+;
+
+const postProfileInfo = async (token, name, email) => 
+  axios.put('http://localhost:3001/profile', {
+    name,
+    email,
+  },config(token));
+;
+
 const postLogin = async ({ email, password }) => axios
   .post('http://localhost:3001/login', {
     email,
@@ -32,5 +42,10 @@ const postOrder = async (token, products, userData) => axios
   .post('http://localhost:3001/checkout', { products, userData }, config(token));
 
 export {
-  postLogin, postRegister, postGetItems, postOrder,
+  postLogin,
+  postRegister,
+  postGetItems,
+  getProfileInfo,
+  postProfileInfo,
+  postOrder,
 };

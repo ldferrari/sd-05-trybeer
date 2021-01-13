@@ -22,6 +22,9 @@ const ordersController = require('./Controllers/ordersController');
 
 const app = express();
 
+/*
+  ENDPOINTS
+*/
 app.use(cors());
 
 app.use(bodyParser.json());
