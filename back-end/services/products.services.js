@@ -4,7 +4,7 @@ const productsModel = require('../models/products.model');
 const getAllProducts = rescue(async (req, res, next) => {
   const allProducts = await productsModel.getProducts();
   if (!allProducts) throw new Error('Não existem produtos');
-  console.log(allProducts);
+  // console.log(allProducts);
   req.data = allProducts;
   next();
 });
