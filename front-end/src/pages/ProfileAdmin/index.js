@@ -6,6 +6,7 @@ import { getProfileInfo  } from '../../services/requestAPI';
 
 const PerfilAdmin = () => {
   const [name, setName] = useState('');
+  const [initialName, setInitialName] = useState('');
   const [email, setEmail] = useState('');
 
   useEffect(() => {
@@ -19,12 +20,14 @@ const PerfilAdmin = () => {
     asyncMe();
   }, []);
 
+  const nomes = name;
   return (
     <div className="App">
       <Header>Meu perfil</Header>
-      <h3 data-testid="profile-name">{nome}</h3>
-      <h3 data-testid="profile-email">{email}</h3>
+      <h3 data-testid="profile-name">Nome: {name}</h3>
+      <h3 data-testid="profile-email">Email: {email}</h3>
     </div>
+
   );
 };
 
