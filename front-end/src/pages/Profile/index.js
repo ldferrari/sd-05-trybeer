@@ -12,7 +12,7 @@ const Perfil = () => {
   const [alertUpdate, setAlertUpdate] = useState('');
   const [validName, setValidName] = useState(false);
   const [email, setEmail] = useState('');
-  const [tokenLogged, setTokenLogged] = useState('');
+  // const [tokenLogged, setTokenLogged] = useState('');
 
   useEffect(() => {
     async function asyncMe() {
@@ -21,7 +21,7 @@ const Perfil = () => {
       setName(user.name);
       setEmail(user.email);
       setInitialName(user.name);
-      setTokenLogged(token);
+      // setTokenLogged(token);
     }
     asyncMe();
   }, []);
@@ -47,7 +47,7 @@ const Perfil = () => {
   };
   const nomes = name;
 
-  if (!tokenLogged) {
+  if (!localStorage.getItem('token')) {
     return <Redirect to="/login" />;
   }
 
