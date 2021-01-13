@@ -10,11 +10,13 @@ function AdminOrdersDetails() {
   const [saleNumber, setSaleNumber] = useState();
   const [saleDetails, setSaleDetails] = useState([]);
   const { totalPrice } = useContext(TrybeerContext);
+  const two = 2;
 
   useEffect(() => {
     const arrPath = window.location.pathname.split('/');
     const id = arrPath[3];
-    getSaleDetails(id).then((response) => setSaleNumber(response[0].sale_id) || setSaleDetails(response));
+    getSaleDetails(id)
+      .then((response) => setSaleNumber(response[0].sale_id) || setSaleDetails(response));
   }, []);
 
   if (!saleNumber) return <div>Carregando...</div>;
@@ -31,11 +33,16 @@ function AdminOrdersDetails() {
       </div>
       <div>
         <ul>
-          {saleDetails.map((sale, index) => <AdminProductsList key={ index } sale={ sale } index={ index } />)}
+          {saleDetails.map((sale, index) => (
+            <AdminProductsList
+              key={ sale.id }
+              sale={ sale }
+              index={ index }
+            />))}
         </ul>
         <span data-testid="order-total-value">
           Total: R$
-          {totalPrice.toFixed(2)}
+          {totalPrice.toFixed(two)}
         </span>
       </div>
       <BtnStatus id={ saleNumber } />

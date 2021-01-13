@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import { checkEmail, checkPassword } from '../services/checkUserData';
 import TrybeerContext from '../context/TrybeerContext';
@@ -88,3 +89,7 @@ function Login({ history }) {
 }
 
 export default withRouter(Login);
+
+Login.propTypes = {
+  history: PropTypes.arrayOf(Object).isRequired,
+};
