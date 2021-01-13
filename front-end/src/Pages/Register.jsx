@@ -22,7 +22,7 @@ const Register = ({ registerUser, userError }) => {
 
   useEffect(() => {
     validate();
-  }, [name, email, password, validate]);
+  }, [name, email, password]);
 
   if (shouldRedirect && !userError) {
     if (!isSeller) {
