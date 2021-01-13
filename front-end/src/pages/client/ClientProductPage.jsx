@@ -1,15 +1,20 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import ProdCard from '../../components/client/ProductCard';
 import { ClientContext } from '../../context/client/ClientProvider';
 import productsApi from '../../services/client/api';
 import Menu from '../../components/client/Menu';
 import '../../css/clientProductPage.css';
+import GeneralContext from '../../context/general/GeneralContext';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-  const {cart, setCart, cartItens, setCartItens} = useContext(ClientContext);
-  
+  const {cart, setCart, cartItens, setCartItens } = useContext(ClientContext);
+  const { loggedIn } = useContext(GeneralContext);
+  const token = localStorage.getItem('token') || null;
+
+  const dois = 2;
+
   console.log(products);
 
   // const initialCart = localStorage.getItem('cart');
@@ -34,6 +39,7 @@ const Products = () => {
     const cartValue = (parseFloat(localStorage.getItem('cart')) || 0);
     setCart(cartValue);
     const cartIt = JSON.parse(localStorage.getItem('cart itens')) || [];
+    localStorage.setItem('cart itens', JSON.stringify(cartIt));
     setCartItens(cartIt);
   }, []);
 
@@ -43,25 +49,30 @@ const Products = () => {
   //   setCart(cartValue)
   // }, []);
 
-  // if (isLoading) return <div>Carregando...</div>;
+  if (!token) return <Redirect to="/login" />;
 
   return (
     <div>
-      <Menu title="Trybeer" />
+      <Menu title="TryBeer" />
       <div className="listProducts marginTop">
         {products.map((product, index) => (
           <ProdCard index={ index } product={ product } />
         ))}
       </div>
       <div className="ver-carrinho">
-        <button type="button" data-testid="checkout-bottom-btn" className="buttonCart">
-          <Link to="/checkout" className="linkCar">
-            Ver carrinho
+        <Link to="/checkout" className="linkCar">
+          <button
+            type="button"
+            data-testid="checkout-bottom-btn"
+            className="buttonCart"
+            disabled={cartItens.length === 0}
+          >
+            Ver Carrinho
             <span data-testid="checkout-bottom-btn-value" className="somaCart">
-            {cart}
+              {` R$ ${Number(cart).toFixed(dois).replace('.', ',')}`}
             </span>
-          </Link>
-        </button>
+          </button>
+        </Link>
       </div>
     </div>
   );

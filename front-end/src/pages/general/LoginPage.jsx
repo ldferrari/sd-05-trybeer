@@ -6,10 +6,10 @@ import validateEmail from '../../services/general/validateEmail';
 import validatePassword from '../../services/general/validatePassword';
 import '../../css/loginPage.css';
 
-export default function LoginPage() {
+export default function LoginPage(props) {
   const [emailValidate, setEmailValidate] = useState(false);
   const [passwordValidate, setPasswordValidate] = useState(false);
-  const { userData, setUserData, setLoggedIn } = useContext(GeneralContext);
+  const { userData, setUserData, loggedIn, setLoggedIn } = useContext(GeneralContext);
 
   const login = async (data) => {
     const usuario = await loginData(data);
@@ -19,7 +19,7 @@ export default function LoginPage() {
       role: usuario.role,
       name: usuario.name,
     });
-    setLoggedIn(true);
+    localStorage.setItem('token', usuario.token);
     localStorage.setItem(
       'user',
       JSON.stringify({
@@ -27,11 +27,12 @@ export default function LoginPage() {
         role: usuario.role,
         name: usuario.name,
       }),
-    );
+      );
+      setLoggedIn(true);
+    if (usuario.role === 'administrator') return props.history.push("/admin/orders");
+    if (usuario.role === 'client') return props.history.push("/products");
   };
-
-  if (userData.role === 'administrator') return <Redirect to="/admin/orders" />;
-  if (userData.role === 'client') return <Redirect to="/products" />;
+  
   return (
     <div className="login">
       <div className="inputs">

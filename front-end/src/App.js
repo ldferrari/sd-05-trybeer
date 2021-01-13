@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import RegisterPage from './pages/general/RegisterPage';
 import HomePage from './pages/general/HomePage';
 import ClientProductPage from './pages/client/ClientProductPage';
@@ -17,7 +17,9 @@ function App() {
         <Route path="/products" component={ ClientProductPage } />
         <Route path="/profile" component={ ClientProfilePage } />
         <Route path="/orders" component={ ClientOrderPage } />
-        <Route path="/" component={ HomePage } />
+        <Route path="/checkout" component={ ClientOrderPage } /> 
+        {/*         trocar rota checkout  */}
+        <Route path="/" component={ () => <Redirect to="/login" /> } />
       </Switch>
     </div>
   );

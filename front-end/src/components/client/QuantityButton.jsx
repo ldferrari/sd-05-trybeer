@@ -1,19 +1,24 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
+import AsyncLocalStorage from '@createnextapp/async-local-storage';
 import { ClientContext } from '../../context/client/ClientProvider';
 
 export default function QuantityButton(props) {
   const [quantity, setQuantity] = useState(0);
   const initialQuantity = 0;
   const {cart, cartItens, setCart, setCartItens} = useContext(ClientContext);
-  const { id, index, price } = props;  
+  const { id, index, price } = props;
 
   const updateCart = () => {
     localStorage.setItem('cart', (cart).toString());
     // localStorage.setItem('quantity', JSON.stringify([{index, qty}]));
-  }  
+  }
 
-  useEffect(() => {    
+  const updateCartItens = async () => {
+    await AsyncLocalStorage.setItem('cart itens', JSON.stringify(cartItens));
+  };
+
+  const altQuantity = useCallback( async (callback) => {    
     const prodIndex = cartItens.findIndex((i) => i.id === id);
     if (prodIndex !== -1) {
       if (quantity === 0) {
@@ -26,25 +31,37 @@ export default function QuantityButton(props) {
       setCartItens([...cartItens, {id, quantity}]);
       console.log(2);
     }
-    localStorage.setItem('cart itens', JSON.stringify(cartItens));
-  }, [quantity, cartItens]);
+    callback();
+    // localStorage.setItem('cart itens', JSON.stringify(cartItens));
+  }, [quantity, cartItens, setCartItens]);
 
-  useEffect(() => {
-    setCartItens([]);
-    const qteItens = JSON.parse(localStorage.getItem('cart itens')) || [];
-    setCartItens(qteItens);
-    localStorage.setItem('cart itens', []);
-  }, []);
+  // useEffect(() => {
+  //   setCartItens([]);
+  //   const qteItens = JSON.parse(localStorage.getItem('cart itens')) || [];
+  //   setCartItens(qteItens);
+  //   localStorage.setItem('cart itens', []);
+  // }, []);
   
-  function increaseItem() {
-    // setQty([...qty, {index, quantity}])
-    setQuantity(quantity + 1);
-    setCart(cart + Number(price));
-    // console.log(prodIndex);
-    updateCart();
-    localStorage.setItem('cart itens', JSON.stringify(cartItens));
-    // updateQuantity();
-  }
+  const increaseItem = useCallback(
+    () => {
+      setQuantity(quantity + 1);
+      setCart(cart + Number(price));
+      updateCart();
+      altQuantity(updateCartItens);
+    },
+    [setQuantity, setCart, updateCart, altQuantity],
+  );
+  
+  // async function increaseItem() {
+  //   // setQty([...qty, {index, quantity}])
+  //   setQuantity(quantity + 1);
+  //   setCart(cart + Number(price));
+  //   // console.log(prodIndex);
+  //   updateCart();
+  //   updateCartItens();
+  //   // localStorage.setItem('cart itens', JSON.stringify(cartItens));
+  //   // updateQuantity();
+  // }
 
   function decreaseItem() {
     if (quantity > initialQuantity) {
@@ -52,7 +69,8 @@ export default function QuantityButton(props) {
       setCart(cart - Number(price));
     }
     updateCart();
-    localStorage.setItem('cart itens', JSON.stringify(cartItens));
+    altQuantity(updateCartItens);
+    // localStorage.setItem('cart itens', JSON.stringify(cartItens));
   }
 
   return (
@@ -68,7 +86,7 @@ export default function QuantityButton(props) {
       <span
         className="cart-product-quantity"
         key="cart-product-quantity"
-        data-testid="cart-product-quantity"
+        data-testid={ `${index}-product-qtd` }
       >
         {quantity}
       </span>
