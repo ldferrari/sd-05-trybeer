@@ -20,9 +20,9 @@ const Register = ({ registerUser, userError }) => {
     else isSetDisabled(true);
   }
 
-  useEffect(() => {
-    validate();
-  }, [name, email, password]);
+  // useEffect(() => {
+  //   validate();
+  // }, [name, email, password]);
 
   if (shouldRedirect && !userError) {
     if (!isSeller) {
@@ -54,7 +54,10 @@ const Register = ({ registerUser, userError }) => {
             data-testid="signup-name"
             id="name"
             placeholder="Digite seu nome"
-            onChange={ (e) => setName(e.target.value) }
+            onChange={(e) => {
+              setName(e.target.value);
+              validate();
+            }}
           />
         </label>
         <label htmlFor="email">
@@ -63,7 +66,10 @@ const Register = ({ registerUser, userError }) => {
             data-testid="signup-email"
             id="email"
             placeholder="Digite seu e-mail"
-            onChange={ (e) => setEmail(e.target.value) }
+            onChange={(e) => {
+              setEmail(e.target.value);
+              validate();
+            }}
           />
         </label>
         <label htmlFor="password">
@@ -73,7 +79,10 @@ const Register = ({ registerUser, userError }) => {
             data-testid="signup-password"
             id="password"
             placeholder="Digite sua senha"
-            onChange={ (e) => setPassword(e.target.value) }
+            onChange={(e) => {
+              setPassword(e.target.value);
+              validate();
+            }}
           />
         </label>
         <label htmlFor="quero-vender">
@@ -82,16 +91,16 @@ const Register = ({ registerUser, userError }) => {
             type="checkbox"
             id="quero-vender"
             data-testid="signup-seller"
-            onChange={ ({ target: { checked } }) => {
+            onChange={({ target: { checked } }) => {
               setIsSeller(checked);
-            } }
+            }}
           />
         </label>
         <button
-          disabled={ isDisabled }
+          disabled={isDisabled}
           type="button"
           data-testid="signup-btn"
-          onClick={ () => registerHandle() }
+          onClick={() => registerHandle()}
         >
           Cadastrar
         </button>
