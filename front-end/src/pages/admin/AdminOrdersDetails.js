@@ -25,11 +25,12 @@ function AdminOrdersDetails() {
     <div>
       <AdminMenu />
       <div>
-        <h2>
-          Pedido
-          <span id="sale-id" data-testid="order-number">{saleNumber}</span>
-        </h2>
-        <OrderStatus id={ saleNumber } />
+        <span id="sale-id" data-testid="order-number">
+          { `Pedido ${saleNumber}` }
+        </span>
+        <div>
+          <OrderStatus id={ saleNumber } />
+        </div>
       </div>
       <div>
         <ul>
@@ -41,8 +42,7 @@ function AdminOrdersDetails() {
             />))}
         </ul>
         <span data-testid="order-total-value">
-          Total: R$
-          {totalPrice.toFixed(two)}
+          { `Total: R$ ${(totalPrice.toFixed(two).replace('.', ','))}` }
         </span>
       </div>
       <BtnStatus id={ saleNumber } />
