@@ -4,6 +4,7 @@ import validateName from '../../services/general/validateName';
 import validateEmail from '../../services/general/validateEmail';
 import validatePassword from '../../services/general/validatePassword';
 import fetchUserData from '../../services/general/fetchUserData';
+import fetchLoginData from '../../services/general/fetchLoginData';
 import '../../css/registerPage.css';
 
 export default function RegisterPage() {
@@ -13,6 +14,7 @@ export default function RegisterPage() {
   const [isEmailRegistered, setEmailRegistered] = useState(false);
   const [isEmailVerified, setEmailVerified] = useState(false);
   const [isFetched, setIsFetched] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [userData, setUserData] = useState({
     name: '',
     email: '',
@@ -27,6 +29,21 @@ export default function RegisterPage() {
     } else {
       setUserData({ ...userData, role: 'client' });
     }
+  };
+
+  const setLocalStorage = async (user) => {
+    const userWithToken = await fetchLoginData(userData);
+    localStorage.setItem('token', userWithToken.token);
+    localStorage.setItem(
+      'user',
+      JSON.stringify({
+        email: user.email,
+        role: user.role,
+        name: user.name,
+      }),
+    );
+    setLoggedIn(true);
+    // return <Redirect to="/products" />;
   };
 
   const isUserRegistered = async (user) => {
@@ -52,8 +69,10 @@ export default function RegisterPage() {
       setEmailVerified(true);
     }
   };
+
   if (isFetched && !isEmailRegistered && userData.role === 'client' && isEmailVerified) {
-    return <Redirect to="/products" />;
+    setLocalStorage(userData);
+    return loggedIn && <Redirect to="/products" />;
   }
 
   if (isFetched && !isEmailRegistered && userData.role === 'admin' && isEmailVerified) {

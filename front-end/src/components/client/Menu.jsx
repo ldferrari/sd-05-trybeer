@@ -7,7 +7,7 @@ import GeneralContext from '../../context/general/GeneralContext';
 export default function Menu(props) {
   const { title } = props;
   const [isVisible, setIsVisible] = useState(false);
-  const { setLoggedIn, setUserData, initialUser } = useContext(GeneralContext);
+  const { setUserData, initialUser } = useContext(GeneralContext);
 
   function menuChecked() {
     if (document.getElementById('check').checked) {
@@ -38,7 +38,7 @@ export default function Menu(props) {
                 to="/login"
                 data-testid="side-menu-item-logout"
                 className="buttonLateral"
-                onClick={ () => { setLoggedIn(false); setUserData({ initialUser }); } }
+                onClick={ () => { localStorage.setItem('token', ''); setUserData({ initialUser }); } }
               >
                 Sair
               </Link>
