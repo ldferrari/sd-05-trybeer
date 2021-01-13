@@ -11,7 +11,7 @@ import {
   accessOrdersClient,
 } from '../actions/actionBase';
   
-describe.skip('Criar tela de meus pedidos', () => {
+describe('Criar tela de meus pedidos', () => {
   before(() => {
     createAndInsertsDataBase()
   });

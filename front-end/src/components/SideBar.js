@@ -12,7 +12,7 @@ export default function SideBar({ userRole, active }) {
             Produtos
           </Link>
           <Link to="/orders" data-testid="side-menu-item-my-orders">
-            Meus pedidos
+            Meus Pedidos
           </Link>
           <Link to="/profile" data-testid="side-menu-item-my-profile">
             Meu perfil

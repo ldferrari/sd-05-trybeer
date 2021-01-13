@@ -77,3 +77,39 @@ export const getProducts = async (email, token) => {
     .then((products) => products.json());
   return response || undefined;
 };
+
+export const getOrders = (email, token) => {
+  const response = [
+    {
+      "id": 1,
+      "total_price": "4.76",
+      "sale_date": "2017-11-01T18:00:49.000Z"
+    },
+    {
+      "id": 2,
+      "total_price": "4.76",
+      "sale_date": "2017-11-01T18:00:49.000Z"
+    },
+    {
+      "id": 3,
+      "total_price": "4.76",
+      "sale_date": "2017-11-01T18:00:49.000Z"
+    },
+    {
+      "id": 4,
+      "total_price": "4.76",
+      "sale_date": "2021-01-13T00:30:50.000Z"
+    },
+    {
+      "id": 5,
+      "total_price": "4.76",
+      "sale_date": "2021-01-13T00:36:56.000Z"
+    },
+    {
+      "id": 6,
+      "total_price": "4.76",
+      "sale_date": "2021-01-12T21:52:16.000Z"
+    }
+  ];
+  return response;
+}
