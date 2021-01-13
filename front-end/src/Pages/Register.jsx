@@ -5,7 +5,7 @@ import Input from '../Components/Input';
 import { registerUserAct } from '../../src/Redux/Actions/user';
 import { func } from 'prop-types';
 
-const Register = ({ registerUser }) => {
+const Register = ({ registerUser, userError }) => {
   const [name, setName] = useState(null);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
@@ -16,7 +16,7 @@ const Register = ({ registerUser }) => {
   function validate() {
     const validName = /^[a-zA-Z ]{12}[a-zA-Z ]*$/.test(name);
     const validEmail = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/.test(email);
-    const validSenha = /^[^W_]{7,100}$/.test(password);
+    const validSenha = /^[^W_]{5,100}$/.test(password);
     if (validName && validEmail && validSenha) isSetDisabled(false);
     else isSetDisabled(true);
   }
@@ -25,7 +25,7 @@ const Register = ({ registerUser }) => {
     validate();
   }, [name, email, password]);
 
-  if (shouldRedirect) {
+  if (shouldRedirect && !userError) {
     if (!isSeller) {
       return <Redirect to="/products" />;
     } else {
@@ -33,9 +33,9 @@ const Register = ({ registerUser }) => {
     }
   }
 
-  function registerHandle() {
+  async function registerHandle() {
     const role = isSeller ? 'administrator' : 'client';
-    registerUser({ name, email, password, role });
+    await registerUser({ name, email, password, role });
 
     setShouldRedirect(true);
   }
@@ -82,20 +82,18 @@ const Register = ({ registerUser }) => {
         >
           Cadastrar
         </button>
+        {userError && <p>E-mail already in database</p>}
       </div>
     </div>
   );
 };
 
-//
-// Cadastrar e redirecionar para a tela do cliente ou admin
-
-// const mapStateToProps = ({ userRequestReducer }) => ({
-// userData: userRequestReducer.userData,
-// })
+const mapStateToProps = ({ userRequestReducer }) => ({
+  userError: userRequestReducer.error,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   registerUser: (newUserData) => dispatch(registerUserAct(newUserData)),
 });
 
-export default connect(null, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

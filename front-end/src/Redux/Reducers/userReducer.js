@@ -12,6 +12,7 @@ const INITIAL_STATE = {
   isLoading: false,
   userData: {},
   shouldRedirect: false,
+  error: '',
 };
 
 function userRequestReducer(state = INITIAL_STATE, action) {
@@ -48,11 +49,13 @@ function userRequestReducer(state = INITIAL_STATE, action) {
         userData: { user: action.data },
         shouldRedirect: true,
         isLoading: false,
+        error: ''
       };
     case REGISTER_USER_ERROR:
       return {
         ...state,
         isLoading: false,
+        error: action.error
       };
     default:
       return state;
