@@ -3,7 +3,7 @@ import ClientMenu from '../../components/client/ClientMenu';
 import { updateName } from '../../services/fetch';
 import { checkName } from '../../services/checkUserData';
 
-console.log();
+// console.log();
 
 function ClientProfile() {
   const user = JSON.parse(localStorage.getItem('user'));
@@ -15,7 +15,7 @@ function ClientProfile() {
   const [checkedName, setcheckedName] = useState(false);
   // const { setName } = useContext(TrybeerProvider);
 
-  const saveInStorage = (name) => {
+  const saveInStorage = () => {
     localStorage.setItem(
       'user',
       JSON.stringify({
@@ -48,6 +48,7 @@ function ClientProfile() {
         <input data-testid="profile-email-input" value={ email } readOnly />
       </div>
       <button
+        type="button"
         data-testid="profile-save-btn"
         disabled={ (name === name1) }
         onClick={ () => updateName(name1, email).then((result) => saveInStorage(result.name),

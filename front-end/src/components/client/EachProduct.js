@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-
 import PropTypes from 'prop-types';
 import TrybeerContext from '../../context/TrybeerContext';
 import { saveProductsMore, saveProductsLess } from '../../services/localStorage';

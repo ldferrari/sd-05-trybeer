@@ -15,7 +15,7 @@ function Orders() {
   return (
     <div>
       <ClientMenu title="Meus Pedidos" />
-      {orders.map((order, index) => <OrderCard order={ order } index={ index } />)}
+      {orders.map((order, index) => <OrderCard order={ order } index={ index } key={ order } />)}
     </div>
   );
 }
