@@ -9,26 +9,17 @@ import CartButton from '../../components/cartButton';
 import { postGetItems } from '../../services/requestAPI';
 
 const Products = (props) => {
+  const { history } = props;
   const [theProducts, setProducts] = useState([]);
   const theToken = localStorage.getItem('token');
-  const fetchProducts = async () => {
-    const { data } = await postGetItems(theToken);
-    setProducts(data);
-  };
-  // const fetchProducts = async () => {
-  //   axios.get(URL, { headers: { Authorization: theToken } })
-  // .then(response => {
-  //     setProducts(response.data);
-  //     console.log(response.data);
-  //   })
-  // .catch((error) => {
-  //     console.log('error ' + error);
-  //   });
-  // };
 
   useEffect(() => {
+    async function fetchProducts() {
+      const { data } = await postGetItems(theToken);
+      setProducts(data);
+    }
     fetchProducts();
-  }, []);
+  }, [theToken]);
 
   const logged = localStorage.getItem('token');
 
@@ -43,7 +34,7 @@ const Products = (props) => {
         { theProducts.map((product) => <Card key={ product.id } product={ product } />) }
         ,
       </div>
-      <CartButton history={ props.history } />
+      <CartButton history={ history } />
       <Footer />
     </div>
   );

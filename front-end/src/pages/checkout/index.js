@@ -21,17 +21,12 @@ const Checkout = (props) => {
   const cartSum = cart
     .reduce((acc, cv) => acc + cv.price * cv.quantity, nada)
     .toFixed(dois);
-
-  // const lCart = localStorage.getItem('cart');
-
-  const fetchCart = () => {
-    setCartHere(cart);
-  };
+  const fullCart = cartSum > nada;
 
   useEffect(() => {
-    fetchCart();
+    setCartHere(cart);
   },
-  [cartHere]);
+  [cart]);
 
   if (!logged) {
     return <Redirect to="/login" />;
@@ -43,8 +38,7 @@ const Checkout = (props) => {
     await postOrder(token, cart, userData);
     localStorage.removeItem('cart');
     setCart([]);
-    alert('Pedido efetuado com sucesso!');
-
+    alert('Compra realizada com sucesso!');
     // <Redirect to="/products" />
     return props.history.push('/products'); // handleHandleSubmit
   };
@@ -99,7 +93,7 @@ const Checkout = (props) => {
         data-testid="checkout-finish-btn"
         className="finishBtn"
         type="submit"
-        disabled={ !(rua && numero) }
+        disabled={ !(rua && numero && fullCart) }
         onClick={ handleSubmit }
       >
         Finalizar Pedido

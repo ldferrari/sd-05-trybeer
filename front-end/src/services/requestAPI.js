@@ -7,7 +7,7 @@ const config = (token) => ({
   },
 });
 
-const postGetItems = async (token) => axios.get('http://localhost:3001/products', config(token));
+const postGetItems = async (token) => await axios.get('http://localhost:3001/products', config(token));
 
 const postLogin = async ({ email, password }) => axios
   .post('http://localhost:3001/login', {
