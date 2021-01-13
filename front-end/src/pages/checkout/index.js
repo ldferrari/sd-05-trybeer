@@ -21,7 +21,7 @@ const Checkout = (props) => {
   const cartSum = cart
     .reduce((acc, cv) => acc + cv.price * cv.quantity, nada)
     .toFixed(dois);
-  const fullCart = cartSum > 0;
+  const fullCart = cartSum > nada;
 
   useEffect(() => {
     setCartHere(cart);

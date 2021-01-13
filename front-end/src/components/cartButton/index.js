@@ -42,5 +42,5 @@ const CartButton = (props) => {
 export default CartButton;
 
 CartButton.propTypes = {
-  history: propTypes.object.isRequired,
+  history: propTypes.instanceOf(Object).isRequired,
 };
