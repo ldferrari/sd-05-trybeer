@@ -22,11 +22,16 @@ function CheckoutProductCard({ item, i }) {
 }
 
 function CheckoutProductsList({ orderedProducts }) {
+  const total = orderedProducts.reduce(
+    (acc, product) => acc + product.quantity * product.price,
+    0,
+  );
   return (
     <div>
       {orderedProducts.map((item, index) => (
         <CheckoutProductCard item={item} i={index} />
       ))}
+      <div data-testid="order-total-value">Total: R$ {total}</div>
     </div>
   );
 }
