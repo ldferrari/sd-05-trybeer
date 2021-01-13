@@ -75,4 +75,5 @@ export const registerUser = (data) => (
   )
 );
 
-// Por favor, checar forma dessas funções. O lint aqui tá bem chatinho nesse lance de retorno, quebra de linha, etc
+// Por favor, checar forma dessas funções. O lint aqui tá bem 
+// chatinho nesse lance de retorno, quebra de linha, etc

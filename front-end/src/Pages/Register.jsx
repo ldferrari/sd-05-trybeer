@@ -28,7 +28,7 @@ const Register = ({ registerUser, userError }) => {
   
   // useEffect(() => {
     //   validate();
-    // }, [name, email, password]); 
+    // }, [name, email, password, validate]); 
     
     // ++++++++++++++++++++++++++
 
