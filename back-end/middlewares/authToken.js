@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const secret = 'group-05';
+const secret = 'grupo-05';
 
 async function authToken(req, res, next) {
   const token = req.headers.authorization;
@@ -12,6 +12,7 @@ async function authToken(req, res, next) {
     jwt.verify(token, secret);
     return next();
   } catch (err) {
+    console.error(err.message);
     return res.status(401).json({ message: 'token malformed' });
   }
 }

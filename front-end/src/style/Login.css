@@ -1,0 +1,88 @@
+/* .button {
+  border-radius: 8px;
+  color: black;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 35px;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.brown {
+  background-color: rgb(202, 136, 13);
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color:green;
+  color: black;
+  text-align: center;
+}
+
+.green {
+  background-color: green;
+}
+
+.input {
+  border-radius: 4px;
+  height: 35px;
+  width: 250px;
+}
+
+.login-container {
+  align-items: center;
+  color: rgb(90, 90, 90);
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 150%;
+  width: 15%;
+}
+
+.margin {
+  margin-top: 15px;
+}
+
+.lesserMargin {
+  margin-top: 5px;
+}
+
+.title {
+  color: green;
+  font-size: 200%;
+  margin-bottom: 30px;
+} */
+
+.container {
+  display: flex;
+  flex-flow: column;
+}
+.containerA {
+  /* padding-left: 0.5%; */
+  align-items: center;
+  align-content: center;
+  display: flex;
+  flex-flow: column;
+}
+.footer{
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  display: flex;
+  flex-flow: row;
+}
+/* #containerB {
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+} */

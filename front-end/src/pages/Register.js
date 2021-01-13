@@ -6,7 +6,14 @@ import TryBeerContext from '../context/TryBeerContext';
 
 const Register = () => {
   const {
-    email, password, name, checked, setEmail, setPassword, setName, setChecked,
+    email,
+    password,
+    name,
+    role,
+    setEmail,
+    setPassword,
+    setName,
+    setRole,
   } = useContext(TryBeerContext);
   const [thisEmailAlreadyExists, setThisEmailAlreadyExists] = useState('');
   const history = useHistory();
@@ -15,15 +22,23 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await apiRegister(name, email, password, checked);
+    const result = await apiRegister(name, email, password, role);
+    // console.log(result.response.data.message)
     const response = result.message && +result.message.split(' ').slice(reverse)[0];
+    // localStorage.setItem(
+    //   'user',
+    //   JSON.stringify({
+    //     name, email, password, role,
+    //   }),
+    // );
     return response === unprocessable
       ? setThisEmailAlreadyExists('E-mail already in database.')
-      : history.push(!checked ? '/products' : '/admin/orders');
+      : history.push(role === 'client' ? '/products' : '/admin/orders');
   };
 
-  const handleClick = () => setChecked(!checked);
+  const handleClick = () => setRole(role === 'client' ? 'administrator' : 'client');
 
+  // prettier-ignore
   return (
     <form>
       <label htmlFor="signup-name">
