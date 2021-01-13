@@ -4,6 +4,7 @@ import Checkout from './Checkout';
 import Products from './Products';
 import Register from './Register';
 import OrderAdmin from './OrderAdmin';
+import OrderAdminDetails from './OrderAdminDetails';
 import ProfileAdmin from './ProfileAdmin';
 
 export {
@@ -14,4 +15,5 @@ export {
   Register,
   OrderAdmin,
   ProfileAdmin,
+  OrderAdminDetails,
 };
