@@ -25,12 +25,6 @@ const Register = () => {
     const result = await apiRegister(name, email, password, role);
     // console.log(result.response.data.message)
     const response = result.message && +result.message.split(' ').slice(reverse)[0];
-    // localStorage.setItem(
-    //   'user',
-    //   JSON.stringify({
-    //     name, email, password, role,
-    //   }),
-    // );
     return response === unprocessable
       ? setThisEmailAlreadyExists('E-mail already in database.')
       : history.push(role === 'client' ? '/products' : '/admin/orders');
