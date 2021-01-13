@@ -1,6 +1,7 @@
 const connection = require('./connection');
 
 const createSale = async (id, total, deliveryAddress, deliveryNumber) => {
+  // console.log(id, total, deliveryAddress, deliveryNumber)
   const [
     checkout,
   ] = await connection.execute(

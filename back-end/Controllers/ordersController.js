@@ -4,9 +4,10 @@ const service = require('../Service/ordersService');
 
 const orders = Router();
 
-orders.get('/', async (req_, res) => {
+orders.get('/', async (req, res) => {
   try {
-    const ordersProducts = await service.getOrders();
+    const { id } = req.payload;
+    const ordersProducts = await service.getOrders(id);
     res.status(200).json(ordersProducts);
   } catch (error) {
     console.error(error);
