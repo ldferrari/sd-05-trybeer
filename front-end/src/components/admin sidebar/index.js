@@ -4,16 +4,16 @@ import { Link } from 'react-router-dom';
 import './index.css';
 
 const AdminSideBar = () => (
-  <aside className="sideBar side-menu-container">
+  <aside className="sideBar admin-side-bar-container">
     <ul>
       <li className=".title">Trybeer</li>
       <li className="menuBtn">
-        <Link to="/admin/orders" className="menuBtn" data-testid="side-menu-item-my-orders">
+        <Link to="/admin/orders" className="menuBtn" data-testid="side-menu-item-orders">
           Pedidos
         </Link>
       </li>
       <li className="menuBtn">
-        <Link to="/admin/profile" className="menuBtn" data-testid="side-menu-item-my-profile">
+        <Link to="/admin/profile" className="menuBtn" data-testid="side-menu-item-profile">
           Perfil
         </Link>
       </li>
