@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import Input from '../Components/Input';
-import { registerUserAct } from '../../src/Redux/Actions/user';
-import { func } from 'prop-types';
+import propTypes from 'prop-types';
+import { registerUserAct } from '../Redux/Actions/user';
 
 const Register = ({ registerUser, userError }) => {
   const [name, setName] = useState(null);
@@ -23,19 +22,23 @@ const Register = ({ registerUser, userError }) => {
 
   useEffect(() => {
     validate();
-  }, [name, email, password]);
+  }, [name, email, password, validate]);
 
   if (shouldRedirect && !userError) {
     if (!isSeller) {
       return <Redirect to="/products" />;
-    } else {
-      return <Redirect to="/admin/orders" />; // conferir se é este endPointMesmo
     }
+    return <Redirect to="/admin/orders" />; // conferir se é este endPointMesmo
   }
 
   async function registerHandle() {
     const role = isSeller ? 'administrator' : 'client';
-    await registerUser({ name, email, password, role });
+    await registerUser({
+      name,
+      email,
+      password,
+      role,
+    });
 
     setShouldRedirect(true);
   }
@@ -44,41 +47,51 @@ const Register = ({ registerUser, userError }) => {
     <div className="container-main" id="Register">
       <div className="container-page">
         <h1>Register</h1>
-        <label htmlFor="name">Nome</label>
-        <Input
-          test="signup-name"
-          id="name"
-          placeholder="Digite seu nome"
-          onChange={(e) => setName(e.target.value)}
-        />
-        <label htmlFor="email">Email</label>
-        <Input
-          test="signup-email"
-          id="email"
-          placeholder="Digite seu e-mail"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <label htmlFor="password">Senha</label>
-        <Input
-          type="password"
-          test="signup-password"
-          id="password"
-          placeholder="Digite sua senha"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <label htmlFor="quero-vender">Quero Vender</label>
-        <input
-          type="checkbox"
-          id="quero-vender"
-          data-testid="signup-seller"
-          onChange={({ target: { checked } }) => {
-            setIsSeller(checked);
-          }}
-        />
+        {/* Se usar o component Input o lint não o reconhece como 'controle do label form' */}
+        <label htmlFor="name">
+          Nome
+          <input
+            data-testid="signup-name"
+            id="name"
+            placeholder="Digite seu nome"
+            onChange={ (e) => setName(e.target.value) }
+          />
+        </label>
+        <label htmlFor="email">
+          Email
+          <input
+            data-testid="signup-email"
+            id="email"
+            placeholder="Digite seu e-mail"
+            onChange={ (e) => setEmail(e.target.value) }
+          />
+        </label>
+        <label htmlFor="password">
+          Senha
+          <input
+            type="password"
+            data-testid="signup-password"
+            id="password"
+            placeholder="Digite sua senha"
+            onChange={ (e) => setPassword(e.target.value) }
+          />
+        </label>
+        <label htmlFor="quero-vender">
+          Quero Vender
+          <input
+            type="checkbox"
+            id="quero-vender"
+            data-testid="signup-seller"
+            onChange={ ({ target: { checked } }) => {
+              setIsSeller(checked);
+            } }
+          />
+        </label>
         <button
-          disabled={isDisabled}
+          disabled={ isDisabled }
+          type="button"
           data-testid="signup-btn"
-          onClick={() => registerHandle()}
+          onClick={ () => registerHandle() }
         >
           Cadastrar
         </button>
@@ -86,6 +99,11 @@ const Register = ({ registerUser, userError }) => {
       </div>
     </div>
   );
+};
+
+Register.propTypes = {
+  registerUser: propTypes.func.isRequired,
+  userError: propTypes.string.isRequired,
 };
 
 const mapStateToProps = ({ userRequestReducer }) => ({
