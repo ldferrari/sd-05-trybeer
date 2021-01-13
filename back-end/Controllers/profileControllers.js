@@ -9,14 +9,14 @@ const profile = Router();
 profile.put('/', async (req, res) => {
   try {
     const { name, email } = req.body;
-    const { payload } = req
+    const { payload } = req;
     // O TOKEN ESTÁ SENDO VERIFICADO NO INDEX NA ROTA PROFILE.
-    if (email!==payload.email) {
+    if (email !== payload.email) {
       return res.status(401).json({ message: 'Operação proíbida.' });
     }
     const newName = await service.update(name, email);
 
-    //const emailExists = await userModel.getByEmail(email);
+    // const emailExists = await userModel.getByEmail(email);
 
     if (newName.error) {
       return res.status(newName.statusCode).json({ message: newName.message });
