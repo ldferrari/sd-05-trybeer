@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import validateName from '../../services/general/validateName';
 import Menu from '../../components/client/Menu';
 import GeneralContext from '../../context/general/GeneralContext';
-import updateUserNameAPI from '../../services/apis';
+import updateUserNameAPI from '../../services/fetchUpdateUser';
 import '../../css/clientProfilePage.css';
 
 export default function ClientProfilePage() {
