@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import TryBeerContext from '../context/TryBeerContext';
 import Header from '../components/Header';
+import Card from '../components/Card';
 
 export default function Products() {
   const { quantity, setQuantity } = useContext(TryBeerContext);
@@ -22,6 +23,11 @@ export default function Products() {
   return (
     <>
       <Header title="TryBeer" />
+        {* <div className="products-list">
+        { productsList.map((element) => (
+          <Card key={ element } name={ element } />
+        )) } */}
+      </div>
       <button
         type="button"
         data-testid={ `${index}-product-plus` }
