@@ -27,7 +27,6 @@ const Orders = (props) => {
     return <Redirect to="/login" />;
   }
 
-  console.log(theOrders);
   return (
     <div className="Products">
       <Header>Meus Pedidos</Header>
