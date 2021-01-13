@@ -19,13 +19,13 @@ export default function QuantityButton(props) {
   } = useContext(ClientContext);
   const { id, index, price } = props;
 
-  const updateCart = () => {
+  const updateCart = useCallback(() => {
     localStorage.setItem('cart', (cart).toString());
-  };
+  }, [cart]);
 
-  const updateCartItens = async () => {
+  const updateCartItens = useCallback(async () => {
     await AsyncLocalStorage.setItem('cart itens', JSON.stringify(cartItens));
-  };
+  }, [cartItens]);
 
   const altQuantity = useCallback(async (callback) => {
     const prodIndex = cartItens.findIndex((i) => i.id === id);
@@ -40,7 +40,7 @@ export default function QuantityButton(props) {
       setCartItens([...cartItens, { id, quantity }]);
     }
     callback();
-  }, [quantity, cartItens, setCartItens]);
+  }, [quantity, cartItens, setCartItens, id, index, negativo]);
 
   const increaseItem = useCallback(
     () => {
@@ -49,7 +49,7 @@ export default function QuantityButton(props) {
       updateCart();
       altQuantity(updateCartItens);
     },
-    [setQuantity, setCart, updateCart, altQuantity],
+    [setQuantity, setCart, updateCart, altQuantity, cart, price, quantity, updateCartItens],
   );
 
   function decreaseItem() {

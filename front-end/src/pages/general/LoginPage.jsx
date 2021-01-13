@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import GeneralContext from '../../context/general/GeneralContext';
 import loginData from '../../services/general/fetchLoginData';
 import validateEmail from '../../services/general/validateEmail';
@@ -29,8 +30,9 @@ export default function LoginPage(props) {
       }),
     );
     setLoggedIn(true);
-    if (usuario.role === 'administrator') return props.history.push("/admin/orders");
-    if (usuario.role === 'client') return props.history.push("/products");
+    if (usuario.role === 'administrator') return props.history.push('/admin/orders');
+    if (usuario.role === 'client') return props.history.push('/products');
+    return true;
   };
 
   return (
@@ -89,6 +91,6 @@ export default function LoginPage(props) {
   );
 }
 
-QuantityButton.propTypes = {
+LoginPage.propTypes = {
   history: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

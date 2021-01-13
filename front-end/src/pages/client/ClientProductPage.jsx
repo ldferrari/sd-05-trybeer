@@ -5,7 +5,6 @@ import { ClientContext } from '../../context/client/ClientProvider';
 import productsApi from '../../services/client/api';
 import Menu from '../../components/client/Menu';
 import '../../css/clientProductPage.css';
-// import GeneralContext from '../../context/general/GeneralContext';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -18,8 +17,6 @@ const Products = () => {
   const token = localStorage.getItem('token') || null;
   const zero = 0;
   const dois = 2;
-
-  // console.log(products);
 
   useEffect(() => {
     if (cart >= zero) {
