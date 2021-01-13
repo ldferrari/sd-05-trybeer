@@ -20,7 +20,7 @@ function Checkout({ history, userData }) {
     }
   }, [isTotalZero, setbuttonShoulBeDisabled, street, houseNumber]);
 
-  if (!userData.name) {
+  if (!userData.user) {
     return <Redirect to="/login" />;
   }
   return (
