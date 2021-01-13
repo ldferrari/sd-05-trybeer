@@ -13,6 +13,7 @@ const Home = () => (
       <Route exact path="/products" component={ Products } />
       <Route exact path="/admin/orders" component={ Orders } />
       <Route exact path="/profile" component={ Profile } />
+      <Route exact path="/admin/profile" component={ Profile } />
     </Switch>
   </Router>
 );

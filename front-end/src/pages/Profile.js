@@ -8,7 +8,7 @@ import Header from '../components/Header';
 export default function Profile() {
   const userData = JSON.parse(localStorage.getItem('user'));
   const role = userData && userData.user && userData.user.role;
-  const { token } = userData;
+  const token = userData && userData.token;
   const [success, setSuccess] = useState(false);
   const { name, setName, email } = useContext(TryBeerContext);
 
@@ -18,24 +18,31 @@ export default function Profile() {
     if (name.length >= 1) setSuccess(true);
   };
 
-  if (!userData.token) return <Redirect to="/login" />;
+  if (!token) return <Redirect to="/login" />;
   return (
     <section>
-      <Header title="Meu perfil" />
+      <Header title={ role === 'client' ? 'Meu perfil' : 'Perfil' } />
       <form>
-        <label htmlFor="name">
-          Name
+        <label htmlFor="name" data-testid="profile-name">
+          {role === 'client' ? 'Nome' : 'Tryber Admin'}
           <input
             type="text"
             value={ name }
             data-testid="profile-name-input"
             onChange={ (event) => setName(event.target.value) }
             readOnly={ role === 'administrator' }
+            placeholder={ name }
           />
         </label>
-        <label htmlFor="email">
-          Email
-          <input id="email" type="email" data-testid="profile-email-input" readOnly />
+        <label htmlFor="email" data-testid="profile-email">
+          {role === 'client' ? 'Email' : email}
+          <input
+            id="email"
+            type="email"
+            data-testid="profile-email-input"
+            readOnly
+            placeholder={ email }
+          />
         </label>
         <button
           type="submit"
