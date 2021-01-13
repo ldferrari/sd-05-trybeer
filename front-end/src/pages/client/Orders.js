@@ -15,10 +15,14 @@ function Orders({ history }) {
   useEffect(() => {
     const user = getUser();
     if (!user) {
-      return history.push('/login')
+      return noUser();
     }
     getUserSales(user.email).then((response) => setOrders(response));
   }, []);
+
+  const noUser = () => {
+    return history.push("/login");
+  }
 
   return (
     <div>

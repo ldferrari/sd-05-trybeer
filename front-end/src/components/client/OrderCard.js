@@ -15,7 +15,11 @@ export default function OrderCard({ order, index }) {
     <div className="order-card" data-testid={ `${index}-order-card-container` }>
       <Link className="order-link" to={ `/orders/${order.id}` }>
         <p data-testid={ `${index}-order-number` }>
-          <span>Pedido {order.id}</span>
+          <span>
+            Pedido
+            {' '}
+            {order.id}
+          </span>
         </p>
         <p>
           <span data-testid={ `${index}-order-total-value` }>
