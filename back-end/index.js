@@ -2,6 +2,8 @@ const express = require('express');
 
 const path = require('path');
 
+const cors = require('cors')
+
 const bodyParser = require('body-parser');
 
 const loginController = require('./Controllers/loginController');
@@ -20,12 +22,9 @@ const ordersController = require('./Controllers/ordersController');
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(cors());
 
-/* app.use('/login', (req,res,next)=>{
-  console.log(req.body)
-  next();
-}, loginController); */
+app.use(bodyParser.json());
 
 app.use('/login', loginController);
 
@@ -39,7 +38,7 @@ app.use('/checkout', checkToken, checkoutController);
 
 app.use('/orders', checkToken, ordersController);
 
-app.use('/images/', express.static(path.join(__dirname, '..', 'images')));
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 const PORT = 3001;
 
