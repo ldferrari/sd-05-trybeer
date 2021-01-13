@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import propTypes from 'prop-types';
@@ -20,9 +20,17 @@ const Register = ({ registerUser, userError }) => {
     else isSetDisabled(true);
   }
 
+  // ++++++++++++++++++++++++++
+  
+  // useEffect precisa colocar a função que sera usada nas dependências
+  // Que por sua vez, se for uma função que que muda algum state local, pode dar um loop estranho.
+  // Lint não permite
+  
   // useEffect(() => {
-  //   validate();
-  // }, [name, email, password]);
+    //   validate();
+    // }, [name, email, password]); 
+    
+    // ++++++++++++++++++++++++++
 
   if (shouldRedirect && !userError) {
     if (!isSeller) {
@@ -47,17 +55,17 @@ const Register = ({ registerUser, userError }) => {
     <div className="container-main" id="Register">
       <div className="container-page">
         <h1>Register</h1>
-        {/* Se usar o component Input o lint não o reconhece como 'controle do label form' */}
+        { /* Se usar o component Input o lint não o reconhece como 'controle do label form' */ }
         <label htmlFor="name">
           Nome
           <input
             data-testid="signup-name"
             id="name"
             placeholder="Digite seu nome"
-            onChange={(e) => {
+            onChange={ (e) => {
               setName(e.target.value);
               validate();
-            }}
+            } }
           />
         </label>
         <label htmlFor="email">
@@ -66,10 +74,10 @@ const Register = ({ registerUser, userError }) => {
             data-testid="signup-email"
             id="email"
             placeholder="Digite seu e-mail"
-            onChange={(e) => {
+            onChange={ (e) => {
               setEmail(e.target.value);
               validate();
-            }}
+            } }
           />
         </label>
         <label htmlFor="password">
@@ -79,10 +87,10 @@ const Register = ({ registerUser, userError }) => {
             data-testid="signup-password"
             id="password"
             placeholder="Digite sua senha"
-            onChange={(e) => {
+            onChange={ (e) => {
               setPassword(e.target.value);
               validate();
-            }}
+            } }
           />
         </label>
         <label htmlFor="quero-vender">
@@ -91,7 +99,7 @@ const Register = ({ registerUser, userError }) => {
             type="checkbox"
             id="quero-vender"
             data-testid="signup-seller"
-            onChange={({ target: { checked } }) => {
+            onChange={ ({ target: { checked }} ) => {
               setIsSeller(checked);
             }}
           />
@@ -100,7 +108,7 @@ const Register = ({ registerUser, userError }) => {
           disabled={isDisabled}
           type="button"
           data-testid="signup-btn"
-          onClick={() => registerHandle()}
+          onClick={ () => registerHandle() }
         >
           Cadastrar
         </button>
