@@ -6,6 +6,7 @@ const Cart = () => {
   const [storage, setStorage] = useState(JSON.parse(localStorage.getItem('cart')) || []);
   const [refresh, setRefresh] = useState(false);
   const [total, setTotal] = useState(zero);
+
   // first load
   useEffect(() => {
     setTotal(() => Array.from(storage)
@@ -14,10 +15,14 @@ const Cart = () => {
   // load on remove product
   useEffect(() => {
     setStorage(() => JSON.parse(localStorage.getItem('cart')) || []);
-
     setTotal(() => Array.from(storage)
       .reduce((acc, product) => acc + product.qty * product.price, zero));
   }, [refresh]);
+
+  // track total
+  useEffect(() => {
+    localStorage.setItem('total', total);
+  }, [total]);
 
   const removeFromCart = (index) => {
     storage.splice(index, 1);

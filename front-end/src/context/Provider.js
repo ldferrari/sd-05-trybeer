@@ -9,7 +9,7 @@ function Provider({ children }) {
   const [beers, setBeers] = useState([]);
   const [total, setTotal] = useState(zero);
   const [cart, setCart] = useState([]);
-
+  // const [order, setOrder] = useState()
   const dataContext = {
     userName,
     setUserName,

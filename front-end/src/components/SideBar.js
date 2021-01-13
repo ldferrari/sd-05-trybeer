@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './cssComponents/sideBar.css';
 
 export default function SideBar({ userRole, active }) {
+  // const clearAll = () => localStorage.clear();
   return (
     <aside className={ `side-container ${active && 'appear'}` }>
       {userRole === 'client' && (

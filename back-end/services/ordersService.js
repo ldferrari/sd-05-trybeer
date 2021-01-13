@@ -17,7 +17,7 @@ const insertSale = async (order, email) => {
   for (let i = 0; i < cart.length; i += 1) {
     promisesArray.push(model.insertProductSale(saleId, cart[i].id, cart[i].qty));
   }
-  
+
   Promise.all(promisesArray);
 
   return { statusCode: 201, message: 'Order placed.' };

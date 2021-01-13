@@ -78,38 +78,34 @@ export const getProducts = async (email, token) => {
   return response || undefined;
 };
 
-export const getOrders = (email, token) => {
-  const response = [
-    {
-      "id": 1,
-      "total_price": "4.76",
-      "sale_date": "2017-11-01T18:00:49.000Z"
+export const orderPlaced = async (order, email, token) => {
+  const registerReq = {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      Authorization: token,
     },
-    {
-      "id": 2,
-      "total_price": "4.76",
-      "sale_date": "2017-11-01T18:00:49.000Z"
+    mode: 'cors',
+    body: JSON.stringify({ email, order }),
+  };
+  const response = await fetch(`${url}/orders/insert`, registerReq).then((res) => res.json());
+  return response || undefined;
+};
+
+export const getOrders = async (email, token) => {
+  const updateReq = {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      Authorization: token,
     },
-    {
-      "id": 3,
-      "total_price": "4.76",
-      "sale_date": "2017-11-01T18:00:49.000Z"
-    },
-    {
-      "id": 4,
-      "total_price": "4.76",
-      "sale_date": "2021-01-13T00:30:50.000Z"
-    },
-    {
-      "id": 5,
-      "total_price": "4.76",
-      "sale_date": "2021-01-13T00:36:56.000Z"
-    },
-    {
-      "id": 6,
-      "total_price": "4.76",
-      "sale_date": "2021-01-12T21:52:16.000Z"
-    }
-  ];
-  return response;
-}
+    mode: 'cors',
+  };
+  const response = await fetch(`${url}/orders?email=${email}`, updateReq)
+    .then((products) => products.json());
+  return response || undefined;
+};

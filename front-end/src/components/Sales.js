@@ -1,32 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
 import { Link } from 'react-router-dom';
+import { getOrders } from '../services/api';
 
-export default function Sales({ sales }) {
-  // sales.forEach(sale => {
-  const formatDate = (saleDate) => {
-    return new Date(saleDate).toLocaleDateString('pt-br', {
+export default function Sales() {
+  const [sales, setSales] = useState([]);
+
+  useEffect(() => {
+    const email = (localStorage.getItem('email') || '');
+    const token = (localStorage.getItem('token') || '');
+    getOrders(email, token).then((orders) => setSales(orders));
+  }, []);
+
+  const formatDate = (saleDate) => (
+    new Date(saleDate).toLocaleDateString('pt-br', {
       day: '2-digit',
-      month: 'numeric',
-    });
-  };
+      month: '2-digit',
+    })
+  );
 
-  const formatPrice = (salePrice) => {
-    return salePrice.toLocaleString('pt-br', {
-      style: 'currency',
-      currency: 'BRL',
-    });
-  };
-  // });
   return (
     <ul>
       {sales.map((sale, index) => (
-        <Link to={`/orders/${sale.id}`}>
-          <li data-testid={`${index}-order-card-container`}>
+        <Link to={ `/orders/${sale.id}` } key={ sale.id }>
+          <li data-testid={ `${index}-order-card-container` }>
             <div>
-              <span data-testid={`${index}-order-number`}>Pedido {sale.id}</span>
-              <span data-testid={`${index}-order-date`}>{formatDate(sale.sale_date)}</span>
-              <span data-testid={`${index}-order-total-value`}>
-                {formatPrice(sale.total_price)}
+              <span data-testid={ `${index}-order-number` }>
+                Pedido
+                {sale.id}
+              </span>
+              <span data-testid={ `${index}-order-date` }>{formatDate(sale.sale_date)}</span>
+              <span data-testid={ `${index}-order-total-value` }>
+                {`R$ ${sale.total_price.replace('.', ',')}`}
               </span>
             </div>
           </li>

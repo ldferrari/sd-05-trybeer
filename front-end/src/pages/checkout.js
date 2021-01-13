@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useHistory, Redirect } from 'react-router-dom';
+
 import Cart from '../components/Cart';
 import Header from '../components/Header';
+import { orderPlaced } from '../services/api';
 
 const Checkout = () => {
   const [nameAdress, setNameAdress] = useState('');
   const [numberAdress, setNumberAdress] = useState('');
   const [purchase, setPurchase] = useState(false);
-
   const history = useHistory();
   const timeInterval = 3000;
   if (purchase) {
@@ -15,7 +16,16 @@ const Checkout = () => {
   }
   const successfulPurchase = (e) => {
     e.preventDefault();
+    const { email, token, total } = localStorage;
+    const cart = JSON.parse(localStorage.getItem('cart'));
+    const order = {
+      totalPrice: total,
+      deliveryAddress: nameAdress,
+      deliveryNumber: numberAdress,
+      cart,
+    };
     setPurchase(!purchase);
+    orderPlaced(order, email, token);
   };
   const lsToken = localStorage.getItem('token');
   if (!lsToken) {
