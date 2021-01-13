@@ -19,7 +19,6 @@ const PerfilAdmin = () => {
     asyncMe();
   }, []);
 
-  const nomes = name;
   return (
     <div className="App">
       <Header>Meu perfil</Header>
