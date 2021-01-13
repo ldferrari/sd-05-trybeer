@@ -7,7 +7,7 @@ const Provider = ({ children }) => {
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [checked, setChecked] = useState(false);
-  const [productsList, setProductList] = useState(['luca', 'hugo']);
+  const [productsList, setProductList] = useState([]);
   const [role, setRole] = useState('client');
 
   const contextValue = {

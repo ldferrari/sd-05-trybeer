@@ -16,11 +16,21 @@ const apiRegister = (name, email, password, role) => axios
   .then((res) => res)
   .catch((err) => err);
 
+const getAllProducts = () =>
+  axios
+    .get('http://localhost:3001/products')
+    .then((res) => console.log(res, 'LOOK AT MEEEEE!!'))
+    .catch((err) => err);
+
 function updateUser(name, email, token) {
   return axios
-    .put('http://localhost:3001/users/name', { name, email }, { headers: { Authorization: token } })
+    .put(
+      'http://localhost:3001/users/name',
+      { name, email },
+      { headers: { Authorization: token } }
+    )
     .then((res) => res.data)
     .catch((err) => err);
 }
 
-export { apiRegister, updateUser };
+export { apiRegister, updateUser, getAllProducts };
