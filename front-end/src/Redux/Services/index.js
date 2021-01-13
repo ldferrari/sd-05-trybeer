@@ -49,22 +49,18 @@ export const getUser = (data) => (
       .catch((err) => Promise.reject(err))))
 );
 
-// Achar saída adequada para os 'catchs', no lugar de console.error.
-
-export const updateUser = (data) => {
-  console.log('update user');
-
-  return fetch(`${localhostURL}/update`, myInitWithBody(data)).then(
+// prettier-ignore
+export const updateUser = (data) => (
+  fetch(`${localhostURL}/update`, myInitWithBody(data)).then(
     (response) => response
       .json()
       .then((json) => Promise.resolve(json))
       .catch((err) => Promise.reject(err)),
-  );
-};
-
-export const registerUser = (data) => {
-  console.log('register user');
-  return fetch(`${localhostURL}/register`, myInitWithBody(data)).then(
+  )
+);
+// prettier-ignore
+export const registerUser = (data) => (
+  fetch(`${localhostURL}/register`, myInitWithBody(data)).then(
     (response) => response
       .json()
       .then((json) => {
@@ -76,5 +72,7 @@ export const registerUser = (data) => {
         return Promise.resolve(json);
       })
       .catch((err) => Promise.reject(err)),
-  );
-};
+  )
+);
+
+// Por favor, checar forma dessas funções. O lint aqui tá bem chatinho nesse lance de retorno, quebra de linha, etc
