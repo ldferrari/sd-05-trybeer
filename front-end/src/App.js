@@ -4,7 +4,6 @@ import Provider from './context/Provider';
 
 const App = () => (
   <Provider>
-    <span>TryBeer</span>
     <Home />
   </Provider>
 );

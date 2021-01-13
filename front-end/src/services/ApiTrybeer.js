@@ -16,4 +16,11 @@ const apiRegister = (name, email, password, role) => axios
   .then((res) => res)
   .catch((err) => err);
 
-export { apiRegister };
+function updateUser(name, email, token) {
+  return axios
+    .put('http://localhost:3001/users/name', { name, email }, { headers: { Authorization: token } })
+    .then((res) => res.data)
+    .catch((err) => err);
+}
+
+export { apiRegister, updateUser };

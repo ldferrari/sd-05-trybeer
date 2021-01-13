@@ -1,20 +1,30 @@
 const userModel = require('../models/userModel');
 
-const createUser = async (name, email, password, _role) => {
+const createUser = async (name, email, password, role) => {
   const thisEmailAlreadyExists = await userModel.getByEmail(email);
-  console.log(thisEmailAlreadyExists);
+  // if (thisEmailAlreadyExists) {
+  //   throw new CodeError('invalid_email', 'E-mail already in database.');
+  // }
+  // if (typeof name !== 'string' || typeof email !== 'string' || password.length < 6) {
+  //   throw new CodeError('invalid_data', 'Registration failed!');
+  // }
   if (thisEmailAlreadyExists) {
-    throw new Error({ code: 'invalid_email', message: 'E-mail already in database.' });
+    throw new Error('invalid_email');
   }
+
   if (typeof name !== 'string' || typeof email !== 'string' || password.length < 6) {
-    throw new Error({ code: 'invalid_data', message: 'Registration failed!' });
+    throw new Error('invalid_data');
   }
-  // if (!role) return false;
-  // console.log(name, email, password, role);
-  // const newUser = await userModel.createUser(name, email, password, role);
-  const getUser = await userModel.getByEmail(email);
-  console.log('Novo usuario: ', getUser);
-  return getUser;
+  // if (thisEmailAlreadyExists) {
+  // return {
+  //   error: true,
+  //   code: 'not_found',
+  //   message: `Batata with ID ${id} was not found`
+  //   }
+  // }
+  // console.log(`${email} doesn't exist`);
+  const newUser = await userModel.createUser(name, email, password, role);
+  return newUser;
 };
 
 module.exports = { createUser };

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-
+// import TryBeerContext from '../context/TryBeerContext';
 import Sidebar from './Sidebar';
 
 export default function Header(props) {
@@ -14,10 +14,14 @@ export default function Header(props) {
   return (
     <section>
       <header>
-        <button data-testid="top-hamburguer" type="button" onClick={ () => setActive(!active) }>
+        <button
+          data-testid="top-hamburguer"
+          type="button"
+          onClick={ () => setActive(!active) }
+        >
           BURGER
         </button>
-        <span data-testid="top-title">{title}</span>
+        <span data-testid="top-title">{ title }</span>
       </header>
       {active && <Sidebar role={ role } active={ active } />}
     </section>
