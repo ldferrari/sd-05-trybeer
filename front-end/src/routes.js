@@ -13,6 +13,8 @@ const Rotas = () => (
     <Route exact path="/register" component={ Register } />
     <Route path="/checkout" component={ Checkout } />
     <Route exact path="/" component={ () => <Redirect to="/login" /> } />
+    {/* <Route path="/admin/profile" component={} />
+    <Route path="/admin/orders" component={} /> */}
   </Switch>
 );
 
