@@ -1,22 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
+import AdminMenu from '../../components/admin/AdminMenu';
 
 function AdminProfile() {
-  const user = JSON.parse(localStorage.getItem('user'));
-  const { name, email } = user;
-  const myProfile = () => (
+  const [isLogged, setIsLogged] = useState(true);
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    const userLocal = JSON.parse(localStorage.getItem('user'));
+
+    if (!userLocal) {
+      setIsLogged(false);
+    } else {
+      setUser(userLocal);
+    }
+  }, []);
+
+  if (!isLogged) return <Redirect to="/login" />;
+
+  if (!user) return <div>Carregando...</div>;
+
+  return (
     <div>
-      <h1>Perfil</h1>
+      <AdminMenu />
+      <h2>Perfil</h2>
       <div data-testid="profile-name">
-        Nome:
-        { name }
+        { `Nome: ${user.name}` }
       </div>
-      <div>
-        Email:
-        { email }
+      <div data-testid="profile-email">
+        { `Email: ${user.email}` }
       </div>
     </div>
   );
-  return myProfile();
 }
 
 export default AdminProfile;
