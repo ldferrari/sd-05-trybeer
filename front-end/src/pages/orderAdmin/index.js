@@ -1,22 +1,25 @@
-import React, { useContext, useState, useEffect } from 'react';
-import propTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
+// import propTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-import AppContext from '../../context/AppContext';
+// import AppContext from '../../context/AppContext';
 import Footer from '../../components/footer';
 import CardOrder from '../../components/CardOrders';
 
-const OrderAdmin = (props) => {
+const OrderAdmin = () => {
   const [allOrders, setAllOrders] = useState([]);
-  const [alertCompraFinalizada, setAlertCompraFinalizada] = useState('');
+  // const [alertCompraFinalizada, setAlertCompraFinalizada] = useState('');
   // const theToken = localStorage.getItem("token");
   const logged = localStorage.getItem('token');
-  const { cart, setCart } = useContext(AppContext);
-
+  // const { cart, setCart } = useContext(AppContext);
 
   useEffect(() => {
     const pegaAPI = () => [
-      {id:1, addressNumber:2, addressStreet: "minha rua", value: 10.80, status:'Pendente'},
-      {id:2, addressNumber:2, addressStreet: "minha rua", value: 10.80, status:'Pendente'},
+      {
+        id: 1, addressNumber: 2, addressStreet: 'minha rua', value: 10.80, status: 'Pendente',
+      },
+      {
+        id: 2, addressNumber: 2, addressStreet: 'minha rua', value: 10.80, status: 'Pendente',
+      },
     ];
     setAllOrders(pegaAPI);
   },
@@ -26,7 +29,6 @@ const OrderAdmin = (props) => {
     return <Redirect to="/login" />;
   }
 
-  
   return (
     <div className="Orders">
       <div className="pedido">
@@ -41,11 +43,10 @@ const OrderAdmin = (props) => {
         <div className="cartItems">
           {
           allOrders
-            .map((item, index) => <CardOrder key={ item.id } order={item} index={index} />)
+            .map((item, index) => <CardOrder key={ item.id } order={ item } index={ index } />)
           }
         </div>
       </div>
-     
       <Footer />
     </div>
   );
@@ -53,6 +54,6 @@ const OrderAdmin = (props) => {
 
 export default OrderAdmin;
 
-OrderAdmin.propTypes = {
+/* OrderAdmin.propTypes = {
   history: propTypes.func.isRequired,
-};
+}; */
