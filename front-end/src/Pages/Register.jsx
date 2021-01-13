@@ -82,7 +82,7 @@ const Register = ({ registerUser, userError }) => {
         >
           Cadastrar
         </button>
-        {userError && <p>E-mail already in database</p>}
+        {userError && <p>E-mail already in database.</p>}
       </div>
     </div>
   );
