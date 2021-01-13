@@ -51,24 +51,27 @@ export const getUser = (data) => (
 
 // Achar saída adequada para os 'catchs', no lugar de console.error.
 
-export const updateUser = (data) =>
-  fetch(`${localhostURL}/update`, myInitWithBody(data)).then((response) =>
-    response
+export const updateUser = (data) => {
+  console.log('update user');
+
+  return fetch(`${localhostURL}/update`, myInitWithBody(data)).then(
+    (response) => response
       .json()
       .then((json) => Promise.resolve(json))
       .catch((err) => Promise.reject(err)),
   );
+};
 
 export const registerUser = (data) => {
   console.log('register user');
-  return fetch(`${localhostURL}/register`, myInitWithBody(data)).then((response) =>
-    response
+  return fetch(`${localhostURL}/register`, myInitWithBody(data)).then(
+    (response) => response
       .json()
       .then((json) => {
         console.log('entrou no then do register user');
         console.log(json);
         if (json.message) {
-          return Promise.reject(json.message)
+          return Promise.reject(json.message);
         }
         return Promise.resolve(json);
       })

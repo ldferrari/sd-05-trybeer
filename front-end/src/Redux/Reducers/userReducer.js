@@ -49,13 +49,13 @@ function userRequestReducer(state = INITIAL_STATE, action) {
         userData: { user: action.data },
         shouldRedirect: true,
         isLoading: false,
-        error: ''
+        error: '',
       };
     case REGISTER_USER_ERROR:
       return {
         ...state,
         isLoading: false,
-        error: action.error
+        error: action.error,
       };
     default:
       return state;
