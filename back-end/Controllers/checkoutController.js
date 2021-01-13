@@ -16,11 +16,6 @@ checkout.post('/', async (req, res) => {
     const { products, userData } = req.body;
     const { deliveryAddress, deliveryNumber } = userData;
     const { id } = req.payload;
-    console.log(products,
-      deliveryAddress,
-      deliveryNumber,
-      id,
-      )
     const order = await service.checkout(
       products,
       deliveryAddress,

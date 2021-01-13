@@ -1,9 +1,8 @@
 const connection = require('./connection');
 
-const getOrders = async () => {
+const getOrders = async (userId) => {
   const [orders] = await connection.execute(
-    'SELECT quantity, name, total_price FROM sales_products INNER JOIN products ON sales_products.product_id = products.id INNER JOIN sales ON sales_products.sale_id = sales.id',
-  );
+    'SELECT user_id, sale_date, total_price FROM sales WHERE user_id = ?', [userId]);
   return orders;
 };
 
