@@ -27,8 +27,8 @@ const Register = ({ registerUser, userError }) => {
   // Lint não permite
 
   // useEffect(() => {
-    //   validate();
-    // }, [name, email, password, validate]);
+  //   validate();
+  // }, [name, email, password, validate]);
 
   // ++++++++++++++++++++++++++
 
