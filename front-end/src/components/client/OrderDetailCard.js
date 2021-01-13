@@ -8,7 +8,7 @@ export default function OrderCard({ item, index }) {
 
   useEffect(() => {
     getProductById(item.product_id).then((result) => setProductDetail(...result));
-  }, []);
+  }, [item.product_id]);
 
   const handlePrice = (price) => price.replace('.', ',');
 
@@ -32,5 +32,6 @@ export default function OrderCard({ item, index }) {
 }
 
 OrderCard.propTypes = {
-  order: PropTypes.object.isRequired,
+  item: PropTypes.node.isRequired,
+  index: PropTypes.number.isRequired,
 };

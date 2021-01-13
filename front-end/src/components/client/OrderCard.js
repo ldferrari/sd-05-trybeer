@@ -5,7 +5,9 @@ import '../../css/OrderCard.css';
 
 export default function OrderCard({ order, index }) {
   let date = order.sale_date;
-  date = date.substring(0, 10);
+  const zero = 0;
+  const ten = 10;
+  date = date.substring(zero, ten);
   date = date.split('-');
 
   return (
@@ -26,5 +28,6 @@ export default function OrderCard({ order, index }) {
 }
 
 OrderCard.propTypes = {
-  order: PropTypes.object.isRequired,
+  order: PropTypes.node.isRequired,
+  index: PropTypes.number.isRequired,
 };
