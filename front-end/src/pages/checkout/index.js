@@ -10,18 +10,20 @@ import { postOrder } from '../../services/requestAPI';
 
 const Checkout = (props) => {
   const [cartHere, setCartHere] = useState([]);
+  const [alertCompraFinalizada, setAlertCompraFinalizada] = useState('');
   const [rua, setRua] = useState();
   const [numero, setNumero] = useState();
   // const theToken = localStorage.getItem("token");
   const logged = localStorage.getItem('token');
   const { cart, setCart } = useContext(AppContext);
 
-  const nada = 0;
+  const zero = 0;
   const dois = 2;
+  const tempoEspera = 3000;
   const cartSum = cart
-    .reduce((acc, cv) => acc + cv.price * cv.quantity, nada)
+    .reduce((acc, cv) => acc + cv.price * cv.quantity, zero)
     .toFixed(dois);
-  const fullCart = cartSum > nada;
+  const fullCart = cartSum > zero;
 
   useEffect(() => {
     setCartHere(cart);
@@ -38,14 +40,18 @@ const Checkout = (props) => {
     await postOrder(token, cart, userData);
     localStorage.removeItem('cart');
     setCart([]);
-    alert('Compra realizada com sucesso!');
+    setAlertCompraFinalizada('Compra realizada com sucesso!');
     // <Redirect to="/products" />
-    return props.history.push('/products'); // handleHandleSubmit
+    setTimeout(() => {
+      props.history.push('/products');
+    }, tempoEspera);
+    return true; // handleHandleSubmit
   };
 
   return (
     <div className="Checkout">
       <Header>Finalizar Pedido</Header>
+      <span>{ alertCompraFinalizada }</span>
       <div className="pedido">
         <h2 className="checkoutitle">Produtos no carrinho:</h2>
         <div className="legenda">
@@ -62,9 +68,10 @@ const Checkout = (props) => {
           }
         </div>
       </div>
-      <h3 data-testid="order-total-value" className="total">
+      <p data-testid="order-total-value" className="total">
         { `TOTAL: R$ ${cartSum.toString().replace('.', ',')}` }
-      </h3>
+      </p>
+      { Number(cartSum) === zero ? <h1>Não há produtos no carrinho</h1> : null }
       <div className="deliveryForm">
         <h2 className="checkoutitle">Endereço de entrega:</h2>
         <div className="inputs">

@@ -1,7 +1,6 @@
-
-import Header from '../../components/header';
 import React, { useEffect, useState } from 'react';
 
+import Header from '../../components/header';
 import './index.css';
 import { getProfileInfo, postProfileInfo } from '../../services/requestAPI';
 
@@ -10,30 +9,33 @@ const Perfil = () => {
   const [initialName, setInitialName] = useState('');
   const [alertUpdate, setAlertUpdate] = useState('');
   const [validName, setValidName] = useState(false);
-  const validationName = (value) => (/^[A-Za-z \s]{12,}$/.test(value) && value !== initialName ? setValidName(true) : setValidName(false));
   const [email, setEmail] = useState('');
-  const token = localStorage.getItem('token');
-  
-  useEffect(async () => {
-    console.log(token)
-    const { data:{ user } } = await getProfileInfo(token);
-    setName(user.name)
-    setEmail(user.email)
-    setInitialName(user.name)
+
+  useEffect(() => {
+    async function asyncMe() {
+      const token = localStorage.getItem('token');
+      const { data: { user } } = await getProfileInfo(token);
+      setName(user.name);
+      setEmail(user.email);
+      setInitialName(user.name);
+    }
+    asyncMe();
   }, []);
 
-  useEffect(()=>{ validationName(name);
+  useEffect(() => {
+    const validationName = (value) => (/^[A-Za-z \s]{12,}$/.test(value) && value !== initialName ? setValidName(true) : setValidName(false));
+    validationName(name);
   }, [name, initialName]);
 
   const handleChanged = (e) => {
     setName(e.target.value);
   };
-  
+
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    console.log('pos default')
+    e.preventDefault();
+    const token = localStorage.getItem('token');
     setAlertUpdate('Atualização concluída com sucesso');
-    await postProfileInfo(token,name, email);
+    await postProfileInfo(token, name, email);
     /* const tempo = 10000;
     setTimeout(() => {
       setAlertUpdate('Atualização concluída com sucesso');

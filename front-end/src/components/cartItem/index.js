@@ -11,6 +11,7 @@ const CartItem = (props) => {
   const exists = cart.find((produto) => produto.id === item.id);
 
   const zero = 0;
+  const two = 2;
   if (!exists || exists.quantity === zero) {
     return null;
   }
@@ -22,21 +23,20 @@ const CartItem = (props) => {
     }
     return null;
   };
+
   return (
     <div className="cartItem" key={ item.name }>
       <p data-testid={ `${index}-product-qtd-input` }>{ exists.quantity ? exists.quantity : zero }</p>
       <p data-testid={ `${index}-product-name` }>{ item.name }</p>
       <p data-testid={ `${index}-product-unit-price` }>
-        `R$ $
-        {item.price.toString().replace('.', ',')}
-        `
+        {`(R$ ${item.price.toString().replace('.', ',')} un)`}
       </p>
       <p data-testid={ `${index}-product-total-value` }>
-        { `R$ ${(item.price * item.quantity).toString().replace('.', ',')}` }
+        { `R$ ${(item.price * item.quantity).toFixed(two).replace('.', ',')}` }
       </p>
       <button
         type="button"
-        data-testid={ `${index}-removal-button"` }
+        data-testid={ `${index}-removal-button` }
         onClick={ () => exclude() }
       >
         X
