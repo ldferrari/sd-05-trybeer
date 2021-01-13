@@ -51,8 +51,10 @@ function ClientProfile() {
         type="button"
         data-testid="profile-save-btn"
         disabled={ (name === name1) }
-        onClick={ () => updateName(name1, email).then((result) => saveInStorage(result.name),
-          document.getElementById('update').innerHTML = 'Atualização concluída com sucesso') }
+        onClick={ () => {
+          updateName(name1, email).then((result) => saveInStorage(result.name),
+            document.getElementById('update').innerHTML = 'Atualização concluída com sucesso');
+        } }
       >
         Salvar
       </button>
