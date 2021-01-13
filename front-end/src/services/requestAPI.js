@@ -9,16 +9,15 @@ const config = (token) => ({
 
 const postGetItems = async (token) => axios.get('http://localhost:3001/products', config(token));
 
-const getProfileInfo = async (token) => {
-  axios.get('http://localhost:3001/profile', config(token));
-};
+const getProfileInfo = async (token) =>  axios.get('http://localhost:3001/profile', config(token));
+;
 
-const postProfileInfo = async (token, name, email) => {
-  axios.post('http://localhost:3001/profile', {
+const postProfileInfo = async (token, name, email) => 
+  axios.put('http://localhost:3001/profile', {
     name,
     email,
-  },config(token)).then(() => 'Sucesso!');
-};
+  },config(token));
+;
 
 const postLogin = async ({ email, password }) => axios
   .post('http://localhost:3001/login', {
