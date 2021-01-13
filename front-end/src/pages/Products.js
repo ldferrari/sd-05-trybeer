@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import TryBeerContext from '../context/TryBeerContext';
 import Header from '../components/Header';
-import Sidebar from '../components/Sidebar';
-import ProductsBody from '../components/ProductsBody';
+import Card from '../components/Card';
 
-const Products = () => (
-  <div>
-    <Header title="TryBeer" />
-    <Sidebar />
-    <ProductsBody />
-  </div>
-);
+const Products = () => {
+  const { productsList } = useContext(TryBeerContext);
+  return (
+    <div>
+      <Header title="TryBeer" />
+      <div className="products-list">
+        { productsList.map((element) => (
+          <Card key={ element } name={ element } />
+        )) }
+        {/* carrinho soma atual */}
+      </div>
+    </div>
+  );
+};
 
 export default Products;

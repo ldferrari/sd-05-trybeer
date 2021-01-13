@@ -4,16 +4,11 @@ import PropTypes from 'prop-types';
 import Sidebar from './Sidebar';
 
 export default function Header(props) {
-<<<<<<< HEAD
-  const [role] = useState('administrator');
-  const [active, setActive] = useState(false);
-=======
   const userData = JSON.parse(localStorage.getItem('user'));
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
   // const role = userData?.user?.role;
   const role = userData && userData.user && userData.user.role;
   const [active, setActive] = useState(role === 'administrator');
->>>>>>> d8cb8c0ba5e3dda59bb112adc7ae49945dbba79c
   const { title } = props;
 
   return (
