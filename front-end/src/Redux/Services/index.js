@@ -64,8 +64,6 @@ export const registerUser = (data) => (
     (response) => response
       .json()
       .then((json) => {
-        console.log('entrou no then do register user');
-        console.log(json);
         if (json.message) {
           return Promise.reject(json.message);
         }
@@ -75,5 +73,5 @@ export const registerUser = (data) => (
   )
 );
 
-// Por favor, checar forma dessas funções. O lint aqui tá bem 
+// Por favor, checar forma dessas funções. O lint aqui tá bem
 // chatinho nesse lance de retorno, quebra de linha, etc

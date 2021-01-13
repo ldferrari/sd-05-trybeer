@@ -21,16 +21,16 @@ const Register = ({ registerUser, userError }) => {
   }
 
   // ++++++++++++++++++++++++++
-  
+
   // useEffect precisa colocar a função que sera usada nas dependências
   // Que por sua vez, se for uma função que que muda algum state local, pode dar um loop estranho.
   // Lint não permite
-  
+
   // useEffect(() => {
     //   validate();
-    // }, [name, email, password, validate]); 
-    
-    // ++++++++++++++++++++++++++
+    // }, [name, email, password, validate]);
+
+  // ++++++++++++++++++++++++++
 
   if (shouldRedirect && !userError) {
     if (!isSeller) {
@@ -99,13 +99,13 @@ const Register = ({ registerUser, userError }) => {
             type="checkbox"
             id="quero-vender"
             data-testid="signup-seller"
-            onChange={ ({ target: { checked }} ) => {
+            onChange={ ({ target: { checked } }) => {
               setIsSeller(checked);
-            }}
+            } }
           />
         </label>
         <button
-          disabled={isDisabled}
+          disabled={ isDisabled }
           type="button"
           data-testid="signup-btn"
           onClick={ () => registerHandle() }
