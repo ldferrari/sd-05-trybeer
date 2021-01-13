@@ -7,15 +7,19 @@ import Input from '../Components/Input';
 
 function Checkout({ history }) {
   const [buttonShoulBeDisabled, setbuttonShoulBeDisabled] = useState(false);
+  const [street, setStreet] = useState('');
+  const [houseNumber, setHouseNumber] = useState('');
   const [isTotalZero, setisTotalZero] = useState(false);
 
   useEffect(() => {
 
-    if(isTotalZero) {
+    if(isTotalZero || street === '' || houseNumber === '') {
       setbuttonShoulBeDisabled(true)
+    } else {
+      setbuttonShoulBeDisabled(false)
     }
 
-  }, [isTotalZero, setbuttonShoulBeDisabled] )
+  }, [isTotalZero, setbuttonShoulBeDisabled, street, houseNumber] )
 
   return (
     <div>
@@ -25,11 +29,11 @@ function Checkout({ history }) {
       <h3>Endereço</h3>
       <label htmlFor="rua">Rua:</label>
       <br />
-      <Input test={'checkout-street-input'} id={'rua'} />
+      <Input test={'checkout-street-input'} id={'rua'}  onChange={ (e) => setStreet(e.target.value) } />
       <br />
       <label htmlFor="numero-da-casa">Número da casa:</label>
       <br />
-      <Input test={'checkout-house-number-input'} id={'numero-da-casa'} />
+      <Input test={'checkout-house-number-input'} id={'numero-da-casa'} onChange={ (e) => setHouseNumber(e.target.value) } />
       <button disabled={buttonShoulBeDisabled}data-testid="checkout-finish-btn">Finalizar Pedido</button>
     </div>
   );

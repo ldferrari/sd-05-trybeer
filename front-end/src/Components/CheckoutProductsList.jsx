@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 import CheckoutProductCard from './CheckoutProductCard';
 
 const mock = [
@@ -23,6 +24,12 @@ function CheckoutProductsList({ setisTotalZero }) {
     0,
   );
 
+  useEffect(() => {
+    if (total <= 0) {
+      setisTotalZero(true);
+    }
+  }, [orderedProducts]);
+
   const triggerDelete = (index) => {
     let orderedProductsClone = [...orderedProducts];
     orderedProductsClone.splice(index, 1);
@@ -42,5 +49,9 @@ function CheckoutProductsList({ setisTotalZero }) {
     </div>
   );
 }
+
+CheckoutProductsList.propTypes = {
+  setisTotalZero: PropTypes.func.isRequired,
+};
 
 export default CheckoutProductsList;
