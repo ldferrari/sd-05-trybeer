@@ -16,15 +16,21 @@ export default function AdminProductsList({ sale, index }) {
 
   const two = 2;
 
+  if (!product.price) return <div>Carregando...</div>;
+
   return (
     <li>
       <span data-testid={ `${index}-product-qtd` }>{sale.quantity}</span>
       -
       <span data-testid={ `${index}-product-name` }>{product.name}</span>
-      - R$
-      <span data-testid={ `${index}-order-unit-price` }>{product.price}</span>
       -
-      <span data-testid={ `${index}-product-total-value` }>{(sale.quantity * product.price).toFixed(two)}</span>
+      <span data-testid={ `${index}-order-unit-price` }>
+        { `(R$ ${product.price.replace('.', ',')})` }
+      </span>
+      -
+      <span data-testid={ `${index}-product-total-value` }>
+        { `R$ ${((sale.quantity * product.price).toFixed(two)).replace('.', ',')}` }
+      </span>
     </li>
   );
 }
