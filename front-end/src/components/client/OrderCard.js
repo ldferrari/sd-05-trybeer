@@ -11,13 +11,15 @@ export default function OrderCard({ order, index }) {
   date = date.split('-');
 
   return (
-    <div className="order-card" data-testid={`${index}-order-card-container`}>
-      <Link className="order-link" to={`/orders/${order.id}`}>
-        <span data-testid={`${index}-order-number`}>Pedido {order.id}</span>
-        <span data-testid={`${index}-order-total-value`}>
-          R$ {(order.total_price).replace('.', ',')}
+    <div className="order-card" data-testid={ `${index}-order-card-container` }>
+      <Link className="order-link" to={ `/orders/${order.id}` }>
+        <span data-testid={ `${index}-order-number` }>
+          { `Pedido ${order.id}` }
         </span>
-        <p data-testid={`${index}-order-date`}>{`${date[2]}/${date[1]}`}</p>
+        <p data-testid={ `${index}-order-total-value` }>
+          { `R$ ${(order.total_price).replace('.', ',')}` }
+        </p>
+        <p data-testid={ `${index}-order-date` }>{`${date[2]}/${date[1]}` }</p>
       </Link>
     </div>
   );
