@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Redirect, withRouter } from 'react-router-dom';
 import ClientMenu from '../../components/client/ClientMenu';
 import { getUser } from '../../services/localStorage';
 import { getUserSales } from '../../services/fetch';
 import OrderCard from '../../components/client/OrderCard';
 
-function Orders() {
+function Orders({ history }) {
   const [isLogged, setIsLogged] = useState(true);
   const [orders, setOrders] = useState([]);
   useEffect(() => {
@@ -13,7 +14,9 @@ function Orders() {
   }, []);
   useEffect(() => {
     const user = getUser();
-
+    if (!user) {
+      return history.push('/login')
+    }
     getUserSales(user.email).then((response) => setOrders(response));
   }, []);
 
@@ -26,4 +29,8 @@ function Orders() {
   );
 }
 
-export default Orders;
+export default withRouter(Orders);
+
+Orders.propTypes = {
+  history: PropTypes.arrayOf(Object).isRequired,
+};
