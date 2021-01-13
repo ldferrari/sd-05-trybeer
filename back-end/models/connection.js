@@ -14,4 +14,19 @@ const config = {
 
 const connection = mysql.createPool(config);
 
+const getAll = async () => {
+  const [users] = await connection.execute('SELECT * FROM users;');
+  console.log(users);
+};
+
+const getAllProducts = async () => {
+  const [products] = await connection.execute('SELECT * FROM products');
+  // console.log(products);
+  return products;
+};
+
+getAllProducts();
+
+getAll();
+
 module.exports = connection;

@@ -1,7 +1,6 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import RegisterPage from './pages/general/RegisterPage';
-import HomePage from './pages/general/HomePage';
 import ClientProductPage from './pages/client/ClientProductPage';
 import ClientProfilePage from './pages/client/ClientProfilePage';
 import LoginPage from './pages/general/LoginPage';
@@ -12,12 +11,16 @@ function App() {
   return (
     <div className="App">
       <Switch>
+        <Route path="/admin/orders" component={ ClientMeusPedidos } />
+        {/*         trocar rota admin/orders  */}
         <Route path="/login" component={ LoginPage } />
         <Route path="/register" component={ RegisterPage } />
         <Route path="/products" component={ ClientProductPage } />
         <Route path="/profile" component={ ClientProfilePage } />
         <Route path="/orders" component={ ClientMeusPedidos } />
-        <Route path="/" component={ HomePage } />
+        <Route path="/checkout" component={ ClientMeusPedidos } />
+        {/*         trocar rota checkout  */}
+        <Route path="/" component={ () => <Redirect to="/login" /> } />
       </Switch>
     </div>
   );
