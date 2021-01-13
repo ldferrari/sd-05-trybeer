@@ -5,6 +5,7 @@ import ClientProductPage from './pages/client/ClientProductPage';
 import ClientProfilePage from './pages/client/ClientProfilePage';
 import LoginPage from './pages/general/LoginPage';
 import ClientOrderPage from './pages/client/ClientOrderPage';
+import AdminProfilePage from './pages/admin/AdminProfilePage';
 import './css/app.css';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Switch>
         <Route path="/admin/orders" component={ ClientOrderPage } />
         {/*         trocar rota admin/orders  */}
+        <Route path="/admin/profile" component={ AdminProfilePage } />
         <Route path="/login" component={ LoginPage } />
         <Route path="/register" component={ RegisterPage } />
         <Route path="/products" component={ ClientProductPage } />
