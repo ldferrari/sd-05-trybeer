@@ -4,7 +4,7 @@ import {
   Login,
   Profile,
   Checkout,
-  Orders
+  Orders,
   Products,
   Register,
   OrderAdmin,

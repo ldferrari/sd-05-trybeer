@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-
-import Header from '../../components/header';
-import './index.css';
-import { getProfileInfo, postProfileInfo } from '../../services/requestAPI';
 import { Redirect } from 'react-router-dom';
+
+import './index.css';
+
+import { getProfileInfo, postProfileInfo } from '../../services/requestAPI';
+import Header from '../../components/header';
 
 const Perfil = () => {
   const [name, setName] = useState('');

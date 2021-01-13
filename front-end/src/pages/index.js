@@ -5,6 +5,7 @@ import Products from './Products';
 import Register from './Register';
 import OrderAdmin from './OrderAdmin';
 import ProfileAdmin from './ProfileAdmin';
+import Orders from './orders';
 
 export {
   Login,
@@ -14,4 +15,5 @@ export {
   Register,
   OrderAdmin,
   ProfileAdmin,
+  Orders,
 };
