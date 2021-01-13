@@ -85,13 +85,15 @@ function Register({ history }) {
         onChange={ (e) => handlePasswordChange(e) }
       />
       <div>
-        <input
-          data-testid="signup-seller"
-          type="checkbox"
-          id="vender"
-          onClick={ () => setAdmin(true) }
-        />
-        <label htmlFor="vender">Quero Vender</label>
+        <label htmlFor="vender">
+          <input
+            data-testid="signup-seller"
+            type="checkbox"
+            id="vender"
+            onClick={ () => setAdmin(true) }
+          />
+          Quero Vender
+        </label>
       </div>
       <button
         type="button"
