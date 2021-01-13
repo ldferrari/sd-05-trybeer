@@ -1,28 +1,27 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CheckoutProductsList from '../Components/CheckoutProductsList';
 import Header from '../Components/Header';
 import Input from '../Components/Input';
 
-const orderedProducts = [
-  {
-    name: 'Becks 330ml',
-    price: 4.99,
-    quantity: 3,
-  },
-  {
-    name: 'Litraço de 4',
-    price: 8.89,
-    quantity: 5,
-  },
-];
 
 function Checkout({ history }) {
+  const [buttonShoulBeDisabled, setbuttonShoulBeDisabled] = useState(false);
+  const [isTotalZero, setisTotalZero] = useState(false);
+
+  useEffect(() => {
+
+    if(isTotalZero) {
+      setbuttonShoulBeDisabled(true)
+    }
+
+  }, [isTotalZero, setbuttonShoulBeDisabled] )
+
   return (
     <div>
       <Header pathname={history.location.pathname} />
       <h3>Produtos</h3>
-      <CheckoutProductsList orderedProducts={orderedProducts} />
+      <CheckoutProductsList  setisTotalZero={setisTotalZero}/>
       <h3>Endereço</h3>
       <label htmlFor="rua">Rua:</label>
       <br />
@@ -31,7 +30,7 @@ function Checkout({ history }) {
       <label htmlFor="numero-da-casa">Número da casa:</label>
       <br />
       <Input test={'checkout-house-number-input'} id={'numero-da-casa'} />
-      <button data-testid="checkout-finish-btn">FInalizar Pedido</button>
+      <button disabled={buttonShoulBeDisabled}data-testid="checkout-finish-btn">Finalizar Pedido</button>
     </div>
   );
 }

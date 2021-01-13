@@ -1,35 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
+import CheckoutProductCard from './CheckoutProductCard';
 
-const cssProvisorio = {
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  width: '35%',
-};
-// Me falem se tinha melhor opção que usar várias divs, por favor, Paulo
-function CheckoutProductCard({ item, i }) {
-  return (
-    <div style={cssProvisorio}>
-      <div data-testid={`${i}-product-qtd-input`}>{item.quantity}</div>
-      <div data-testid={`${i}-product-name`}>{item.name}</div>
-      <div data-testid={`${i}-product-total`}>
-        R$ {item.quantity * item.price}
-      </div>
-      <div data-testid={`${i}-product-unit-price`}>(R$ {item.price} un)</div>
-      <button data-testid={`${i}-removal-button`}>X</button>
-    </div>
-  );
-}
+const mock = [
+  {
+    name: 'Becks 330ml',
+    price: 4.99,
+    quantity: 3,
+  },
+  {
+    name: 'Litraço de 4',
+    price: 8.89,
+    quantity: 5,
+  },
+];
 
-function CheckoutProductsList({ orderedProducts }) {
+function CheckoutProductsList({ setisTotalZero }) {
+  // provávelmente os produtos estarão vindo da STORE
+  const [orderedProducts, setOrderedProducts] = useState(mock);
+
   const total = orderedProducts.reduce(
     (acc, product) => acc + product.quantity * product.price,
     0,
   );
+
+  const triggerDelete = (index) => {
+    let orderedProductsClone = [...orderedProducts];
+    orderedProductsClone.splice(index, 1);
+    setOrderedProducts(orderedProductsClone);
+  };
+
   return (
     <div>
       {orderedProducts.map((item, index) => (
-        <CheckoutProductCard item={item} i={index} />
+        <CheckoutProductCard
+          item={item}
+          i={index}
+          triggerDelete={triggerDelete}
+        />
       ))}
       <div data-testid="order-total-value">Total: R$ {total}</div>
     </div>
