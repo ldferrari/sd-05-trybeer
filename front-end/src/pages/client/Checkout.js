@@ -7,9 +7,10 @@ import '../../css/client/checkout.css';
 import { createNewSale } from '../../services/fetch';
 
 function Checkout() {
+  const initialState = 0;
   const [isLogged, setIsLogged] = useState(true);
   const [street, setStreet] = useState('');
-  const [houseNum, setHouseNum] = useState(0);
+  const [houseNum, setHouseNum] = useState(initialState);
   const [statusSale, setStatusSale] = useState(false);
   const { totalPrice } = useContext(TrybeerContext);
 
@@ -17,7 +18,7 @@ function Checkout() {
   const user = JSON.parse(localStorage.getItem('user'));
   const now = new Date();
   const year = now.getFullYear();
-  const month = now.getMonth() === 0 ? '01' : now.getMonth();
+  const month = now.getMonth() === initialState ? '01' : now.getMonth();
   const day = now.getDate();
   const date = `${day}/${month}/${year}`;
 
@@ -35,9 +36,10 @@ function Checkout() {
   };
 
   const handleResult = (result) => {
+    const time = 1000;
     if (result.message === 'Created') {
       document.getElementById('sucess').innerHTML = 'Compra realizada com sucesso!';
-      setTimeout(() => { setStatusSale(true); }, 1000);
+      setTimeout(() => { setStatusSale(true); }, time);
     }
   };
 
@@ -45,10 +47,12 @@ function Checkout() {
     <div>
       <ClientMenu data-testid="top-title" title="Finalizar pedido" />
       <h3>Produtos</h3>
-      {totalPrice === 0 && <h2>Não há produtos no carrinho</h2>}
-      {totalPrice !== 0 && (
+      {!totalPrice && <h2>Não há produtos no carrinho</h2>}
+      {totalPrice && (
         <div className="orders-list">
-          {products.map((item, index) => <CheckoutCard item={ item } index={ index } />)}
+          { products.map((item, index) => (
+            <CheckoutCard item={ item } index={ index } key={ item } />
+          )) }
         </div>
       )}
       <p data-testid="order-total-value">
@@ -81,10 +85,14 @@ function Checkout() {
         </label>
       </div>
       <button
+        type="button"
         data-testid="checkout-finish-btn"
-        disabled={ totalPrice === 0 || houseNum === 0 || street === '' }
+        disabled={ totalPrice === initialState || houseNum === initialState || street === '' }
         // onClick={() => done()}
-        onClick={ () => createNewSale(user.email, totalPrice, street, houseNum, date, products).then((result) => handleResult(result)) }
+        onClick={ () => {
+          createNewSale(user.email, totalPrice, street, houseNum, date, products)
+            .then((result) => handleResult(result));
+        } }
       >
         Finalizar pedido
       </button>

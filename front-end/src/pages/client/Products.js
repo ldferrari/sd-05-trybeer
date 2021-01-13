@@ -24,7 +24,7 @@ function Products() {
         {/* {fetching && <p>Loading...</p>} */}
         {/* BACK - como ver que o fetch acabou? */}
         {dataProducts.map((product, index) => (
-          <EachProduct product={ product } index={ index } />
+          <EachProduct product={ product } index={ index } key={ product } />
         ))}
       </div>
       <Link to="/checkout">
