@@ -1,14 +1,14 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import Checkout from './pages/checkout';
-import OrderAdmin from './pages/orderAdmin';
-import Register from './pages/Register/Register';
 import {
   Login,
   Profile,
-  ProfileAdmin,
+  Checkout,
   Products,
+  Register,
+  OrderAdmin,
+  ProfileAdmin,
 } from './pages';
 
 const Rotas = () => (

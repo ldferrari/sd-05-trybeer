@@ -3,7 +3,7 @@ import Profile from './Profile';
 import Checkout from './Checkout';
 import Products from './Products';
 import Register from './Register';
-import OrdersAdmin from './OrdersAdmin';
+import OrderAdmin from './OrderAdmin';
 import ProfileAdmin from './ProfileAdmin';
 
 export {
@@ -12,6 +12,6 @@ export {
   Checkout,
   Products,
   Register,
-  OrdersAdmin,
+  OrderAdmin,
   ProfileAdmin,
 };
