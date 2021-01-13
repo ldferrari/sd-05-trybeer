@@ -10,7 +10,7 @@ import '../../css/loginPage.css';
 export default function LoginPage(props) {
   const [emailValidate, setEmailValidate] = useState(false);
   const [passwordValidate, setPasswordValidate] = useState(false);
-  const { userData, setUserData, setLoggedIn } = useContext(GeneralContext);
+  const { userData, setUserData } = useContext(GeneralContext);
 
   const login = async (data) => {
     const usuario = await loginData(data);
@@ -29,7 +29,6 @@ export default function LoginPage(props) {
         name: usuario.name,
       }),
     );
-    setLoggedIn(true);
     if (usuario.role === 'administrator') return props.history.push('/admin/orders');
     if (usuario.role === 'client') return props.history.push('/products');
     return true;

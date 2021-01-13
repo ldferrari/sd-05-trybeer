@@ -15,14 +15,11 @@ const GeneralProvider = ({ children }) => {
     role: '',
     name: '',
   });
-  const [loggedIn, setLoggedIn] = useState(false);
 
   const context = {
     initialUser,
     userData,
     setUserData,
-    loggedIn,
-    setLoggedIn,
   };
 
   return <GeneralContext.Provider value={ context }>{children}</GeneralContext.Provider>;

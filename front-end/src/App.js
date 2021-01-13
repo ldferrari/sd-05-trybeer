@@ -11,6 +11,8 @@ function App() {
   return (
     <div className="App">
       <Switch>
+        <Route path="/admin/orders" component={ ClientOrderPage } />
+        {/*         trocar rota admin/orders  */}
         <Route path="/login" component={ LoginPage } />
         <Route path="/register" component={ RegisterPage } />
         <Route path="/products" component={ ClientProductPage } />

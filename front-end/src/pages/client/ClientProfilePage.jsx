@@ -7,12 +7,14 @@ import updateUserNameAPI from '../../services/apis';
 import '../../css/clientProfilePage.css';
 
 export default function ClientProfilePage() {
-  const { userData, setUserData, loggedIn } = useContext(GeneralContext);
+  const { userData, setUserData } = useContext(GeneralContext);
   const [nameEqual, setNameEqual] = useState(true);
   const [localName, setLocalName] = useState(userData.name);
   const [apiSuccess, setApiSuccess] = useState(false);
 
-  if (!loggedIn) return <Redirect to="/login" />;
+  const token = localStorage.getItem('token') || null;
+
+  if (!token) return <Redirect to="/login" />;
 
   const handleChange = (e) => {
     setNameEqual(false);
