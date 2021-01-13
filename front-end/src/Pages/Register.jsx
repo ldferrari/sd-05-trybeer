@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import Input from '../Components/Input';
 import { registerUserAct } from '../../src/Redux/Actions/user';
-import { connect } from 'react-redux';
+import { func } from 'prop-types';
 
 const Register = ({ registerUser }) => {
   const [name, setName] = useState(null);
@@ -9,6 +11,7 @@ const Register = ({ registerUser }) => {
   const [password, setPassword] = useState(null);
   const [isSeller, setIsSeller] = useState(false);
   const [isDisabled, isSetDisabled] = useState(true);
+  const [shouldRedirect, setShouldRedirect] = useState(false);
 
   function validate() {
     const validName = /^[a-zA-Z ]{12}[a-zA-Z ]*$/.test(name);
@@ -22,9 +25,19 @@ const Register = ({ registerUser }) => {
     validate();
   }, [name, email, password]);
 
+  if (shouldRedirect) {
+    if (!isSeller) {
+      return <Redirect to="/products" />;
+    } else {
+      return <Redirect to="/admin/orders" />; // conferir se é este endPointMesmo
+    }
+  }
+
   function registerHandle() {
     const role = isSeller ? 'administrator' : 'client';
     registerUser({ name, email, password, role });
+
+    setShouldRedirect(true);
   }
 
   return (
@@ -78,8 +91,8 @@ const Register = ({ registerUser }) => {
 // Cadastrar e redirecionar para a tela do cliente ou admin
 
 // const mapStateToProps = ({ userRequestReducer }) => ({
-//   userData: userRequestReducer.userData,
-// });
+// userData: userRequestReducer.userData,
+// })
 
 const mapDispatchToProps = (dispatch) => ({
   registerUser: (newUserData) => dispatch(registerUserAct(newUserData)),
