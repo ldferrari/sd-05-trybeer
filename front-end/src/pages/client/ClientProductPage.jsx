@@ -10,28 +10,18 @@ import '../../css/clientProductPage.css';
 const Products = () => {
   const [products, setProducts] = useState([]);
   const {
-    cart, setCart, cartItens, setCartItens,
+    cart,
+    setCart,
+    cartItens,
+    setCartItens,
   } = useContext(ClientContext);
-  // const { loggedIn } = useContext(GeneralContext);
   const token = localStorage.getItem('token') || null;
-
-  const dois = 2;
   const zero = 0;
+  const dois = 2;
 
   // console.log(products);
 
-  // const initialCart = localStorage.getItem('cart');
-
-  // useEffect(() => {
-  //   // const cartValue = (parseFloat(localStorage.getItem('cart')) || 0) + cart;
-  //   // console.log(typeof cartValue);
-  //   if (cart !== 0) {
-  //     localStorage.setItem('cart', (cart).toString())
-  //   }}, [cart]);
-
   useEffect(() => {
-    // const cartValue = (parseFloat(localStorage.getItem('cart')) || 0) + cart;
-    // console.log(typeof cartValue);
     if (cart >= zero) {
       localStorage.setItem('cart', (cart).toString());
     }
@@ -45,12 +35,6 @@ const Products = () => {
     localStorage.setItem('cart itens', JSON.stringify(cartIt));
     setCartItens(cartIt);
   }, [setCart, setCartItens]);
-
-  // useEffect(() => {
-  //   productsApi().then(response => setProducts(response));
-  //   const cartValue = (parseFloat(localStorage.getItem('cart')) || 0);
-  //   setCart(cartValue)
-  // }, []);
 
   if (!token) return <Redirect to="/login" />;
 

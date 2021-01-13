@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import GeneralContext from '../../context/general/GeneralContext';
 import loginData from '../../services/general/fetchLoginData';
 import validateEmail from '../../services/general/validateEmail';
@@ -9,7 +9,7 @@ import '../../css/loginPage.css';
 export default function LoginPage(props) {
   const [emailValidate, setEmailValidate] = useState(false);
   const [passwordValidate, setPasswordValidate] = useState(false);
-  const { userData, setUserData, loggedIn, setLoggedIn } = useContext(GeneralContext);
+  const { userData, setUserData, setLoggedIn } = useContext(GeneralContext);
 
   const login = async (data) => {
     const usuario = await loginData(data);
@@ -27,12 +27,12 @@ export default function LoginPage(props) {
         role: usuario.role,
         name: usuario.name,
       }),
-      );
-      setLoggedIn(true);
+    );
+    setLoggedIn(true);
     if (usuario.role === 'administrator') return props.history.push("/admin/orders");
     if (usuario.role === 'client') return props.history.push("/products");
   };
-  
+
   return (
     <div className="login">
       <div className="inputs">
@@ -88,3 +88,7 @@ export default function LoginPage(props) {
     </div>
   );
 }
+
+QuantityButton.propTypes = {
+  history: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
