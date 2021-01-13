@@ -26,8 +26,7 @@ export default function Sales() {
           <li data-testid={ `${index}-order-card-container` }>
             <div>
               <span data-testid={ `${index}-order-number` }>
-                Pedido
-                {sale.id}
+                {`Pedido ${sale.id}`}
               </span>
               <span data-testid={ `${index}-order-date` }>{formatDate(sale.sale_date)}</span>
               <span data-testid={ `${index}-order-total-value` }>

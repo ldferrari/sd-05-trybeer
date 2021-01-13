@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import './cssComponents/sideBar.css';
 
 export default function SideBar({ userRole, active }) {
-  // const clearAll = () => localStorage.clear();
   return (
     <aside className={ `side-container ${active && 'appear'}` }>
       {userRole === 'client' && (
@@ -27,7 +26,7 @@ export default function SideBar({ userRole, active }) {
         <div className="admin-side-bar-container side-bar">
           <div>
             <Link to="/admin/orders" data-testid="side-menu-item-orders">
-              Meus pedidos
+              Meus Pedidos
             </Link>
             <Link to="/admin/profile" data-testid="side-menu-item-profile">
               Meu perfil

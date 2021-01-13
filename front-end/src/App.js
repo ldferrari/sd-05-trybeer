@@ -30,8 +30,8 @@ function App() {
             <Route exact path="/register" component={ Register } />
             <Route exact path="/profile" component={ Profile } />
             <Route exact path="/admin/profile" component={ Profile } />
-            {/* <Route exact patch="/admin/orders" component={ Orders } /> */}
             <Route exact path="/orders" component={ Orders } />
+            <Route exact patch="/admin/orders" component={ Orders } />
           </Switch>
         </BrowserRouter>
       </Provider>
