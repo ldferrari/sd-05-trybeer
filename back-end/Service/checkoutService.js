@@ -31,7 +31,6 @@ const checkout = async (products, deliveryAddress, deliveryNumber, id) => {
       statusCode: 401,
     };
   }
-  
   const total = products.reduce((acc, cur) => acc + cur.price * cur.quantity, 0);
   // console.log(id);
   const sales = await model.createSale(id, total, deliveryAddress, deliveryNumber);
