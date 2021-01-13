@@ -1,9 +1,17 @@
 import Login from './Login';
 import Profile from './Profile';
-import ProfileAdmin from './ProfileAdmin';
+import Checkout from './Checkout';
 import Products from './Products';
-import Register from './Register/Register';
+import Register from './Register';
+import OrdersAdmin from './OrdersAdmin';
+import ProfileAdmin from './ProfileAdmin';
 
 export {
-  Login, Profile, ProfileAdmin, Products, Register,
+  Login,
+  Profile,
+  Checkout,
+  Products,
+  Register,
+  OrdersAdmin,
+  ProfileAdmin,
 };

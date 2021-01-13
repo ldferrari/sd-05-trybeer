@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Header from '../../components/header';
 import './index.css';
 import { getProfileInfo, postProfileInfo } from '../../services/requestAPI';
+import { Redirect } from 'react-router-dom';
 
 const Perfil = () => {
   const [name, setName] = useState('');
@@ -10,6 +11,7 @@ const Perfil = () => {
   const [alertUpdate, setAlertUpdate] = useState('');
   const [validName, setValidName] = useState(false);
   const [email, setEmail] = useState('');
+  const [tokenLogged, setTokenLogged] = useState('');
 
   useEffect(() => {
     async function asyncMe() {
@@ -18,6 +20,7 @@ const Perfil = () => {
       setName(user.name);
       setEmail(user.email);
       setInitialName(user.name);
+      setTokenLogged(token);
     }
     asyncMe();
   }, []);
@@ -42,6 +45,11 @@ const Perfil = () => {
     }, tempo); */
   };
   const nomes = name;
+
+  if (!tokenLogged) {
+    return <Redirect to="/login" />;
+  }
+
   return (
     <div className="App">
       <Header>Meu perfil</Header>
