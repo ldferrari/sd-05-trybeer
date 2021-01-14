@@ -28,6 +28,7 @@ const ProdCard = (props) => {
         index={ index }
         id={ product.id }
         price={ product.price }
+        name={ product.name }
       />
     </div>
   );
