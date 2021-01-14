@@ -19,10 +19,15 @@ const Products = () => {
     <div>
       <Header title="TryBeer" />
       <div className="products-list">
-        {productsList
-          && productsList.map((product) => (
-            <Card key={ product.id } name={ product.name } />
-          ))}
+        { productsList
+          && productsList.map((product, index) => (
+            <Card
+              index={ index }
+              key={ product.id }
+              name={ product.name }
+              price={ product.price }
+            />
+          )) }
         {/* carrinho soma atual */}
       </div>
     </div>
