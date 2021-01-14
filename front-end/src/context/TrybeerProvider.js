@@ -14,6 +14,7 @@ const TrybeerProvider = ({ children }) => {
   const [click, setClick] = useState(false);
   const [totalPrice, setTotalPrice] = useState(Number(localStorage.getItem('totalPrice') || zero));
   const [status, setStatus] = useState();
+  const [theme, setTheme] = useState('light');
 
   const context = {
     name,
@@ -30,6 +31,8 @@ const TrybeerProvider = ({ children }) => {
     setTotalPrice,
     status,
     setStatus,
+    theme,
+    setTheme,
   };
 
   return (

@@ -13,7 +13,7 @@ ReactDOM.render(
   // <PossivelOutroProvider>
   <TrybeerProvider>
     <React.StrictMode>
-      <App />
+      <App/>
     </React.StrictMode>
   </TrybeerProvider>,
   // </PossivelOutroProvider>,

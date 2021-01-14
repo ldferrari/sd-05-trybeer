@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   BrowserRouter,
   Switch,
   Route,
   Redirect,
 } from 'react-router-dom';
-// import './App.css';
+import { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme } from './theme';
+import { GlobalStyles } from './global';
+import TrybeerContext from './context/TrybeerContext';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import ClientProfile from './pages/client/ClientProfile';
@@ -18,7 +21,11 @@ import PendingOrders from './pages/admin/PendingOrders';
 import AdminOrdersDetails from './pages/admin/AdminOrdersDetails';
 
 function App() {
+  const { theme } = useContext(TrybeerContext);
   return (
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+    <>
+    <GlobalStyles />
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
@@ -36,6 +43,8 @@ function App() {
         <Route exact path="/admin/orders/:id" component={ AdminOrdersDetails } />
       </Switch>
     </BrowserRouter>
+    </>
+    </ThemeProvider>
   );
 }
 
