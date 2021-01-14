@@ -5,13 +5,14 @@ import ClientProductPage from './pages/client/ClientProductPage';
 import ClientProfilePage from './pages/client/ClientProfilePage';
 import LoginPage from './pages/general/LoginPage';
 import ClientMeusPedidos from './pages/client/ClientMeusPedidos';
-import './css/app.css';
+import AdminPedidosPendentes from './pages/admin/AdminPedidosPendentes';
+import './css/client/app.css';
 
 function App() {
   return (
     <div className="App">
       <Switch>
-        <Route path="/admin/orders" component={ ClientMeusPedidos } />
+        <Route path="/admin/orders" component={ AdminPedidosPendentes } />
         {/*         trocar rota admin/orders  */}
         <Route path="/login" component={ LoginPage } />
         <Route path="/register" component={ RegisterPage } />

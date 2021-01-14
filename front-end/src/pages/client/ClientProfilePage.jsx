@@ -4,7 +4,7 @@ import validateName from '../../services/general/validateName';
 import Menu from '../../components/client/Menu';
 import GeneralContext from '../../context/general/GeneralContext';
 import updateUserNameAPI from '../../services/apis';
-import '../../css/clientProfilePage.css';
+import '../../css/client/clientProfilePage.css';
 
 export default function ClientProfilePage() {
   const { userData, setUserData } = useContext(GeneralContext);
