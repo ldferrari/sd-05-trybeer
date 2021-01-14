@@ -17,7 +17,7 @@ const Rotas = () => (
     <Route exact path="/admin/orders" component={ OrderAdmin } />
     <Route exact path="/login" component={ Login } />
     <Route path="/profile" component={ Profile } />
-    <Route path="/admin/profile/" component={ ProfileAdmin } />
+    <Route path="/admin/profile" component={ ProfileAdmin } />
     <Route path="/products" component={ Products } />
     <Route exact path="/register" component={ Register } />
     <Route path="/checkout" component={ Checkout } />
