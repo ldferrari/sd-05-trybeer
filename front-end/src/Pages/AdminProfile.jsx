@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
@@ -11,16 +12,25 @@ const AdminProfile = ({ userData }) => {
 
   const { name, email } = userData.user;
   return (
-    <Fragment>
+    <>
       <h3>Perfil</h3>
       <p>Nome: </p>
-      <p data-testid="profile-name" data-testid="profile-name">
+      <p data-testid="profile-name">
         {name}
       </p>
       <p>Email: </p>
       <p data-testid="profile-email">{email}</p>
-    </Fragment>
+    </>
   );
+};
+
+AdminProfile.propTypes = {
+  userData: PropTypes.shape({
+    user: PropTypes.shape({
+      email: PropTypes.string,
+      name: PropTypes.string,
+    }),
+  }).isRequired,
 };
 
 const mapStateToProps = (state) => ({
