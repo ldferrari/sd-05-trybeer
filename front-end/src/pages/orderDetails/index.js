@@ -8,7 +8,6 @@ import OrderItem from '../../components/orderItems';
 import { postGetTheOrder } from '../../services/requestAPI';
 
 export default function OrderDetails(props) {
-    
   const [orderHere, setOrder] = useState([]);
   const [dia, setDia] = useState('');
   // const theToken = localStorage.getItem('token');
@@ -28,15 +27,14 @@ export default function OrderDetails(props) {
     }
     async function fetchOrder() {
       const temp = await postGetTheOrder(token, id);
-      const { data }= temp;
+      const { data } = temp;
       setOrder(data);
       setDia(data[0].sale_date);
-      console.log(data);
     }
     fetchOrder();
   }, [props, id]);
 
-const dataCerta = !dia? '': dia.match(/\d{4}-(\d{2})-(\d{2})/);
+  const dataCerta = !dia ? '': dia.match(/\d{4}-(\d{2})-(\d{2})/);
 
   return (
     <div>
