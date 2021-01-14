@@ -6,14 +6,6 @@ import { Link } from 'react-router-dom';
 
 const OrderCard = (props) => {
   const { order, index } = props;
-  // [
-  //   {
-  //   "user_id": 12,
-  //   "sale_date": "2021-01-13T02:27:22.000Z",
-  //   "total_price": "86.00"
-  //   }
-  // ]
-
   return (
     <Link
       to={ `/orders/${order.id}` }
@@ -21,11 +13,13 @@ const OrderCard = (props) => {
       key={ order.id }
       data-testid={ `${index}-order-card-container"` }
     >
-      <p data-testid={ `${index}-order-number` }>{ order.id }</p>
+      <p data-testid={ `${index}-order-number` }>{ `Pedido ${order.id}` }</p>
       <p data-testid={ `${index}-order-date` }>
         { order.sale_date }
       </p>
-      <p data-testid={ `${index}-order-total-value` }>{ order.total_price }</p>
+      <p data-testid={ `${index}-order-total-value` }>
+        { `R$ ${order.total_price.toString().replace('.', ',')}` }
+      </p>
     </Link>
   );
 };

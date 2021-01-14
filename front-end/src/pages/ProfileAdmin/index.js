@@ -2,31 +2,30 @@ import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 
 import Header from '../../components/header';
+import AdminSideBar from '../../components/admin sidebar';
 import './index.css';
 import { getProfileInfo } from '../../services/requestAPI';
 
 const PerfilAdmin = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [tokenLogged, setTokenLogged] = useState('');
-
   useEffect(() => {
     async function asyncMe() {
       const token = localStorage.getItem('token');
       const { data: { user } } = await getProfileInfo(token);
       setName(user.name);
       setEmail(user.email);
-      setTokenLogged(token);
     }
     asyncMe();
   }, []);
 
-  if (!tokenLogged) {
+  if (!localStorage.getItem('token')) {
     return <Redirect to="/login" />;
   }
 
   return (
     <div className="App">
+      <AdminSideBar />
       <Header>Meu perfil</Header>
       <h3 data-testid="profile-name">
         Nome:
