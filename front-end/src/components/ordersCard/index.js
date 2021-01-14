@@ -18,7 +18,7 @@ const OrderCard = (props) => {
         { order.sale_date }
       </p>
       <p data-testid={ `${index}-order-total-value` }>
-        { `R$ ${order.total_price}` }
+        { `R$ ${order.total_price.toString().replace('.', ',')}` }
       </p>
     </Link>
   );
