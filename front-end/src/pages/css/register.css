@@ -1,48 +1,52 @@
-.form-register {
+.register {
   align-items: center;
   background-color: rgb(255, 226, 175);
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
   'Open Sans', 'Helvetica Neue', sans-serif;
   height: 100vh;
-  justify-content: space-around;
+  justify-content: flex-end;
   margin: auto;
 }
-
-.form-register input {
+#register-form {
+  animation: fadein 2000ms;
+  margin: 15px auto;
+  width: 225px;
+}
+.register input {
   background-color: whitesmoke;
   border: solid rgba(0, 0, 0, .5) 1px;
   border-radius: 5px;
   padding: 3px 7px;
+  width: 225px;
 }
 
-.form-register label {
+.register label {
   display: flex;
   flex-flow: column;
   font-size: 15px;
-  margin: 5px;
+  margin: 5px 0;
 }
 
-.form-register .seller {
+.register .seller {
+  align-items: center;
   display: flex;
   flex-flow: nowrap;
+  margin-top: 25px;
 }
 
-.seller input {
-  padding: auto 0 auto 50px;
+input[type=checkbox] {
+  height: 20px;
+  margin-right: 5px;
+  width: 20px;
 }
 
 .buttons {
-  margin-top: 20px;
   display: flex;
   flex-flow: column;
-}
-
-button {
-  font-size: medium;
-  margin: 5px;
-  padding: 5px;
+  justify-content: center;
+  /* margin-top: 20px; */
 }
 
 .user-register {
@@ -51,16 +55,45 @@ button {
   border-radius: 5px;
   margin-top: 20px;
   text-decoration: none;
-  width: 190px;
+  width: 225px;
+  margin: 0;
+  padding: 5px;
 }
 
-/* .btn-register {
+.btn-return {
+  align-self: center;
+  border: rgb(76, 196, 76) solid 1px;
   background-color: rgba(0, 0, 0, 0);
-  border: none;
+  /* border: none; */
   color: rgb(52, 52, 211);
   text-decoration: underline;
-} */
+}
+
+a:visited {
+  color: rgb(52, 52, 211);
+}
 
 .logo {
-  width: 300px;
+  width: 225px;
+}
+
+/* animation */
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@media only screen and (min-width: 600px) {
+    
+  .register {
+      display: flex;
+      flex-flow: row;
+      justify-content: center;
+  }
+
+  #register-form {
+      margin: auto 100px;
+      width: 225px;
+  }
+
 }
