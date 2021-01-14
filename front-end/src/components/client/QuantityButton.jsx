@@ -46,9 +46,16 @@ export default function QuantityButton(props) {
     localStorage.setItem('cart itens', JSON.stringify(newCartItens));
   };
 
+  const cartItensLocalStorage = JSON.parse(localStorage.getItem('cart itens')).find((product) => product.id === id);
+
   const increaseItem = () => {
-    const newQuantity = quantity + 1;
+    let newQuantity;
     const newCartValue = cart + Number(price);
+    if (cartItensLocalStorage && cartItensLocalStorage.quantity) {
+      newQuantity = cartItensLocalStorage.quantity + 1;
+    } else {
+      newQuantity = quantity + 1;
+    }
     setQuantity(newQuantity);
     setCart(newCartValue);
     updateCart();
@@ -56,8 +63,13 @@ export default function QuantityButton(props) {
   };
 
   function decreaseItem() {
-    const newQuantity = quantity - 1;
+    let newQuantity;
     const newCartValue = cart - Number(price);
+    if (cartItensLocalStorage && cartItensLocalStorage.quantity) {
+      newQuantity = cartItensLocalStorage.quantity - 1;
+    } else {
+      newQuantity = quantity - 1;
+    }
     if (newQuantity >= initialQuantity) {
       setQuantity(newQuantity);
       altQuantity(newQuantity);
@@ -67,9 +79,6 @@ export default function QuantityButton(props) {
       updateCart();
     }
   }
-
-  // const cartItensLocalStorage =
-  // JSON.parse(localStorage.getItem('cart itens')).find((product) => product.id === id);
 
   return (
     <div className="quantity-container">
@@ -86,8 +95,8 @@ export default function QuantityButton(props) {
         key="cart-product-quantity"
         data-testid={ `${index}-product-qtd` }
       >
-        {/* { cartItensLocalStorage ? cartItensLocalStorage.quantity : initialQuantity } */}
-        { quantity }
+        { cartItensLocalStorage ? cartItensLocalStorage.quantity : initialQuantity }
+        {/* { quantity } */}
       </span>
       <button
         type="button"
