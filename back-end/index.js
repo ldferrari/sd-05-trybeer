@@ -20,6 +20,8 @@ const checkoutController = require('./Controllers/checkoutController');
 
 const ordersController = require('./Controllers/ordersController');
 
+const adminOrdersController = require('./Controllers/adminOrdersController');
+
 const detailController = require('./Controllers/detailController');
 
 const app = express();
@@ -42,6 +44,8 @@ app.use('/products', checkToken, productsController);
 app.use('/checkout', checkToken, checkoutController);
 
 app.use('/orders', checkToken, ordersController);
+
+app.use('/admin/orders', checkToken, adminOrdersController);
 
 app.use('/orders', checkToken, detailController);
 
