@@ -37,6 +37,12 @@
   width: 50px;
 }
 
+.alradyDB {
+  color: rgb(145, 9, 9);
+  font-weight: 900;
+  text-align: center;
+}
+
 .cadastrar {
   font-size: 18px;
   height: 50px;

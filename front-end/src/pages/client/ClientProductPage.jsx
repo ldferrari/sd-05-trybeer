@@ -4,7 +4,7 @@ import ProdCard from '../../components/client/ProductCard';
 import { ClientContext } from '../../context/client/ClientProvider';
 import productsApi from '../../services/client/api';
 import Menu from '../../components/client/Menu';
-import '../../css/clientProductPage.css';
+import '../../css/client/clientProductPage.css';
 
 const Products = () => {
   const [products, setProducts] = useState([]);

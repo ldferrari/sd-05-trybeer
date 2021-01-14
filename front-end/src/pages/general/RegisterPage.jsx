@@ -118,7 +118,7 @@ export default function RegisterPage() {
               }) }
             />
           </label>
-          { isEmailRegistered ? <div>E-mail already in database.</div> : false }
+          { isEmailRegistered ? <div className="alradyDB">E-mail already in database.</div> : false }
         </div>
         <div>
           <label htmlFor="password" className="labelRegistro">
