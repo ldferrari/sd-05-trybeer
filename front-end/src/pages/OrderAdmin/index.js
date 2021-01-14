@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import propTypes from 'prop-types';
 import Footer from '../../components/footer';
 import CardOrder from '../../components/CardOrders';
+import AdminSideBar from '../../components/admin sidebar';
 import { getSales } from '../../services/requestAPI';
 
 const OrderAdmin = (props) => {
@@ -27,6 +28,7 @@ const OrderAdmin = (props) => {
 
   return (
     <div className="Orders">
+      <AdminSideBar />
       <div className="pedido">
         <h2 className="checkoutitle">Pedidos Pendentes</h2>
         <div className="cartItems">
