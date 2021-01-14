@@ -8,7 +8,6 @@ import { getUserDataAct, updateUserAct } from '../Redux/Actions/user';
 const changeInput = (event, setFunction) => setFunction(event.target.value);
 
 function Profile({ history, userData, updateUser }) {
-  useEffect(() => {}, []); // lint pediu pra por o refreshUser
   const [id] = useState(userData.user.id || '');
   const [email] = useState(userData.user.email || '');
   const [name, setName] = useState(userData.user.name || '');

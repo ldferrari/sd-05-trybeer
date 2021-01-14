@@ -1,6 +1,6 @@
 export default (pathname) => ({
   '/profile': 'Meu perfil',
-  '/products': 'Trybeer',
+  '/products': 'TryBeer',
   '/checkout': 'Finalizar Pedido',
   '/orders': 'Meus Pedidos',
 }[pathname]);

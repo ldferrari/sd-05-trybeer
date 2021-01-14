@@ -28,3 +28,16 @@ export function getProductsAct() {
     );
   };
 }
+
+export const INCREASE_QUANTITY = 'INCREASE_QUANTITY';
+export const DECREASE_QUANTITY = 'DECREASE_QUANTITY';
+
+export const increaseQuantityAct = (product) => ({
+  type: INCREASE_QUANTITY,
+  product,
+});
+
+export const decreaseQuantityAct = (product) => ({
+  type: DECREASE_QUANTITY,
+  product,
+});
