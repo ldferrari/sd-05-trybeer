@@ -37,7 +37,7 @@ const Checkout = (props) => {
   const handleSubmit = async () => {
     const token = localStorage.getItem('token');
     const userData = { deliveryAddress: rua, deliveryNumber: numero };
-    await postOrder(token, cart, userData);
+    await postOrder(token, cart.filter((e) => e.quantity > zero), userData);
     localStorage.removeItem('cart');
     setCart([]);
     setAlertCompraFinalizada('Compra realizada com sucesso!');

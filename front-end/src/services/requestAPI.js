@@ -40,6 +40,8 @@ const postOrder = async (token, products, userData) => axios
 
 const postGetOrders = async (token) => axios.get('http://localhost:3001/orders', config(token));
 
+const postGetTheOrder = async (token, id) => axios.get(`http://localhost:3001/orders/${id}`, config(token));
+
 export {
   postLogin,
   postRegister,
@@ -48,4 +50,5 @@ export {
   postProfileInfo,
   postOrder,
   postGetOrders,
+  postGetTheOrder,
 };
