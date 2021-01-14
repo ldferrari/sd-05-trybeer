@@ -4,6 +4,8 @@ import RegisterPage from './pages/general/RegisterPage';
 import ClientProductPage from './pages/client/ClientProductPage';
 import ClientProfilePage from './pages/client/ClientProfilePage';
 import LoginPage from './pages/general/LoginPage';
+import ClientMeusPedidos from './pages/client/ClientMeusPedidos';
+import AdminPedidosPendentes from './pages/admin/AdminPedidosPendentes';
 import ClientOrderPage from './pages/client/ClientOrderPage';
 import AdminOrderPage from './pages/admin/AdminOrderPage';
 import './css/app.css';
@@ -17,8 +19,8 @@ function App() {
         <Route path="/register" component={ RegisterPage } />
         <Route path="/products" component={ ClientProductPage } />
         <Route path="/profile" component={ ClientProfilePage } />
-        <Route path="/orders" component={ ClientOrderPage } />
-        <Route path="/checkout" component={ ClientOrderPage } />
+        <Route path="/orders" component={ ClientMeusPedidos } />
+        <Route path="/checkout" component={ ClientMeusPedidos } />
         {/*         trocar rota checkout  */}
         <Route path="/" component={ () => <Redirect to="/login" /> } />
       </Switch>
