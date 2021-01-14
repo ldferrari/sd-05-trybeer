@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { Redirect } from 'react-router-dom';
 
 import Header from '../../components/header';
 import './index.css';
 import { getProfileInfo } from '../../services/requestAPI';
-import { Redirect } from 'react-router-dom';
 
 const PerfilAdmin = () => {
   const [name, setName] = useState('');
