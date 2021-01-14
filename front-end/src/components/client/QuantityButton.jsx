@@ -1,10 +1,8 @@
 import React, {
   useContext,
   useState,
-  useCallback,
 } from 'react';
 import PropTypes from 'prop-types';
-import AsyncLocalStorage from '@createnextapp/async-local-storage';
 import { ClientContext } from '../../context/client/ClientProvider';
 
 export default function QuantityButton(props) {
@@ -17,48 +15,69 @@ export default function QuantityButton(props) {
     setCart,
     setCartItens,
   } = useContext(ClientContext);
-  const { id, index, price } = props;
+  const {
+    id, index, price, name,
+  } = props;
 
-  const updateCart = useCallback(() => {
-    localStorage.setItem('cart', (cart).toString());
-  }, [cart]);
+  const updateCart = () => localStorage.setItem('cart', (cart).toString());
 
-  const updateCartItens = useCallback(async () => {
-    await AsyncLocalStorage.setItem('cart itens', JSON.stringify(cartItens));
-  }, [cartItens]);
+  const altQuantity = async (newQuantity) => {
+    const cartProducts = JSON.parse(localStorage.getItem('cart itens'));
+    const prodIndex = cartProducts.findIndex((i) => i.id === id);
+    let newCartItens = cartProducts;
 
-  const altQuantity = useCallback(async (callback) => {
-    const prodIndex = cartItens.findIndex((i) => i.id === id);
     if (prodIndex !== negativo) {
-      if (quantity === initialQuantity) {
-        cartItens.splice(index, 1);
+      if (newQuantity === initialQuantity) {
+        newCartItens.splice(prodIndex, 1);
       } else {
-        cartItens[prodIndex] = { id, quantity };
+        newCartItens[prodIndex] = {
+          id, quantity: newQuantity, name, price,
+        };
       }
-      setCartItens(cartItens);
+      setCartItens(newCartItens);
     } else {
-      setCartItens([...cartItens, { id, quantity }]);
+      newCartItens = [...cartItens, {
+        id, quantity: newQuantity, name, price,
+      }];
+      setCartItens([...cartItens, {
+        id, quantity: newQuantity, name, price,
+      }]);
     }
-    callback();
-  }, [quantity, cartItens, setCartItens, id, index, negativo]);
+    localStorage.setItem('cart itens', JSON.stringify(newCartItens));
+  };
 
-  const increaseItem = useCallback(
-    () => {
-      setQuantity(quantity + 1);
-      setCart(cart + Number(price));
-      updateCart();
-      altQuantity(updateCartItens);
-    },
-    [setQuantity, setCart, updateCart, altQuantity, cart, price, quantity, updateCartItens],
-  );
+  const cartItensLocalStorage = JSON.parse(localStorage.getItem('cart itens')).find((product) => product.id === id);
+
+  const increaseItem = () => {
+    let newQuantity;
+    const newCartValue = cart + Number(price);
+    if (cartItensLocalStorage && cartItensLocalStorage.quantity) {
+      newQuantity = cartItensLocalStorage.quantity + 1;
+    } else {
+      newQuantity = quantity + 1;
+    }
+    setQuantity(newQuantity);
+    setCart(newCartValue);
+    updateCart();
+    altQuantity(newQuantity);
+  };
 
   function decreaseItem() {
-    if (quantity > initialQuantity) {
-      setQuantity(quantity - 1);
-      setCart(cart - Number(price));
+    let newQuantity;
+    const newCartValue = cart - Number(price);
+    if (cartItensLocalStorage && cartItensLocalStorage.quantity) {
+      newQuantity = cartItensLocalStorage.quantity - 1;
+    } else {
+      newQuantity = quantity - 1;
     }
-    updateCart();
-    altQuantity(updateCartItens);
+    if (newQuantity >= initialQuantity) {
+      setQuantity(newQuantity);
+      altQuantity(newQuantity);
+      setCart(newCartValue);
+    }
+    if (cart >= initialQuantity) {
+      updateCart();
+    }
   }
 
   return (
@@ -76,7 +95,8 @@ export default function QuantityButton(props) {
         key="cart-product-quantity"
         data-testid={ `${index}-product-qtd` }
       >
-        {quantity}
+        { cartItensLocalStorage ? cartItensLocalStorage.quantity : initialQuantity }
+        {/* { quantity } */}
       </span>
       <button
         type="button"
@@ -94,4 +114,5 @@ QuantityButton.propTypes = {
   id: PropTypes.number.isRequired,
   price: PropTypes.number.isRequired,
   index: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
