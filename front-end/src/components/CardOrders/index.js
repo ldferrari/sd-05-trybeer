@@ -13,7 +13,7 @@ export default function CardOrder(props) {
   } = props;
 
   const {
-    id, delivery_address, delivery_number, total_price, status,
+    id, deliveryAddress, deliveryNumber, totalPrice, status,
   } = order;
 
   setOrderDetails(order);
@@ -23,8 +23,8 @@ export default function CardOrder(props) {
       <h4 data-testid={ `${index}-order-number` }>
         {`Pedido ${id}`}
       </h4>
-      <h5 data-testid={ `${index}-order-address` }>{ `${delivery_address}, ${delivery_number}` }</h5>
-      <h5 data-testid={ `${index}-order-total-value` }>{ `R$ ${total_price}` }</h5>
+      <h5 data-testid={ `${index}-order-address` }>{ `${deliveryAddress}, ${deliveryNumber}` }</h5>
+      <h5 data-testid={ `${index}-order-total-value` }>{ `R$ ${totalPrice}` }</h5>
       <span data-testid={ `${index}-order-status` }>{ status }</span>
     </Link>
   );

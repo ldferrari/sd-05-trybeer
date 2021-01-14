@@ -9,19 +9,15 @@ export default function CardOrderDetails(props) {
   } = props;
 
   const {
-    id,
-    address: delivery_address,
-    number: delivery_number,
-    price: total_price,
-    status,
+    id, deliveryAddress, deliveryNumber, totalPrice, status,
   } = order;
   return (
     <Link to="/admin/ordersDetails">
       <h4 data-testid={ `${order.id}-order-number` }>
         {`Pedido ${id}`}
       </h4>
-      <h5 data-testid={ `${order.id}-order-address` }>{ `${address}, ${number}` }</h5>
-      <h5 data-testid={ `${order.id}-order-total-value` }>{ `R$ ${price}` }</h5>
+      <h5 data-testid={ `${order.id}-order-address` }>{ `${deliveryAddress}, ${deliveryNumber}` }</h5>
+      <h5 data-testid={ `${order.id}-order-total-value` }>{ `R$ ${totalPrice}` }</h5>
       <span data-testid={ `${order.id}-order-status` }>{ status }</span>
     </Link>
   );
