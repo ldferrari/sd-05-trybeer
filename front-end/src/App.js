@@ -1,20 +1,29 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import RegisterPage from './pages/general/RegisterPage';
+import ClientProductPage from './pages/client/ClientProductPage';
+import ClientProfilePage from './pages/client/ClientProfilePage';
 import LoginPage from './pages/general/LoginPage';
-import ClientProfile from './pages/client/ClientProfile';
+import ClientMeusPedidos from './pages/client/ClientMeusPedidos';
+import AdminPedidosPendentes from './pages/admin/AdminPedidosPendentes';
+import './css/client/app.css';
+import ClientDetailsOrderPage from './pages/client/ClientDetailsOrderPage';
 
 function App() {
   return (
     <div className="App">
       <Switch>
-        <Route path="/register">
-          <RegisterPage />
-        </Route>
-        <Route path="/">
-          <LoginPage />
-        </Route>
-        <Route path="/profile" component={ ClientProfile } />
+        <Route path="/admin/orders" component={ AdminPedidosPendentes } />
+        {/*         trocar rota admin/orders  */}
+        <Route path="/login" component={ LoginPage } />
+        <Route path="/register" component={ RegisterPage } />
+        <Route path="/products" component={ ClientProductPage } />
+        <Route path="/profile" component={ ClientProfilePage } />
+        <Route path="/orders" component={ ClientMeusPedidos } />
+        <Route path="/checkout" component={ ClientMeusPedidos } />
+        <Route path="/teste" component={ ClientDetailsOrderPage } />
+        {/*         trocar rota checkout  */}
+        <Route path="/" component={ () => <Redirect to="/login" /> } />
       </Switch>
     </div>
   );
