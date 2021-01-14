@@ -28,7 +28,6 @@ orders.get('/:id', async (req, res) => {
   if (ordersProducts.error) {
     return res.status(ordersProducts.code).json(ordersProducts.message);
   }
-  console.log(ordersProducts);
   return res.status(200).json(ordersProducts);
 });
 module.exports = orders;

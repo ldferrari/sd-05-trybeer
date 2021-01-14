@@ -52,6 +52,7 @@ const OrderDetails = (props) => {
           </tr>
         ))}
       </table>
+        <p>{products[0]? products[0].total_price : 0}</p>
       <p data-testid="order-total-value">{`R$ ${String(totalP).replace('.', ',')}`}</p>
       <p data-testid="order-date">{formatDate(dataSale)}</p>
     </div>

@@ -15,7 +15,6 @@ const Products = () => {
     setCart,
   } = useContext(Context);
 
-  // const [cart, setCart] = useState([]);
   const [cartBtn, setCartBtn] = useState(false);
   const tam = 0;
   const casasDecimais = 2;
@@ -25,7 +24,7 @@ const Products = () => {
       .then((data) => setBeers(data));
     const lsCart = localStorage.getItem('cart');
     const lsBeer = localStorage.getItem('beer');
-    if (lsCart.length > tam) {
+    if (lsCart && lsCart.length > tam) {
       setCart(JSON.parse(lsCart));
     }
     if (lsBeer && lsBeer.length > tam) {
@@ -37,6 +36,7 @@ const Products = () => {
   useEffect(() => {
     starter();
   }, []); // eslint-disable-line
+
   useEffect(() => {
     setTotal(
       cart
@@ -45,14 +45,13 @@ const Products = () => {
         .toFixed(casasDecimais)
         .replace('.', ','),
     );
+    // localStorage.setItem('cart', JSON.stringify(cart))
   }, [cart, setTotal]);
 
-  function setCarrinho() {
-    setCart(beers.filter((beer) => beer.qty !== tam));
+  async function setCarrinho() {
+    await setCart(beers.filter((beer) => beer.qty !== tam));
     setCartBtn(true);
-    // const total = document.querySelector(`span[data-testid=checkout-bottom-btn-value]`);
-    // total.innerText  = `Preço total: R$ ${cart.map((products) => products.qty
-    // * products.price).reduce((a, b) => a + b, 0).toFixed(2).replace('.', ',')}`;
+    console.log(cart)
   }
 
   const handleClick = (e, operation, index) => {
@@ -64,13 +63,12 @@ const Products = () => {
       localStorage.setItem('beer', JSON.stringify(velho));
     }
     if (operation === 'sub' && beers[index].qty !== tam) {
-      const velho = [...beers];
+      let velho = [...beers];
       velho[index].qty -= 1;
       setBeers(velho);
       localStorage.setItem('beer', JSON.stringify(velho));
     }
     setCarrinho();
-    // document.querySelector(`#product-${index}`).innerText = beers[index].qty;
   };
   if (cart.length > tam) localStorage.setItem('cart', JSON.stringify(cart));
   const lsToken = localStorage.getItem('token');
