@@ -50,6 +50,5 @@ export {
   postGetItems,
   getProfileInfo,
   postProfileInfo,
-  postOrder,
   postGetOrders,
 };

@@ -15,10 +15,9 @@ const OrderAdmin = (props) => {
     async function fetchProducts() {
       try {
         const { data } = await getSales(token);
-        console.log(data);
         setAllOrders(data);
       } catch (error) {
-        console.log(error);
+          return error;
       }
     }
     fetchProducts();
