@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import propTypes from 'prop-types';
+import './index.css';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
 // import { Link } from 'react-router-dom';
@@ -39,12 +40,14 @@ export default function OrderDetails(props) {
   return (
     <div>
       <Header>Detalhes de Pedido</Header>
-      <h4 data-testid="order-number">
-        { id }
-      </h4>
-      <h4 data-testid="order-date">
-        { `${dataCerta[2]}/${dataCerta[1]}` }
-      </h4>
+      <div className="detailsHeader">
+        <h4 data-testid="order-number">
+          { `Pedido ${id}` }
+        </h4>
+        <h4 data-testid="order-date">
+          { `${dataCerta[2]}/${dataCerta[1]}` }
+        </h4>
+      </div>
       <div>
         <div className="legenda">
           <p>QUANTIDADE</p>
