@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types;'
 import GeneralContext from '../../context/general/GeneralContext';
 import loginData from '../../services/general/fetchLoginData';
 import validateEmail from '../../services/general/validateEmail';
@@ -90,6 +91,6 @@ export default function LoginPage(props) {
   );
 }
 
-/* LoginPage.propTypes = {
+LoginPage.propTypes = {
   history: PropTypes.arrayOf(PropTypes.object).isRequired,
-}; */
+};

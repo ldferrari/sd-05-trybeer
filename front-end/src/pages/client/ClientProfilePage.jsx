@@ -14,9 +14,8 @@ export default function ClientProfilePage() {
   const [localName, setLocalName] = useState(user.name);
   const [apiSuccess, setApiSuccess] = useState(false);
 
-  
   if (!token) return <Redirect to="/login" />;
-  console.log(userData)
+
   const handleChange = (e) => {
     setNameEqual(false);
     validateName(setLocalName(e.target.value));

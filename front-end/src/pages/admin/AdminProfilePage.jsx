@@ -11,20 +11,22 @@ export default function ClientProfilePage() {
     <div>
       <div>Admin - Perfil</div>
       <div className="bodyProfile">
-        <label className="labelProfile">
+        <label htmlFor="email" className="labelProfile">
           Email
           <div
             data-testid="profile-email"
+            id="email"
             className="inputProfile"
             readOnly
           >
             { user.email }
           </div>
         </label>
-        <label className="labelProfile">
+        <label htmlFor="name" className="labelProfile">
           Name
           <div
             data-testid="profile-name"
+            id="name"
             className="inputProfile"
             readOnly
           >
