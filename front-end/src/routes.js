@@ -10,6 +10,7 @@ import {
   OrderAdmin,
   ProfileAdmin,
 } from './pages';
+import OrderDetails from './pages/orderDetails';
 
 const Rotas = () => (
   <Switch>
@@ -22,7 +23,7 @@ const Rotas = () => (
     <Route exact path="/register" component={ Register } />
     <Route path="/checkout" component={ Checkout } />
     <Route exact path="/orders" component={ Orders } />
-    {/* <Route exact path="/orders/:id" component={ OrderDetail } /> */}
+    <Route exact path="/orders/:id" component={ OrderDetails } />
     <Route exact path="/" component={ () => <Redirect to="/login" /> } />
   </Switch>
 );
