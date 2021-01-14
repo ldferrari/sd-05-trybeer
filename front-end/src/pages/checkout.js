@@ -10,6 +10,7 @@ const Checkout = () => {
   const [numberAdress, setNumberAdress] = useState('');
   const [purchase, setPurchase] = useState(false);
   const history = useHistory();
+  //  local alterar pra 10000
   const timeInterval = 7000;
   if (purchase) {
     setTimeout(() => history.push('/products'), timeInterval);
