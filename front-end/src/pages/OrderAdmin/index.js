@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import propTypes from 'prop-types';
 import Footer from '../../components/footer';
 import CardOrder from '../../components/CardOrders';
 import { getSales } from '../../services/requestAPI';
-import propTypes from 'prop-types';
 
 const OrderAdmin = (props) => {
   const [allOrders, setAllOrders] = useState([]);
-
   const token = localStorage.getItem('token');
+  const { history } = props;
 
   useEffect(() => {
     if (!token) {
-      props.history.push('/login');
+      history.push('/login');
     }
     async function fetchProducts() {
       try {
@@ -22,7 +22,7 @@ const OrderAdmin = (props) => {
       }
     }
     return fetchProducts();
-  }, [token, props.history]);
+  }, [token, history]);
 
   return (
     <div className="Orders">

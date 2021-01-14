@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import AppContext from '../../context/AppContext';
 import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import AppContext from '../../context/AppContext';
 import './index.css';
 
 export default function CardOrder(props) {
