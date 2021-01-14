@@ -5,10 +5,10 @@ import ClientProductPage from './pages/client/ClientProductPage';
 import ClientProfilePage from './pages/client/ClientProfilePage';
 import LoginPage from './pages/general/LoginPage';
 import ClientMeusPedidos from './pages/client/ClientMeusPedidos';
-import AdminPedidosPendentes from './pages/admin/AdminPedidosPendentes';
-import ClientOrderPage from './pages/client/ClientOrderPage';
+// import AdminPedidosPendentes from './pages/admin/AdminPedidosPendentes';
+// import ClientOrderPage from './pages/client/ClientOrderPage';
 import AdminOrderPage from './pages/admin/AdminOrderPage';
-import './css/app.css';
+// import './css/app.css';
 
 function App() {
   return (

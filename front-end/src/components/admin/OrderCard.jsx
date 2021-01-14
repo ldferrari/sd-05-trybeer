@@ -1,26 +1,27 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
 
-// import  from '../../services/api';
+const OrderCard = props => {
+  const { index, order } = props;
 
-const OrderCard = (props) => {
-  const { index, order } = props
   return (
     <div>
-      <h4>Pedidos</h4>
-      <div data-testid={ `${index}-order-number` }>
-        id
-      </div>
-      <div data-testid={ `${index}-order-address` }>
-        delivery_address
-      </div>
-      <div data-testid={ `${index}-order-total-value` }>
-        total_price
-      </div>
+      <p data-testid={`${index}-order-number`}>
+        Pedido
+        {/* <span>{order.id}</span> */}
+        <span>1</span>
+      </p>
+      <p data-testid={`${index}-order-address`}>
+        {/* {order.delivery_address}, {order.delivery_number} */}
+        Rua teste, 25
+      </p>
+      <p>
+        R$
+        {/* <span data-testid={`${index}-order-total-value`}>{order.total_price}</span> */}
+        <span data-testid={`${index}-order-total-value`}>165,00</span>
+      </p>
       <div>
-        <span data-testid={ `${index}-order-status` }>
-          status
-        </span>
+        {/* <p data-testid={`${index}-order-status`}>{order.status}</p> */}
+        <p data-testid={`${index}-order-status`}>PENDENTE</p>
       </div>
     </div>
   );
