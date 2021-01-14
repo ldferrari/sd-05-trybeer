@@ -6,13 +6,18 @@ const AdminProfile = ({ userData }) => {
   if (!userData.user) {
     return <Redirect to="/login" />;
   }
+
+  // getlocalStorage - pegar funcao do luis para solução MUNDO REAL
+
   const { name, email } = userData.user;
   return (
     <Fragment>
-      <h3>Admin - Profile</h3>
+      <h3>Perfil</h3>
       <p>Nome: </p>
-      <p>{name}</p>
-      <p data-testid="profile-name">Email: </p>
+      <p data-testid="profile-name" data-testid="profile-name">
+        {name}
+      </p>
+      <p>Email: </p>
       <p data-testid="profile-email">{email}</p>
     </Fragment>
   );
