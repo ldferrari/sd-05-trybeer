@@ -78,6 +78,7 @@ export default function RegisterPage() {
   }
 
   if (isFetched && !isEmailRegistered && userData.role === 'admin' && isEmailVerified) {
+    setLocalStorage(userData);
     return <Redirect to="/admin/orders" />;
   }
 
