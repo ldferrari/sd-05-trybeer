@@ -13,7 +13,7 @@ const apiRegister = (name, email, password, role) => axios
   .post('http://localhost:3001/register', {
     name, email, password, role,
   })
-  .then((res) => res)
+  .then((res) => res.data)
   .catch((err) => err);
 
 const getAllProducts = (token) => axios
