@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Footer from '../../components/footer';
 import CardOrder from '../../components/CardOrders';
 import { getSales } from '../../services/requestAPI';
+import propTypes from 'prop-types';
 
 const OrderAdmin = (props) => {
   const [allOrders, setAllOrders] = useState([]);
@@ -10,18 +11,18 @@ const OrderAdmin = (props) => {
 
   useEffect(() => {
     if (!token) {
-      props.history.push("/login");
+      props.history.push('/login');
     }
     async function fetchProducts() {
       try {
         const { data } = await getSales(token);
         setAllOrders(data);
       } catch (error) {
-          return error;
+        return error;
       }
     }
-    fetchProducts();
-  }, []);
+    return fetchProducts();
+  }, [token, props.history]);
 
   return (
     <div className="Orders">
@@ -30,7 +31,7 @@ const OrderAdmin = (props) => {
         <div className="cartItems">
           {
             allOrders
-              .map((item, index) => <CardOrder key={item.id} order={item} index={index} />)
+              .map((item, index) => <CardOrder key={ item.id } order={ item } index={ index } />)
           }
         </div>
       </div>
@@ -41,6 +42,6 @@ const OrderAdmin = (props) => {
 
 export default OrderAdmin;
 
-/* OrderAdmin.propTypes = {
+OrderAdmin.propTypes = {
   history: propTypes.func.isRequired,
-}; */
+};

@@ -9,15 +9,19 @@ export default function CardOrderDetails(props) {
   } = props;
 
   const {
-    id, delivery_address, delivery_number, total_price, status,
+    id,
+    address: delivery_address,
+    number: delivery_number,
+    price: total_price,
+    status,
   } = order;
   return (
     <Link to="/admin/ordersDetails">
       <h4 data-testid={ `${order.id}-order-number` }>
         {`Pedido ${id}`}
       </h4>
-      <h5 data-testid={ `${order.id}-order-address` }>{ `${delivery_address}, ${delivery_number}` }</h5>
-      <h5 data-testid={ `${order.id}-order-total-value` }>{ `R$ ${total_price}` }</h5>
+      <h5 data-testid={ `${order.id}-order-address` }>{ `${address}, ${number}` }</h5>
+      <h5 data-testid={ `${order.id}-order-total-value` }>{ `R$ ${price}` }</h5>
       <span data-testid={ `${order.id}-order-status` }>{ status }</span>
     </Link>
   );
@@ -25,5 +29,4 @@ export default function CardOrderDetails(props) {
 
 CardOrderDetails.propTypes = {
   order: propTypes.instanceOf(Object).isRequired,
-  index: propTypes.number.isRequired,
 };
