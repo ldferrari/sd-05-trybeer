@@ -18,7 +18,7 @@ const mockOrder = [
   },
 ];
 // ++++++++++++++
-function productDetailsClient({
+function orderDetails({
   match: {
     params: { id },
   },
@@ -55,4 +55,4 @@ function productDetailsClient({
   );
 }
 
-export default productDetailsClient;
+export default orderDetails;

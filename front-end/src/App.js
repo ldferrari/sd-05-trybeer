@@ -10,7 +10,7 @@ import Products from './Pages/Products';
 import Checkout from './Pages/Checkout';
 import Orders from './Pages/Orders';
 import Register from './Pages/Register';
-import productDetailsClient from './Pages/productDetailsClient';
+import orderDetails from './Pages/orderDetails';
 
 // prettier-ignore
 function App({ ProductsAPI }) {
@@ -29,7 +29,7 @@ function App({ ProductsAPI }) {
         <Route exact path="/products" component={ Products } />
         <Route exact path="/checkout" component={ Checkout } />
         <Route exact path="/orders" component={ Orders } />
-        <Route path="/orders/:id" component={ productDetailsClient } />
+        <Route path="/orders/:id" component={ orderDetails } />
         <Route exact path="/register" component={ Register } />
       </Switch>
     </div>
