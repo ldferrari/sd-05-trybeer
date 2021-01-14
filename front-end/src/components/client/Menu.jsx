@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
-import '../../css/menu.css';
+import '../../css/client/menu.css';
 import { Link } from 'react-router-dom';
 import GeneralContext from '../../context/general/GeneralContext';
 
