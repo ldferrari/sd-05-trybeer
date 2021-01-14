@@ -5,6 +5,10 @@ const getProducts = async () => {
   return products;
 };
 
+// const getProductById = async (productId) => {
+//   const product = await db.execute('SELECT name, price from products WHERE id= ?', [productId]);
+//   return product;
+// }
 module.exports = {
   getProducts,
 };

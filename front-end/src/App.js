@@ -13,6 +13,7 @@ import Register from './pages/register';
 import Profile from './pages/profile';
 import Orders from './pages/orders';
 import Checkout from './pages/checkout';
+import OrderId from './components/OrderDetails';
 import './App.css';
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
             <Route exact path="/register" component={ Register } />
             <Route exact path="/profile" component={ Profile } />
             <Route exact path="/admin/profile" component={ Profile } />
+            <Route exact path="/orders/:id" component={ OrderId } />
             <Route exact path="/orders" component={ Orders } />
             <Route exact patch="/admin/orders" component={ Orders } />
           </Switch>

@@ -23,7 +23,7 @@ const insertSale = async (order, email) => {
   return { statusCode: 201, message: 'Order placed.' };
 };
 
-const getOrdersById = async (email) => {
+const getOrdersByUserId = async (email) => {
   const userId = await userService.getUserId(email);
 
   if (!email) {
@@ -34,7 +34,7 @@ const getOrdersById = async (email) => {
     };
   }
 
-  const orders = await model.getOrdersById(userId);
+  const orders = await model.getOrdersByUserId(userId);
 
   if (!orders) {
     return {
@@ -47,7 +47,12 @@ const getOrdersById = async (email) => {
   return orders[0] || undefined;
 };
 
+const getSalesProducts = async (orderId) => {
+  const orders = await model.getSalesProducts(orderId);
+  return orders[0] || undefined;
+};
 module.exports = {
   insertSale,
-  getOrdersById,
+  getOrdersByUserId,
+  getSalesProducts,
 };

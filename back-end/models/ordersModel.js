@@ -21,7 +21,7 @@ const insertProductSale = async (saleId, productId, qty) => {
   ]);
 };
 
-const getOrdersById = async (userId) => {
+const getOrdersByUserId = async (userId) => {
   const orders = await db.execute(
     'SELECT id, total_price, sale_date FROM sales WHERE user_id = ? ',
     [userId],
@@ -29,8 +29,15 @@ const getOrdersById = async (userId) => {
   return orders;
 };
 
+const getSalesProducts = async (orderId) => {
+  const orders = await db.execute(
+    'SELECT p.name, p.price, sp.quantity, s.sale_date, total_price FROM sales_products AS sp JOIN products AS p ON sp.product_id = p.id JOIN sales AS s ON s.id = sp.sale_id WHERE sp.sale_id = ?', [orderId],
+  );
+  return orders;
+};
 module.exports = {
   insertSale,
-  getOrdersById,
+  getOrdersByUserId,
   insertProductSale,
+  getSalesProducts,
 };
