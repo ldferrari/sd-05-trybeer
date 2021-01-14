@@ -47,7 +47,6 @@ app.use('/orders', checkToken, detailController);
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-
 const PORT = 3001;
 
 app.listen(PORT, () => {
