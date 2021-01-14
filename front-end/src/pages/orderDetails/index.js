@@ -15,7 +15,7 @@ export default function OrderDetails(props) {
 
   const zero = 0;
   const dois = 2;
-    const cartSum = orderHere
+  const cartSum = orderHere
     .reduce((acc, cv) => acc + cv.price * cv.quantity, zero)
     .toFixed(dois);
 
@@ -34,7 +34,7 @@ export default function OrderDetails(props) {
     fetchOrder();
   }, [props, id]);
 
-  const dataCerta = !dia ? '': dia.match(/\d{4}-(\d{2})-(\d{2})/);
+  const dataCerta = !dia ? '' : dia.match(/\d{4}-(\d{2})-(\d{2})/);
 
   return (
     <div>
