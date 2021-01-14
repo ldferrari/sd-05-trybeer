@@ -51,7 +51,6 @@ const Products = () => {
   async function setCarrinho() {
     await setCart(beers.filter((beer) => beer.qty !== tam));
     setCartBtn(true);
-    console.log(cart)
   }
 
   const handleClick = (e, operation, index) => {
@@ -63,7 +62,7 @@ const Products = () => {
       localStorage.setItem('beer', JSON.stringify(velho));
     }
     if (operation === 'sub' && beers[index].qty !== tam) {
-      let velho = [...beers];
+      const velho = [...beers];
       velho[index].qty -= 1;
       setBeers(velho);
       localStorage.setItem('beer', JSON.stringify(velho));

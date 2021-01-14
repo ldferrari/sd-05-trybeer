@@ -6,7 +6,7 @@ import './cssComponents/sideBar.css';
 export default function SideBar({ userRole, active }) {
   const handleClick = () => {
     localStorage.clear();
-  }
+  };
   return (
     <aside className={ `side-container ${active && 'appear'}` }>
       {userRole === 'client' && (
@@ -20,7 +20,7 @@ export default function SideBar({ userRole, active }) {
           <Link to="/profile" data-testid="side-menu-item-my-profile">
             Meu perfil
           </Link>
-          <Link to="/login" onClick = {handleClick} data-testid="side-menu-item-logout">
+          <Link to="/login" onClick={ handleClick } data-testid="side-menu-item-logout">
             Sair
           </Link>
         </div>
