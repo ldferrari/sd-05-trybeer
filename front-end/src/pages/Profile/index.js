@@ -1,45 +1,67 @@
-import React, { useContext, useState } from 'react';
-import axios from 'axios';
-import AppContext from '../../context/AppContext';
+import React, { useEffect, useState } from 'react';
+import { Redirect } from 'react-router-dom';
 
 import './index.css';
 
+import { getProfileInfo, postProfileInfo } from '../../services/requestAPI';
+import Header from '../../components/header';
+
 const Perfil = () => {
-  const [disabled, setDisable] = useState(true);
+  const [name, setName] = useState('');
+  const [initialName, setInitialName] = useState('');
+  const [alertUpdate, setAlertUpdate] = useState('');
+  const [validName, setValidName] = useState(false);
+  const [email, setEmail] = useState('');
+  // const [tokenLogged, setTokenLogged] = useState('');
 
-  const {
-    nomeProfile,
-    setNomeProfile,
-    emailProfile,
-  } = useContext(AppContext);
+  useEffect(() => {
+    async function asyncMe() {
+      const token = localStorage.getItem('token');
+      const { data: { user } } = await getProfileInfo(token);
+      setName(user.name);
+      setEmail(user.email);
+      setInitialName(user.name);
+      // setTokenLogged(token);
+    }
+    asyncMe();
+  }, []);
 
-  const submitChange = async () => {
-    axios.post('http://localhost:3001/api/insert', {
-      name: nomeProfile,
-    }).then(() => 'Sucesso!');
-  };
+  useEffect(() => {
+    const validationName = (value) => (/^[A-Za-z \s]{12,}$/.test(value) && value !== initialName ? setValidName(true) : setValidName(false));
+    validationName(name);
+  }, [name, initialName]);
 
   const handleChanged = (e) => {
-    setNomeProfile(e.target.value);
-    const lengthName = 3;
-    if (nomeProfile.length > lengthName) {
-      setDisable(false);
-    } else {
-      setDisable(true);
-    }
+    setName(e.target.value);
   };
 
-  const nomes = nomeProfile;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const token = localStorage.getItem('token');
+    setAlertUpdate('Atualização concluída com sucesso');
+    await postProfileInfo(token, name, email);
+    /* const tempo = 10000;
+    setTimeout(() => {
+      setAlertUpdate('Atualização concluída com sucesso');
+    }, tempo); */
+  };
+  const nomes = name;
+
+  if (!localStorage.getItem('token')) {
+    return <Redirect to="/login" />;
+  }
+
   return (
     <div className="App">
-      <h1 data-testid="top-title">Perfil</h1>
+      <Header>Meu perfil</Header>
+      <h1 data-testid="top-title">Meu perfil</h1>
       <div className="form">
-        <p>Nome</p>
+        <p>Name</p>
         <input
           type="text"
           name="name"
           id="name-id"
-          placeholder={ nomes }
+          value={ nomes }
           data-testid="profile-name-input"
           onChange={ handleChanged }
         />
@@ -48,17 +70,19 @@ const Perfil = () => {
           type="email"
           id="email"
           name="email-id"
-          placeholder={ emailProfile }
+          value={ email }
           data-testid="profile-email-input"
           readOnly
         />
+        <span className="update-alert">{alertUpdate}</span>
         <button
           type="submit"
           data-testid="profile-save-btn"
-          disabled={ disabled }
-          onClick={ submitChange }
+          disabled={ !(validName) }
+          className={ (validName) ? 'ready' : '' }
+          onClick={ handleSubmit }
         >
-          Cadastrar
+          Salvar
         </button>
       </div>
     </div>

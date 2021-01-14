@@ -1,6 +1,6 @@
 const model = require('../Models/profileModel');
 
-const create = async (name) => {
+const update = async (name, email) => {
   if (!/^[A-Za-z \s]{12,}$/.test(name)) {
     return {
       error: true,
@@ -9,9 +9,9 @@ const create = async (name) => {
       statusCode: 401,
     };
   }
-  return model.create(name);
+  return model.update(name, email);
 };
 
 module.exports = {
-  create,
+  update,
 };

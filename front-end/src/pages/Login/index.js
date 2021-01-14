@@ -42,14 +42,17 @@ const Login = (props) => {
       role = user.role;
     } catch (error) {
       setAlertLogin('Email e/ou password incorretos');
-      const timeAlert = 1500;
+      const timeAlert = 3500;
       setTimeout(() => {
         setAlertLogin('');
       }, timeAlert);
       return false;
     }
+    /* if (timer) {
+      clearTimeout(timer);
+    } */
     saveToken(token);
-    if (role === 'admin') {
+    if (role === 'administrator') {
       props.history.push('/admin/orders');
     } else if (role === 'client') {
       props.history.push('/products');
@@ -57,6 +60,7 @@ const Login = (props) => {
       setValidEmail(true);
       setValidEmail(false);
     }
+    return true;
   };
   return (
     <div>
@@ -87,7 +91,7 @@ const Login = (props) => {
             />
           </label>
         </fieldset>
-       <span className="email-alert">{alertLogin}</span>
+        <span className="email-alert">{alertLogin}</span>
         <button data-testid="no-account-btn" type="button">
           <Link to="/register">Ainda não tenho conta</Link>
         </button>

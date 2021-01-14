@@ -16,14 +16,12 @@ checkout.post('/', async (req, res) => {
     const { products, userData } = req.body;
     const { deliveryAddress, deliveryNumber } = userData;
     const { id } = req.payload;
-    // console.log('req aqui',req.payload);
     const order = await service.checkout(
       products,
       deliveryAddress,
       deliveryNumber,
       id,
     );
-
     if (order && order.error) {
       return res.status(order.statusCode).json({ message: order.message });
     }

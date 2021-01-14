@@ -1,15 +1,29 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-
-import { Login, Profile, Products } from './pages';
-import Register from './pages/Register/Register';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import {
+  Login,
+  Profile,
+  Checkout,
+  Orders,
+  Products,
+  Register,
+  OrderAdmin,
+  ProfileAdmin,
+} from './pages';
 
 const Rotas = () => (
   <Switch>
+    <Route exact path="/admin/ordersDetails" component={ OrderAdmin } />
+    <Route exact path="/admin/orders" component={ OrderAdmin } />
     <Route exact path="/login" component={ Login } />
     <Route path="/profile" component={ Profile } />
+    <Route path="/admin/profile/" component={ ProfileAdmin } />
     <Route path="/products" component={ Products } />
     <Route exact path="/register" component={ Register } />
+    <Route path="/checkout" component={ Checkout } />
+    <Route exact path="/orders" component={ Orders } />
+    {/* <Route exact path="/orders/:id" component={ OrderDetail } /> */}
+    <Route exact path="/" component={ () => <Redirect to="/login" /> } />
   </Switch>
 );
 
