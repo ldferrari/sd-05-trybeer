@@ -4,6 +4,7 @@
 }
 
 .corpo {
+  /* border:springgreen solid 1px; */
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -18,7 +19,73 @@
   background-color: rgb(94, 203, 94);
   border: solid rgb(76, 196, 76) 1px;
   font-weight: 700;
+  margin-right: 5px;
   position: sticky;
   top: 10vh;
   text-decoration: none;
+}
+
+.product-card {
+  align-items: flex-start;
+  background-color: rgba(245, 245, 245, .4);
+  border: lightslategrey solid 1px;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  min-height: 70px;
+  min-width: 320px;
+  max-width: 360px;
+  width: 100%;
+}
+
+.product-data {
+  display: flex;
+  flex-flow: row;
+  margin: 10px 5px;
+}
+
+.product-info {
+  /* border: tomato solid 1px; */
+  align-items: flex-start;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  margin-left: 10px;
+}
+
+.action-buttons {
+  margin: 25px 0;
+  display: flex;
+  flex-flow: nowrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.action-buttons button {
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: 900;
+  height: 25px;
+  width: 25px;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:active {
+  transform: scale(0.9);
+}
+
+.add-product {
+  background-color: rgb(76, 196, 76);
+  border: solid 2px rgb(94, 203, 94);
+  color: whitesmoke;
+}
+
+.sub-product {
+  background-color: transparent;
+  border: solid rgb(195, 16, 16) 2px;
+  color: rgb(195, 16, 16);
 }

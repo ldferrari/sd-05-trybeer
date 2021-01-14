@@ -96,20 +96,20 @@ const Register = () => {
           Quero Vender
         </label>
         <div className="buttons">
-        <button
-          type="submit"
-          data-testid="signup-btn"
-          disabled={ !validateRegister(userData) }
-          onClick={ (e) => handleRegister(userData, e) }
-          className="user-register"
-        >
-          Cadastrar
-        </button>
-        <button type="button" className="btn-return">
-          <Link to="/login">
-            Voltar
-          </Link>
-        </button>
+          <button
+            type="submit"
+            data-testid="signup-btn"
+            disabled={ !validateRegister(userData) }
+            onClick={ (e) => handleRegister(userData, e) }
+            className="user-register"
+          >
+            Cadastrar
+          </button>
+          <button type="button" className="btn-return">
+            <Link to="/login">
+              Voltar
+            </Link>
+          </button>
         </div>
       </form>
     </div>

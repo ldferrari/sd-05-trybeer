@@ -88,33 +88,41 @@ const Products = () => {
         </button>
         <span data-testid="checkout-bottom-btn-value">{`Preço total: R$ ${total}`}</span>
         {beers.map((element, index) => (
-          <div key={ element.name }>
-            <p data-testid={ `${index}-product-name` }>{element.name}</p>
-            <p data-testid={ `${index}-product-price` }>{`R$ ${element.price.replace('.', ',')}`}</p>
-            <img
-              data-testid={ `${index}-product-img` }
-              width="50px"
-              height="50px"
-              src={ element.url_image }
-              alt={ element.name }
-            />
-            <button
-              type="button"
-              onClick={ (e) => handleClick(e, 'sub', index) }
-              data-testid={ `${index}-product-minus` }
-            >
-              -
-            </button>
-            <button
-              onClick={ (e) => handleClick(e, 'add', index) }
-              data-testid={ `${index}-product-plus` }
-              type="button"
-            >
-              +
-            </button>
-            <span data-testid={ `${index}-product-qtd` } id={ `product-${index}` }>
-              {element.qty}
-            </span>
+          <div key={ element.name } className="product-card">
+            <div className="product-data">
+              <img
+                data-testid={ `${index}-product-img` }
+                width="50px"
+                height="50px"
+                src={ element.url_image }
+                alt={ element.name }
+              />
+              <p className="product-info">
+                <h3 data-testid={ `${index}-product-name` }>{element.name}</h3>
+                <span data-testid={ `${index}-product-price` }>{`R$ ${element.price.replace('.', ',')}`}</span>
+              </p>
+            </div>
+            <div className="action-buttons">
+              <button
+                type="button"
+                className="sub-product"
+                onClick={ (e) => handleClick(e, 'sub', index) }
+                data-testid={ `${index}-product-minus` }
+              >
+                -
+              </button>
+              <span data-testid={ `${index}-product-qtd` } id={ `product-${index}` }>
+                {element.qty}
+              </span>
+              <button
+                className="add-product"
+                onClick={ (e) => handleClick(e, 'add', index) }
+                data-testid={ `${index}-product-plus` }
+                type="button"
+              >
+                +
+              </button>
+            </div>
           </div>
         ))}
       </div>
