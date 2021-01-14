@@ -22,6 +22,12 @@ const ordersController = require('./Controllers/ordersController');
 
 const detailController = require('./Controllers/detailController');
 
+const admProfileController = require('./Controllers/admProfileController');
+
+const admOrdersController = require('./Controllers/admOrdersController');
+
+const admDetailController = require('./Controllers/admDetailController');
+
 const app = express();
 
 /*
@@ -44,6 +50,12 @@ app.use('/checkout', checkToken, checkoutController);
 app.use('/orders', checkToken, ordersController);
 
 app.use('/orders', checkToken, detailController);
+
+app.use('/admin/profile', checkToken, admProfileController);
+
+app.use('/admin/orders', checkToken, admOrdersController);
+
+app.use('/admin/orders', checkToken, admDetailController);
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
