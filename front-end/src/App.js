@@ -21,6 +21,7 @@ function App() {
         <Route path="/profile" component={ ClientProfilePage } />
         <Route path="/orders" component={ ClientMeusPedidos } />
         <Route path="/checkout" component={ ClientMeusPedidos } />
+        {/* <Route path="/teste" component={ ClientDetailsOrderPage } /> */}
         {/*         trocar rota checkout  */}
         <Route path="/" component={ () => <Redirect to="/login" /> } />
       </Switch>
