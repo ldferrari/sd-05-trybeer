@@ -24,26 +24,26 @@ export default function QuantityButton(props) {
   const altQuantity = async (newQuantity) => {
     const cartProducts = JSON.parse(localStorage.getItem('cart itens'));
     const prodIndex = cartProducts.findIndex((i) => i.id === id);
-    let newNew = cartProducts;
+    let newCartItens = cartProducts;
 
     if (prodIndex !== negativo) {
       if (newQuantity === initialQuantity) {
-        newNew.splice(prodIndex, 1);
+        newCartItens.splice(prodIndex, 1);
       } else {
-        newNew[prodIndex] = {
+        newCartItens[prodIndex] = {
           id, quantity: newQuantity, name, price,
         };
       }
-      setCartItens(newNew);
+      setCartItens(newCartItens);
     } else {
-      newNew = [...cartItens, {
+      newCartItens = [...cartItens, {
         id, quantity: newQuantity, name, price,
       }];
       setCartItens([...cartItens, {
         id, quantity: newQuantity, name, price,
       }]);
     }
-    localStorage.setItem('cart itens', JSON.stringify(newNew));
+    localStorage.setItem('cart itens', JSON.stringify(newCartItens));
   };
 
   const increaseItem = () => {
