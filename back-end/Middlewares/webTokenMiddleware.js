@@ -3,7 +3,8 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const secret = process.env.secretOrPrivateKey || 'secretPassword';
+const secret = process.env.SECRET || 'secretPassword';
+
 const jwtConfig = {
   expiresIn: '30d',
   algorithm: 'HS256',
