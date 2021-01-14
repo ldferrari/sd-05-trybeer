@@ -9,7 +9,7 @@ import '../../css/client/clientProfilePage.css';
 export default function ClientProfilePage() {
   const token = localStorage.getItem('token') || null;
   const user = JSON.parse(localStorage.getItem('user')) || null;
-  const { userData, setUserData } = useContext(GeneralContext);
+  const { setUserData } = useContext(GeneralContext);
   const [nameEqual, setNameEqual] = useState(true);
   const [localName, setLocalName] = useState(user.name);
   const [apiSuccess, setApiSuccess] = useState(false);
