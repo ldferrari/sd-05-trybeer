@@ -1,51 +1,40 @@
 import React, { useState, useEffect } from 'react';
-// import propTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
-// import AppContext from '../../context/AppContext';
+import propTypes from 'prop-types';
 import Footer from '../../components/footer';
 import CardOrder from '../../components/CardOrders';
 import AdminSideBar from '../../components/admin sidebar';
+import { getSales } from '../../services/requestAPI';
 
-const OrderAdmin = () => {
+const OrderAdmin = (props) => {
   const [allOrders, setAllOrders] = useState([]);
-  // const [alertCompraFinalizada, setAlertCompraFinalizada] = useState('');
-  // const theToken = localStorage.getItem("token");
-  const logged = localStorage.getItem('token');
-  // const { cart, setCart } = useContext(AppContext);
+  const token = localStorage.getItem('token');
+  const { history } = props;
 
   useEffect(() => {
-    const pegaAPI = () => [
-      {
-        id: 1, addressNumber: 2, addressStreet: 'minha rua', value: 10.80, status: 'Pendente',
-      },
-      {
-        id: 2, addressNumber: 2, addressStreet: 'minha rua', value: 10.80, status: 'Pendente',
-      },
-    ];
-    setAllOrders(pegaAPI);
-  },
-  []);
-
-  if (!logged) {
-    return <Redirect to="/login" />;
-  }
+    if (!token) {
+      history.push('/login');
+    }
+    async function fetchProducts() {
+      try {
+        const { data } = await getSales(token);
+        setAllOrders(data);
+      } catch (error) {
+        console.log(error);
+      }
+      return 'true';
+    }
+    fetchProducts();
+  }, [token, history]);
 
   return (
     <div className="Orders">
       <AdminSideBar />
       <div className="pedido">
-        <h2 className="checkoutitle">Produtos no carrinho:</h2>
-        <div className="legenda">
-          <p>QUANTIDADE</p>
-          <p>PRODUTO</p>
-          <p>PREÇO</p>
-          <p>TOTAL</p>
-          <p>EXCLUIR  </p>
-        </div>
+        <h2 className="checkoutitle">Pedidos Pendentes</h2>
         <div className="cartItems">
           {
-          allOrders
-            .map((item, index) => <CardOrder key={ item.id } order={ item } index={ index } />)
+            allOrders
+              .map((item, index) => <CardOrder key={ item.id } order={ item } index={ index } />)
           }
         </div>
       </div>
@@ -56,6 +45,6 @@ const OrderAdmin = () => {
 
 export default OrderAdmin;
 
-/* OrderAdmin.propTypes = {
+OrderAdmin.propTypes = {
   history: propTypes.func.isRequired,
-}; */
+};
