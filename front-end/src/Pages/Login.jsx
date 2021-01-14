@@ -2,8 +2,18 @@ import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import Input from '../Components/Input';
+import { TextField, Button } from '@material-ui/core';
 import { getUserDataAct } from '../Redux/Actions/user';
+
+const pageStyle = {
+  border: '1px solid red',
+  justifyContent: 'center',
+}
+
+const containerStyle = {
+  justifyContent: 'space-between',
+  height: '250px',
+}
 
 const Login = ({ submitLogin, userData }) => {
   const [email, setEmail] = useState(null);
@@ -35,42 +45,40 @@ const Login = ({ submitLogin, userData }) => {
     }
   }
   return (
-    <div id="Login">
-      <h1>Login</h1>
-      <form>
-        <p>Email</p>
-        <Input
-          test="email-input"
-          placeholder="Digite seu e-mail"
+    <div className="container-main" style={pageStyle}>
+      <div className="container-screen" style={containerStyle}>
+        <TextField
+          data-testid="email-input"
+          label="Digite seu e-mail"
+          variant="outlined"
           onChange={ (e) => setEmail(e.target.value) }
         />
-        <p>Senha</p>
-        <Input
+        <TextField
+          data-testid="password-input"
+          label="Digite sua senha"
+          variant="outlined"
           type="password"
-          test="password-input"
-          placeholder="Digite sua senha"
           onChange={ (e) => setPassword(e.target.value) }
         />
-      </form>
-      <button
-        disabled={ isDisabled }
-        type="submit"
-        onClick={ (event) => {
-          event.preventDefault();
-          submitLogin({ email, password });
-        } }
-        data-testid="signin-btn"
-      >
-        ENTRAR
-      </button>
-      <button
-        type="button"
-        data-testid="no-account-btn"
-        onClick={ () => setRegister(true) }
-      >
-        Ainda não tenho conta
-      </button>
-      {isAnInvalidEmail && (<p>Email ou senha inválidos</p>) }
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <Button
+            color="primary"
+            variant="outlined"
+            disabled={ isDisabled }
+            data-testid="signin-btn"
+            onClick={ () => submitLogin({ email, password }) }
+          >
+            ENTRAR
+          </Button>
+          <Button
+            data-testid="no-account-btn"
+            onClick={ () => setRegister(true) }
+          >
+            Ainda não tenho conta
+          </Button>
+        </div>
+        {isAnInvalidEmail && (<p>Email ou senha inválidos</p>) }
+      </div>
     </div>
   );
 };

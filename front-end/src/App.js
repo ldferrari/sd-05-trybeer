@@ -1,4 +1,3 @@
-import './App.css';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
@@ -11,6 +10,8 @@ import Checkout from './Pages/Checkout';
 import Orders from './Pages/Orders';
 import Register from './Pages/Register';
 
+import './App.css';
+
 // prettier-ignore
 function App({ ProductsAPI }) {
   useEffect(() => {
@@ -18,19 +19,17 @@ function App({ ProductsAPI }) {
   }, [ProductsAPI]);
 
   return (
-    <div>
-      <Switch>
-        <Route exact path="/">
-          <Redirect to="/login" />
-        </Route>
-        <Route exact path="/login" component={ Login } />
-        <Route exact path="/profile" component={ Profile } />
-        <Route exact path="/products" component={ Products } />
-        <Route exact path="/checkout" component={ Checkout } />
-        <Route exact path="/orders" component={ Orders } />
-        <Route exact path="/register" component={ Register } />
-      </Switch>
-    </div>
+    <Switch>
+      <Route exact path="/">
+        <Redirect to="/login" />
+      </Route>
+      <Route exact path="/login" component={ Login } />
+      <Route exact path="/profile" component={ Profile } />
+      <Route exact path="/products" component={ Products } />
+      <Route exact path="/checkout" component={ Checkout } />
+      <Route exact path="/orders" component={ Orders } />
+      <Route exact path="/register" component={ Register } />
+    </Switch>
   );
 }
 

@@ -1,46 +1,51 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import titleForHeader from '../Helper/titleForHeader';
+import { Redirect } from 'react-router-dom';
+import Drawer from '@material-ui/core/Drawer';
+import Button from '@material-ui/core/Button';
 import SideBar from './SideBar';
-// refatorar na estilização
+
 const headerStyle = {
-  background: '#100F0F',
-  width: '375px',
-  height: '86px',
-};
-// refatorar na estilização
-const h1Style = {
-  fontFamily: 'Roboto',
-  fontSize: '36px',
-  fontStyle: 'normal',
-  fontWeight: '400',
-  lineHeight: '42px',
-  letterSpacing: '0em',
-  textAlign: 'left',
-  color: 'white',
+  display: 'flex',
+  justifyContent: 'space-between',
+  background: 'var(--dark)',
+  color: 'var(--white)',
+  margin: 0,
+  padding: '8px',
 };
 
 const Header = ({ pathname }) => {
   const [showSideBar, setShowSideBar] = useState(false);
+  const [redirect, setRedirect] = useState(null);
 
   // func que retorna o título do header baseado no caminho
   const title = titleForHeader(pathname);
 
+  const toggleDrawer = () => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+    setShowSideBar(!showSideBar);
+  };
+
+  if (redirect) return <Redirect to={redirect} />;
+
   return (
-    <div>
-      <header style={ headerStyle }>
-        <button
-          type="button"
-          onClick={ () => setShowSideBar(!showSideBar) }
-          data-testid="top-hamburguer"
+    <div style={headerStyle}>
+      <Button onClick={toggleDrawer()}>
+        <i
+          className="material-icons"
+          style={{ color: 'var(--white)', fontSize: '32px' }}
         >
-          abrir menu
-        </button>
-        <h1 data-testid="top-title" style={ h1Style }>
-          {title}
-        </h1>
-      </header>
-      {showSideBar ? <SideBar /> : null}
+          menu
+        </i>
+      </Button>
+      <h3>{ title }</h3>
+      <div style={{ marginRight: '70px' }} />
+      <Drawer open={showSideBar} onClose={toggleDrawer()}>
+        <SideBar toggleDrawer={toggleDrawer} redirect={setRedirect} />
+      </Drawer>
     </div>
   );
 };
