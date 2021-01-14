@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import Context from '../context/Context';
 import { registerUser } from '../services/api';
@@ -49,7 +49,7 @@ const Register = () => {
   };
 
   return (
-    <div className="form-register">
+    <div className="register">
       <img src={ logo } alt="logo" className="logo" />
       { designatedRoute !== undefined ? <Redirect to={ designatedRoute } /> : null }
       <form id="register-form">
@@ -95,15 +95,22 @@ const Register = () => {
           />
           Quero Vender
         </label>
-        <button
-          type="submit"
-          data-testid="signup-btn"
-          disabled={ !validateRegister(userData) }
-          onClick={ (e) => handleRegister(userData, e) }
-          className="user-register"
-        >
-          Cadastrar
-        </button>
+        <div className="buttons">
+          <button
+            type="submit"
+            data-testid="signup-btn"
+            disabled={ !validateRegister(userData) }
+            onClick={ (e) => handleRegister(userData, e) }
+            className="user-register"
+          >
+            Cadastrar
+          </button>
+          <button type="button" className="btn-return">
+            <Link to="/login">
+              Voltar
+            </Link>
+          </button>
+        </div>
       </form>
     </div>
   );
