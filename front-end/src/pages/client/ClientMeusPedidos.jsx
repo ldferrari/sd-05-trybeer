@@ -6,5 +6,5 @@ export default function ClientMeusPedidos() {
     <div>
       <Menu title="Meus Pedidos" />
     </div>
-  )
-};
+  );
+}

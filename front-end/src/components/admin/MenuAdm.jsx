@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import GeneralContext from '../../context/general/GeneralContext';
-import '../../css/admin/menuAdm.css'
+import '../../css/admin/menuAdm.css';
 
 export default function MenuAdm() {
   const { setUserData, initialUser } = useContext(GeneralContext);
@@ -25,5 +25,5 @@ export default function MenuAdm() {
         </div>
       </nav>
     </div>
-  )
+  );
 }
