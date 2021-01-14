@@ -10,6 +10,7 @@ import { postGetTheOrder } from '../../services/requestAPI';
 export default function OrderDetails(props) {
     
   const [orderHere, setOrder] = useState([]);
+  const [dia, setDia] = useState('');
   // const theToken = localStorage.getItem('token');
   const { id } = useParams();
 
@@ -28,11 +29,14 @@ export default function OrderDetails(props) {
     async function fetchOrder() {
       const temp = await postGetTheOrder(token, id);
       const { data }= temp;
-      console.log(data);
       setOrder(data);
+      setDia(data[0].sale_date);
+      console.log(data);
     }
     fetchOrder();
   }, [props, id]);
+
+const dataCerta = !dia? '': dia.match(/\d{4}-(\d{2})-(\d{2})/);
 
   return (
     <div>
@@ -41,7 +45,7 @@ export default function OrderDetails(props) {
         { id }
       </h4>
       <h4 data-testid="order-date">
-        { orderHere.sale_date }
+        { `${dataCerta[2]}/${dataCerta[1]}` }
       </h4>
       <div>
         <div className="legenda">

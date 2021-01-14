@@ -11,10 +11,10 @@ const OrderItem = (props) => {
       <p data-testid={ `${index}-product-qtd` }>{ item.quantity }</p>
       <p data-testid={ `${index}-product-name` }>{ item.name }</p>
       <p data-testid={ `${index}-product-unit-price` }>
-        {`(R$ ${item.total_price.toString().replace('.', ',')} un)`}
+        {`(R$ ${item.price.toString().replace('.', ',')} un)`}
       </p>
       <p data-testid={ `${index}-product-total-value` }>
-        { `R$ ${(item.total_price * item.quantity).toFixed(two).replace('.', ',')}` }
+        { `R$ ${(item.price * item.quantity).toFixed(two).replace('.', ',')}` }
       </p>
     </div>
   );
@@ -27,6 +27,7 @@ OrderItem.propTypes = {
     // id: PropTypes.number,
     quantity: PropTypes.number,
     name: PropTypes.string,
+    price: PropTypes.number,
     total_price: PropTypes.number,
   }).isRequired,
   index: PropTypes.number.isRequired,
