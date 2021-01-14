@@ -16,9 +16,9 @@ const Products = () => {
   }, [setProductList, token]);
 
   return (
-    <div>
+    <section>
       <Header title="TryBeer" />
-      <div className="products-list">
+      <section className="products-list">
         { productsList
           && productsList.map((product, index) => (
             <Card
@@ -30,8 +30,8 @@ const Products = () => {
             />
           )) }
         {/* carrinho soma atual */}
-      </div>
-    </div>
+      </section>
+    </section>
   );
 };
 
