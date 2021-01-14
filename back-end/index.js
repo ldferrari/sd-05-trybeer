@@ -22,6 +22,8 @@ const ordersController = require('./Controllers/ordersController');
 
 const adminOrdersController = require('./Controllers/adminOrdersController');
 
+const detailController = require('./Controllers/detailController');
+
 const app = express();
 
 /*
@@ -44,6 +46,8 @@ app.use('/checkout', checkToken, checkoutController);
 app.use('/orders', checkToken, ordersController);
 
 app.use('/admin/orders', checkToken, adminOrdersController);
+
+app.use('/orders', checkToken, detailController);
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
