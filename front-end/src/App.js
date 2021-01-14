@@ -7,6 +7,7 @@ import LoginPage from './pages/general/LoginPage';
 import ClientMeusPedidos from './pages/client/ClientMeusPedidos';
 import AdminPedidosPendentes from './pages/admin/AdminPedidosPendentes';
 import './css/client/app.css';
+import ClientCheckoutPage from './pages/client/ClientCheckoutPage';
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
         <Route path="/products" component={ ClientProductPage } />
         <Route path="/profile" component={ ClientProfilePage } />
         <Route path="/orders" component={ ClientMeusPedidos } />
-        <Route path="/checkout" component={ ClientMeusPedidos } />
+        <Route path="/checkout" component={ ClientCheckoutPage } />
         {/*         trocar rota checkout  */}
         <Route path="/" component={ () => <Redirect to="/login" /> } />
       </Switch>

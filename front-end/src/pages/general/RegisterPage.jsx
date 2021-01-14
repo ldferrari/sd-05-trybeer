@@ -16,6 +16,7 @@ export default function RegisterPage() {
   const [isFetched, setIsFetched] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [userData, setUserData] = useState({
+    id: '',
     name: '',
     email: '',
     password: '',
@@ -37,6 +38,7 @@ export default function RegisterPage() {
     localStorage.setItem(
       'user',
       JSON.stringify({
+        id: userWithToken.id,
         email: user.email,
         role: user.role,
         name: user.name,
