@@ -18,11 +18,12 @@ const OrderAdmin = (props) => {
         const { data } = await getSales(token);
         setAllOrders(data);
       } catch (error) {
-        return error;
+        console.log(error);
       }
+      return 'true';
     }
-    return fetchProducts();
-  }, [token, history]);
+    fetchProducts();
+  }, [token]);
 
   return (
     <div className="Orders">
