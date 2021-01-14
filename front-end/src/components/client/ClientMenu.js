@@ -56,4 +56,3 @@ export default ClientMenu;
 ClientMenu.propTypes = {
   title: PropTypes.string.isRequired,
 };
-
