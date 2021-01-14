@@ -23,7 +23,7 @@ const OrderAdmin = (props) => {
       return 'true';
     }
     fetchProducts();
-  }, [token]);
+  }, [token, history]);
 
   return (
     <div className="Orders">
