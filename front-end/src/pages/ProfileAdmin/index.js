@@ -17,9 +17,8 @@ const PerfilAdmin = () => {
       setEmail(user.email);
     }
     asyncMe();
-    console.log('AQUI')
   }, []);
-  
+
   if (!localStorage.getItem('token')) {
     return <Redirect to="/login" />;
   }
