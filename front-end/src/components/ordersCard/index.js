@@ -17,7 +17,10 @@ const OrderCard = (props) => {
       <p data-testid={ `${index}-order-date` }>
         { order.sale_date }
       </p>
-      <p data-testid={ `${index}-order-total-value` }>R$ { order.total_price }</p>
+      <p data-testid={ `${index}-order-total-value` }>
+        R$ 
+        { order.total_price }
+      </p>
     </Link>
   );
 };
