@@ -1,21 +1,57 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { Link, Redirect } from 'react-router-dom';
+
 import TryBeerContext from '../context/TryBeerContext';
 import Header from '../components/Header';
 import Card from '../components/Card';
+import { getAllProducts } from '../services/ApiTrybeer';
 
 const Products = () => {
-  const { productsList } = useContext(TryBeerContext);
+  const { productsList, setProductList, total } = useContext(TryBeerContext);
+  const userData = JSON.parse(localStorage.getItem('user'));
+  const token = userData && userData.token;
+
+  useEffect(() => {
+    getAllProducts(token)
+      .then((products) => setProductList(products))
+      .catch((err) => err);
+  }, [setProductList, token]);
+
+  if (!token) return <Redirect to="/login" />;
   return (
-    <div>
+    <section>
       <Header title="TryBeer" />
-      <div className="products-list">
-        { productsList.map((element) => (
-          <Card key={ element } name={ element } />
-        )) }
-        {/* carrinho soma atual */}
-      </div>
-    </div>
+      <section className="products-list">
+        { productsList
+          && productsList.map((product, index) => (
+            <Card
+              index={ index }
+              key={ product.id }
+              image={ product.url_image }
+              name={ product.name }
+              price={ product.price }
+            />
+          )) }
+      </section>
+      <Link to="/checkout">
+        <button
+          data-testid="checkout-bottom-btn"
+          type="button"
+          disabled={ !total }
+        >
+          Ver Carrinho
+        </button>
+      </Link>
+      <span data-testid="checkout-bottom-btn-value">
+        {new Intl.NumberFormat('pt-BR', {
+          style: 'currency',
+          currency: 'BRL',
+        }).format(total)}
+      </span>
+    </section>
   );
 };
 
 export default Products;
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
