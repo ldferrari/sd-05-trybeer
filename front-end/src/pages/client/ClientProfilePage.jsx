@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import validateName from '../../services/general/validateName';
 import Menu from '../../components/client/Menu';
 import GeneralContext from '../../context/general/GeneralContext';
-import updateUserNameAPI from '../../services/apis';
+import updateUserNameAPI from '../../services/general/fetchUpdateUser';
 import '../../css/client/clientProfilePage.css';
 
 export default function ClientProfilePage() {
@@ -13,29 +13,30 @@ export default function ClientProfilePage() {
   const [apiSuccess, setApiSuccess] = useState(false);
 
   const token = localStorage.getItem('token') || null;
+  const user = JSON.parse(localStorage.getItem('user')) || null;
 
   if (!token) return <Redirect to="/login" />;
 
   const handleChange = (e) => {
     setNameEqual(false);
     validateName(setLocalName(e.target.value));
-    if (e.target.value === userData.name) {
+    if (e.target.value === user.name) {
       setNameEqual(true);
     }
   };
 
   const handleClick = async () => {
-    setUserData({ ...userData, name: localName });
+    setUserData({ ...user, name: localName });
     localStorage.setItem(
       'user',
       JSON.stringify({
-        email: userData.email,
+        email: user.email,
         name: localName,
-        role: userData.role,
+        role: user.role,
       }),
     );
-    const api = await updateUserNameAPI(userData.id, {
-      ...userData,
+    const api = await updateUserNameAPI(user.id, {
+      ...user,
       name: localName,
     });
     if (api.message === 'success') {
@@ -55,7 +56,7 @@ export default function ClientProfilePage() {
             type="text"
             id="email"
             name="email"
-            value={ userData.email }
+            value={ user.email }
             readOnly
           />
         </label>
@@ -67,7 +68,7 @@ export default function ClientProfilePage() {
             type="text"
             id="name"
             name="name"
-            value={ localName }
+            value={ user.name }
             onChange={ handleChange }
           />
         </label>

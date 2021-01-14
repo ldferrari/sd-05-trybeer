@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import GeneralContext from '../../context/general/GeneralContext';
 import loginData from '../../services/general/fetchLoginData';
@@ -19,6 +18,7 @@ export default function LoginPage(props) {
       id: usuario.id,
       role: usuario.role,
       name: usuario.name,
+      email: usuario.email,
     });
     localStorage.setItem('token', usuario.token);
     localStorage.setItem(
@@ -90,6 +90,6 @@ export default function LoginPage(props) {
   );
 }
 
-LoginPage.propTypes = {
+/* LoginPage.propTypes = {
   history: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
+}; */

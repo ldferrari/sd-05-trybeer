@@ -11,29 +11,25 @@ export default function ClientProfilePage() {
     <div>
       <div>Admin - Perfil</div>
       <div className="bodyProfile">
-        <label htmlFor="email" className="labelProfile">
+        <label className="labelProfile">
           Email
-          <input
+          <div
             data-testid="profile-email"
             className="inputProfile"
-            type="text"
-            id="email"
-            name="email"
-            value={ user.email }
             readOnly
-          />
+          >
+            { user.email }
+          </div>
         </label>
-        <label htmlFor="name" className="labelProfile">
+        <label className="labelProfile">
           Name
-          <input
+          <div
             data-testid="profile-name"
             className="inputProfile"
-            type="text"
-            id="name"
-            name="name"
-            value={ user.name }
             readOnly
-          />
+          >
+            { user.name }
+          </div>
         </label>
       </div>
     </div>

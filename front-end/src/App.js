@@ -5,7 +5,7 @@ import ClientProductPage from './pages/client/ClientProductPage';
 import ClientProfilePage from './pages/client/ClientProfilePage';
 import LoginPage from './pages/general/LoginPage';
 import AdminProfilePage from './pages/admin/AdminProfilePage';
-import './css/app.css';
+// import './css/admin/app.css';
 import ClientMeusPedidos from './pages/client/ClientMeusPedidos';
 import AdminPedidosPendentes from './pages/admin/AdminPedidosPendentes';
 import './css/client/app.css';
