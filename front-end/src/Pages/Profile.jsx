@@ -16,7 +16,7 @@ function Profile({ history, userData, updateUser }) {
 
   return (
     <div className="container-main">
-      <Header pathname={ history.location.pathname, console.log(history.location.pathname); } />
+      <Header pathname={ history.location.pathname } />
       <div className="container-page">
         <strong>Perfil</strong>
         <form>
