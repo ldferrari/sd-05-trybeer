@@ -7,16 +7,16 @@ import updateUserNameAPI from '../../services/general/fetchUpdateUser';
 import '../../css/client/clientProfilePage.css';
 
 export default function ClientProfilePage() {
-  const { userData, setUserData } = useContext(GeneralContext);
-  const [nameEqual, setNameEqual] = useState(true);
-  const [localName, setLocalName] = useState(userData.name);
-  const [apiSuccess, setApiSuccess] = useState(false);
-
   const token = localStorage.getItem('token') || null;
   const user = JSON.parse(localStorage.getItem('user')) || null;
+  const { userData, setUserData } = useContext(GeneralContext);
+  const [nameEqual, setNameEqual] = useState(true);
+  const [localName, setLocalName] = useState(user.name);
+  const [apiSuccess, setApiSuccess] = useState(false);
 
+  
   if (!token) return <Redirect to="/login" />;
-
+  console.log(userData)
   const handleChange = (e) => {
     setNameEqual(false);
     validateName(setLocalName(e.target.value));
@@ -26,7 +26,10 @@ export default function ClientProfilePage() {
   };
 
   const handleClick = async () => {
-    setUserData({ ...user, name: localName });
+    setUserData({
+      ...user,
+      name: localName,
+    });
     localStorage.setItem(
       'user',
       JSON.stringify({
@@ -68,7 +71,7 @@ export default function ClientProfilePage() {
             type="text"
             id="name"
             name="name"
-            value={ user.name }
+            value={ localName }
             onChange={ handleChange }
           />
         </label>
