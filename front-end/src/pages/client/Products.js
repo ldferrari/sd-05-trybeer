@@ -4,7 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import ClientMenu from '../../components/client/ClientMenu';
 import { getProducts } from '../../services/fetch';
 import TrybeerContext from '../../context/TrybeerContext';
-import EachProduct from '../../components/client/EachProduct';
+import EachProduct from '../../components/client/newProductCard';
 import '../../css/client/products.css';
 
 function Products() {
@@ -20,7 +20,7 @@ function Products() {
   return (
     <section className="general-container-2">
       <ClientMenu title="TryBeer" />
-      <div className="productCards">
+      <div className="products-container">
         {/* {fetching && <p>Loading...</p>} */}
         {/* BACK - como ver que o fetch acabou? */}
         {dataProducts.map((product, index) => (
