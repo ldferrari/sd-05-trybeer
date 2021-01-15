@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
+import DarkModeBtn from '../../components/DarkModeBtn';
 import AdminMenu from '../../components/admin/AdminMenu';
 
 function AdminProfile() {
@@ -30,6 +31,7 @@ function AdminProfile() {
       <div data-testid="profile-email">
         { `Email: ${user.email}` }
       </div>
+      <DarkModeBtn />
     </div>
   );
 }

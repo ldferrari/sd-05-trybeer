@@ -13,4 +13,5 @@ export const darkTheme = {
 }
 
  // https://css-tricks.com/a-dark-mode-toggle-with-react-and-themeprovider/
- 
+ // Aqui tudo devia ser correto jà, apenas o fundo light que vai depender
+ // (vamos de laranja para cinza escuro ou branco para cinza escuro?)

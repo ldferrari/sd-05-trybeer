@@ -22,4 +22,4 @@ export const GlobalStyles = createGlobalStyle`
   }`
 
   // https://css-tricks.com/a-dark-mode-toggle-with-react-and-themeprovider/
-  
+  // à partir da linha 14 é escolha nossa, apenas modelo copiado do tutorial
