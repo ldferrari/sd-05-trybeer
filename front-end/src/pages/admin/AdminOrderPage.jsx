@@ -2,7 +2,9 @@ import React, { useEffect, useState, useContext } from 'react';
 // import { Link, Redirect } from 'react-router-dom';
 import OrderCard from '../../components/admin/OrderCard';
 import salesAPI from '../../services/admin/api';
-import Menu from '../../components/client/Menu';
+// import Menu from '../../components/client/Menu';
+// import productsApi from '../../services/client/api';
+import '../../css/clientProductPage.css';
 
 const AdminOrders = () => {
   const [ allOrders, setAllOrders ] = useState([]);
