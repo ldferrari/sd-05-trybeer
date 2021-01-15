@@ -60,6 +60,7 @@ function EachProduct(props) {
         </p>
         <div className="controlQty">
         <button
+          className="round-btn"
           type="button"
           key={ product.id }
           data-testid={ `${index}-product-minus` }
@@ -71,6 +72,7 @@ function EachProduct(props) {
           {countProduct}
         </p>
         <button
+        className="round-btn"
           type="button"
           key={ product.id }
           data-testid={ `${index}-product-plus` }

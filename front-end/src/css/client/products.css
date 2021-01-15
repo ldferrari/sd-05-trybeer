@@ -56,6 +56,17 @@ p {
   margin: 0;
 }
 
+.round-btn {
+  border-radius: 30px;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: #D75B49;
+  border: 0;
+  height: 30px;
+  width: 30px;
+  color:white;
+}
+
 .image-size {
   margin: 0 !important;
   padding: 0 !important;
@@ -78,4 +89,5 @@ p {
 
 .controlQty {
   display: flex;
+  justify-content: center;
 }
