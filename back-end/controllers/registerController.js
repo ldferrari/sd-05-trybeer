@@ -1,5 +1,4 @@
 const { Router } = require('express');
-// const rescue = require('express-rescue');
 const registerService = require('../services/registerService');
 
 // https://bit.ly/2VxAplp
@@ -9,9 +8,7 @@ registerRouter.post('/', async (req, res) => {
   const { name, email, password, role } = req.body;
   try {
     const newUser = await registerService.createUser(name, email, password, role);
-    // if (newUser.err) {
-    //   return res.status(200).json(newUser)
-    // }
+
     res.status(200).json(newUser);
   } catch (err) {
     if (err.message === 'invalid_email') {

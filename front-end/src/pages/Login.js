@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import TryBeerContext from '../context/TryBeerContext';
-import fetchLogin from '../services/ApiTrybeer';
+import { fetchLogin } from '../services/ApiTrybeer';
 import '../style/Login.css';
 
 const logo = require('../logo.jpg');
