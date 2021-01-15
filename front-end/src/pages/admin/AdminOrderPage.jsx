@@ -1,25 +1,25 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { Link, Redirect } from 'react-router-dom';
-// import getOrders from '../../services/admin/api';
+// import { Link, Redirect } from 'react-router-dom';
 import OrderCard from '../../components/admin/OrderCard';
+import salesAPI from '../../services/admin/api';
 import Menu from '../../components/client/Menu';
-// import '../../css/clientProductPage.css';
 
 const AdminOrders = () => {
-  // const [ orders, setOrders ] = useState([]);
+  const [ allOrders, setAllOrders ] = useState([]);
 
-  // useEffect(() => {
-  //   getAllSales().then((response) => setOrders(response));
-  // }, []);
+  useEffect(() => {
+    salesAPI().then((response) => setAllOrders(response));
+  }, []);
 
   return (
     <div>
       {/* <Menu title="TryBeer" /> */}
+        <div>
+          {allOrders.map((order, index) => (
+            <OrderCard key={ order.id } index={ index } order={ order } />
+          ))}
+        </div>
       {/* <Link to={ `/admin/orders/${order.id}` } > */}
-        {/* {orders.map((index, order) => (
-          <OrderCard key={ order.id } index={ index } order={ order } />
-        ))} */}
-        <OrderCard />
       {/* </Link> */}
     </div>
   );
