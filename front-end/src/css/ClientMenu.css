@@ -1,39 +1,43 @@
-.menu-superior {
-  width: 100%;
-  padding: 5px 20px;
+.menu-superior{
+	background: blue;
+	position: fixed;
+	top:0;
+	width:100%;
 }
 
 #check {
-  display: none;
+	display: none;
 }
 
 .top-hamburguer {
-  display: inline-block;
-  color: green;
-  float: left;
-  transition: color linear 0.2s;
-  cursor: pointer;
-  position: absolute;
-  z-index: 1;
+	align-self: center;
+	background:blue;
+	box-shadow:0px;
+	color: white;
+	display:inline-block;
+	font-size: 25px;
+	padding: 15px;
+	position: fixed;
+	transition:color linear 1s;
+	z-index: 1;
 }
 
 .top-title {
-  text-align: center;
-  color: green;
-  font-size: 20px;
+	text-align: center;
+	color: white;
+	font-family: Roboto;
+	font-size: 25px;
+	line-height: 25px;
 }
 
 .side-menu-container {
-  background: blue;
-  height: 100%;
+	background: blue;
+	height:100%;
   left: -40%;
-  position: absolute;
-  transition: all 0.3s linear;
-  width: 40%;
-}
-
-.side-menu-container-changed {
-  background: blue;
+  display: none;
+	position: fixed;
+	transition:all 1s linear;
+	width: 20%;
 }
 
 .side-menu {
@@ -53,14 +57,14 @@ nav a{
 }
 
 .btn-side {
-	background: blueviolet;
+	background: purple;
 	border-radius:5px;
-	color:white;
-	font-size: 10px;
-	margin: 5%;
-	padding: 5%;
+	color:rgb(255, 255, 255);
+	font-size: 25px;
+	margin: 10%;
+	padding: 10%;
 }
 
 .btn-side:hover{
-	background: black;
+	background: blue;
 }

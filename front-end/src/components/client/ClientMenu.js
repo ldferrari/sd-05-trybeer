@@ -1,23 +1,24 @@
 // ref https://medium.com/@renan.serverti/aprenda-frontend-como-criar-um-menu-toggle-responsivo-com-css-4f7f7a2ac07a
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import { useState } from 'react';
 import PropTypes from 'prop-types';
-// import { TrybeerContext } from '../context/TrybeerContext';
 import '../../css/ClientMenu.css';
 
 function ClientMenu(props) {
-  // const [click, setClick] = useState(false);
+  const [click, setClick] = useState(false);
   const { title } = props;
 
   function openClose() {
     if (document.getElementById('check').checked) {
-      document.getElementsByClassName('side-menu-container')[0].style.left = '0%';
+      setClick(true);
     }
     if (!document.getElementById('check').checked) {
-      document.getElementsByClassName('side-menu-container')[0].style.left = '-40%';
+      setClick(false);
     }
   }
+
+  const left = (click) ? '0' : '-40%';
+  const display = (click) ? 'block' : 'none';
 
   return (
     <header className="menu-superior">
@@ -28,7 +29,7 @@ function ClientMenu(props) {
       <h1 className="top-title" data-testid="top-title">
         {title}
       </h1>
-      <div className="side-menu-container">
+      <div className="side-menu-container" style={ { left, display } }>
         <nav className="side-menu">
           <div className="btn-menu">
             <Link className="btn-side" data-testid="side-menu-item-products" to="/products">
