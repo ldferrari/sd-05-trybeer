@@ -26,7 +26,7 @@ export default function RegisterPage() {
   const checked = () => {
     const isChecked = document.getElementById('want-to-sell').checked;
     if (isChecked) {
-      setUserData({ ...userData, role: 'admin' });
+      setUserData({ ...userData, role: 'administrator' });
     } else {
       setUserData({ ...userData, role: 'client' });
     }
@@ -66,7 +66,7 @@ export default function RegisterPage() {
       setEmailRegistered(false);
       setEmailVerified(true);
     }
-    if (message === 'ok' && role === 'admin') {
+    if (message === 'ok' && role === 'administrator') {
       setEmailRegistered(false);
       setEmailVerified(true);
     }
@@ -77,7 +77,7 @@ export default function RegisterPage() {
     return loggedIn && <Redirect to="/products" />;
   }
 
-  if (isFetched && !isEmailRegistered && userData.role === 'admin' && isEmailVerified) {
+  if (isFetched && !isEmailRegistered && userData.role === 'administrator' && isEmailVerified) {
     setLocalStorage(userData);
     return <Redirect to="/admin/orders" />;
   }
