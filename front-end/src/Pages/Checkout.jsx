@@ -1,19 +1,22 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import CheckoutProductsList from '../Components/CheckoutProductsList';
 import Header from '../Components/Header';
 import Input from '../Components/Input';
 import { submitOrderAct, repopulatingAct } from '../Redux/Actions/index';
 
 const zero = 0;
+const tresMil = 3000;
 
-function Checkout({ history, userData, cart, submitOrder, repopulatingStore }) {
+function Checkout({
+  history, userData, cart, submitOrder, repopulatingStore,
+}) {
   const [buttonShoulBeDisabled, setbuttonShoulBeDisabled] = useState(false);
   const [street, setStreet] = useState('');
   const [houseNumber, setHouseNumber] = useState('');
   const [isTotalZero, setisTotalZero] = useState(false);
+  const [shouldRedirect, setShouldRedirect] = useState(false);
 
   useEffect(() => {
     const localCart = JSON.parse(localStorage.getItem('cart'));
@@ -43,19 +46,35 @@ function Checkout({ history, userData, cart, submitOrder, repopulatingStore }) {
 
   // +++++++++++++++++++++
 
+  function submitHandler() {
+    setShouldRedirect(true);
+    submitOrder({
+      cart,
+      userData,
+      total,
+      street,
+      houseNumber,
+    });
+  }
+
+  if (shouldRedirect) {
+    setTimeout(() => {
+      history.push('/products');
+    }, tresMil);
+  }
   return (
     <div>
-      <Header pathname={history.location.pathname} />
+      <Header pathname={ history.location.pathname } />
       <h3>Produtos</h3>
-      {total === 0 && <p>Não há produtos no carrinho</p>}
-      <CheckoutProductsList setisTotalZero={setisTotalZero} />
+      {total === zero && <p>Não há produtos no carrinho</p>}
+      <CheckoutProductsList setisTotalZero={ setisTotalZero } />
       <h3>Endereço</h3>
       <p>Rua:</p>
       <br />
       <Input
         test="checkout-street-input"
         id="rua"
-        onChange={(e) => setStreet(e.target.value)}
+        onChange={ (e) => setStreet(e.target.value) }
       />
       <br />
       <p>Número da casa:</p>
@@ -63,24 +82,17 @@ function Checkout({ history, userData, cart, submitOrder, repopulatingStore }) {
       <Input
         test="checkout-house-number-input"
         id="numero-da-casa"
-        onChange={(e) => setHouseNumber(e.target.value)}
+        onChange={ (e) => setHouseNumber(e.target.value) }
       />
       <button
-        disabled={buttonShoulBeDisabled}
+        disabled={ buttonShoulBeDisabled }
         data-testid="checkout-finish-btn"
         type="button"
-        onClick={() =>
-          submitOrder({
-            cart,
-            userData,
-            total,
-            street,
-            houseNumber,
-          })
-        }
+        onClick={ () => submitHandler() }
       >
         Finalizar Pedido
       </button>
+      {shouldRedirect && <p>Compra realizada com sucesso!</p>}
     </div>
   );
 }
@@ -90,6 +102,7 @@ Checkout.propTypes = {
     reduce: PropTypes.func,
   }).isRequired,
   history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
     location: PropTypes.shape({
       pathname: PropTypes.string,
     }).isRequired,
@@ -98,6 +111,7 @@ Checkout.propTypes = {
   userData: PropTypes.shape({
     user: PropTypes.shape(Object),
   }).isRequired,
+  repopulatingStore: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({ userRequestReducer, productsRequestReducer }) => ({
