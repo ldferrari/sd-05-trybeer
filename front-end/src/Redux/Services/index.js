@@ -60,9 +60,4 @@ export const updateUser = (data) => (
 );
 
 export const submitOrderFetch = (data) => (
-  fetch(`${localhostURL}/sales`, myInitWithBody(data)).then((response) => (
-    response
-      .json()
-      .then((json) => Promise.resolve(json))
-      .catch((err) => Promise.reject(err))))
-);
+  fetch(`${localhostURL}/sales`, myInitWithBody(data)).then((response) => console.log(myInitWithBody(data))));
