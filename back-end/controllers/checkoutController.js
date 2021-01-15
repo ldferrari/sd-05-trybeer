@@ -3,7 +3,7 @@ const checkoutService = require('../services/checkoutService');
 
 const checkout = Router();
 
-checkout.get('/', async (req, res) => {
+checkout.post('/', async (req, res) => {
     const {
       user_id,
       total_price,

@@ -9,7 +9,8 @@ const profileController = require('./controllers/profileController.js');
 const productsController = require('./controllers/productsController.js');
 const ordersController = require('./controllers/ordersController.js');
 const salesController = require('./controllers/salesController.js');
-const checkoutController = require('./controllers/checkoutController')
+const checkoutController = require('./controllers/checkoutController');
+const orderDetailsController = require('./controllers/orderDetailsController');
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use('/register', registerController);
 app.use('/orders', ordersController);
 app.use('/admin/orders', salesController);
 app.use('/checkout', checkoutController);
+app.use('/teste/:sale_id', orderDetailsController);
 app.use(errorMiddleware);
 
 app.use('/products', productsController);
