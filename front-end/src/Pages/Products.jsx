@@ -7,7 +7,6 @@ import ProductCard from '../Components/ProductCard';
 import Helpers from '../Helper/index';
 import { repopulatingAct } from '../Redux/Actions';
 
-const toFixedParam = 2;
 const zero = 0;
 
 function Products({
@@ -16,7 +15,7 @@ function Products({
   const [redirect, setRedirect] = useState(null);
 
   const total = cart.reduce((acc, product) => acc + (product.quantity * product.price), zero);
-  
+
   useEffect(() => {
     const localCart = JSON.parse(localStorage.getItem('cart'));
     if (localCart) repopulatingStore(localCart);
@@ -43,7 +42,7 @@ function Products({
         Ver Carrinho
         <p on data-testid="checkout-bottom-btn-value">
           {/* transferi a lógica de duas casas decimais diretamente para a funcao transformPrice */}
-          {`R$ ${Helpers.transformPrice(total)}`} 
+          {`R$ ${Helpers.transformPrice(total)}`}
         </p>
       </button>
     </div>

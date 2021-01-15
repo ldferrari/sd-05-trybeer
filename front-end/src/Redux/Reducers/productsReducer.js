@@ -78,11 +78,11 @@ function productsRequestReducer(state = INITIAL_STATE, action) {
         cart: action.cart,
       };
 
-    case DELETE_PRODUCT_FROM_STORE: 
+    case DELETE_PRODUCT_FROM_STORE:
       return {
         ...state,
-        cart: state.cart.filter(product => product.id !== action.productId)
-      }
+        cart: state.cart.filter((product) => product.id !== action.productId),
+      };
     default:
       return state;
   }

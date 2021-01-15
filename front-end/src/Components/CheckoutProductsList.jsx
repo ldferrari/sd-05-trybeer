@@ -1,15 +1,14 @@
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { repopulatingAct, deleteProductFromStore } from '../Redux/Actions';
+import { repopulatingAct } from '../Redux/Actions';
 import CheckoutProductCard from './CheckoutProductCard';
 import helper from '../Helper/index';
 
-
 const zero = 0;
-const toFixedParam = 2;
+// const toFixedParam = 2;
 
-const CheckoutProductsList = ({ repopulatingStore, cart, setisTotalZero, deleteProductFromStore }) => {
+const CheckoutProductsList = ({ repopulatingStore, cart, setisTotalZero }) => {
   const total = cart.reduce(
     (acc, product) => acc + product.quantity * product.price,
     zero,
@@ -51,7 +50,6 @@ CheckoutProductsList.propTypes = {
   }).isRequired,
   repopulatingStore: PropTypes.func.isRequired,
   setisTotalZero: PropTypes.func.isRequired,
-  deleteProductFromStore: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -60,7 +58,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   repopulatingStore: (cart) => dispatch(repopulatingAct(cart)),
-  deleteProductFromStore: (productId) => dispatch(deleteProductFromStore(productId))
+  // deleteProductFromStore: (productId) => dispatch(deleteProductFromStore(productId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CheckoutProductsList);

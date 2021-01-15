@@ -6,7 +6,6 @@ import Helpers from '../Helper/index';
 
 const zero = 0;
 
-
 function ProductCard({
   product,
   increaseQuantity,
