@@ -40,15 +40,14 @@ export default function ClientCheckoutPage() {
     setCart(newCart);
   };
 
-  const salesData = {
-    userId: userData.id,
-    totalPrice: cart,
-    deliveryAddress: street,
-    deliveryNumber: streetNumber,
-    cart: cartItens,
-  };
-
   const handleClick = async () => {
+    const salesData = {
+      userId: userData.id,
+      totalPrice: cart,
+      deliveryAddress: street,
+      deliveryNumber: streetNumber,
+      cart: cartItens,
+    };
     await fetchSalesData(salesData);
     setPurchaseDone(true);
     setTimeout(() => setRedirect(true), twoSeconds);
