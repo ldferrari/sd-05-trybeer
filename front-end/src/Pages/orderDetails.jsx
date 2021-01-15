@@ -17,6 +17,8 @@ const mockOrder = [
     price: 42.29,
   },
 ];
+
+const decimals = 2;
 // ++++++++++++++
 function orderDetails({
   match: {
@@ -24,9 +26,10 @@ function orderDetails({
   },
 }) {
   const data = '08/09';
+  const initialAccumulator = 0;
   const total = mockOrder.reduce(
     (acc, product) => acc + product.quantity * product.price,
-    0,
+    initialAccumulator,
   );
 
   return (
@@ -34,23 +37,44 @@ function orderDetails({
       {/* Titulo para ser ajustado pelo Header */}
       Cliente - Detalhes do Pedido
       <div>
-        <h2 data-testid="order-number">Pedido {id}</h2>
+        <h2 data-testid="order-number">
+          Pedido
+          {id}
+        </h2>
         <h2 data-testid="order-date">{data}</h2>
       </div>
       <div className="lista-dos-produtos">
-        {mockOrder.map((product, index) => {
+        {mockOrder.map((product, index) => (
           // Usar component de card usado em outro requisito
-          return (
-            <div>
-              <span data-testid={`${index}-product-qtd`}>{product.quantity} - </span>
-              <span data-testid={`${index}-product-name`}>{product.name} </span>
-              <span data-testid={`${index}-product-total-value`}>R$ {parseFloat(product.price * product.quantity, 2)}</span>
-              <span>(R${product.price} un)</span>
-            </div>
-          );
-        })}
+
+          <div key={ product.name }>
+            <span data-testid={ `${index}-product-qtd` }>
+              {product.quantity}
+              {' '}
+              -
+              {' '}
+            </span>
+            <span data-testid={ `${index}-product-name` }>
+              {product.name}
+              {' '}
+            </span>
+            <span data-testid={ `${index}-product-total-value` }>
+              R$
+              {parseFloat(product.price * product.quantity, decimals)}
+            </span>
+            <span>
+              (R$
+              {product.price}
+              {' '}
+              un)
+            </span>
+          </div>
+        ))}
       </div>
-      <div data-testid="order-total-value">Total: R$ {total}</div>
+      <div data-testid="order-total-value">
+        Total: R$
+        {total}
+      </div>
     </div>
   );
 }
