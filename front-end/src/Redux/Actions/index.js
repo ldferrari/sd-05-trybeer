@@ -1,8 +1,10 @@
-import { getProducts } from '../Services/index';
+import { getProducts, submitOrderFetch } from '../Services/index';
 
 export const REQUESTING_PRODUCTS = 'REQUESTING_PRODUCTS';
 export const REQUEST_PRODUCTS_SUCCESS = 'REQUEST_PRODUCTS_SUCCESS';
 export const REQUEST_PRODUCTS_ERROR = 'REQUEST_PRODUCTS_ERROR';
+export const SUBMIT_ORDER_SUCCESS = 'SUBMIT_ORDER_SUCCESS';
+export const SUBMIT_ORDER_ERROR = 'SUBMIT_ORDER_ERROR';
 
 const requestingProducts = () => ({
   type: REQUESTING_PRODUCTS,
@@ -48,3 +50,22 @@ export const repopulatingAct = (cart) => ({
   type: REPOPULATING_STORE,
   cart,
 });
+
+const submitOrderSuccess = (data) => ({
+  type: SUBMIT_ORDER_SUCCESS,
+  data,
+});
+
+const submitOrderError = (error) => ({
+  type: SUBMIT_ORDER_ERROR,
+  error,
+});
+
+export const submitOrderAct = (body) => (dispatch) => {
+  dispatch(requestingProducts());
+
+  return submitOrderFetch(body).then(
+    (data) => dispatch(submitOrderSuccess(data)),
+    (error) => dispatch(submitOrderError(error)),
+  );
+};
