@@ -9,15 +9,15 @@ export default function ClientMeusPedidos() {
   const [pedidos, setPedidos] = useState([]);
   const token = localStorage.getItem('token') || null;
   const userData = JSON.parse(localStorage.getItem('user')) || null;
-  const id = userData.id || null;
 
   useEffect(() => {
-    if (!id) {
+    console.log();
+    if (!JSON.parse(localStorage.getItem('user'))) {
       setPedidos('');
     } else {
-      MeusPedidosData(id).then((response) => setPedidos(response));
+      MeusPedidosData(JSON.parse(localStorage.getItem('user')).id).then((response) => setPedidos(response));
     }
-  }, [id]);
+  }, []);
 
   if (!token) return <Redirect to="/login" />;
 
