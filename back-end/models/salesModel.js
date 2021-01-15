@@ -5,6 +5,12 @@ const getAllSales = async () => {
   return sales;
 };
 
+const getSale = async (id) => {
+  const sql = 'SELECT * from sales WHERE id = ?'
+  await database.execute(sql, [id])
+}
+
 module.exports = {
   getAllSales,
+  getSale,
 };
