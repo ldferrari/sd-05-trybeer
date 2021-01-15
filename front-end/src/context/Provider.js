@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import TryBeerContext from './TryBeerContext';
 
 const Provider = ({ children }) => {
-  const noValue = 0;
+  const noValue = 1;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');

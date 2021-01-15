@@ -1,37 +1,24 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import TryBeerContext from '../context/TryBeerContext';
 import Header from '../components/Header';
-// import Card from '../components/Card';
+import products from '../mock_data/productsCart';
 
 export default function Products() {
-  const { quantity, setQuantity } = useContext(TryBeerContext);
-
-  const product = 'Skol Lata 250ml';
   const index = 0;
-  const itemUnitPrice = '2.20';
-
-  const handleClick = () => {
-    // e.preventDefault();
-    setQuantity(quantity + 1);
-    const itemTotalPrice = +quantity * +itemUnitPrice;
-    localStorage.setItem('order', JSON.stringify({
-      quantity, product, index, itemUnitPrice, itemTotalPrice,
-    }));
+  const handleClick = (e) => {
+    e.preventDefault();
+    products[0].quantity += 1;
+    localStorage.setItem('cart', JSON.stringify(products));
+    // localStorage.setItem('totalPrice', JSON.stringify(products[0].quantity * products[0].price))
   };
 
   return (
     <>
       <Header title="TryBeer" />
-      {/* <div className="products-list">
-        { productsList.map((element) => (
-          <Card key={ element } name={ element } />
-        )) }
-      </div> */}
       <button
         type="button"
         data-testid={ `${index}-product-plus` }
-        onClick={ () => handleClick() }
+        onClick={ (e) => handleClick(e) }
       >
         +
       </button>
