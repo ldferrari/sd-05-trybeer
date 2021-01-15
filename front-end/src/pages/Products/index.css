@@ -79,8 +79,8 @@
     width: 42%;
   }
   .card img {
-    height: 40%;
-    padding: 5%;
+    /* height: 40%; */
+    /* padding: 1%; */
   }
   .checkoutBtn{
     width: 73%;

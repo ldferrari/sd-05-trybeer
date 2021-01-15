@@ -1,14 +1,17 @@
 .header {
   align-items: center;
-  /* background-color: black; */
   background-image: url('../../images/menuBg.jpg');
   background-size: cover;
   color: black;
   display: flex;
   flex-wrap: wrap;
   height: 100px;
-  /* position:fixed; */
+  justify-content: space-around;
   width: 100%;
+}
+
+.logoHeader {
+  height: 90px;
 }
 
 .burguerBtn {
@@ -67,7 +70,7 @@ Link {
 @media screen and ( min-width : 300px ) and ( max-width : 569px ) {
 
   .sideBar {
-    width: 51%;;
+    width: 57%;;
   }
 
 }

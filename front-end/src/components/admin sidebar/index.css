@@ -3,7 +3,7 @@
   padding: 1%;
 }
 
-.sideBar {
+.sideBarAdmin {
   background-color: black;
   color: white;
   float: left;
@@ -17,7 +17,7 @@
   z-index: 1;
 }
 
-.menuBtn {
+.menuBtnAdmin {
   color: white;
   text-decoration: none;
   padding: 2%;

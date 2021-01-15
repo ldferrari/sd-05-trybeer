@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // import { Redirect } from 'react-router-dom';
 import './index.css';
-import logo from '../../images/uai.png';
+import logo from '../../images/uaiWhite.png';
 import { postLogin } from '../../services/requestAPI';
 // trocar por controler de login
 
@@ -68,26 +68,26 @@ const Login = (props) => {
     <div className="loginpage">
       <img src={logo} className="logo"/>
       <form className="column-login">
-        <fieldset>
-
+        <fieldset className="noDecor">
           <label htmlFor="email">
             Email:
             <input
               type="email"
               name="email"
+              className="inputLogin"
               onChange={ ({ target: { value } }) => setEmail(value) }
               data-testid="email-input"
               value={ email }
             />
           </label>
         </fieldset>
-        <fieldset>
-
+        <fieldset className="noDecor">
           <label htmlFor="password">
             Senha:
             <input
               type="password"
               name="password"
+              className="inputLogin"
               onChange={ ({ target: { value } }) => setPassword(value) }
               data-testid="password-input"
               value={ password }
@@ -95,14 +95,14 @@ const Login = (props) => {
           </label>
         </fieldset>
         <span className="email-alert">{alertLogin}</span>
-        <button data-testid="no-account-btn" type="button">
-          <Link to="/register">Ainda não tenho conta</Link>
+        <button data-testid="no-account-btn" type="button" className="semConta">
+          <Link to="/register" className="semConta">Ainda não tenho conta</Link>
         </button>
         <button
           type="submit"
           disabled={ !(validEmail && validPassword) }
           onClick={ handleSubmit }
-          className={ (validEmail && validPassword) ? 'ready' : '' }
+          className={ (validEmail && validPassword) ? 'loginBtn' : '' }
           data-testid="signin-btn"
         >
           ENTRAR
