@@ -8,6 +8,7 @@ import Footer from '../../components/footer';
 import CartItem from '../../components/cartItem';
 import { postOrder } from '../../services/requestAPI';
 
+let  tempo;
 const Checkout = (props) => {
   const [cartHere, setCartHere] = useState([]);
   const [alertCompraFinalizada, setAlertCompraFinalizada] = useState('');
@@ -29,7 +30,9 @@ const Checkout = (props) => {
     setCartHere(cart);
   },
   [cart]);
-
+  useEffect(()=>{
+    return ()=> clearTimeout(tempo);
+  })
   if (!logged) {
     return <Redirect to="/login" />;
   }
@@ -42,7 +45,7 @@ const Checkout = (props) => {
     setCart([]);
     setAlertCompraFinalizada('Compra realizada com sucesso!');
     // <Redirect to="/products" />
-    setTimeout(() => {
+    tempo = setTimeout(() => {
       props.history.push('/products');
     }, tempoEspera);
     return true; // handleHandleSubmit

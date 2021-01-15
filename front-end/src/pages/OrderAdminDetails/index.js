@@ -48,7 +48,7 @@ const OrderAdminDetails = (props) => {
     <div className="Orders">
       <div className="pedido">
         <span>{ falha }</span>
-        <h2 className="checkoutitle">{`Pedido ${id} - ${sale.length ? delivered : ''}`}</h2>
+        <h2 className="checkoutitle" data-testid="order-number">{`Pedido ${id}`} - <span data-testid="order-status">{`${sale.length ? delivered : ''}`}</span></h2>
         <div className="cartItems">
           { sale.map((item, index) => <CardOrderDetails key={ item.name } item={ item } index={ index } />) }
         </div>
