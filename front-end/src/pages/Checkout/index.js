@@ -72,8 +72,7 @@ const Checkout = (props) => {
       </p>
       { (Number(cartSum) === zero && !alertCompraFinalizada)
         ? <h1>Não há produtos no carrinho</h1>
-        : null
-      }
+        : null }
       <div className="deliveryForm">
         <h2 className="checkoutitle">Endereço de entrega:</h2>
         <div className="inputs">

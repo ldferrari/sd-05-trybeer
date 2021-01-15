@@ -28,7 +28,7 @@ const OrderAdmin = (props) => {
 
   return (
     <div className="Orders">
-      {<AdminSideBar />}
+      <AdminSideBar />
       <div className="pedido">
         <h2 className="checkoutitle">Pedidos Pendentes</h2>
         <div className="cartItems">
