@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import MenuAdm from '../../components/admin/MenuAdm';
 
 export default function ClientProfilePage() {
   const token = localStorage.getItem('token') || null;
@@ -9,6 +10,7 @@ export default function ClientProfilePage() {
 
   return (
     <div>
+      <MenuAdm />
       <div>Admin - Perfil</div>
       <div className="bodyProfile">
         <label htmlFor="email" className="labelProfile">
