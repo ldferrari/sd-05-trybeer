@@ -6,7 +6,10 @@ const Provider = ({ children }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const [checked, setChecked] = useState(false);
+  const [productsList, setProductList] = useState([]);
   const [role, setRole] = useState('client');
+  const [total, setTotal] = useState('');
 
   const contextValue = {
     email,
@@ -15,8 +18,14 @@ const Provider = ({ children }) => {
     setPassword,
     name,
     setName,
+    checked,
+    setChecked,
+    productsList,
+    setProductList,
     role,
     setRole,
+    total,
+    setTotal,
   };
 
   return (
