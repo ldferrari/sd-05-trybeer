@@ -20,6 +20,15 @@
   flex-wrap: wrap;
 }
 
+.container-page {
+  display: flex;
+  flex-direction: column;
+  margin: 0 30px;
+  width: 100vw;
+  min-height: 100vh;
+  flex-wrap: wrap;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
