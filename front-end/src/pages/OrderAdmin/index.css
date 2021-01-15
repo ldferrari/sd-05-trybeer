@@ -1,0 +1,25 @@
+.pedido {
+  /* display: inline; */
+  display: flex;
+  flex-direction: column;
+  border: 5px solid black;
+  float: none;
+  
+  position: relative;
+
+  text-align: right;
+  background-color: red;
+}
+.sideBar {
+  /* display: inline; */
+ 
+  float: none;
+  position: relative;
+
+  
+}
+
+.Orders {
+  display: flex;
+  flex-direction: row;
+}

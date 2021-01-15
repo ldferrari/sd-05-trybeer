@@ -10,7 +10,7 @@ import { postGetTheOrder } from '../../services/requestAPI';
 
 export default function OrderDetails(props) {
   const [orderHere, setOrder] = useState([]);
-  const [dia, setDia] = useState('');
+  const [dia, setDia] = useState('0000-00-00');
   // const theToken = localStorage.getItem('token');
   const { id } = useParams();
 

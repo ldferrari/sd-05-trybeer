@@ -20,9 +20,10 @@ export default function CardOrderDetails(props) {
         { `R$ ${(item.price * item.quantity).toFixed(two).replace('.', ',')}` }
       </p>
     </div>
-    )
+  );
 }
 
 CardOrderDetails.propTypes = {
-  order: propTypes.instanceOf(Object).isRequired,
+  item: propTypes.instanceOf(Object).isRequired,
+  index: propTypes.number.isRequired,
 };

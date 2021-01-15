@@ -13,7 +13,6 @@ const Checkout = (props) => {
   const [alertCompraFinalizada, setAlertCompraFinalizada] = useState('');
   const [rua, setRua] = useState();
   const [numero, setNumero] = useState();
-  // const theToken = localStorage.getItem("token");
   const logged = localStorage.getItem('token');
   const { cart, setCart } = useContext(AppContext);
 
@@ -71,7 +70,10 @@ const Checkout = (props) => {
       <p data-testid="order-total-value" className="total">
         { `TOTAL: R$ ${cartSum.toString().replace('.', ',')}` }
       </p>
-      { Number(cartSum) === zero ? <h1>Não há produtos no carrinho</h1> : null }
+      { (Number(cartSum) === zero && !alertCompraFinalizada)
+        ? <h1>Não há produtos no carrinho</h1>
+        : null
+      }
       <div className="deliveryForm">
         <h2 className="checkoutitle">Endereço de entrega:</h2>
         <div className="inputs">

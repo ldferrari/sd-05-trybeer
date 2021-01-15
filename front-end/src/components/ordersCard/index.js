@@ -13,6 +13,7 @@ const OrderCard = (props) => {
       key={ order.id }
       data-testid={ `${index}-order-card-container"` }
     >
+      <h1>ORDER_CARD</h1>
       <p data-testid={ `${index}-order-number` }>{ `Pedido ${order.id}` }</p>
       <p data-testid={ `${index}-order-date` }>
         { order.sale_date }

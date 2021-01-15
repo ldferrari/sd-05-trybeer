@@ -19,7 +19,7 @@ export default function CardOrder(props) {
   setOrderDetails(order);
 
   return (
-    <Link to={`/admin/orders/${id}`}>
+    <Link to={ `/admin/orders/${id}` }>
       <h4 data-testid={ `${index}-order-number` }>
         {`Pedido ${id}`}
       </h4>
