@@ -26,7 +26,6 @@ const PerfilAdmin = () => {
   return (
     <div className="App">
       <AdminSideBar />
-      <Header>Meu perfil</Header>
       <h3 data-testid="profile-name">
         Nome:
         {name}

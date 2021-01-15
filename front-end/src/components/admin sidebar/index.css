@@ -1,34 +1,37 @@
 .title {
-  margin-left: 3%;
-  padding: 1%;
+  font-size: 30px;
+  text-align: center;
 }
 
 .sideBar {
   background-color: black;
   color: white;
-  float: left;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   height: 100%;
-  padding: 3%;
-  position: absolute;
   text-decoration: none;
-  width: 73%;
-  z-index: 1;
+  width: 35%;
+  top: 0px;
+  left: 0px;
+}
+
+.menuBtnContainer {
+  color: aqua;
+  border: solid;
+  border-radius: 50px;
+  display: flex;
+  margin: 15px;
+  flex-direction: column;
 }
 
 .menuBtn {
-  color: white;
-  text-decoration: none;
-  padding: 2%;
+  font-size: larger;
 }
+
 
 ul {
-  list-style-type: none;
-}
-
-Link {
-  color: white;
-  text-decoration: none;
-  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
 }
