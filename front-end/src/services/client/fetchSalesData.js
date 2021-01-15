@@ -1,13 +1,13 @@
-const URL = 'http://localhost:3001/orders';
+const URL = 'http://localhost:3001/checkout';
 
-const fetchMeusPedidosData = (id) => fetch(URL, {
+const fetchSalesData = (salesData) => fetch(URL, {
   method: 'POST',
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
   },
-  body: JSON.stringify({id}),
+  body: JSON.stringify(salesData),
 })
   .then((response) => response.json().then((data) => data));
 
-export default fetchMeusPedidosData;
+export default fetchSalesData;

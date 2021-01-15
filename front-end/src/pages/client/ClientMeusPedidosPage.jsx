@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import Menu from '../../components/client/Menu';
 import MeusPedidosCard from '../../components/client/MeusPedidosCard';
 import MeusPedidosData from '../../services/client/fetchMeusPedidosData';
@@ -6,10 +7,19 @@ import '../../css/client/clientMeusPedidosPage.css';
 
 export default function ClientMeusPedidos() {
   const [pedidos, setPedidos] = useState([]);
+  const token = localStorage.getItem('token') || null;
+  const userData = JSON.parse(localStorage.getItem('user'));
+  
   useEffect(() => {
-    MeusPedidosData().then((response) => setPedidos(response));
+    if (!userData) {
+      setPedidos('')
+    } else {
+    MeusPedidosData(userData.id).then((response) => setPedidos(response));
+    }
   }, []);
-  console.log(pedidos);
+  
+  if (!token) return <Redirect to="/login" />;
+  
   return (
     <div>
       <Menu title="Meus Pedidos" />

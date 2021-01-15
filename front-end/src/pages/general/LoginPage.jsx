@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import GeneralContext from '../../context/general/GeneralContext';
 import loginData from '../../services/general/fetchLoginData';
 import validateEmail from '../../services/general/validateEmail';
@@ -19,6 +19,7 @@ export default function LoginPage(props) {
       id: usuario.id,
       role: usuario.role,
       name: usuario.name,
+      email: usuario.email,
     });
     localStorage.setItem('token', usuario.token);
     localStorage.setItem(
