@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import dateFormat from 'dateformat';
 import { Redirect } from 'react-router-dom';
 import Menu from '../../components/client/Menu';
 import { ClientContext } from '../../context/client/ClientProvider';
@@ -8,6 +9,7 @@ export default function ClientCheckoutPage() {
   const two = 2;
   const twoSeconds = 2000;
   const token = localStorage.getItem('token') || null;
+  const userData = JSON.parse(localStorage.getItem('user'));
   const {
     cart,
     setCart,
@@ -37,6 +39,17 @@ export default function ClientCheckoutPage() {
     setCartItens(newCartItens);
     setCart(newCart);
   };
+
+  const objectSales = {
+    user_id: userData.id,
+    total_price: cart,
+    delivery_address: street,
+    delivery_number: streetNumber,
+    sale_date: dateFormat(new Date(), 'yyyy-mm-dd hh:MM:ss'),
+    status: '',
+  };
+
+  console.log(objectSales);
 
   const handleClick = () => {
     setPurchaseDone(true);
