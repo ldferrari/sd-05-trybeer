@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // import { Redirect } from 'react-router-dom';
 import './index.css';
+import logo from '../../images/uai.png';
 import { postLogin } from '../../services/requestAPI';
 // trocar por controler de login
 
@@ -63,7 +64,8 @@ const Login = (props) => {
     return true;
   };
   return (
-    <div>
+    <div className="loginpage">
+      <img src={logo} className="logo"/>
       <form className="column-login">
         <fieldset>
 

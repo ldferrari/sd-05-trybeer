@@ -46,8 +46,9 @@
   text-align: center;
   text-decoration: none;
   padding: 2%;
-  width: 73%;
+  width: 37%;
   margin: auto;
+  cursor: pointer;
   /* position:fixed */
  }
 
@@ -80,6 +81,9 @@
   .card img {
     height: 40%;
     padding: 5%;
+  }
+  .checkoutBtn{
+    width: 73%;
   }
 
 }

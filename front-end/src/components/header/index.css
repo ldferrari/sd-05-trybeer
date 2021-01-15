@@ -40,7 +40,7 @@
   position: absolute;
   text-decoration: none;
   /* transform: translateX(-30rem); */
-  width: 51%;
+  width: 17%;
   z-index: 1;
 }
 /* .sideBar.open {
@@ -62,4 +62,12 @@ Link {
   color: black;
   text-decoration: none;
   padding: 2%;
+}
+
+@media screen and ( min-width : 300px ) and ( max-width : 569px ) {
+
+  .sideBar {
+    width: 51%;;
+  }
+
 }
