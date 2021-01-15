@@ -6,7 +6,7 @@ const fetchMeusPedidosData = (id) => fetch(URL, {
     Accept: 'application/json',
     'Content-Type': 'application/json',
   },
-  body: JSON.stringify({id}),
+  body: JSON.stringify({ id }),
 })
   .then((response) => response.json().then((data) => data));
 

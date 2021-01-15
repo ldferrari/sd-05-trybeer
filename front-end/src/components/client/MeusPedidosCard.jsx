@@ -1,19 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import dateFormat from 'dateformat';
+import PropTypes from 'prop-types';
 
 export default function MausPedidosCard(props) {
   const { order, index } = props;
-  const { id, total_price, sale_date } = order;
-  const dois = 2;
 
   return (
-    <Link to={`/orders/${ id }`}>
-      <div data-testid={`${ index }-order-card-container`} className="cardConteiner">
-        <a data-testid={`${ index }-order-number`}>Pedido { id }</a>
-        <a data-testid={`${ index }-order-date`}>{ dateFormat(sale_date,'dd/mm') }</a>
-        <a data-testid={`${ index }-order-total-value`}>R$ { total_price.replace('.', ',') }</a> 
+    <Link to={ `/orders/${order.id}` }>
+      <div data-testid={ `${index}-order-card-container` } className="cardConteiner"></div>
+      <div data-testid={ `${index}-order-number` }>
+        Pedido { order.id }
+      </div>
+      <div data-testid={ `${index}-order-date` }>
+        { dateFormat(order.sale_date,'dd/mm') }
+      </div>
+      <div data-testid={ `${index}-order-total-value` }>
+        R$ { order.total_price.replace('.', ',') }
       </div>
     </Link>
-  )
+  );
 }
+
+MausPedidosCard.propTypes = {
+  order: PropTypes.arrayOf(PropTypes.object).isRequired,
+  index: PropTypes.number.isRequired,
+};

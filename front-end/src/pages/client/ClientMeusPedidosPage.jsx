@@ -8,23 +8,25 @@ import '../../css/client/clientMeusPedidosPage.css';
 export default function ClientMeusPedidos() {
   const [pedidos, setPedidos] = useState([]);
   const token = localStorage.getItem('token') || null;
-  const userData = JSON.parse(localStorage.getItem('user'));
+  const userData = JSON.parse(localStorage.getItem('user')) || null;
+  const id = userData.id || null;
   
   useEffect(() => {
-    if (!userData) {
-      setPedidos('')
+    console.log('user');
+    if (!id) {
+      setPedidos('');
     } else {
-    MeusPedidosData(userData.id).then((response) => setPedidos(response));
+      MeusPedidosData(id).then((response) => setPedidos(response));
     }
-  }, []);
-  
+  }, [id]);
+
   if (!token) return <Redirect to="/login" />;
-  
+
   return (
     <div>
       <Menu title="Meus Pedidos" />
       {pedidos.map((order, index) => (
-        <MeusPedidosCard key={ order.id } order={ order } index={index} />
+        <MeusPedidosCard key={ order.id } order={ order } index={ index } />
       ))}
     </div>
   );
