@@ -3,16 +3,25 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import Header from '../Components/Header';
 
-import { getUserDataAct, updateUserAct } from '../Redux/Actions/user';
+import { getUserData } from '../Services/utils';
+import { updateUserAct } from '../Redux/Actions/user';
 
 const changeInput = (event, setFunction) => setFunction(event.target.value);
 
 function Profile({ history, userData, updateUser }) {
-  useEffect(() => {}, []); // lint pediu pra por o refreshUser
-  const [id] = useState(userData.user.id || '');
-  const [email] = useState(userData.user.email || '');
-  const [name, setName] = useState(userData.user.name || '');
+
+  const [id, setId] = useState('');
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [changed, setChanged] = useState(false);
   const [shouldRefresh, setShouldRefresh] = useState(false);
+
+  useEffect(() => {
+    const user = getUserData();
+    setId(user.id);
+    setEmail(user.email);
+    setName(user.name);
+  }, []);
 
   return (
     <div className="container-main">
@@ -24,19 +33,22 @@ function Profile({ history, userData, updateUser }) {
           <input
             type="text"
             data-testid="profile-name-input"
-            value={ name }
-            onChange={ (event) => changeInput(event, setName) }
+            value={name}
+            onChange={ (event) => {
+              changeInput(event, setName);
+              setChanged(true);
+            }}
           />
           <p>Email :</p>
           <input
             type="email"
             data-testid="profile-email-input"
-            value={ email }
+            value={email}
             readOnly
           />
         </form>
         <button
-          disabled={ userData.user.name === name }
+          disabled={!changed}
           data-testid="profile-save-btn"
           onClick={ () => {
             updateUser({ id, name });
@@ -59,22 +71,10 @@ Profile.propTypes = {
       pathname: PropTypes.string,
     }).isRequired,
   }).isRequired,
-  userData: PropTypes.shape({
-    user: PropTypes.shape({
-      name: PropTypes.string,
-      email: PropTypes.string,
-      id: PropTypes.number.isRequired,
-    }),
-  }).isRequired,
 };
 
-const mapStateToProps = ({ userRequestReducer }) => ({
-  userData: userRequestReducer.userData,
-});
-
 const mapDispatchToProps = (dispatch) => ({
-  refreshUser: () => dispatch(getUserDataAct()),
   updateUser: (data) => dispatch(updateUserAct(data)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(() => {}, mapDispatchToProps)(Profile);

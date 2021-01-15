@@ -29,8 +29,10 @@ const UPDATE_SCHEMA = Joi.object({
     .max(64)
     .required(),
 });
+
 // prettier-ignore
 const login = rescue(async (req, _res, next) => {
+  console.log(req.body)
   const { error } = LOGIN_SCHEMA.validate(req.body);
   const user = await userModel.findUserbyEmailAndPassword(req.body);
   // console.log(user);
@@ -39,6 +41,7 @@ const login = rescue(async (req, _res, next) => {
   req.data = { user, token: jwt.createToken(user) };
   next();
 });
+
 // prettier-ignore
 const register = rescue(async (req, _res, next) => {
   const { error } = REGISTER_SCHEMA.validate(req.body);

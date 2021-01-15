@@ -40,9 +40,7 @@ const Login = ({ submitLogin, userData }) => {
   if (userData.message && isAnInvalidEmail === false) return setIsAnInvalidEmail(true);
   if (userData.user) {
     if (userData.user.role === 'client') return <Redirect to="/products" />;
-    if (userData.user.role === 'administrator') {
-      return <Redirect to="/admin/orders" />;
-    }
+    if (userData.user.role === 'administrator') return <Redirect to="/admin/orders" />;
   }
   return (
     <div className="container-main" style={pageStyle}>

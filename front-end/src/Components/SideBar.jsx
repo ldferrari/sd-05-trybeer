@@ -1,7 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { clear } from '../Redux/Actions/user';
+// import { getUserData } from '../Services/utils';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
+import Item from './SidebarItem';
+
 
 const sideBarStyle = {
   background: 'var(--dark)',
@@ -10,46 +14,35 @@ const sideBarStyle = {
   width: '90vw',
 }
 
-const SideBar = ({ toggleDrawer, redirect }) => (
-  <div
-    style={sideBarStyle}
-    role='presentation'
-    onClick={toggleDrawer()}
-    onKeyDown={toggleDrawer()}
-  >
-    <List style={{ background: 'var(--dark)' }}>
-      <Divider />
-      <ListItem
-        button
-        data-testid="side-menu-item-products"
-        onClick={() => { redirect('/products'); }}
-      >
-        Produtos
-      </ListItem>
-      <ListItem
-        button
-        data-testid="side-menu-item-my-orders"
-        onClick={() => { redirect('/orders'); }}
-      >
-        Pedidos
-      </ListItem>
-      <ListItem
-        button
-        data-testid="side-menu-item-my-profile"
-        onClick={() => { redirect('/profile'); }}
-      >
-        Meu Perfil
-      </ListItem>
-      <Divider />
-      <ListItem
-        button
-        data-testid="side-menu-item-logout"
-        onClick={() => { redirect('/profile'); }}
-      >
-        Sair
-      </ListItem>
-    </List>
-  </div>
-);
+const SideBar = ({ toggleDrawer, logout }) => {
 
-export default SideBar;
+  return (
+    <div
+      style={sideBarStyle}
+      role="presentation"
+      onClick={toggleDrawer()}
+      onKeyDown={toggleDrawer()}
+    >
+      <List style={{ background: 'var(--dark)' }}>
+        <Divider />
+        <Item action="side-menu-item-products">Produtos</Item>
+        <Item action="side-menu-item-my-orders">Pedidos</Item>
+        <Item action="side-menu-item-my-profile">Meu Perfil</Item>
+        <Divider />
+        <Item
+          action="side-menu-item-logout"
+          to="/login"
+          onClick={() => { logout(); }}
+        >
+          Sair
+        </Item>
+      </List>
+    </div>
+  );
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  logout: () => dispatch(clear()),
+});
+
+export default connect(() => ({}), mapDispatchToProps)(SideBar);

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import titleForHeader from '../Helper/titleForHeader';
 import { Redirect } from 'react-router-dom';
 import Drawer from '@material-ui/core/Drawer';
@@ -22,6 +22,10 @@ const Header = ({ pathname }) => {
   // func que retorna o título do header baseado no caminho
   const title = titleForHeader(pathname);
 
+  useEffect(() => {
+    console.log(showSideBar);
+  }, [showSideBar]);
+
   const toggleDrawer = () => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
@@ -32,8 +36,8 @@ const Header = ({ pathname }) => {
   if (redirect) return <Redirect to={redirect} />;
 
   return (
-    <div style={headerStyle}>
-      <Button onClick={toggleDrawer()}>
+    <div style={headerStyle} >
+      <Button onClick={toggleDrawer()} data-testid="top-hamburguer">
         <i
           className="material-icons"
           style={{ color: 'var(--white)', fontSize: '32px' }}
@@ -41,10 +45,14 @@ const Header = ({ pathname }) => {
           menu
         </i>
       </Button>
-      <h3>{ title }</h3>
+      <h3 data-testid="top-title">{ title }</h3>
       <div style={{ marginRight: '70px' }} />
+      <span className="side-menu-container" style={{ display: showSideBar ? 'block' : 'none' }}>.</span>
       <Drawer open={showSideBar} onClose={toggleDrawer()}>
-        <SideBar toggleDrawer={toggleDrawer} redirect={setRedirect} />
+        <SideBar
+          toggleDrawer={toggleDrawer}
+          redirect={setRedirect}
+        />
       </Drawer>
     </div>
   );
