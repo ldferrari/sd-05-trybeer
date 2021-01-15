@@ -11,7 +11,6 @@ export default function ClientMeusPedidos() {
   const userData = JSON.parse(localStorage.getItem('user')) || null;
 
   useEffect(() => {
-    console.log();
     if (!JSON.parse(localStorage.getItem('user'))) {
       setPedidos('');
     } else {
