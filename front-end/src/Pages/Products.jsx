@@ -5,19 +5,25 @@ import PropTypes from 'prop-types';
 import Header from '../Components/Header';
 import ProductCard from '../Components/ProductCard';
 import Helpers from '../Helper/index';
+import { repopulatingAct } from '../Redux/Actions';
 
 const toFixedParam = 2;
-
+const zero = 0;
 
 function Products({
-  products, totalPrice, history, userData, isLoading,
+  products, totalPrice, history, isLoading, cart, repopulatingStore,
 }) {
   const [redirect, setRedirect] = useState(null);
-  const { user } = userData;
+
+  const total = cart.reduce((acc, product) => acc + (product.quantity * product.price), zero);
+  useEffect(() => {
+    const localCart = JSON.parse(localStorage.getItem('cart')) || [];
+    repopulatingStore(localCart);
+  }, [repopulatingStore]);
   if (isLoading) return <p>Loading...</p>;
   const totalPriceLocal = localStorage.getItem('totalPrice');
   if (redirect) return <Redirect to={ redirect } />;
-  if (!user) return <Redirect to="/login" />;
+  // if (condição massa ) return <Redirect to="/login" />;
   return (
     <div>
       <Header pathname={ history.location.pathname } />
@@ -34,7 +40,7 @@ function Products({
       >
         Ver Carrinho
         <p on data-testid="checkout-bottom-btn-value">
-          {`R$ ${Helpers.transformPrice(parseFloat(totalPriceLocal).toFixed(toFixedParam) || totalPrice.toFixed(toFixedParam))}`}
+          {`R$ ${Helpers.transformPrice(total.toFixed(toFixedParam))}`}
         </p>
       </button>
     </div>
@@ -42,6 +48,9 @@ function Products({
 }
 
 Products.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+  cart: PropTypes.shape(Object).isRequired,
+  repopulatingStore: PropTypes.func.isRequired,
   history: PropTypes.shape({
     location: PropTypes.shape({
       pathname: PropTypes.string,
@@ -56,6 +65,12 @@ Products.propTypes = {
 const mapStateToProps = (state) => ({
   products: state.productsRequestReducer.products,
   totalPrice: state.productsRequestReducer.totalPrice,
+  userData: state.userRequestReducer.userData,
+  cart: state.productsRequestReducer.cart,
 });
 
-export default connect(mapStateToProps)(Products);
+const mapDispatchToProps = (dispatch) => ({
+  repopulatingStore: (cart) => dispatch(repopulatingAct(cart)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Products);

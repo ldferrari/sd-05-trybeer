@@ -4,11 +4,13 @@ import { connect } from 'react-redux';
 import { increaseQuantityAct, decreaseQuantityAct } from '../Redux/Actions';
 import Helpers from '../Helper/index';
 
+const zero = 0;
+
 const addingProductToLocalStorage = (product, quantity) => {
   const local = Helpers.getLocalStorage('cart');
-  product = { ...product, quantity }
-  let setToLocalStorage = [...local]
-  if (local.length === 0) {
+  product = { ...product, quantity };
+  let setToLocalStorage = [...local];
+  if (local.length === zero) {
     setToLocalStorage = [...local, product];
   }
   local.forEach((item, index) => {
@@ -17,7 +19,7 @@ const addingProductToLocalStorage = (product, quantity) => {
       setToLocalStorage[index] = product;
     }
   });
-  if (!local.some((item)=> item.id === product.id)) {
+  if (!local.some((item) => item.id === product.id)) {
     setToLocalStorage = [...local, product];
   }
   return localStorage.setItem('cart', JSON.stringify(setToLocalStorage));
@@ -27,7 +29,7 @@ const decreaseProductToLocalStorage = (product, quantity) => {
   const local = Helpers.getLocalStorage('cart');
   product = { ...product, quantity };
   let setToLocalStorage = [...local];
-  if (quantity > 0) {
+  if (quantity > zero) {
     local.forEach((item, index) => {
       if (item.id === product.id) {
         setToLocalStorage = [...local];
@@ -35,7 +37,7 @@ const decreaseProductToLocalStorage = (product, quantity) => {
       }
     });
   }
-  if (quantity === 0) {
+  if (quantity === zero) {
     local.forEach((item, index) => {
       if (item.id === product.id) {
         setToLocalStorage = [...local];
@@ -46,19 +48,13 @@ const decreaseProductToLocalStorage = (product, quantity) => {
   return localStorage.setItem('cart', JSON.stringify(setToLocalStorage));
 };
 
-const totalPriceToLocalStorage = (totalPrice) => {
-  localStorage.setItem('totalPrice', totalPrice);
-};
-
 function ProductCard({
   product,
   increaseQuantity,
   decreaseQuantity,
   cart,
 }) {
-  const zero = 0;
-  const quantityLocal = Helpers.verifyQuantity(JSON.parse(localStorage.getItem('cart')), product);
-  const [quantity, setQuantity] = useState(Helpers.verifyQuantity(JSON.parse(localStorage.getItem('cart')), product) || Helpers.verifyQuantity(cart, product) || zero )
+  const [quantity, setQuantity] = useState(Helpers.verifyQuantity(JSON.parse(localStorage.getItem('cart')), product) || Helpers.verifyQuantity(cart, product) || zero);
   const {
     id, name, price, url_image: urlImage,
   } = product;

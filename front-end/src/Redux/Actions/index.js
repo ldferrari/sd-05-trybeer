@@ -41,3 +41,10 @@ export const decreaseQuantityAct = (product) => ({
   type: DECREASE_QUANTITY,
   product,
 });
+
+export const REPOPULATING_STORE = 'REPOPULATING_STORE';
+
+export const repopulatingAct = (cart) => ({
+  type: REPOPULATING_STORE,
+  cart,
+});

@@ -4,13 +4,14 @@ import {
   REQUEST_PRODUCTS_ERROR,
   INCREASE_QUANTITY,
   DECREASE_QUANTITY,
+  REPOPULATING_STORE,
 } from '../Actions/index';
 
 const INITIAL_STATE = {
   isLoading: true,
   products: [],
   cart: [],
-  totalPrice: 0.0,
+  totalPrice: 0,
 };
 const zero = 0;
 const ordemDeGrandeza = 3;
@@ -70,6 +71,11 @@ function productsRequestReducer(state = INITIAL_STATE, action) {
         cart: newCart,
       };
     }
+    case REPOPULATING_STORE:
+      return {
+        ...state,
+        cart: action.cart,
+      };
     default:
       return state;
   }

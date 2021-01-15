@@ -1,38 +1,72 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Header from '../Components/Header';
+import Input from '../Components/Input';
 import ProductCard from '../Components/ProductCard';
 
-function Checkout({ cart, history }) {
+function Checkout({ history, userData, cart }) {
+  const [buttonShoulBeDisabled, setbuttonShoulBeDisabled] = useState(false);
+  const [street, setStreet] = useState('');
+  const [houseNumber, setHouseNumber] = useState('');
+  const [isTotalZero, setisTotalZero] = useState(false);
+
+  useEffect(() => {
+    if (isTotalZero || street === '' || houseNumber === '') {
+      setbuttonShoulBeDisabled(true);
+    } else {
+      setbuttonShoulBeDisabled(false);
+    }
+  }, [isTotalZero, setbuttonShoulBeDisabled, street, houseNumber]);
+
+  if (!userData.user) {
+    return <Redirect to="/login" />;
+  }
   return (
     <div>
-      <Header pathname={ history.location.pathname } />
-      <h1>Checkout</h1>
+      <Header pathname={history.location.pathname} />
       <h3>Produtos</h3>
       {cart.map((product) => (
-        <ProductCard key={ product.id } product={ product } />
+        <ProductCard key={product.id} product={product} />
       ))}
       <h3>Endereço</h3>
-      <Link to="/">Finalizar Pedido</Link>
+      <label htmlFor="rua">Rua:</label>
+      <br />
+      <Input
+        test={'checkout-street-input'}
+        id={'rua'}
+        onChange={(e) => setStreet(e.target.value)}
+      />
+      <br />
+      <label htmlFor="numero-da-casa">Número da casa:</label>
+      <br />
+      <Input
+        test={'checkout-house-number-input'}
+        id={'numero-da-casa'}
+        onChange={(e) => setHouseNumber(e.target.value)}
+      />
+      <button
+        disabled={buttonShoulBeDisabled}
+        data-testid="checkout-finish-btn"
+      >
+        Finalizar Pedido
+      </button>
     </div>
   );
 }
 
 Checkout.propTypes = {
-  cart: PropTypes.shape({
-    map: PropTypes.func,
-  }).isRequired,
   history: PropTypes.shape({
     location: PropTypes.shape({
-      pathname: PropTypes.string,
-    }).isRequired,
+      pathname: PropTypes.string.isRequired,
+    }),
   }).isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  cart: state.productsRequestReducer.cart,
+const mapStateToProps = ({ userRequestReducer, productsRequestReducer }) => ({
+  userData: userRequestReducer.userData,
+  cart: productsRequestReducer.cart,
 });
 
 export default connect(mapStateToProps)(Checkout);
