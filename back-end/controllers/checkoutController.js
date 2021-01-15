@@ -3,21 +3,21 @@ const checkoutService = require('../services/checkoutService');
 
 const checkout = Router();
 
-checkout.get('/', async (req, res) => {
-    const {
-      user_id,
-      total_price,
-      delivery_address,
-      delivery_number,
-      cart
-    } = req.body;
+checkout.post('/', async (req, res) => {
+  const {
+    userId,
+    totalPrice,
+    deliveryAddress,
+    deliveryNumber,
+    cart,
+  } = req.body;
   try {
     const insertCheckout = await checkoutService.insertCheckout(
-      user_id,
-      total_price,
-      delivery_address,
-      delivery_number,
-      cart
+      userId,
+      totalPrice,
+      deliveryAddress,
+      deliveryNumber,
+      cart,
     );
     res.status(200).json(insertCheckout);
   } catch (error) {

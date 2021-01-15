@@ -1,15 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
-// import dateFormat from 'dateformat';
 import { Redirect } from 'react-router-dom';
 import Menu from '../../components/client/Menu';
 import { ClientContext } from '../../context/client/ClientProvider';
+import fetchSalesData from '../../services/client/fetchSalesData';
 
 export default function ClientCheckoutPage() {
   const zero = 0;
   const two = 2;
   const twoSeconds = 2000;
   const token = localStorage.getItem('token') || null;
-  // const userData = JSON.parse(localStorage.getItem('user'));
+  const userData = JSON.parse(localStorage.getItem('user'));
   const {
     cart,
     setCart,
@@ -40,16 +40,16 @@ export default function ClientCheckoutPage() {
     setCart(newCart);
   };
 
-  // const objectSales = {
-  //   user_id: userData.id,
-  //   total_price: cart,
-  //   delivery_address: street,
-  //   delivery_number: streetNumber,
-  //   sale_date: dateFormat(new Date(), 'yyyy-mm-dd hh:MM:ss'),
-  //   status: '',
-  // };
+  const salesData = {
+    userId: userData.id,
+    totalPrice: cart,
+    deliveryAddress: street,
+    deliveryNumber: streetNumber,
+    cart: cartItens,
+  };
 
-  const handleClick = () => {
+  const handleClick = async () => {
+    await fetchSalesData(salesData);
     setPurchaseDone(true);
     setTimeout(() => setRedirect(true), twoSeconds);
   };

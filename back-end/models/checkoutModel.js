@@ -10,7 +10,7 @@ const insertCheckout = async (
   const [
     checkout,
   ] = await database.execute(
-    'INSERT INTO sales (userId, totalPrice, deliveryAddress, deliveryNumber, sale_date, status) VALUES (?, ?, ?, ?, now(), "Pendente")',
+    'INSERT INTO sales (user_id, total_price, delivery_address, delivery_number, sale_date, status) VALUES (?, ?, ?, ?, now(), "Pendente")',
     [userId, totalPrice, deliveryAddress, deliveryNumber],
   );
   for (let i = 0; i < cart.length; i++) {
