@@ -27,9 +27,7 @@ const Products = () => {
             <Card
               index={ index }
               key={ product.id }
-              image={ product.url_image }
-              name={ product.name }
-              price={ product.price }
+              product={ product }
             />
           )) }
       </section>
