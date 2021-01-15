@@ -9,6 +9,7 @@ const checkToken = async (req, res, next) => {
     return res.status(400).json({ message: 'Operação não autorizada' });
   } */
   try {
+    console.log('authorization', authorization)
     const payload = await verifyToken(authorization);
     req.payload = payload;
     // os outros middlewares conseguem ter acesso ao payload.

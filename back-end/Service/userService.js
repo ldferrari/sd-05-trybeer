@@ -31,7 +31,10 @@ const create = async (name, email, password, role) => {
     };
   } */
 
-  return model.create(name, email, password, role);
+  const newUser = await model.create(name, email, password, role);
+  newUser.id = newUser.insertId;
+  console.log('newUser', newUser);
+  return newUser;
 };
 
 module.exports = {
