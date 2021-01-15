@@ -33,8 +33,8 @@ function App({ ProductsAPI }) {
         <Route exact path="/orders" component={ Orders } />
         <Route path="/orders/:id" component={ orderDetails } />
         <Route exact path="/register" component={ Register } />
-        <Route exact path='/admin/orders' component={ AdminOrders } />
-        <Route exact path='/admin/profile' component={ AdminProfile } />
+        <Route exact path="/admin/orders" component={ AdminOrders } />
+        <Route exact path="/admin/profile" component={ AdminProfile } />
       </Switch>
     </div>
   );
