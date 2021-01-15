@@ -2,9 +2,9 @@ import React, { useEffect, useState, useContext } from 'react';
 // import { Link, Redirect } from 'react-router-dom';
 import OrderCard from '../../components/admin/OrderCard';
 import salesAPI from '../../services/admin/api';
-// import Menu from '../../components/client/Menu';
+import MenuAdm from '../../components/admin/MenuAdm';
 // import productsApi from '../../services/client/api';
-import '../../css/clientProductPage.css';
+// import '../../css/clientProductPage.css';
 
 const AdminOrders = () => {
   const [ allOrders, setAllOrders ] = useState([]);
@@ -15,7 +15,7 @@ const AdminOrders = () => {
 
   return (
     <div>
-      {/* <Menu title="TryBeer" /> */}
+      <MenuAdm />
         <div>
           {allOrders.map((order, index) => (
             <OrderCard key={ order.id } index={ index } order={ order } />
