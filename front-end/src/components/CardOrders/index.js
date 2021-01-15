@@ -24,7 +24,7 @@ export default function CardOrder(props) {
         {`Pedido ${id}`}
       </h4>
       <h5 data-testid={ `${index}-order-address` }>{ `${deliveryAddress}, ${deliveryNumber}` }</h5>
-      <h5 data-testid={ `${index}-order-total-value` }>{ `R$ ${totalPrice}` }</h5>
+      <h5 data-testid={ `${index}-order-total-value` }>{ `R$ ${totalPrice.toString().replace('.', ',')}` }</h5>
       <span data-testid={ `${index}-order-status` }>{ status }</span>
     </Link>
   );
