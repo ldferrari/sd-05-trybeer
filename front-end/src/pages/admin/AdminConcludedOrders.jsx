@@ -4,7 +4,8 @@ import MenuAdm from '../../components/admin/MenuAdm';
 export default function AdminPedidosPendentes() {
   return (
     <div>
-      <MenuAdm title="Meus Pedidos" />
+      <MenuAdm />
+      <div>Número do pedido e status</div>
     </div>
   );
 }
