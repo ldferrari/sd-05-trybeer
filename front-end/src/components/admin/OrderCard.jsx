@@ -1,30 +1,29 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-const OrderCard = props => {
+const OrderCard = (props) => {
   const { index, order } = props;
   const dois = 2;
 
   return (
     <div>
-      <Link to={`/admin/orders/${order.id}`}>
-        <p data-testid={`${index}-order-number`}>
-          <span>{`Pedido ${order.id}`}</span>
-          {/* <span>1</span> */}
+      <Link to={ `/admin/orders/${order.id}` }>
+        <p data-testid={ `${index}-order-number` }>
+          <span>{ `Pedido ${order.id}` }</span>
         </p>
-        <p data-testid={`${index}-order-address`}>
-          {order.delivery_address}, {order.delivery_number}
-          {/* Rua teste, 25 */}
+        <p data-testid={ `${index}-order-address` }>
+          {order.delivery_address}
+          ,
+          {order.delivery_number}
         </p>
         <p>
-          <span data-testid={`${index}-order-total-value`}>
-            {`R$ ${Number(order.total_price).toFixed(dois).replace('.', ',')}`}
+          <span data-testid={ `${index}-order-total-value` }>
+            { `R$ ${Number(order.total_price).toFixed(dois).replace('.', ',')}` }
           </span>
-          {/* <span data-testid={`${index}-order-total-value`}>165,00</span> */}
         </p>
         <div>
-          <p data-testid={`${index}-order-status`}>{order.status}</p>
-          {/* <p data-testid={`${index}-order-status`}>PENDENTE</p> */}
+          <p data-testid={ `${index}-order-status`}>{order.status }</p>
         </div>
       </Link>
     </div>
@@ -32,3 +31,14 @@ const OrderCard = props => {
 };
 
 export default OrderCard;
+
+OrderCard.propTypes = {
+  order: PropTypes.shape({
+    total_price: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
+    delivery_address: PropTypes.string.isRequired,
+    delivery_number: PropTypes.number.isRequired,
+    status: PropTypes.string.isRequired,
+  }).isRequired,
+  index: PropTypes.string.isRequired,
+};
