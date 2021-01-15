@@ -14,7 +14,7 @@ const OrderAdminDetails = (props) => {
   const {
     history,
   } = props;
-
+  const two = 2;
   async function fetchSale() {
     try {
       const { data } = await getSaleDetail(token, id);
@@ -52,9 +52,9 @@ const OrderAdminDetails = (props) => {
         <div className="cartItems">
           { sale.map((item, index) => <CardOrderDetails key={ item.name } item={ item } index={ index } />) }
         </div>
-        <h2>{`Total: R$ ${sale.reduce((acc, cur) => acc + cur.quantity * cur.price, 0)}`}</h2>
+        <h2>{`Total: R$ ${sale.reduce((acc, cur) => acc + cur.quantity * cur.price, 0).toFixed(two).replace('.', ',')}`}</h2>
       </div>
-      { delivered === 'Pendente' && <button onClick={handleSubmit}>Marcar como entregue</button>}
+      { delivered === 'Pendente' && <button type="button" onClick={handleSubmit}>Marcar como entregue</button>}
       <Footer />
     </div>
   );

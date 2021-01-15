@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './index.css';
 
 const AdminSideBar = () => (
-  <aside className="sideBar admin-side-bar-container">
+  <aside className="sideBar-admin admin-side-bar-container">
     <ul>
       <li className=".title">Trybeer</li>
       <li className="menuBtn">

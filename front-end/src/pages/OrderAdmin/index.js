@@ -28,19 +28,21 @@ const OrderAdmin = (props) => {
   }, [token, history]);
 
   return (
-    <div className="Orders">
-      {/* <AdminSideBar /> */}
-      <div className="pedido">
-        <h2 className="checkoutitle">Pedidos Pendentes</h2>
-        <div className="cartItems">
-          {
-            allOrders
+    <div>
+      <div className="Orders" style={{display:"flex", 'align-items': 'stretch'}}>
+        <AdminSideBar />
+        <div className="pedido">
+          <h2 className="checkoutitle">Pedidos Pendentes</h2>
+          <div className="cartItems">
+            {
+              allOrders
               .map((item, index) => <CardOrder key={ item.id } order={ item } index={ index } />)
-          }
+            }
+          </div>
         </div>
       </div>
       <Footer />
-    </div>
+      </div>
   );
 };
 
