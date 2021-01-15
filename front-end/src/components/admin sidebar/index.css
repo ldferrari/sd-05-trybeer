@@ -1,0 +1,34 @@
+.title {
+  margin-left: 3%;
+  padding: 1%;
+}
+
+.sideBar {
+  background-color: black;
+  color: white;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 3%;
+  position: absolute;
+  text-decoration: none;
+  width: 73%;
+  z-index: 1;
+}
+
+.menuBtn {
+  color: white;
+  text-decoration: none;
+  padding: 2%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+Link {
+  color: white;
+  text-decoration: none;
+  padding: 2%;
+}

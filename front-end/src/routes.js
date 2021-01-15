@@ -9,16 +9,17 @@ import {
   Register,
   OrderAdmin,
   ProfileAdmin,
+  OrderAdminDetails,
 } from './pages';
 import OrderDetails from './pages/orderDetails';
 
 const Rotas = () => (
   <Switch>
-    <Route exact path="/admin/ordersDetails" component={ OrderAdmin } />
+    <Route exact path="/admin/orders/:id" component={ OrderAdminDetails } />
     <Route exact path="/admin/orders" component={ OrderAdmin } />
     <Route exact path="/login" component={ Login } />
     <Route path="/profile" component={ Profile } />
-    <Route path="/admin/profile/" component={ ProfileAdmin } />
+    <Route path="/admin/profile" component={ ProfileAdmin } />
     <Route path="/products" component={ Products } />
     <Route exact path="/register" component={ Register } />
     <Route path="/checkout" component={ Checkout } />
