@@ -11,7 +11,7 @@ const changeStatus = async (id) => {
       statusCode: 401,
     };
   }
-  return model.changeStatus(id)
+  return model.changeStatus(id);
 };
 
 module.exports = {
