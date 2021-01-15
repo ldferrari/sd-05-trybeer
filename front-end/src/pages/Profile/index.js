@@ -5,6 +5,7 @@ import './index.css';
 
 import { getProfileInfo, postProfileInfo } from '../../services/requestAPI';
 import Header from '../../components/header';
+import Footer from '../../components/footer';
 
 const Perfil = () => {
   const [name, setName] = useState('');
@@ -85,6 +86,7 @@ const Perfil = () => {
           Salvar
         </button>
       </div>
+      <Footer />
     </div>
 
   );
