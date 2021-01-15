@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const userController = require('./controllers/users.controller');
 const productsController = require('./controllers/products.controller');
+const salesController = require('./controllers/sales.controller');
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(bodyParser.json());
 app.use('/', userController);
 
 app.use('/products', productsController);
+app.use('/sales', salesController);
 
 const errorMiddleware = (err, _req, res, _next) => {
   console.error(err);
