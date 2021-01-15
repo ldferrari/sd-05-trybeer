@@ -13,7 +13,7 @@ user.post('/register', userServices.register, (req, res) => {
 });
 
 user.post('/update', userServices.update, (req, res) => {
-  res.status(200).json(req.body);
+  res.status(200).json(req.data);
 });
 
 user.post('/', userServices.login, (req, res) => {

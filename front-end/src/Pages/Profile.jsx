@@ -1,14 +1,15 @@
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Header from '../Components/Header';
+import Restrict from '../Components/Restrict';
 
 import { getUserData } from '../Services/utils';
 import { updateUserAct } from '../Redux/Actions/user';
 
 const changeInput = (event, setFunction) => setFunction(event.target.value);
 
-function Profile({ history, userData, updateUser }) {
+function Profile({ history, updateUser }) {
 
   const [id, setId] = useState('');
   const [email, setEmail] = useState('');
@@ -18,6 +19,7 @@ function Profile({ history, userData, updateUser }) {
 
   useEffect(() => {
     const user = getUserData();
+    if(!user) return;
     setId(user.id);
     setEmail(user.email);
     setName(user.name);

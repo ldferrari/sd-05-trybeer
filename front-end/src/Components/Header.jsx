@@ -6,6 +6,8 @@ import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 import SideBar from './SideBar';
 
+import Restrict from './Restrict';
+
 const headerStyle = {
   display: 'flex',
   justifyContent: 'space-between',
@@ -36,25 +38,27 @@ const Header = ({ pathname }) => {
   if (redirect) return <Redirect to={redirect} />;
 
   return (
-    <div style={headerStyle} >
-      <Button onClick={toggleDrawer()} data-testid="top-hamburguer">
-        <i
-          className="material-icons"
-          style={{ color: 'var(--white)', fontSize: '32px' }}
-        >
-          menu
-        </i>
-      </Button>
-      <h3 data-testid="top-title">{ title }</h3>
-      <div style={{ marginRight: '70px' }} />
-      <span className="side-menu-container" style={{ display: showSideBar ? 'block' : 'none' }}>.</span>
-      <Drawer open={showSideBar} onClose={toggleDrawer()}>
-        <SideBar
-          toggleDrawer={toggleDrawer}
-          redirect={setRedirect}
-        />
-      </Drawer>
-    </div>
+    <Restrict>
+      <div style={headerStyle} >
+        <Button onClick={toggleDrawer()} data-testid="top-hamburguer">
+          <i
+            className="material-icons"
+            style={{ color: 'var(--white)', fontSize: '32px' }}
+          >
+            menu
+          </i>
+        </Button>
+        <h3 data-testid="top-title">{ title }</h3>
+        <div style={{ marginRight: '70px' }} />
+        <span className="side-menu-container" style={{ display: showSideBar ? 'block' : 'none' }}>.</span>
+        <Drawer open={showSideBar} onClose={toggleDrawer()}>
+          <SideBar
+            toggleDrawer={toggleDrawer}
+            redirect={setRedirect}
+          />
+        </Drawer>
+      </div>
+    </Restrict>
   );
 };
 

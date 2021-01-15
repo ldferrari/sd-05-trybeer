@@ -47,13 +47,14 @@ const Login = ({ submitLogin, userData }) => {
       <div className="container-screen" style={containerStyle}>
         <TextField
           data-testid="email-input"
-          label="Digite seu e-mail"
+          label="Email"
           variant="outlined"
+          type="email"
           onChange={ (e) => setEmail(e.target.value) }
         />
         <TextField
           data-testid="password-input"
-          label="Digite sua senha"
+          label="Senha"
           variant="outlined"
           type="password"
           onChange={ (e) => setPassword(e.target.value) }
@@ -64,7 +65,11 @@ const Login = ({ submitLogin, userData }) => {
             variant="outlined"
             disabled={ isDisabled }
             data-testid="signin-btn"
-            onClick={ () => submitLogin({ email, password }) }
+            type="submit"
+            onClick={(ev) => {
+              ev.preventDefault();
+              submitLogin({ email, password });
+            }}
           >
             ENTRAR
           </Button>

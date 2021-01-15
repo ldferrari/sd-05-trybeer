@@ -13,5 +13,6 @@ export const registerData = (data) => {
 export const getDataByKey = (key) => {
   if(!window.localStorage) throw new Error('Localstorage not suported');
   const current = localStorage.getItem('trybeer');
+  if(!current) return null;
   return JSON.parse(current)[key];
 };

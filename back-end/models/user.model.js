@@ -9,17 +9,19 @@ const findUserbyEmailAndPassword = ({ email, password }) => connection
   .then((array) => array[0][0]);
 // prettier-ignore
 
-const createUser = ({ email, name, password, role }) => connection.query(
-  'INSERT INTO users (email, name, password, role) VALUES (?,?,?,?)',
-  [email, name, password, role],
-);
+const createUser = ({ email, name, password, role }) => connection
+  .query(
+    'INSERT INTO users (email, name, password, role) VALUES (?,?,?,?)',
+    [email, name, password, role],
+  );
 
 // prettier-ignore
 const findUserById = (id) => connection
-  .query('SELECT id, name, email, role FROM users WHERE ID = ? ', [id]);
+  .query('SELECT id, name, email, role FROM users WHERE id = ? ', [id])
+  .then((array) => array[0][0]);
 
 // prettier-ignore
-const updateUser = ({ id, name }) => (
+const updateUser = (id, { name }) => (
   connection.query(
     'UPDATE users SET name = ? WHERE id = ?',
     [name, id],

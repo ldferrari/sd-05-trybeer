@@ -56,7 +56,10 @@ export function updateUserAct(body) {
   return (dispatch) => {
     dispatch(requestingUser());
     return updateUser(body).then(
-      (data) => dispatch(updateUserSuccess(data)),
+      (data) => {
+        registerData(data);
+        dispatch(updateUserSuccess(data));
+      },
       (error) => dispatch(updateUserError(error)),
     );
   };
