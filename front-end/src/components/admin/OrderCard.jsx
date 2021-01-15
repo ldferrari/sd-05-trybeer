@@ -13,18 +13,14 @@ const OrderCard = (props) => {
           <span>{ `Pedido ${order.id}` }</span>
         </p>
         <p data-testid={ `${index}-order-address` }>
-          {order.delivery_address}
-          ,
-          {order.delivery_number}
+          { `${order.delivery_address}, ${order.delivery_number} `}
         </p>
+        <span data-testid={ `${index}-order-total-value` }>
+          { `R$ ${Number(order.total_price).toFixed(dois).replace('.', ',')}` }
+        </span>
         <p>
-          <span data-testid={ `${index}-order-total-value` }>
-            { `R$ ${Number(order.total_price).toFixed(dois).replace('.', ',')}` }
-          </span>
-        </p>
-        <div>
           <p data-testid={ `${index}-order-status` }>{order.status}</p>
-        </div>
+        </p>
       </Link>
     </div>
   );
