@@ -16,10 +16,12 @@ function Products({
   const [redirect, setRedirect] = useState(null);
 
   const total = cart.reduce((acc, product) => acc + (product.quantity * product.price), zero);
+  
   useEffect(() => {
     const localCart = JSON.parse(localStorage.getItem('cart'));
     if (localCart) repopulatingStore(localCart);
   }, [repopulatingStore]);
+
   if (isLoading) return <p>Loading...</p>;
   const totalPriceLocal = localStorage.getItem('totalPrice');
   if (redirect) return <Redirect to={ redirect } />;
