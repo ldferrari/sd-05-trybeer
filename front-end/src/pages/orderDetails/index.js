@@ -41,14 +41,14 @@ export default function OrderDetails(props) {
     <div>
       <Header>Detalhes de Pedido</Header>
       <div className="detailsHeader">
-        <h4 data-testid="order-number">
+        <h4 data-testid="order-number" className="orderTitle">
           { `Pedido ${id}` }
         </h4>
-        <h4 data-testid="order-date">
+        <h4 data-testid="order-date" className="orderTitle">
           { `${dataCerta[2]}/${dataCerta[1]}` }
         </h4>
       </div>
-      <div>
+      <div className="pedido">
         <div className="legenda">
           <p>QUANTIDADE</p>
           <p>PRODUTO</p>

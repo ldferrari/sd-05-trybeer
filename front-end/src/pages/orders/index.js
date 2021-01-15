@@ -26,7 +26,7 @@ const Orders = (props) => {
   }, [props]);
 
   return (
-    <div className="Products">
+    <div className="orders">
       <Header>Meus Pedidos</Header>
       <div className="ordersList">
         { theOrders.map((order, index) => (

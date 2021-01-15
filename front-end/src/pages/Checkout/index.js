@@ -19,7 +19,7 @@ const Checkout = (props) => {
 
   const zero = 0;
   const dois = 2;
-  const tempoEspera = 3000;
+  const tempoEspera = 1000;
   const cartSum = cart
     .reduce((acc, cv) => acc + cv.price * cv.quantity, zero)
     .toFixed(dois);
