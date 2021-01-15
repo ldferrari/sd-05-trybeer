@@ -8,7 +8,6 @@ import '../../css/client/clientMeusPedidosPage.css';
 export default function ClientMeusPedidos() {
   const [pedidos, setPedidos] = useState([]);
   const token = localStorage.getItem('token') || null;
-  const userData = JSON.parse(localStorage.getItem('user')) || null;
 
   useEffect(() => {
     if (!JSON.parse(localStorage.getItem('user'))) {
