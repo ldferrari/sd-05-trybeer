@@ -10,9 +10,8 @@ export default function ClientMeusPedidos() {
   const token = localStorage.getItem('token') || null;
   const userData = JSON.parse(localStorage.getItem('user')) || null;
   const id = userData.id || null;
-  
+
   useEffect(() => {
-    console.log('user');
     if (!id) {
       setPedidos('');
     } else {

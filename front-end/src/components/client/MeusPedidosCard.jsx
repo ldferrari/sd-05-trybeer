@@ -8,15 +8,20 @@ export default function MausPedidosCard(props) {
 
   return (
     <Link to={ `/orders/${order.id}` }>
-      <div data-testid={ `${index}-order-card-container` } className="cardConteiner"></div>
-      <div data-testid={ `${index}-order-number` }>
-        Pedido { order.id }
-      </div>
-      <div data-testid={ `${index}-order-date` }>
-        { dateFormat(order.sale_date,'dd/mm') }
-      </div>
-      <div data-testid={ `${index}-order-total-value` }>
-        R$ { order.total_price.replace('.', ',') }
+      <div data-testid={ `${index}-order-card-container` } className="cardConteiner">
+        <div data-testid={ `${index}-order-number` }>
+          Pedido {
+            order.id
+          }
+        </div>
+        <div data-testid={ `${index}-order-date` }>
+          { dateFormat(order.sale_date, 'dd/mm') }
+        </div>
+        <div data-testid={ `${index}-order-total-value` }>
+          R$ {
+            order.total_price.replace('.', ',')
+          }
+        </div>
       </div>
     </Link>
   );
