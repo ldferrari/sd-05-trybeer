@@ -4,14 +4,18 @@ import { Link, withRouter } from 'react-router-dom';
 import { checkEmail, checkPassword } from '../services/checkUserData';
 import TrybeerContext from '../context/TrybeerContext';
 import { login } from '../services/fetch';
+import '../css/style12.css';
+import '../css/login.css';
+import { trybeerLogo } from '../images/trybeerLogo.svg';
 
 import SqlBtn from '../components/sqlBtn';
 
 function inputEmail(handleEmailChange) {
   return (
-    <div className="login-input">
-      <p>Email</p>
+    <div className="input-container">
       <input
+      placeholder="Email"
+        className="input-layout"
         type="email"
         data-testid="email-input"
         onChange={ (e) => handleEmailChange(e) }
@@ -22,9 +26,10 @@ function inputEmail(handleEmailChange) {
 
 function inputPassword(handlePasswordChange) {
   return (
-    <div className="login-input">
-      <p>Senha</p>
+    <div className="input-container">
       <input
+      className="input-layout"
+        placeholder="Senha"
         type="password"
         data-testid="password-input"
         name="password"
@@ -67,23 +72,29 @@ function Login({ history }) {
   };
 
   return (
-    <div className="login-page" data-testid="">
+    <div className="general-container" data-testid="">
+      <div className="login-container">
+        <div className="form-container">
+          <h1 className="white-text">Trybeer</h1>
       {inputEmail(handleEmailChange)}
       {inputPassword(handlePasswordChange)}
       <button
+        className="waves-effect waves-light btn btn-layout"
         type="button"
         data-testid="signin-btn"
         disabled={ !(checkedEmail && checkedPassword) }
         onClick={ () => login(email, password).then((result) => handleResult(result)) }
-      >
+        >
         ENTRAR
       </button>
-      <Link to="/register">
-        <button type="button" data-testid="no-account-btn">
+        <button type="button" data-testid="no-account-btn" className="waves-effect waves-light btn btn-layout">
+      <Link to="/register" className="white-text">
           Ainda não tenho conta
-        </button>
       </Link>
+        </button>
       <SqlBtn />
+        </div>
+      </div>
     </div>
   );
 }

@@ -7,6 +7,19 @@
   display: none;
 }
 
+header {
+ width: 100%;
+}
+
+.menu-header {
+display: flex;
+flex-direction: row;
+position: sticky;
+width: 100%;
+min-height: 10vmax;
+justify-content: space-between !important;
+}
+
 .top-hamburguer {
   display: inline-block;
   color: green;

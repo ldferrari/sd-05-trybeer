@@ -20,15 +20,20 @@ function ClientMenu(props) {
   }
 
   return (
-    <header className="menu-superior">
+    <div className="menu-header orange-background">
+      <header>
+      <div className="header-content">
       <label className="top-hamburguer" data-testid="top-hamburguer" htmlFor="check">
         &#9776;
         <input type="checkbox" id="check" onChange={ () => openClose() } />
       </label>
-      <h1 className="top-title" data-testid="top-title">
+      <h4 className="top-title" data-testid="top-title" className="white-text">
         {title}
-      </h1>
-      <div className="side-menu-container">
+      </h4>
+      <div></div>
+      </div>
+    </header>
+      <div className="side-menu-container orange-background">
         <nav className="side-menu">
           <div className="btn-menu">
             <Link className="btn-side" data-testid="side-menu-item-products" to="/products">
@@ -46,7 +51,7 @@ function ClientMenu(props) {
           </div>
         </nav>
       </div>
-    </header>
+    </div>
   );
 }
 

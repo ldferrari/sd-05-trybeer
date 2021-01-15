@@ -18,7 +18,7 @@ function Products() {
   }, []);
 
   return (
-    <section>
+    <section className="general-container-2">
       <ClientMenu title="TryBeer" />
       <div className="productCards">
         {/* {fetching && <p>Loading...</p>} */}
