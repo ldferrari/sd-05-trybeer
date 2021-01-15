@@ -31,7 +31,7 @@ const getOrdersByUserId = async (userId) => {
 
 const getSalesProducts = async (orderId) => {
   const orders = await db.execute(
-    'SELECT p.name, p.price, sp.quantity, s.sale_date, total_price FROM sales_products AS sp JOIN products AS p ON sp.product_id = p.id JOIN sales AS s ON s.id = sp.sale_id WHERE sp.sale_id = ?', [orderId],
+    'SELECT p.name, p.price, sp.quantity, s.sale_date, total_price, s.status FROM sales_products AS sp JOIN products AS p ON sp.product_id = p.id JOIN sales AS s ON s.id = sp.sale_id WHERE sp.sale_id = ?', [orderId],
   );
   return orders;
 };
@@ -41,10 +41,16 @@ const getSalesAdmin = async () => {
   return sales;
 };
 
+const updateOrderStatus = async (orderId) => {
+  const status = 'Entregue';
+  await db.execute('UPDATE sales SET status = ? WHERE id = ?', [status, orderId]);
+};
+
 module.exports = {
   insertSale,
   getOrdersByUserId,
   insertProductSale,
   getSalesProducts,
   getSalesAdmin,
+  updateOrderStatus,
 };

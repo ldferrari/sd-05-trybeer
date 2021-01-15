@@ -12,7 +12,7 @@ import {
   verifyElementNotVisible,
 } from '../actions/actionBase';
     
-describe.skip('Criar tela de detalhes pedidos do admininstrador', () => {
+describe('Criar tela de detalhes pedidos do admininstrador', () => {
   beforeEach(() => {
     createAndInsertsDataBase();
     cy.visit(Cypress.config().baseUrl);

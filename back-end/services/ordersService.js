@@ -57,9 +57,14 @@ const getSalesAdmin = async () => {
   return sales[0];
 };
 
+const updateOrderStatus = async (orderId) => {
+  await model.updateOrderStatus(orderId);
+};
+
 module.exports = {
   insertSale,
   getOrdersByUserId,
   getSalesProducts,
   getSalesAdmin,
+  updateOrderStatus,
 };

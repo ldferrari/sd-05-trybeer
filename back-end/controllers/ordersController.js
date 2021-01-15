@@ -32,6 +32,31 @@ orders.post('/insert', validateJWT, async (req, res) => {
   return res.status(sale.statusCode).json(sale.message);
 });
 
+orders.get('/admin/:id', validateJWT, async (req, res) => {
+  const { id } = req.params;
+  const { role } = req.headers;
+  if (role !== 'administrator') {
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
+  const ordersProducts = await service.getSalesProducts(id);
+  if (ordersProducts.error) {
+    return res.status(ordersProducts.code).json(ordersProducts.message);
+  }
+  return res.status(200).json(ordersProducts);
+});
+
+orders.put('/admin/:id', validateJWT, async (req, res) => {
+  const { id } = req.params;
+  const { role } = req.headers;
+
+  if (role !== 'administrator') {
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
+
+  await service.updateOrderStatus(id);
+  return res.status(200).json({ message: 'Order updated' });
+});
+
 orders.get('/:id', validateJWT, async (req, res) => {
   const { id } = req.params;
   const ordersProducts = await service.getSalesProducts(id);
