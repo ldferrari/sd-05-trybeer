@@ -8,7 +8,7 @@ const AdminProfile = ({ userData }) => {
     return <Redirect to="/login" />;
   }
 
-  // getlocalStorage - pegar funcao do luis para solução MUNDO REAL
+  // getlocalStorage - pegar funcao do luis para solução MUNDO REAL --
 
   const { name, email } = userData.user;
   return (
