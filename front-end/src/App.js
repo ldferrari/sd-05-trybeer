@@ -2,14 +2,14 @@ import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import RegisterPage from './pages/general/RegisterPage';
 import ClientProductPage from './pages/client/ClientProductPage';
-import ClientProfilePage from './pages/client/ClientProfilePage';
 import LoginPage from './pages/general/LoginPage';
 import AdminProfilePage from './pages/admin/AdminProfilePage';
-// import './css/admin/app.css';
 import ClientMeusPedidos from './pages/client/ClientMeusPedidos';
 import AdminPedidosPendentes from './pages/admin/AdminPedidosPendentes';
-import './css/client/app.css';
 import ClientCheckoutPage from './pages/client/ClientCheckoutPage';
+import ClientProfilePage from './pages/client/ClientProfilePage';
+import './css/client/app.css';
+// import './css/admin/app.css';
 
 function App() {
   return (
