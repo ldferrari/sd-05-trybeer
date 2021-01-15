@@ -24,6 +24,7 @@ export default function LoginPage(props) {
     localStorage.setItem(
       'user',
       JSON.stringify({
+        id: usuario.id,
         email: usuario.email,
         role: usuario.role,
         name: usuario.name,

@@ -6,6 +6,7 @@ import ClientProfilePage from './pages/client/ClientProfilePage';
 import LoginPage from './pages/general/LoginPage';
 import ClientMeusPedidos from './pages/client/ClientMeusPedidosPage';
 import AdminPedidosPendentes from './pages/admin/AdminPedidosPendentes';
+import ClientDetailsOrderPage from './pages/client/ClientDetailsOrderPage';
 import './css/client/app.css';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/profile" component={ ClientProfilePage } />
         <Route path="/orders" component={ ClientMeusPedidos } />
         <Route path="/checkout" component={ ClientMeusPedidos } />
+        <Route path="/teste" component={ ClientDetailsOrderPage } />
         {/*         trocar rota checkout  */}
         <Route path="/" component={ () => <Redirect to="/login" /> } />
       </Switch>
