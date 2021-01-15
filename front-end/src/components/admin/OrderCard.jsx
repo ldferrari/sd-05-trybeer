@@ -23,7 +23,7 @@ const OrderCard = (props) => {
           </span>
         </p>
         <div>
-          <p data-testid={ `${index}-order-status`}>{order.status }</p>
+          <p data-testid={ `${index}-order-status` }>{order.status}</p>
         </div>
       </Link>
     </div>
