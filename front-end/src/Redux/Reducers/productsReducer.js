@@ -5,6 +5,7 @@ import {
   INCREASE_QUANTITY,
   DECREASE_QUANTITY,
   REPOPULATING_STORE,
+  DELETE_PRODUCT_FROM_STORE,
 } from '../Actions/index';
 
 const INITIAL_STATE = {
@@ -76,6 +77,12 @@ function productsRequestReducer(state = INITIAL_STATE, action) {
         ...state,
         cart: action.cart,
       };
+
+    case DELETE_PRODUCT_FROM_STORE: 
+      return {
+        ...state,
+        cart: state.cart.filter(product => product.id !== action.productId)
+      }
     default:
       return state;
   }

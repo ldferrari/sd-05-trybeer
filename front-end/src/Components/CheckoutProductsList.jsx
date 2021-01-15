@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { repopulatingAct } from '../Redux/Actions';
+import { repopulatingAct, deleteProductFromStore } from '../Redux/Actions';
 import CheckoutProductCard from './CheckoutProductCard';
 import helper from '../Helper/index';
 
@@ -9,7 +9,7 @@ import helper from '../Helper/index';
 const zero = 0;
 const toFixedParam = 2;
 
-const CheckoutProductsList = ({ repopulatingStore, cart, setisTotalZero }) => {
+const CheckoutProductsList = ({ repopulatingStore, cart, setisTotalZero, deleteProductFromStore }) => {
   const total = cart.reduce(
     (acc, product) => acc + product.quantity * product.price,
     zero,
@@ -21,10 +21,12 @@ const CheckoutProductsList = ({ repopulatingStore, cart, setisTotalZero }) => {
     }
   }, [total, setisTotalZero]);
 
-  const triggerDelete = (index) => {
+  const triggerDelete = (index, productId) => {
     const cartClone = [...cart];
     cartClone.splice(index, 1);
     repopulatingStore(cartClone);
+
+    helper.deleteProductFromLocalStorage(productId);
   };
 
   return (
@@ -49,6 +51,7 @@ CheckoutProductsList.propTypes = {
   }).isRequired,
   repopulatingStore: PropTypes.func.isRequired,
   setisTotalZero: PropTypes.func.isRequired,
+  deleteProductFromStore: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -57,6 +60,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   repopulatingStore: (cart) => dispatch(repopulatingAct(cart)),
+  deleteProductFromStore: (productId) => dispatch(deleteProductFromStore(productId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CheckoutProductsList);

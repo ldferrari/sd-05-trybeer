@@ -6,47 +6,6 @@ import Helpers from '../Helper/index';
 
 const zero = 0;
 
-const addingProductToLocalStorage = (product, quantity) => {
-  const local = Helpers.getLocalStorage('cart');
-  product = { ...product, quantity };
-  let setToLocalStorage = [...local];
-  if (local.length === zero) {
-    setToLocalStorage = [...local, product];
-  }
-  local.forEach((item, index) => {
-    if (item.id === product.id) {
-      setToLocalStorage = [...local];
-      setToLocalStorage[index] = product;
-    }
-  });
-  if (!local.some((item) => item.id === product.id)) {
-    setToLocalStorage = [...local, product];
-  }
-  return localStorage.setItem('cart', JSON.stringify(setToLocalStorage));
-};
-
-const decreaseProductToLocalStorage = (product, quantity) => {
-  const local = Helpers.getLocalStorage('cart');
-  product = { ...product, quantity };
-  let setToLocalStorage = [...local];
-  if (quantity > zero) {
-    local.forEach((item, index) => {
-      if (item.id === product.id) {
-        setToLocalStorage = [...local];
-        setToLocalStorage[index] = product;
-      }
-    });
-  }
-  if (quantity === zero) {
-    local.forEach((item, index) => {
-      if (item.id === product.id) {
-        setToLocalStorage = [...local];
-        setToLocalStorage.pop(index);
-      }
-    });
-  }
-  return localStorage.setItem('cart', JSON.stringify(setToLocalStorage));
-};
 
 function ProductCard({
   product,
@@ -69,7 +28,7 @@ function ProductCard({
         onClick={ () => {
           decreaseQuantity(product);
           if (quantity > zero) setQuantity(quantity - 1);
-          decreaseProductToLocalStorage(product, quantity - 1);
+          Helpers.decreaseProductToLocalStorage(product, quantity - 1);
         } }
       >
         -
@@ -81,7 +40,7 @@ function ProductCard({
         onClick={ () => {
           increaseQuantity(product);
           setQuantity(quantity + 1);
-          addingProductToLocalStorage(product, quantity + 1);
+          Helpers.addingProductToLocalStorage(product, quantity + 1);
         } }
       >
         +

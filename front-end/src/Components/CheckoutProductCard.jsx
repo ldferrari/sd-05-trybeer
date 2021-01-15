@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import helper from '../Helper/index';
+import { increaseQuantityAct, decreaseQuantityAct } from '../Redux/Actions';
+
 
 const cssProvisorio = {
   display: 'flex',
@@ -10,7 +12,7 @@ const cssProvisorio = {
   width: '35%',
 };
 // Me falem se tinha melhor opção que usar várias divs, por favor, Paulo
-function CheckoutProductCard({ item, i, triggerDelete }) {
+function CheckoutProductCard({ item, i, triggerDelete, increaseQuantity, decreaseQuantity }) {
   return (
     <div style={ cssProvisorio }>
       <div data-testid={ `${i}-product-qtd-input` }>{item.quantity}</div>
@@ -22,7 +24,7 @@ function CheckoutProductCard({ item, i, triggerDelete }) {
         {`(R$ ${helper.transformPrice(item.price)} un)`}
       </div>
       <button
-        onClick={ () => triggerDelete(i) }
+        onClick={ () => triggerDelete(i, item.id) }
         type="button"
         data-testid={ `${i}-removal-button` }
       >
