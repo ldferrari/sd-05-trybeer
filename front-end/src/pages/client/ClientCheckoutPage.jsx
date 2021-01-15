@@ -49,8 +49,6 @@ export default function ClientCheckoutPage() {
     status: '',
   };
 
-  console.log(objectSales);
-
   const handleClick = () => {
     setPurchaseDone(true);
     setTimeout(() => setRedirect(true), twoSeconds);
