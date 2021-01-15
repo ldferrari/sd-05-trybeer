@@ -127,7 +127,7 @@ export const getOrderById = async (token, id) => {
   return response || undefined;
 };
 
-export const getOrdersAdmin = async (rol, token) => {
+export const getOrdersAdmin = async (role, token) => {
   const request = {
     method: 'GET',
     headers: {
@@ -135,10 +135,44 @@ export const getOrdersAdmin = async (rol, token) => {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
       Authorization: token,
-      role: rol,
+      role,
     },
     mode: 'cors',
   };
   const response = await fetch(`${url}/orders/admin`, request).then((orders) => orders.json());
+  return response || undefined;
+};
+
+export const getAdmOrderById = async (role, id, token) => {
+  const updateReq = {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      Authorization: token,
+      role,
+    },
+    mode: 'cors',
+  };
+  const response = await fetch(`${url}/orders/admin/${id}`, updateReq)
+    .then((products) => products.json());
+  return response || undefined;
+};
+
+export const updateStatus = async (role, id, token) => {
+  const updateReq = {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      Authorization: token,
+      role,
+    },
+    mode: 'cors',
+  };
+  const response = await fetch(`${url}/orders/admin/${id}`, updateReq)
+    .then((order) => order.json());
   return response || undefined;
 };
