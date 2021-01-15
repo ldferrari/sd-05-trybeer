@@ -4,7 +4,8 @@ import Products from './Products';
 import Orders from './Orders';
 import Profile from './Profile';
 import ClientOrders from './ClientOrders';
+import Checkout from './Checkout';
 
 export {
-  Login, Register, Products, Orders, Profile, ClientOrders,
+  Login, Register, Products, Orders, Profile, ClientOrders,  Checkout,
 };

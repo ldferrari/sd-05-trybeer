@@ -35,4 +35,9 @@ function removeFromCart(product) {
   });
 }
 
-export { addToCart, removeFromCart };
+// funcao para pegar do local storage os itens pedidos
+function getCart() {
+  return JSON.parse(localStorage.getItem('cart'));
+}
+
+export { addToCart, removeFromCart, getCart };

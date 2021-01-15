@@ -54,7 +54,7 @@ function Card(props) {
         -
       </button>
       <span
-        data-testid={ `${index}-product-qtd` }
+        data-testid={ `${index}-product-qtd-input` }
       >
         {quantity}
       </span>
