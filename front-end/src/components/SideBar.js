@@ -29,7 +29,7 @@ export default function SideBar({ userRole, active }) {
         <div className="admin-side-bar-container side-bar">
           <div>
             <Link to="/admin/orders" data-testid="side-menu-item-orders">
-              Meus Pedidos
+              Pedidos
             </Link>
             <Link to="/admin/profile" data-testid="side-menu-item-profile">
               Meu perfil

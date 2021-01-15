@@ -3,16 +3,22 @@ import { Redirect } from 'react-router-dom';
 import Header from '../components/Header';
 
 import Sales from '../components/Sales';
+import OrdersAdmin from '../components/OrdersAdmin';
 
 export default function Orders() {
-  const email = localStorage.getItem('email') || '';
-  const token = localStorage.getItem('token') || '';
-  return token && email ? (
+  const lsToken = localStorage.getItem('token');
+  if (!lsToken) return <Redirect to="/login" />;
+
+  const role = localStorage.getItem('role');
+  return role === 'client' ? (
     <div>
       <Header>Meus Pedidos</Header>
       <Sales />
     </div>
   ) : (
-    <Redirect to="/login" />
+    <div>
+      <Header>Pedidos Pendentes</Header>
+      <OrdersAdmin />
+    </div>
   );
 }

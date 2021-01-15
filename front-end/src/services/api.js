@@ -113,7 +113,7 @@ export const getOrders = async (email, token) => {
 export const getOrderById = async (token, id) => {
   const updateReq = {
     method: 'GET',
-    header: {
+    headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
@@ -124,5 +124,21 @@ export const getOrderById = async (token, id) => {
   // const response = await fetch(`${url}/orders/${id}?email=${email}`, updateReq)
   const response = await fetch(`${url}/orders/${id}`, updateReq)
     .then((products) => products.json());
+  return response || undefined;
+};
+
+export const getOrdersAdmin = async (rol, token) => {
+  const request = {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      Authorization: token,
+      role: rol,
+    },
+    mode: 'cors',
+  };
+  const response = await fetch(`${url}/orders/admin`, request).then((orders) => orders.json());
   return response || undefined;
 };

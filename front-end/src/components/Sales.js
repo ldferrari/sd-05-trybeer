@@ -3,13 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getOrders } from '../services/api';
 
-export default function Sales() {
-  const [sales, setSales] = useState([]);
+export default function Orders() {
+  const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     const email = (localStorage.getItem('email') || '');
     const token = (localStorage.getItem('token') || '');
-    getOrders(email, token).then((orders) => setSales(orders));
+    getOrders(email, token).then((sales) => setOrders(sales));
   }, []);
 
   const formatDate = (saleDate) => (
@@ -21,16 +21,16 @@ export default function Sales() {
 
   return (
     <ul>
-      {sales.map((sale, index) => (
-        <Link to={ `/orders/${sale.id}` } key={ sale.id }>
+      {orders.map((order, index) => (
+        <Link to={ `/orders/${order.id}` } key={ order.id }>
           <li data-testid={ `${index}-order-card-container` }>
             <div>
               <span data-testid={ `${index}-order-number` }>
-                {`Pedido ${sale.id}`}
+                {`Pedido ${order.id}`}
               </span>
-              <span data-testid={ `${index}-order-date` }>{formatDate(sale.sale_date)}</span>
+              <span data-testid={ `${index}-order-date` }>{formatDate(order.sale_date)}</span>
               <span data-testid={ `${index}-order-total-value` }>
-                {`R$ ${sale.total_price.replace('.', ',')}`}
+                {`R$ ${order.total_price.replace('.', ',')}`}
               </span>
             </div>
           </li>

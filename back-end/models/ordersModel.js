@@ -2,7 +2,7 @@ const moment = require('moment');
 const db = require('./connection');
 
 const insertSale = async (order, userId) => {
-  const pending = 'pending';
+  const pending = 'Pendente';
   const dateFormat = 'YYYY-MM-DD HH:mm:ss';
   const date = moment(Date.now()).format(dateFormat);
   const { totalPrice, deliveryAddress, deliveryNumber } = order;
@@ -35,9 +35,16 @@ const getSalesProducts = async (orderId) => {
   );
   return orders;
 };
+
+const getSalesAdmin = async () => {
+  const sales = await db.execute('SELECT id, delivery_address, delivery_number, total_price, status FROM sales');
+  return sales;
+};
+
 module.exports = {
   insertSale,
   getOrdersByUserId,
   insertProductSale,
   getSalesProducts,
+  getSalesAdmin,
 };

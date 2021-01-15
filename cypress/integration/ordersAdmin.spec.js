@@ -10,7 +10,7 @@ import {
   logout,
 } from '../actions/actionBase';
   
-describe.skip('Criar tela de pedidos de admin', () => {
+describe('Criar tela de pedidos de admin', () => {
   beforeEach( () => {
     createAndInsertsDataBase();
     cy.visit(Cypress.config().baseUrl);

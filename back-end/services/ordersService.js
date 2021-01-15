@@ -51,8 +51,15 @@ const getSalesProducts = async (orderId) => {
   const orders = await model.getSalesProducts(orderId);
   return orders[0] || undefined;
 };
+
+const getSalesAdmin = async () => {
+  const sales = await model.getSalesAdmin();
+  return sales[0];
+};
+
 module.exports = {
   insertSale,
   getOrdersByUserId,
   getSalesProducts,
+  getSalesAdmin,
 };
