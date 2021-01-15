@@ -40,7 +40,8 @@ function Products({
       >
         Ver Carrinho
         <p on data-testid="checkout-bottom-btn-value">
-          {`R$ ${Helpers.transformPrice(total.toFixed(toFixedParam))}`}
+          {/* transferi a lógica de duas casas decimais diretamente para a funcao transformPrice */}
+          {`R$ ${Helpers.transformPrice(total)}`} 
         </p>
       </button>
     </div>

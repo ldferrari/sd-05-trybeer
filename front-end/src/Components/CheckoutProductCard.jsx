@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
+import helper from '../Helper/index';
 
 const cssProvisorio = {
   display: 'flex',
@@ -14,11 +15,11 @@ function CheckoutProductCard({ item, i, triggerDelete }) {
     <div style={ cssProvisorio }>
       <div data-testid={ `${i}-product-qtd-input` }>{item.quantity}</div>
       <div data-testid={ `${i}-product-name` }>{item.name}</div>
-      <div data-testid={ `${i}-product-total` }>
-        {`R$ ${item.quantity * item.price}`}
+      <div data-testid={ `${i}-product-total-value` }>
+        {`R$ ${helper.transformPrice(item.quantity * item.price)}`}
       </div>
       <div data-testid={ `${i}-product-unit-price` }>
-        {`(R$ ${item.price} un)`}
+        {`(R$ ${helper.transformPrice(item.price)} un)`}
       </div>
       <button
         onClick={ () => triggerDelete(i) }

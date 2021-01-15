@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { repopulatingAct } from '../Redux/Actions';
 import CheckoutProductCard from './CheckoutProductCard';
+import helper from '../Helper/index';
+
 
 const zero = 0;
 const toFixedParam = 2;
@@ -35,7 +37,7 @@ const CheckoutProductsList = ({ repopulatingStore, cart, setisTotalZero }) => {
           triggerDelete={ triggerDelete }
         />
       ))}
-      <div data-testid="order-total-value">{`Total: R$ ${total.toFixed(toFixedParam)}`}</div>
+      <div data-testid="order-total-value">{`Total: R$ ${helper.transformPrice(total)}`}</div>
     </div>
   );
 };

@@ -1,5 +1,8 @@
 const transformPrice = (value) => {
-  const valueWithComma = value.toString().replace('.', ',');
+
+  const decimals = 2;
+  const valueWith2Decimals = parseFloat(value).toFixed(decimals);
+  const valueWithComma =  valueWith2Decimals.toString().replace('.', ',');
   return valueWithComma;
 };
 
