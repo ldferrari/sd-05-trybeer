@@ -20,11 +20,8 @@ const Home = () => (
       <Route exact path="/register" component={ Register } />
       <Route exact path="/profile" component={ Profile } />
       <Route exact path="/admin/profile" component={ Profile } />
-<<<<<<< HEAD
       <Route exact path="/checkout" component={ Checkout } />
-=======
       <Route exact path="/admin/orders" component={ Orders } />
->>>>>>> 37c9b1a7883b1b5e77dae8a72cabda05664bb7ae
     </Switch>
   </Router>
 );

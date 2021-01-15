@@ -10,13 +10,10 @@ const Provider = ({ children }) => {
   const [checked, setChecked] = useState(false);
   const [productsList, setProductList] = useState([]);
   const [role, setRole] = useState('client');
-<<<<<<< HEAD
   const [quantity, setQuantity] = useState(noValue);
   const [streetName, setStreetName] = useState('');
   const [houseNumber, setHouseNumber] = useState('');
-=======
   const [total, setTotal] = useState('');
->>>>>>> 37c9b1a7883b1b5e77dae8a72cabda05664bb7ae
 
   const contextValue = {
     email,
@@ -31,17 +28,14 @@ const Provider = ({ children }) => {
     setProductList,
     role,
     setRole,
-<<<<<<< HEAD
     quantity,
     setQuantity,
     streetName,
     setStreetName,
     houseNumber,
     setHouseNumber,
-=======
     total,
     setTotal,
->>>>>>> 37c9b1a7883b1b5e77dae8a72cabda05664bb7ae
   };
 
   return (

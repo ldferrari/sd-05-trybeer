@@ -1,40 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Header from '../components/Header';
-import products from '../mock_data/productsCart';
-
-export default function Products() {
-  const index = 0;
-  const handleClick = (e) => {
-    e.preventDefault();
-    products[0].quantity += 1;
-    localStorage.setItem('cart', JSON.stringify(products));
-    // localStorage.setItem('totalPrice', JSON.stringify(products[0].quantity * products[0].price))
-  };
-
-  return (
-    <>
-      <Header title="TryBeer" />
-      <button
-        type="button"
-        data-testid={ `${index}-product-plus` }
-        onClick={ (e) => handleClick(e) }
-      >
-        +
-      </button>
-      <Link to="/checkout">
-        <button
-          type="button"
-          data-testid="checkout-bottom-btn"
-        >
-          Ver carrinho
-        </button>
-      </Link>
-    </>
-  );
-}
-=======
 import React, { useContext, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
@@ -90,4 +53,3 @@ const Products = () => {
 export default Products;
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
->>>>>>> 37c9b1a7883b1b5e77dae8a72cabda05664bb7ae
