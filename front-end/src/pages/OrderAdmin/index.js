@@ -18,6 +18,7 @@ const OrderAdmin = (props) => {
       try {
         const { data } = await getSales(token);
         setAllOrders(data);
+        console.log(data);
       } catch (error) {
         console.log(error);
       }
@@ -28,7 +29,7 @@ const OrderAdmin = (props) => {
 
   return (
     <div className="Orders">
-      <AdminSideBar />
+      {/* <AdminSideBar /> */}
       <div className="pedido">
         <h2 className="checkoutitle">Pedidos Pendentes</h2>
         <div className="cartItems">

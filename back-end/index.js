@@ -26,8 +26,6 @@ const detailController = require('./Controllers/detailController');
 
 const admProfileController = require('./Controllers/admProfileController');
 
-const admOrdersController = require('./Controllers/admOrdersController');
-
 const admDetailController = require('./Controllers/admDetailController');
 
 const app = express();
@@ -56,8 +54,6 @@ app.use('/admin/orders', checkToken, adminOrdersController);
 app.use('/orders', checkToken, detailController);
 
 app.use('/admin/profile', checkToken, admProfileController);
-
-app.use('/admin/orders', checkToken, admOrdersController);
 
 app.use('/admin/orders', checkToken, admDetailController);
 
