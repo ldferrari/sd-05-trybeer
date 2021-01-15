@@ -1,19 +1,18 @@
 const checkoutModel = require('../models/checkoutModel');
 
 const insertCheckout = async (
-  user_id,
-  total_price,
-  delivery_address,
-  delivery_number,
-  cart
-) =>
-  checkoutModel.insertCheckout(
-    user_id,
-    total_price,
-    delivery_address,
-    delivery_number,
-    cart
-  );
+  userId,
+  totalPrice,
+  deliveryAddress,
+  deliveryNumber,
+  cart,
+) => checkoutModel.insertCheckout(
+  userId,
+  totalPrice,
+  deliveryAddress,
+  deliveryNumber,
+  cart,
+);
 
 module.exports = {
   insertCheckout,

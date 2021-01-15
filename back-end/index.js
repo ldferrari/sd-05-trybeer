@@ -10,7 +10,10 @@ const productsController = require('./controllers/productsController.js');
 const ordersController = require('./controllers/ordersController.js');
 const salesController = require('./controllers/salesController.js');
 const checkoutController = require('./controllers/checkoutController');
+<<<<<<< HEAD
 const orderDetailsController = require('./controllers/orderDetailsController');
+=======
+>>>>>>> b2287df9b1e28d90c44114dcf505fe468b280401
 
 const app = express();
 

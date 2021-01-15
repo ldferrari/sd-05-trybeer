@@ -4,7 +4,6 @@ const orderDetailsService = require('../services/orderDetailsService');
 const orderDetails = Router();
 
 orderDetails.get('/', async (req, res) => {
-    console.log('cheguei')
   try {
     const getOrderDetails = await orderDetailsService.getOrderDetails(
       req.body.sale_id
