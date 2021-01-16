@@ -7,11 +7,11 @@ import AppContext from '../../context/AppContext';
 
 const OrderCard = (props) => {
   const { order, index } = props;
-  const { id, sale_date } = order;
+  const { id, sale_date: saleDate } = order;
   const { setGlobalData } = useContext(AppContext);
   useEffect(() => {
-    setGlobalData((state) => ({...state,[id]: sale_date}))
-  }, [id, sale_date, setGlobalData]);
+    setGlobalData((state) => ({ ...state, [id]: saleDate }));
+  }, [id, saleDate, setGlobalData]);
   return (
     <Link
       to={ `/orders/${id}` }
@@ -21,7 +21,7 @@ const OrderCard = (props) => {
     >
       <p data-testid={ `${index}-order-number` }>{ `Pedido ${id}` }</p>
       <p data-testid={ `${index}-order-date` }>
-        { order.sale_date }
+        { saleDate }
       </p>
       <p data-testid={ `${index}-order-total-value` }>
         { `R$ ${order.total_price.toString().replace('.', ',')}` }

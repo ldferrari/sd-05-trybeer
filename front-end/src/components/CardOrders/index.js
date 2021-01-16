@@ -19,9 +19,9 @@ export default function CardOrder(props) {
   setOrderDetails(order);
   if (!order) return <h1>Loading Card Orders components</h1>;
   return (
-    <Link to={`/admin/orders/${id}`}>
+    <Link to={ `/admin/orders/${id}` }>
       <h4 data-testid={ `${index}-order-number` }>
-        Pedido 
+        Pedido
         { id }
       </h4>
       <h5 data-testid={ `${index}-order-address` }>{ `${deliveryAddress}, ${deliveryNumber}` }</h5>

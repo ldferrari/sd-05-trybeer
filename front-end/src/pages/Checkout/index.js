@@ -30,9 +30,7 @@ const Checkout = (props) => {
     setCartHere(cart);
   },
   [cart]);
-  useEffect(() => {
-    return () => clearTimeout(tempo);
-  });
+  useEffect(() => () => clearTimeout(tempo));
   if (!logged) {
     return <Redirect to="/login" />;
   }

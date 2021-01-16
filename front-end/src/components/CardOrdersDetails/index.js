@@ -24,7 +24,6 @@ export default function CardOrderDetails(props) {
 }
 
 CardOrderDetails.propTypes = {
-  order: propTypes.instanceOf(Object).isRequired,
   item: propTypes.instanceOf(Object).isRequired,
   index: propTypes.number.isRequired,
 };

@@ -47,13 +47,17 @@ const OrderAdminDetails = (props) => {
 
   return (
     <div>
-      <div className="Orders" style={{display: 'flex', 'align-items': 'stretch'}}>
+      <div className="Orders" style={ { display: 'flex', 'align-items': 'stretch' } }>
         <AdminSideBar />
-        <div className="pedido" style={{display: 'flex', 'align-items': 'start'}}>
+        <div className="pedido" style={ { display: 'flex', 'align-items': 'start' } }>
           <span>{ falha }</span>
-          <h2 className="checkoutitle" data-testid="order-number">{ `Pedido ${id}` } - <span data-testid="order-status">{ `${sale.length ? delivered : ''}` }</span></h2>
+          <h2 className="checkoutitle" data-testid="order-number">{ `Pedido ${id}` } - 
+            <span data-testid="order-status">{ `${sale.length ? delivered : ''}` }</span>
+          </h2>
           <div className="cartItems">
-            { sale.map((item, index) => <CardOrderDetails key={ item.name } item={ item } index={ index } />) }
+            { sale.map((item, index) => (
+              <CardOrderDetails key={ item.name } item={ item } index={ index } />
+            )) }
           </div>
           <h2 data-testid="order-total-value">{`Total: R$ ${sale.reduce((acc, cur) => acc + cur.quantity * cur.price, zero).toFixed(two).replace('.', ',')}`}</h2>
         </div>
