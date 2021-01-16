@@ -1,4 +1,4 @@
-const localhostURL = 'http://localhost:3001';
+const localhostURL = "http://localhost:3001";
 
 // NÃO USAR ESTA SINTAXE *lint:
 
@@ -12,18 +12,18 @@ const localhostURL = 'http://localhost:3001';
 //   );
 
 const myInit = {
-  mode: 'cors',
-  method: 'GET',
+  mode: "cors",
+  method: "GET",
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 };
 
 const myInitWithBody = (data) => ({
-  mode: 'cors',
-  method: 'POST',
+  mode: "cors",
+  method: "POST",
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
   body: JSON.stringify(data),
 });
@@ -40,14 +40,13 @@ export const getProducts = () => (
   ))
 );
 
-export const getClientOrder = (id) => (
-  fetch(`${localhostURL}/orders?id=${id}`, myInitWithBody.then((response) => (
+export const getClientOrder = (id) =>
+  fetch(`${localhostURL}/orders/${id}`, myInitWithBody).then((response) =>
     response
-    .json()
-    .then((json) => Promise.resolve(json))
-    .catch((err) => Promise.reject(err))
-  )))
-)
+      .json()
+      .then((json) => Promise.resolve(json))
+      .catch((err) => Promise.reject(err))
+  );
 
 // prettier-ignore
 export const getUser = (data) => (
