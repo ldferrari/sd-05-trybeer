@@ -4,7 +4,7 @@ import RegisterPage from './pages/general/RegisterPage';
 import ClientProductPage from './pages/client/ClientProductPage';
 import LoginPage from './pages/general/LoginPage';
 import AdminProfilePage from './pages/admin/AdminProfilePage';
-import ClientMeusPedidos from './pages/client/ClientMeusPedidos';
+import ClientMeusPedidos from './pages/client/ClientMeusPedidosPage';
 import AdminOrderPage from './pages/admin/AdminOrderPage';
 import ClientCheckoutPage from './pages/client/ClientCheckoutPage';
 import ClientProfilePage from './pages/client/ClientProfilePage';
