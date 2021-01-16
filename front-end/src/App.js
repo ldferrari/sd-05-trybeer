@@ -5,9 +5,10 @@ import ClientProductPage from './pages/client/ClientProductPage';
 import LoginPage from './pages/general/LoginPage';
 import ClientProfilePage from './pages/client/ClientProfilePage';
 import AdminProfilePage from './pages/admin/AdminProfilePage';
-import ClientMeusPedidos from './pages/client/ClientMeusPedidos';
-import AdminSaleDetailsPage from './pages/admin/AdminSaleDetailsPage';
+// import AdminSaleDetailsPage from './pages/admin/AdminSaleDetailsPage';
 import AdminOrdersPage from './pages/admin/AdminOrdersPage';
+import ClientMeusPedidos from './pages/client/ClientMeusPedidosPage';
+import AdminOrderPage from './pages/admin/AdminOrderPage';
 import ClientCheckoutPage from './pages/client/ClientCheckoutPage';
 import './css/client/app.css';
 
