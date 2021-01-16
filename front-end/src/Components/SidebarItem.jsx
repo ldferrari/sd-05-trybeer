@@ -1,22 +1,38 @@
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import ListItem from '@material-ui/core/ListItem';
 
-export default ({ children, action, to, onClick }) => {
-  const [ redirect, setRedirect ] = useState(null);
+const magicNumberLOL = -1;
 
-  if (redirect) return <Redirect to={redirect} />;
+const SideBarItem = ({
+  children, action, to, onClick,
+}) => {
+  const [redirect, setRedirect] = useState(null);
+
+  if (redirect) return <Redirect to={ redirect } />;
 
   return (
     <ListItem
       button
-      data-testid={action}
-      onClick={() => {
+      data-testid={ action }
+      onClick={ () => {
         if (typeof onClick === 'function') onClick();
-        setRedirect(to || `/${action.split('-').slice(-1)}`);
-      }}
+        setRedirect(to || `/${action.split('-').slice(magicNumberLOL)}`);
+      } }
     >
-      { children }
+      {children}
     </ListItem>
-  )
+  );
 };
+
+SideBarItem.propTypes = {
+  action: PropTypes.shape({
+    split: PropTypes.func,
+  }).isRequired,
+  children: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  to: PropTypes.string.isRequired,
+};
+
+export default SideBarItem;

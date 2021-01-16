@@ -86,13 +86,13 @@ OrderDetails.propTypes = {
   history: PropTypes.shape({
     location: PropTypes.shape({
       pathname: PropTypes.string,
-    }).isRequired,
-  }),
+    }),
+  }).isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string.isRequired,
     }),
-  }),
+  }).isRequired,
 };
 
 export default OrderDetails;
