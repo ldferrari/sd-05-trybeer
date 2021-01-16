@@ -7,13 +7,12 @@ import fetchOrderDetails from '../../services/client/fetchOrderDetails';
 export default function ClientDetailsOrderPage(props) {
   const [order, setOrder] = useState('');
   const token = localStorage.getItem('token') || null;
-  const { id } = props.match.params;
   const zero = 0;
   const dois = 2;
 
   useEffect(() => {
-    fetchOrderDetails(id).then((data) => setOrder(data));
-  }, [id]);
+    fetchOrderDetails(prop.match.params.id).then((data) => setOrder(data));
+  }, [prop.match.params.id]);
 
   if (!token) return <Redirect to="/login" />;
   return (
@@ -31,16 +30,16 @@ export default function ClientDetailsOrderPage(props) {
         {order && (
           order.orderDetail.map((product, index) => (
             <div>
-              <span>{ `${index + 1}` }</span>
-              <span
-                data-testid={ `${index}-product-name` }
-              >{ `${product.name}` }</span>
-              <span
-                data-testid={ `${index}-product-qtd` }
-              >{ `${product.quantity}` }</span>
-              <span
-                data-testid={ `${index}-product-total-value` }
-              >{ `R$ ${product.total.toFixed(dois).replace('.', ',')}` }</span>
+              <span key="indice">{ `${index + 1}` }</span>
+              <span data-testid={ `${index}-product-name` }>
+                { `${product.name}` }
+              </span>
+              <span data-testid={ `${index}-product-qtd` }>
+                { `${product.quantity}` }
+              </span>
+              <span data-testid={ `${index}-product-total-value` }>
+                { `R$ ${product.total.toFixed(dois).replace('.', ',')}` }
+              </span>
             </div>
           ))
         ) }
@@ -62,6 +61,6 @@ ClientDetailsOrderPage.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string,
-    }),
+    }).isRequired,
   }),
 };
