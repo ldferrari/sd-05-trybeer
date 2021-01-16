@@ -15,19 +15,19 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route path="/admin/orders" component={AdminOrderPage} />
-        <Route path="/admin/profile" component={AdminProfilePage} />
-        <Route path="/login" component={LoginPage} />
-        <Route path="/register" component={RegisterPage} />
-        <Route path="/products" component={ClientProductPage} />
-        <Route path="/profile" component={ClientProfilePage} />
+        <Route path="/admin/orders" component={ AdminOrderPage } />
+        <Route path="/admin/profile" component={ AdminProfilePage } />
+        <Route path="/login" component={ LoginPage } />
+        <Route path="/register" component={ RegisterPage } />
+        <Route path="/products" component={ ClientProductPage } />
+        <Route path="/profile" component={ ClientProfilePage } />
         <Route
           path="/orders/:id"
-          render={(props) => <ClientDetailsOrderPage {...props} />}
+          render={(props) => <ClientDetailsOrderPage { ...props } />}
         />
-        <Route path="/orders" component={ClientMeusPedidos} />
-        <Route path="/checkout" component={ClientCheckoutPage} />
-        <Route path="/" component={() => <Redirect to="/login" />} />
+        <Route path="/orders" component={ ClientMeusPedidos } />
+        <Route path="/checkout" component={ ClientCheckoutPage } />
+        <Route path="/" component={ () => <Redirect to="/login" /> } />
       </Switch>
     </div>
   );

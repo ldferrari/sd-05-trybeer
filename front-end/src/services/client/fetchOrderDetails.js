@@ -1,7 +1,6 @@
 const URL = 'http://localhost:3001/orders/';
 
-const fetchOrderDetails = (id) =>
-  fetch(`${URL}${id}`, {
+const fetchOrderDetails = (id) => fetch(`${URL}${id}`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
