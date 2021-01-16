@@ -11,8 +11,8 @@ export default function ClientDetailsOrderPage(props) {
   const dois = 2;
 
   useEffect(() => {
-    fetchOrderDetails(prop.match.params.id).then((data) => setOrder(data));
-  }, [prop.match.params.id]);
+    fetchOrderDetails(props.match.params.id).then((data) => setOrder(data));
+  }, [props.match.params.id]);
 
   if (!token) return <Redirect to="/login" />;
   return (
@@ -29,7 +29,7 @@ export default function ClientDetailsOrderPage(props) {
         </div>
         {order && (
           order.orderDetail.map((product, index) => (
-            <div>
+            <div key="fechalint">
               <span key="indice">{ `${index + 1}` }</span>
               <span data-testid={ `${index}-product-name` }>
                 { `${product.name}` }
@@ -61,6 +61,10 @@ ClientDetailsOrderPage.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string,
-    }).isRequired,
+    }),
   }),
 };
+
+ClientDetailsOrderPage.defaultProps = {
+  match: false,
+}
