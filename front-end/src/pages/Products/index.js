@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import './index.css';
@@ -7,23 +7,24 @@ import Footer from '../../components/footer';
 import Card from '../../components/productCard';
 import CartButton from '../../components/cartButton';
 import { postGetItems } from '../../services/requestAPI';
+import AppContext from '../../context/AppContext';
 
 const Products = (props) => {
   const { history } = props;
   const [theProducts, setProducts] = useState([]);
-  const theToken = localStorage.getItem('token');
+  const { alertCompraFinalizada, setAlertCompraFinalizada } = useContext(AppContext);
+  // const theToken = localStorage.getItem('token');
 
   useEffect(() => {
     async function fetchProducts() {
-      const { data } = await postGetItems(theToken);
+      const { data } = await postGetItems(localStorage.getItem('token'));
       setProducts(data);
     }
     fetchProducts();
-  }, [theToken]);
+    return () => setAlertCompraFinalizada('');
+  }, [setAlertCompraFinalizada]);
 
-  const logged = localStorage.getItem('token');
-
-  if (!logged) {
+  if (!localStorage.getItem('token')) {
     return <Redirect to="/login" />;
   }
 
@@ -34,6 +35,7 @@ const Products = (props) => {
         { theProducts.map((product) => <Card key={ product.id } product={ product } />) }
         ,
       </div>
+      <span>{ alertCompraFinalizada }</span>
       <CartButton history={ history } />
       <Footer />
     </div>

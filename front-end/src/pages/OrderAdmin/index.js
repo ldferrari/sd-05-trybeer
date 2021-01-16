@@ -29,7 +29,7 @@ const OrderAdmin = (props) => {
 
   return (
     <div>
-      <div className="Orders" style={ { display: 'flex', 'align-items': 'stretch' } }>
+      <div className="Orders" style={ { display: 'flex', alignItems: 'stretch' } }>
         <AdminSideBar />
         <div className="pedido">
           <h2 className="checkoutitle">Pedidos Pendentes</h2>
@@ -49,5 +49,5 @@ const OrderAdmin = (props) => {
 export default OrderAdmin;
 
 OrderAdmin.propTypes = {
-  history: propTypes.func.isRequired,
+  history: propTypes.instanceOf(Object).isRequired,
 };

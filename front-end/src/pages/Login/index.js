@@ -25,6 +25,9 @@ const Login = (props) => {
   };
 
   useEffect(() => {
+    console.log('------------LOGIN PAGE-------------');
+  }, []);
+  useEffect(() => {
     validationEmail(email);
   }, [email]);
 

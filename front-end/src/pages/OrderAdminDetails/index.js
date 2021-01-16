@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import propTypes from 'prop-types';
 import Footer from '../../components/footer';
 import CardOrderDetails from '../../components/CardOrdersDetails';
@@ -7,7 +7,9 @@ import { getSaleDetail, postStatusDelivered } from '../../services/requestAPI';
 import AdminSideBar from '../../components/admin sidebar';
 
 const OrderAdminDetails = (props) => {
-  const { id } = props.match.params;
+  const { match } = props;
+  const { params } = match;
+  const { id } = params;
   const [delivered, setDelivered] = useState(false);
   const [sale, setsale] = useState([]);
   const [falha, setFalha] = useState('');
@@ -30,12 +32,14 @@ const OrderAdminDetails = (props) => {
     return 'true';
   }
 
+  const memoFetch = useCallback(fetchSale, [token, id]);
+
   useEffect(() => {
     if (!localStorage.getItem('token')) {
       history.push('/login');
     }
-    fetchSale();
-  }, [history]);
+    memoFetch();
+  }, [history, memoFetch]);
 
   const handleSubmit = async () => {
     const ok = await postStatusDelivered(token, id);
@@ -51,7 +55,11 @@ const OrderAdminDetails = (props) => {
         <AdminSideBar />
         <div className="pedido" style={ { display: 'flex', 'align-items': 'start' } }>
           <span>{ falha }</span>
-          <h2 className="checkoutitle" data-testid="order-number">{ `Pedido ${id}` } - 
+          <h2 className="checkoutitle" data-testid="order-number">
+            {
+              `Pedido ${id}`
+            }
+            -
             <span data-testid="order-status">{ `${sale.length ? delivered : ''}` }</span>
           </h2>
           <div className="cartItems">

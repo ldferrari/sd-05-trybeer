@@ -8,19 +8,19 @@ import Footer from '../../components/footer';
 import CartItem from '../../components/cartItem';
 import { postOrder } from '../../services/requestAPI';
 
-let tempo;
 const Checkout = (props) => {
   const [cartHere, setCartHere] = useState([]);
-  const [alertCompraFinalizada, setAlertCompraFinalizada] = useState('');
+  // const [alertCompraFinalizada, setAlertCompraFinalizada] = useState('');
   const [rua, setRua] = useState();
   const [numero, setNumero] = useState();
   // const theToken = localStorage.getItem("token");
-  const logged = localStorage.getItem('token');
-  const { cart, setCart } = useContext(AppContext);
+  const { history } = props;
+  const {
+    cart, setCart, alertCompraFinalizada, setAlertCompraFinalizada,
+  } = useContext(AppContext);
 
   const zero = 0;
   const dois = 2;
-  const tempoEspera = 3000;
   const cartSum = cart
     .reduce((acc, cv) => acc + cv.price * cv.quantity, zero)
     .toFixed(dois);
@@ -30,11 +30,17 @@ const Checkout = (props) => {
     setCartHere(cart);
   },
   [cart]);
-  useEffect(() => () => clearTimeout(tempo));
-  if (!logged) {
+
+  useEffect(() => {
+    const el = document.getElementById('compra-finalizada');
+    if (el && el.innerHTML !== '') {
+      history.push('/products');
+    }
+  }, [alertCompraFinalizada, history]);
+
+  if (!localStorage.getItem('token')) {
     return <Redirect to="/login" />;
   }
-
   const handleSubmit = async () => {
     const token = localStorage.getItem('token');
     const userData = { deliveryAddress: rua, deliveryNumber: numero };
@@ -43,16 +49,15 @@ const Checkout = (props) => {
     setCart([]);
     setAlertCompraFinalizada('Compra realizada com sucesso!');
     // <Redirect to="/products" />
-    tempo = setTimeout(() => {
-      props.history.push('/products');
-    }, tempoEspera);
+    // tempo = setTimeout(() => {
+    // }, tempoEspera);
     return true; // handleHandleSubmit
   };
 
   return (
     <div className="Checkout">
       <Header>Finalizar Pedido</Header>
-      <span>{ alertCompraFinalizada }</span>
+      <span id="compra-finalizada">{ alertCompraFinalizada }</span>
       <div className="pedido">
         <h2 className="checkoutitle">Produtos no carrinho:</h2>
         <div className="legenda">
@@ -82,7 +87,7 @@ const Checkout = (props) => {
             type="text"
             name="rua"
             onChange={ ({ target: { value } }) => setRua(value) }
-            value={ rua }
+            /* value={ rua } */
           />
         </div>
         <div className="inputs">
@@ -92,7 +97,7 @@ const Checkout = (props) => {
             type="number"
             name="numero"
             onChange={ ({ target: { value } }) => setNumero(Number(value)) }
-            value={ numero }
+            /* value={ numero } */
           />
         </div>
       </div>
@@ -114,5 +119,5 @@ const Checkout = (props) => {
 export default Checkout;
 
 Checkout.propTypes = {
-  history: propTypes.func.isRequired,
+  history: propTypes.instanceOf(Object).isRequired,
 };

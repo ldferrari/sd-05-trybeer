@@ -19,6 +19,7 @@ function Provider({ children }) {
   const [cart, setCart] = useState([]);
   const [globalData, setGlobalData] = useState({});
   const [orderDetails, setOrderDetails] = useState([]);
+  const [alertCompraFinalizada, setAlertCompraFinalizada] = useState('');
 
   useEffect(() => { setCart(initialCard); }, []);
   useEffect(() => { updateCard(cart); }, [cart]);
@@ -36,6 +37,8 @@ function Provider({ children }) {
     setOrderDetails,
     globalData,
     setGlobalData,
+    alertCompraFinalizada,
+    setAlertCompraFinalizada,
   };
   return <AppContext.Provider value={ contextValue }>{ children }</AppContext.Provider>;
 }
