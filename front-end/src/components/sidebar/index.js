@@ -26,7 +26,10 @@ const SideBar = () => (
           to="/"
           className="menuBtn"
           data-testid="side-menu-item-logout"
-          onClick={ () => { localStorage.removeItem('token'); } }
+          onClick={ () => {
+            localStorage.removeItem('token');
+            localStorage.removeItem('cart');
+          } }
         >
           Sair
         </Link>
