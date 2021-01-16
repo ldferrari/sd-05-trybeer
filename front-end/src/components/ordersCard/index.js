@@ -7,18 +7,19 @@ import AppContext from '../../context/AppContext';
 
 const OrderCard = (props) => {
   const { order, index } = props;
-  const { setGlobalData } = useContext(AppContext)
+  const { id, sale_date } = order;
+  const { setGlobalData } = useContext(AppContext);
   useEffect(() => {
-    setGlobalData((state) => ({...state,[props.order.id]: props.order.sale_date}))
-  }, [])
+    setGlobalData((state) => ({...state,[id]: sale_date}))
+  }, [id, sale_date, setGlobalData]);
   return (
     <Link
-      to={ `/orders/${order.id}` }
+      to={ `/orders/${id}` }
       className="card"
-      key={ order.id }
+      key={ id }
       data-testid={ `${index}-order-card-container"` }
     >
-      <p data-testid={ `${index}-order-number` }>{ `Pedido ${order.id}` }</p>
+      <p data-testid={ `${index}-order-number` }>{ `Pedido ${id}` }</p>
       <p data-testid={ `${index}-order-date` }>
         { order.sale_date }
       </p>

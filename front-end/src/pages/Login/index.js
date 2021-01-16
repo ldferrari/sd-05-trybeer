@@ -52,7 +52,6 @@ const Login = (props) => {
     /* if (timer) {
       clearTimeout(timer);
     } */
-    console.log('tela loging', token)
     saveToken(token);
     if (role === 'administrator') {
       props.history.push('/admin/orders');

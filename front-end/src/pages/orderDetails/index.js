@@ -11,7 +11,7 @@ import AppContext from '../../context/AppContext';
 
 export default function OrderDetails(props) {
   const [orderHere, setOrder] = useState([]);
-  const { globalData } = useContext(AppContext)
+  const { globalData } = useContext(AppContext);
   // const theToken = localStorage.getItem('token');
   const { id } = useParams();
 
@@ -34,7 +34,6 @@ export default function OrderDetails(props) {
     }
     fetchOrder();
   }, [props, id]);
-
 
   return (
     <div>

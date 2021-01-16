@@ -8,7 +8,7 @@ import Footer from '../../components/footer';
 import CartItem from '../../components/cartItem';
 import { postOrder } from '../../services/requestAPI';
 
-let  tempo;
+let tempo;
 const Checkout = (props) => {
   const [cartHere, setCartHere] = useState([]);
   const [alertCompraFinalizada, setAlertCompraFinalizada] = useState('');
@@ -30,9 +30,9 @@ const Checkout = (props) => {
     setCartHere(cart);
   },
   [cart]);
-  useEffect(()=>{
-    return ()=> clearTimeout(tempo);
-  })
+  useEffect(() => {
+    return () => clearTimeout(tempo);
+  });
   if (!logged) {
     return <Redirect to="/login" />;
   }
