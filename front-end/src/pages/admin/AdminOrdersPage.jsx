@@ -4,7 +4,7 @@ import salesAPI from '../../services/admin/api';
 import MenuAdm from '../../components/admin/MenuAdm';
 // import '../../css/clientProductPage.css';
 
-const AdminOrders = () => {
+const AdminOrdersPage = () => {
   const [allOrders, setAllOrders] = useState([]);
 
   useEffect(() => {
@@ -23,4 +23,4 @@ const AdminOrders = () => {
   );
 };
 
-export default AdminOrders;
+export default AdminOrdersPage;

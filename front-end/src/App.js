@@ -6,8 +6,8 @@ import LoginPage from './pages/general/LoginPage';
 import ClientProfilePage from './pages/client/ClientProfilePage';
 import AdminProfilePage from './pages/admin/AdminProfilePage';
 import ClientMeusPedidos from './pages/client/ClientMeusPedidos';
-import AdminPendingOrdersPage from './pages/admin/AdminPendingOrdersPage';
-import AdminOrderPage from './pages/admin/AdminOrderPage';
+import AdminSaleDetailsPage from './pages/admin/AdminSaleDetailsPage';
+import AdminOrdersPage from './pages/admin/AdminOrdersPage';
 import ClientCheckoutPage from './pages/client/ClientCheckoutPage';
 import './css/client/app.css';
 
@@ -15,7 +15,8 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route path="/admin/orders" component={ AdminPendingOrdersPage } />
+        {/* <Route path="/admin/orders/:id" component={ AdminSaleDetailsPage } /> */}
+        <Route path="/admin/orders" component={ AdminOrdersPage } />
         <Route path="/admin/profile" component={ AdminProfilePage } />
         <Route path="/login" component={ LoginPage } />
         <Route path="/register" component={ RegisterPage } />
