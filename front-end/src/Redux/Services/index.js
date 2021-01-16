@@ -1,4 +1,5 @@
-const localhostURL = "http://localhost:3001";
+import { getDataByKey } from '../../Services/localStorage';  
+const localhostURL = 'http://localhost:3001';
 
 // NÃO USAR ESTA SINTAXE *lint:
 
@@ -19,11 +20,12 @@ const myInit = {
   },
 };
 
-const myInitWithBody = (data) => ({
-  mode: "cors",
-  method: "POST",
+const myInitWithBody = (data, token) => ({
+  mode: 'cors',
+  method: 'POST',
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
+    'Authorization': token || '',
   },
   body: JSON.stringify(data),
 });
@@ -58,13 +60,22 @@ export const getUser = (data) => (
 );
 
 // prettier-ignore
-export const updateUser = (data) => (
-  fetch(`${localhostURL}/update`, myInitWithBody(data)).then(
+export const updateUser = (data) => {
+  const token = getDataByKey('token');
+  return fetch(`${localhostURL}/update`, myInitWithBody(data, token)).then(
     (response) => response
       .json()
       .then((json) => Promise.resolve(json))
       .catch((err) => Promise.reject(err)),
   )
+  };
+
+export const submitOrderFetch = (data) => (
+  fetch(`${localhostURL}/sales`, myInitWithBody(data)).then((response) => (
+    response
+      .json()
+      .then((json) => Promise.resolve(json))
+      .catch((err) => Promise.reject(err))))
 );
 // prettier-ignore
 export const registerUser = (data) => (

@@ -1,4 +1,3 @@
-import './App.css';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
@@ -10,6 +9,11 @@ import Products from './Pages/Products';
 import Checkout from './Pages/Checkout';
 import Orders from './Pages/Orders';
 import Register from './Pages/Register';
+import orderDetails from './Pages/orderDetails';
+import AdminProfile from './Pages/AdminProfile';
+import AdminOrders from './Pages/AdminOrders';
+
+import './App.css';
 
 // prettier-ignore
 function App({ ProductsAPI }) {
@@ -28,7 +32,10 @@ function App({ ProductsAPI }) {
         <Route exact path="/products" component={ Products } />
         <Route exact path="/checkout" component={ Checkout } />
         <Route exact path="/orders" component={ Orders } />
+        <Route path="/orders/:id" component={ orderDetails } />
         <Route exact path="/register" component={ Register } />
+        <Route exact path="/admin/orders" component={ AdminOrders } />
+        <Route exact path="/admin/profile" component={ AdminProfile } />
       </Switch>
     </div>
   );

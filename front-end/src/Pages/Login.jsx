@@ -2,8 +2,18 @@ import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import Input from '../Components/Input';
+import { TextField, Button } from '@material-ui/core';
 import { getUserDataAct } from '../Redux/Actions/user';
+
+const pageStyle = {
+  border: '1px solid red',
+  justifyContent: 'center',
+}
+
+const containerStyle = {
+  justifyContent: 'space-between',
+  height: '250px',
+}
 
 const Login = ({ submitLogin, userData }) => {
   const [email, setEmail] = useState(null);
@@ -30,47 +40,48 @@ const Login = ({ submitLogin, userData }) => {
   if (userData.message && isAnInvalidEmail === false) return setIsAnInvalidEmail(true);
   if (userData.user) {
     if (userData.user.role === 'client') return <Redirect to="/products" />;
-    if (userData.user.role === 'administrator') {
-      return <Redirect to="/admin/orders" />;
-    }
+    if (userData.user.role === 'administrator') return <Redirect to="/admin/orders" />;
   }
   return (
-    <div id="Login">
-      <h1>Login</h1>
-      <form>
-        <p>Email</p>
-        <Input
-          test="email-input"
-          placeholder="Digite seu e-mail"
+    <div className="container-main" style={pageStyle}>
+      <div className="container-screen" style={containerStyle}>
+        <TextField
+          data-testid="email-input"
+          label="Email"
+          variant="outlined"
+          type="email"
           onChange={ (e) => setEmail(e.target.value) }
         />
-        <p>Senha</p>
-        <Input
+        <TextField
+          data-testid="password-input"
+          label="Senha"
+          variant="outlined"
           type="password"
-          test="password-input"
-          placeholder="Digite sua senha"
           onChange={ (e) => setPassword(e.target.value) }
         />
-      </form>
-      <button
-        disabled={ isDisabled }
-        type="submit"
-        onClick={ (event) => {
-          event.preventDefault();
-          submitLogin({ email, password });
-        } }
-        data-testid="signin-btn"
-      >
-        ENTRAR
-      </button>
-      <button
-        type="button"
-        data-testid="no-account-btn"
-        onClick={ () => setRegister(true) }
-      >
-        Ainda não tenho conta
-      </button>
-      {isAnInvalidEmail && (<p>Email ou senha inválidos</p>) }
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <Button
+            color="primary"
+            variant="outlined"
+            disabled={ isDisabled }
+            data-testid="signin-btn"
+            type="submit"
+            onClick={(ev) => {
+              ev.preventDefault();
+              submitLogin({ email, password });
+            }}
+          >
+            ENTRAR
+          </Button>
+          <Button
+            data-testid="no-account-btn"
+            onClick={ () => setRegister(true) }
+          >
+            Ainda não tenho conta
+          </Button>
+        </div>
+        {isAnInvalidEmail && (<p>Email ou senha inválidos</p>) }
+      </div>
     </div>
   );
 };
