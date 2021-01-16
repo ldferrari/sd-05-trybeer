@@ -13,20 +13,22 @@ const OrderCard = (props) => {
     setGlobalData((state) => ({ ...state, [id]: saleDate }));
   }, [id, saleDate, setGlobalData]);
   return (
-    <Link
-      to={ `/orders/${id}` }
-      className="card"
-      key={ id }
-      data-testid={ `${index}-order-card-container"` }
-    >
-      <p data-testid={ `${index}-order-number` }>{ `Pedido ${id}` }</p>
-      <p data-testid={ `${index}-order-date` }>
-        { saleDate }
-      </p>
-      <p data-testid={ `${index}-order-total-value` }>
-        { `R$ ${order.total_price.toString().replace('.', ',')}` }
-      </p>
-    </Link>
+    <div className="oCard">
+      <Link
+        to={ `/orders/${id}` }
+        className="card"
+        key={ id }
+        data-testid={ `${index}-order-card-container"` }
+      >
+        <p data-testid={ `${index}-order-number` }>{ `Pedido ${id}` }</p>
+        <p data-testid={ `${index}-order-date` }>
+          { saleDate }
+        </p>
+        <p data-testid={ `${index}-order-total-value` }>
+          { `R$ ${order.total_price.toString().replace('.', ',')}` }
+        </p>
+      </Link>
+    </div>
   );
 };
 

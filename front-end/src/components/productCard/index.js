@@ -49,6 +49,7 @@ const Card = (props) => {
       <div className="cardBottom">
         <button
           type="button"
+          className="maisOuMenos"
           data-testid={ `${product.id - 1}-product-minus` }
           onClick={ () => minusOne() }
         >
@@ -57,6 +58,7 @@ const Card = (props) => {
         <p data-testid={ `${product.id - 1}-product-qtd` }>{ exists ? exists.quantity : zero }</p>
         <button
           type="button"
+          className="maisOuMenos"
           data-testid={ `${product.id - 1}-product-plus` }
           onClick={ () => plusOne() }
         >

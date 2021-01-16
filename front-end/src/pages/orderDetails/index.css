@@ -1,6 +1,14 @@
 .detailsHeader {
   display: flex;
   justify-content: space-between;
-  margin-left: 2%;
-  margin-right: 2%;
+  margin-left: 3%;
+  margin-right: 3%;
+  font-size: larger;
+}
+.orderTitle {
+  font-size: xx-large;
+}
+
+.total {
+  font-weight: bold;
 }

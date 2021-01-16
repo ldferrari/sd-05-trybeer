@@ -39,14 +39,14 @@ export default function OrderDetails(props) {
     <div>
       <Header>Detalhes de Pedido</Header>
       <div className="detailsHeader">
-        <h4 data-testid="order-number">
+        <h4 data-testid="order-number" className="orderTitle">
           { `Pedido ${id}` }
         </h4>
         <h4 data-testid="order-date">
           { globalData[id] }
         </h4>
       </div>
-      <div>
+      <div className="pedido">
         <div className="legenda">
           <p>QUANTIDADE</p>
           <p>PRODUTO</p>
