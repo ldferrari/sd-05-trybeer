@@ -62,7 +62,7 @@ function userRequestReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         userData: {},
-      }
+      };
     default:
       return state;
   }

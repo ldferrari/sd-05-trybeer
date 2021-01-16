@@ -8,12 +8,12 @@ import { getUserDataAct } from '../Redux/Actions/user';
 const pageStyle = {
   border: '1px solid red',
   justifyContent: 'center',
-}
+};
 
 const containerStyle = {
   justifyContent: 'space-between',
   height: '250px',
-}
+};
 
 const Login = ({ submitLogin, userData }) => {
   const [email, setEmail] = useState(null);
@@ -43,8 +43,8 @@ const Login = ({ submitLogin, userData }) => {
     if (userData.user.role === 'administrator') return <Redirect to="/admin/orders" />;
   }
   return (
-    <div className="container-main" style={pageStyle}>
-      <div className="container-screen" style={containerStyle}>
+    <div className="container-main" style={ pageStyle }>
+      <div className="container-screen" style={ containerStyle }>
         <TextField
           data-testid="email-input"
           label="Email"
@@ -59,17 +59,17 @@ const Login = ({ submitLogin, userData }) => {
           type="password"
           onChange={ (e) => setPassword(e.target.value) }
         />
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div style={ { display: 'flex', flexDirection: 'column' } }>
           <Button
             color="primary"
             variant="outlined"
             disabled={ isDisabled }
             data-testid="signin-btn"
             type="submit"
-            onClick={(ev) => {
+            onClick={ (ev) => {
               ev.preventDefault();
               submitLogin({ email, password });
-            }}
+            } }
           >
             ENTRAR
           </Button>

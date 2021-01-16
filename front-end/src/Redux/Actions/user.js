@@ -14,7 +14,6 @@ const requestingUser = () => ({
   type: REQUESTING_USER,
 });
 
-
 const requestUserSuccess = (data) => ({
   type: REQUEST_USER_SUCCESS,
   data,
@@ -35,7 +34,7 @@ export function getUserDataAct(body) {
     return getUser(body).then(
       (data) => {
         registerData(data);
-        dispatch(requestUserSuccess(data))
+        dispatch(requestUserSuccess(data));
       },
       (error) => dispatch(requestUserError(error)),
     );
@@ -63,7 +62,7 @@ export function updateUserAct(body) {
       (error) => dispatch(updateUserError(error)),
     );
   };
-};
+}
 
 const registerUserSuccess = (data) => ({
   type: REGISTER_USER_SUCCESS,
@@ -92,5 +91,5 @@ export function clear() {
   return (dispatch) => {
     dispatch(clearUser());
     return {};
-  }
+  };
 }

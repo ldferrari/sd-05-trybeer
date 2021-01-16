@@ -1,4 +1,5 @@
-import { getDataByKey } from '../../Services/localStorage';  
+import { getDataByKey } from '../../Services/localStorage';
+
 const localhostURL = 'http://localhost:3001';
 
 // NÃO USAR ESTA SINTAXE *lint:
@@ -25,7 +26,7 @@ const myInitWithBody = (data, token) => ({
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': token || '',
+    Authorization: token || '',
   },
   body: JSON.stringify(data),
 });
@@ -59,8 +60,8 @@ export const updateUser = (data) => {
       .json()
       .then((json) => Promise.resolve(json))
       .catch((err) => Promise.reject(err)),
-  )
-  };
+  );
+};
 
 export const submitOrderFetch = (data) => (
   fetch(`${localhostURL}/sales`, myInitWithBody(data)).then((response) => (

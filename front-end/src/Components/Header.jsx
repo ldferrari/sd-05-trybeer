@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
-import titleForHeader from '../Helper/titleForHeader';
 import { Redirect } from 'react-router-dom';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
+import titleForHeader from '../Helper/titleForHeader';
 import SideBar from './SideBar';
 
 import Restrict from './Restrict';
@@ -25,7 +25,7 @@ const Header = ({ pathname }) => {
   const title = titleForHeader(pathname);
 
   useEffect(() => {
-    console.log(showSideBar);
+    // console.log(showSideBar);
   }, [showSideBar]);
 
   const toggleDrawer = () => (event) => {
@@ -35,26 +35,26 @@ const Header = ({ pathname }) => {
     setShowSideBar(!showSideBar);
   };
 
-  if (redirect) return <Redirect to={redirect} />;
+  if (redirect) return <Redirect to={ redirect } />;
 
   return (
     <Restrict>
-      <div style={headerStyle} >
-        <Button onClick={toggleDrawer()} data-testid="top-hamburguer">
+      <div style={ headerStyle }>
+        <Button onClick={ toggleDrawer() } data-testid="top-hamburguer">
           <i
             className="material-icons"
-            style={{ color: 'var(--white)', fontSize: '32px' }}
+            style={ { color: 'var(--white)', fontSize: '32px' } }
           >
             menu
           </i>
         </Button>
         <h3 data-testid="top-title">{ title }</h3>
-        <div style={{ marginRight: '70px' }} />
-        <span className="side-menu-container" style={{ display: showSideBar ? 'block' : 'none' }}>.</span>
-        <Drawer open={showSideBar} onClose={toggleDrawer()}>
+        <div style={ { marginRight: '70px' } } />
+        <span className="side-menu-container" style={ { display: showSideBar ? 'block' : 'none' } }>.</span>
+        <Drawer open={ showSideBar } onClose={ toggleDrawer() }>
           <SideBar
-            toggleDrawer={toggleDrawer}
-            redirect={setRedirect}
+            toggleDrawer={ toggleDrawer }
+            redirect={ setRedirect }
           />
         </Drawer>
       </div>
