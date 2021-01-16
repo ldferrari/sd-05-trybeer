@@ -5,8 +5,6 @@ const orderDetailsService = require('../services/orderDetailsService');
 const orders = Router();
 orders.get('/:id', async (req, res) => {
   const { id } = req.params;
-  console.log(Number(id));
-  console.log(req.params);
   try {
     const getOrderDetails = await orderDetailsService.getOrderDetails(id);
     res.status(200).json(getOrderDetails);

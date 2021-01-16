@@ -1,4 +1,5 @@
 const { Router } = require('express');
+const rescue = require('express-rescue');
 const salesService = require('../services/salesService');
 const salesModel = require('../models/salesModel');
 
@@ -14,16 +15,16 @@ sales.get('/', async (req, res) => {
   }
 });
 
-sales.get('/:id', async (req, res) => {
-const { id } = req.body;
-
+sales.get('/:id', rescue(async (req, res) => {
+  const { id } = req.params;
   try {
-    const getSale = await salesModel.getSale(id);
-    res.status(200).json(getSale);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Algo deu errado.' });
+    const sale = await salesService.getSale(id);
+    return res.status(200).json(...sale);
+  } catch (err) {
+    if (err.code === 'not_found') {
+      res.status(404).json({ err });
+    }
   }
-});
+}));
 
 module.exports = sales;
