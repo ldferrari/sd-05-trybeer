@@ -10,9 +10,9 @@ const getAdminOrders = async () => {
 const changeStatus = async (saleId) => {
   const [status] = await connection.execute(
     'UPDATE sales SET status = "Entregue" WHERE id = ?;', [saleId],
-  )
+  );
   return status;
-}
+};
 
 module.exports = {
   getAdminOrders,

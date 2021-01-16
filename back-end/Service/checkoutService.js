@@ -34,7 +34,7 @@ const checkout = async (products, deliveryAddress, deliveryNumber, id) => {
   const total = products.reduce((acc, cur) => acc + cur.price * cur.quantity, 0);
   // console.log(id);
   const sales = await model.createSale(id, total, deliveryAddress, deliveryNumber);
-  // productLista--> precisa do id da venda 
+  // productLista--> precisa do id da venda
   const productList = products.map(
     (product) => model.createProductSale(sales.insertId, product.id, product.quantity),
   );

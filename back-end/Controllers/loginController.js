@@ -29,7 +29,6 @@ login.post('/', async (req, res) => {
     if (findUser.password !== password) {
       return res.status(401).json({ message: 'Email e/ou password incorretos.', ok: false });
     }
-    console.log('findUser', findUser);
     const token = createToken({
       id: findUser.id,
       email,
