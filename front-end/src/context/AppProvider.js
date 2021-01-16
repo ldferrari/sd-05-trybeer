@@ -17,6 +17,7 @@ function Provider({ children }) {
   const [nomeProfile, setNomeProfile] = useState('Eder Sena');
   const [emailProfile, setEmailProfile] = useState('');
   const [cart, setCart] = useState([]);
+  const [globalData, setGlobalData] = useState({});
   const [orderDetails, setOrderDetails] = useState([]);
 
   useEffect(() => { setCart(initialCard); }, []);
@@ -33,6 +34,8 @@ function Provider({ children }) {
     setCart,
     orderDetails,
     setOrderDetails,
+    globalData,
+    setGlobalData,
   };
   return <AppContext.Provider value={ contextValue }>{ children }</AppContext.Provider>;
 }

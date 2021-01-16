@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 // import AppContext from '../../context/AppContext';
 import './index.css';
 import { Link } from 'react-router-dom';
+import AppContext from '../../context/AppContext';
 
 const OrderCard = (props) => {
   const { order, index } = props;
+  const { setGlobalData } = useContext(AppContext)
+  useEffect(() => {
+    setGlobalData((state) => ({...state,[props.order.id]: props.order.sale_date}))
+  }, [])
   return (
     <Link
       to={ `/orders/${order.id}` }
