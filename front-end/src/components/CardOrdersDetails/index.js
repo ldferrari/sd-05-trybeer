@@ -13,16 +13,17 @@ export default function CardOrderDetails(props) {
     <div className="cartItem" key={ item.name }>
       <p data-testid={ `${index}-product-qtd` }>{ item.quantity }</p>
       <p data-testid={ `${index}-product-name` }>{ item.name }</p>
-      <p data-testid={ `${index}-product-unit-price` }>
-        {`(R$ ${item.price.toString().replace('.', ',')} un)`}
+      <p data-testid={ `${index}-order-unit-price` }>
+        {`(R$ ${item.price.toString().replace('.', ',')})`}
       </p>
       <p data-testid={ `${index}-product-total-value` }>
         { `R$ ${(item.price * item.quantity).toFixed(two).replace('.', ',')}` }
       </p>
     </div>
-    )
+  );
 }
 
 CardOrderDetails.propTypes = {
-  order: propTypes.instanceOf(Object).isRequired,
+  item: propTypes.instanceOf(Object).isRequired,
+  index: propTypes.number.isRequired,
 };

@@ -1,22 +1,28 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 // import AppContext from '../../context/AppContext';
 import './index.css';
 import { Link } from 'react-router-dom';
+import AppContext from '../../context/AppContext';
 
 const OrderCard = (props) => {
   const { order, index } = props;
+  const { id, sale_date: saleDate } = order;
+  const { setGlobalData } = useContext(AppContext);
+  useEffect(() => {
+    setGlobalData((state) => ({ ...state, [id]: saleDate }));
+  }, [id, saleDate, setGlobalData]);
   return (
     <div className="oCard">
       <Link
-        to={ `/orders/${order.id}` }
-        className="orderLink"
-        key={ order.id }
+        to={ `/orders/${id}` }
+        className="card"
+        key={ id }
         data-testid={ `${index}-order-card-container"` }
       >
-        <p data-testid={ `${index}-order-number` }>{ `Pedido ${order.id}` }</p>
+        <p data-testid={ `${index}-order-number` }>{ `Pedido ${id}` }</p>
         <p data-testid={ `${index}-order-date` }>
-          { order.sale_date }
+          { saleDate }
         </p>
         <p data-testid={ `${index}-order-total-value` }>
           { `R$ ${order.total_price.toString().replace('.', ',')}` }

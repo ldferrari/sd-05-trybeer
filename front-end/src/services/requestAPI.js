@@ -27,8 +27,8 @@ const postLogin = async ({ email, password }) => axios
   })
   .then((e) => e.data);
 
-  const postRegister = async ({
-    name,
+const postRegister = async ({
+  name,
   email,
   password,
   role,
@@ -40,7 +40,7 @@ const postLogin = async ({ email, password }) => axios
 });
 
 const postOrder = async (token, products, userData) => axios
-.post('http://localhost:3001/checkout', { products, userData }, config(token));
+  .post('http://localhost:3001/checkout', { products, userData }, config(token));
 
 const postGetOrders = async (token) => axios.get('http://localhost:3001/orders', config(token));
 
