@@ -33,7 +33,7 @@ function updateUser(name, email, token) {
     .put(
       `${API_URL}/users/name`,
       { name, email },
-      { headers: { Authorization: token } }
+      { headers: { Authorization: token } },
     )
     .then((res) => res.data)
     .catch((err) => err);
