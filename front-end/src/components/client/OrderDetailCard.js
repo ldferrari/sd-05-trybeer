@@ -13,7 +13,7 @@ export default function OrderCard({ item, index }) {
   const handlePrice = (price) => price.replace('.', ',');
 
   return (
-    <div>
+    <div className="checkout-card">
       <p data-testid={ `${index}-product-qtd` }>
         {item.quantity}
         {' '}
