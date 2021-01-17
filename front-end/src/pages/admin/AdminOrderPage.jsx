@@ -4,7 +4,7 @@ import salesAPI from '../../services/admin/api';
 import MenuAdm from '../../components/admin/MenuAdm';
 // import '../../css/clientProductPage.css';
 
-const AdminOrdersPage = () => {
+const AdminOrderPage = () => {
   const [allOrders, setAllOrders] = useState([]);
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const AdminOrdersPage = () => {
 
   return (
     <div>
-      <MenuAdm />
+      {/* <MenuAdm /> */}
       <div>
         {allOrders.map((order, index) => (
           <OrderCard key={ order.id } index={ index } order={ order } />
@@ -23,4 +23,4 @@ const AdminOrdersPage = () => {
   );
 };
 
-export default AdminOrdersPage;
+export default AdminOrderPage;
