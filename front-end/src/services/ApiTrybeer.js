@@ -59,6 +59,13 @@ function fetchOrderId(email) {
     .catch((err) => err);
 }
 
+function fetchAdminOrders() {
+  return axios
+    .get(`${API_URL}/orders/admin`)
+    .then((res) => console.log(res.data, 'data'))
+    .catch((err) => err);
+}
+
 export {
   fetchLogin,
   apiRegister,
@@ -66,4 +73,5 @@ export {
   getAllProducts,
   placeOrder,
   fetchOrderId,
+  fetchAdminOrders,
 };

@@ -30,11 +30,10 @@ salesRouter.get(
 
 salesRouter.get(
   '/admin',
-  rescue(async (req, res) => {
-    const { role } = req.headers;
+  rescue(async (_req, res) => {
     const sales = salesService.getAdminSales();
 
-    return role === 'administrator'
+    return sales
       ? res.status(200).json(sales)
       : res.status(401).json({ message: 'Unauthorized access' });
   }),
