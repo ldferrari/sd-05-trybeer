@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from "react";
-// import { Redirect } from "react-router-dom";
 import Header from "../Components/Header";
 import OrderCard from "../Components/OrderCard";
 import SideBar from "../Components/SideBar";
 import { getClientOrder } from "../Redux/Services/index";
 
 const Orders = () => {
- 
   const [ordersList, setOrdersList] = useState([]);
   const { id } = JSON.parse(localStorage.getItem("user"));
-  if (!id) return <Redirect to="/login" />
+  if (!id) return <Redirect to="/login" />;
 
   useEffect(() => {
     getClientOrder(id).then((data) => setOrdersList(data));
   }, [id]);
-
 
   return (
     <div>

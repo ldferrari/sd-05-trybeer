@@ -19,16 +19,16 @@ const AdminOrders = () => {
       <div>
         <div>
           {orders && orders.map(
-            { id, orderPrice, orderAddress, orderNumber, status },
+            { orderBumber, orderPrice, address, adressNumber, status },
             index
           ) => (
-            <Link to={`/admin/orders/${id}`} >
+            <Link to={`/admin/orders/${orderBumber}`} >
               <div>
                 <h4 className="product-card" data-testid={`${index}-order-number`}>
-                    {`Pedido ${id}`}
+                    {`Pedido ${orderBumber}`}
                 </h4>
                 <h4 className="product-card" data-testid={`${index}-order-address`}>
-                    {`Rua ${orderAddress} ${orderNumber}`}
+                    {`Rua ${address} ${adressNumber}`}
                 </h4>
               </div>
               <div>
