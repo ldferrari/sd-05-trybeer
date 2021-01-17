@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
@@ -24,9 +24,9 @@ const Header = ({ pathname }) => {
   // func que retorna o título do header baseado no caminho
   const title = titleForHeader(pathname);
 
-  useEffect(() => {
-    // console.log(showSideBar);
-  }, [showSideBar]);
+  // useEffect(() => {
+  // console.log(showSideBar);
+  // }, [showSideBar]);
 
   const toggleDrawer = () => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -38,7 +38,7 @@ const Header = ({ pathname }) => {
   if (redirect) return <Redirect to={ redirect } />;
 
   return (
-    <Restrict>
+    <Restrict pathname={ pathname }>
       <div style={ headerStyle }>
         <Button onClick={ toggleDrawer() } data-testid="top-hamburguer">
           <i

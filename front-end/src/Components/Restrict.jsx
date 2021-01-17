@@ -1,10 +1,24 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import getUserData from '../Services/utils';
 
-const Restrict = ({ children }) => {
-  const [isLogged] = useState(getUserData());
+const Restrict = ({ children, pathname }) => {
+  const [isLogged, setIsLogged] = useState(true);
+
+  // coloquei uma condicional para '/products',
+  // estava causando loop infinito entre '/products' e '/login';
+
+  const callUserData = async () => {
+    const user = await getUserData();
+    if (!user) {
+      setIsLogged(false);
+    }
+  };
+
+  useEffect(() => {
+    callUserData();
+  }, []);
 
   if (!isLogged) return <Redirect to="/login" />;
 
@@ -13,9 +27,10 @@ const Restrict = ({ children }) => {
 
 Restrict.propTypes = {
   children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
+    PropTypes.arrayOf(PropTypes.node),
   ]).isRequired,
+  pathname: PropTypes.string.isRequired,
 };
 
 export default Restrict;
