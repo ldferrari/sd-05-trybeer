@@ -41,7 +41,7 @@ function updateUser(name, email, token) {
 
 function placeOrder(email, totalPrice, address, number, saleDate) {
   return axios
-    .post(`${API_URL}/checkout`, {
+    .post(`${API_URL}/orders`, {
       email,
       totalPrice,
       address,
@@ -54,7 +54,7 @@ function placeOrder(email, totalPrice, address, number, saleDate) {
 
 function fetchOrderId(email) {
   return axios
-    .get(`${API_URL}/checkout?email=${email}`)
+    .get(`${API_URL}/orders?email=${email}`)
     .then((res) => res.data)
     .catch((err) => err);
 }

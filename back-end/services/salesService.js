@@ -30,4 +30,9 @@ async function getSalesById(body) {
   return sales[0];
 }
 
-module.exports = { createSale, getSalesById };
+async function getAdminSales() {
+  const sales = await salesModel.getAdminSales();
+  return sales[0];
+}
+
+module.exports = { createSale, getSalesById, getAdminSales };

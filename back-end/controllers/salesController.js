@@ -28,4 +28,16 @@ salesRouter.get(
   }),
 );
 
+salesRouter.get(
+  '/admin',
+  rescue(async (req, res) => {
+    const { role } = req.headers;
+    const sales = salesService.getAdminSales();
+
+    return role === 'administrator'
+      ? res.status(200).json(sales)
+      : res.status(401).json({ message: 'Unauthorized access' });
+  }),
+);
+
 module.exports = salesRouter;

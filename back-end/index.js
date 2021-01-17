@@ -18,7 +18,7 @@ app.use('/login', loginController);
 app.use('/register', registerController);
 app.use('/users', userController);
 app.use('/products', productController);
-app.use('/checkout', salesController);
+app.use('/orders', salesController);
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 

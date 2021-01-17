@@ -11,4 +11,10 @@ async function getSalesById(id) {
   return connection.execute('SELECT * FROM sales WHERE user_id = ?;', [id]);
 }
 
-module.exports = { createSale, getSalesById };
+async function getAdminSales() {
+  return connection.execute(
+    'SELECT id, delivery_address, delivery_number, total_price, status FROM sales',
+  );
+}
+
+module.exports = { createSale, getSalesById, getAdminSales };
