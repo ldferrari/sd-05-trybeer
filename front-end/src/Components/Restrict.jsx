@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import getUserData from '../Services/utils';
 
-const Restrict = ({ children, pathname }) => {
+const Restrict = ({ children }) => {
   const [isLogged, setIsLogged] = useState(true);
 
   // coloquei uma condicional para '/products',
@@ -30,7 +30,7 @@ Restrict.propTypes = {
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),
   ]).isRequired,
-  pathname: PropTypes.string.isRequired,
+  // pathname: PropTypes.string.isRequired,
 };
 
 export default Restrict;
