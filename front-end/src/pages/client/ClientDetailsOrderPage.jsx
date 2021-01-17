@@ -11,9 +11,8 @@ export default function ClientDetailsOrderPage(props) {
   const dois = 2;
 
   useEffect(() => {
-    const { id } = props.match.params
-    fetchOrderDetails(id).then((data) => setOrder(data));
-  }, [id]);
+    fetchOrderDetails(props.match.params.id).then((data) => setOrder(data));
+  }, []);
 
   if (!token) return <Redirect to="/login" />;
   return (

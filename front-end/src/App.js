@@ -23,7 +23,7 @@ function App() {
         <Route path="/profile" component={ ClientProfilePage } />
         <Route
           path="/orders/:id"
-          render={ (props) => <ClientDetailsOrderPage props={ ...props } /> }
+          render={ (props) => <ClientDetailsOrderPage { ...props } /> }
         />
         <Route path="/orders" component={ ClientMeusPedidos } />
         <Route path="/checkout" component={ ClientCheckoutPage } />
