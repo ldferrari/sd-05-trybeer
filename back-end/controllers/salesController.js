@@ -1,9 +1,20 @@
 const { Router } = require('express');
 const rescue = require('express-rescue');
-const salesService = require('../services/salesService');
-const salesModel = require('../models/salesModel');
+const salesService = require('../services/salesService')
 
 const sales = Router();
+
+sales.get('/:id', rescue(async (req, res) => {
+  const { id } = req.params;
+  try {
+    const sale = await salesService.getSale(id);
+    return res.status(200).json(sale);
+  } catch (err) {
+    if (err.code === 'not_found') {
+      res.status(404).json({ err });
+    }
+  }
+}));
 
 sales.get('/', async (req, res) => {
   try {
@@ -15,14 +26,15 @@ sales.get('/', async (req, res) => {
   }
 });
 
-sales.get('/:id', rescue(async (req, res) => {
+sales.put('/:id', rescue(async (req, res) => {
   const { id } = req.params;
+  const { status } = req.body;
   try {
-    const sale = await salesService.getSale(id);
-    return res.status(200).json(...sale);
+    const response = await salesService.update(id, status);
+    return res.status(200).json(response);
   } catch (err) {
     if (err.code === 'not_found') {
-      res.status(404).json({ err });
+      return res.status(404).json({ err });
     }
   }
 }));

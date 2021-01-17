@@ -13,7 +13,7 @@ const AdminOrderPage = () => {
 
   return (
     <div>
-      {/* <MenuAdm /> */}
+      <MenuAdm />
       <div>
         {allOrders.map((order, index) => (
           <OrderCard key={ order.id } index={ index } order={ order } />

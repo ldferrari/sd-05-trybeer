@@ -1,25 +1,76 @@
 import React, { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import MenuAdm from '../../components/admin/MenuAdm';
 import getSaleById from '../../services/admin/getSaleById';
+import updateSalesStatus from '../../services/admin/updateSalesStatus';
 
-export default function AdminSaleDetailsPage() {
-//const { id } = match.params;
-const [saleDetails, setSaleDetails] = useState([]);
-
+export default function AdminSaleDetailsPage(props) {
+  const [saleDetails, setSaleDetails] = useState('');
+  const { id } = props.match.params;
+  const token = localStorage.getItem('token') || null;
+  const dois = 2;
+  
   useEffect(() => {
-    getSaleById(1).then((response) => setSaleDetails(response));
-  }, []);
+    getSaleById(id).then((response) => setSaleDetails(response));
+  }, [id]);
+  console.log(saleDetails)
+  if (!token) return <Redirect to="/login" />;
+
+  const handleClick = async (id) => {
+    updateSalesStatus(id, 'Entregue')
+      .then(() => getSaleById(id))
+      .then((response) => setSaleDetails(response))
+  }
 
   return (
     <div>
-      {/* <MenuAdm /> */}
-      <div>
-       Pedido { saleDetails.delivery_number} - { saleDetails.status }
+      <MenuAdm />
+      <div style={ { marginLeft: '400px' } }>
+      <div data-testid="order-number">
+        {saleDetails && (`Pedido ${saleDetails[0].sale_id}`)}
       </div>
-      <div>
-        Total: R$ { saleDetails.total_price }
+      <div data-testid="order-status">
+        {saleDetails && (`${saleDetails[0].status}`)}
       </div>
-      <button>Marcar pedido como entregue</button>
+      {saleDetails && (
+        saleDetails.map((product, index) => (
+            <div key={index}>
+              <span data-testid={ `${index}-product-qtd` }>
+                { `${product.quantity}` }
+              </span>
+              <span data-testid={ `${index}-product-name` }>
+                { `${product.name}` }
+              </span>
+              <span data-testid={ `${index}-product-total-value` }>
+                { `R$ ${product.total.toFixed(dois).replace('.', ',')}` }
+              </span>
+              <span data-testid={ `${index}-order-unit-price` }>
+                { `(R$ ${product.price.replace('.', ',')})` }
+              </span>
+            </div>
+        ))
+      ) }
+      <div data-testid="order-total-value">
+        {saleDetails && `Total: R$ ${saleDetails[0].total_price.replace('.', ',')}`}
+      </div>
+      { saleDetails && (
+        saleDetails[0].status === 'Pendente'
+        ? <button
+            data-testid="mark-as-delivered-btn"
+            onClick={ () => handleClick(id) }>
+              Marcar como entregue
+          </button>
+        : null) }
+    </div>
     </div>
   );
 }
+
+AdminSaleDetailsPage.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
+};

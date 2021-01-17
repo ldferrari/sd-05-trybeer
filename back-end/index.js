@@ -24,7 +24,6 @@ app.use('/orders', ordersController);
 app.use('/admin/orders', salesController);
 app.use('/checkout', checkoutController);
 app.use(errorMiddleware);
-
 app.use('/products', productsController);
 
 app.use('/images/', express.static(path.join(__dirname, '/images')));
