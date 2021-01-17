@@ -55,6 +55,7 @@ const Perfil = () => {
   return (
     <div className="ProfilePage">
       <Header>Meu Perfil</Header>
+      <h2 data-testid="top-title">Meu perfil</h2>
       <div className="form">
         <p>Nome:</p>
         <input
