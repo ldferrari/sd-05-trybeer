@@ -42,6 +42,7 @@ const OrderDetailsAdmin = ({
   return (
     <div>
       <Header pathname={ history.location.pathname } />
+      Admin - Detalhes do Pedido
       <h2 data-testid="order-number">
         Pedido
         {id}

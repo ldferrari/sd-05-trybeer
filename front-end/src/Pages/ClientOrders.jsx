@@ -6,11 +6,10 @@ import SideBar from "../Components/SideBar";
 import { getClientOrder } from "../Redux/Services/index";
 
 const Orders = () => {
-  // const user = JSON.parse(localStorage.getItem("user"));
-  // if (!user) return <Redirect to="/login" />;
-
+ 
   const [ordersList, setOrdersList] = useState([]);
   const { id } = JSON.parse(localStorage.getItem("user"));
+  if (!id) return <Redirect to="/login" />
 
   useEffect(() => {
     getClientOrder(id).then((data) => setOrdersList(data));
