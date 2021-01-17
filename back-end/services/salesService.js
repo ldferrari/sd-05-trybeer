@@ -17,7 +17,6 @@ const getSale = async (id) => {
 
 const update = async (id, status) => {
   const saleExists = await salesModel.getSale(id);
-  console.log(saleExists);
 
   if (saleExists.length < 1) {
     throw {

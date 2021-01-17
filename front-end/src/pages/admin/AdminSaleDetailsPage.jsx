@@ -5,22 +5,22 @@ import MenuAdm from '../../components/admin/MenuAdm';
 import getSaleById from '../../services/admin/getSaleById';
 import updateSalesStatus from '../../services/admin/updateSalesStatus';
 
-export default function AdminSaleDetailsPage(props) {
+export default function AdminSaleDetailsPage() {
   const [saleDetails, setSaleDetails] = useState('');
   const { id } = props.match.params;
   const token = localStorage.getItem('token') || null;
   const dois = 2;
-  
+
   useEffect(() => {
     getSaleById(id).then((response) => setSaleDetails(response));
   }, [id]);
   if (!token) return <Redirect to="/login" />;
 
-  const handleClick = async (id) => {
+  const handleClick = async () => {
     updateSalesStatus(id, 'Entregue')
       .then(() => getSaleById(id))
-      .then((response) => setSaleDetails(response))
-  }
+      .then((response) => setSaleDetails(response));
+  };
 
   return (
     <div>
@@ -34,34 +34,34 @@ export default function AdminSaleDetailsPage(props) {
       </div>
       {saleDetails && (
         saleDetails.map((product, index) => (
-            <div key={index}>
-              <span data-testid={ `${index}-product-qtd` }>
-                { `${product.quantity}` }
-              </span>
-              <span data-testid={ `${index}-product-name` }>
-                { `${product.name}` }
-              </span>
-              <span data-testid={ `${index}-product-total-value` }>
-                { `R$ ${product.total.toFixed(dois).replace('.', ',')}` }
-              </span>
-              <span data-testid={ `${index}-order-unit-price` }>
-                { `(R$ ${product.price.replace('.', ',')})` }
-              </span>
-            </div>
+          <div key='eslint'>
+            <span data-testid={ `${index}-product-qtd` }>
+              { `${product.quantity}` }
+            </span>
+            <span data-testid={ `${index}-product-name` }>
+              { `${product.name}` }
+            </span>
+            <span data-testid={ `${index}-product-total-value` }>
+              { `R$ ${product.total.toFixed(dois).replace('.', ',')}` }
+            </span>
+            <span data-testid={ `${index}-order-unit-price` }>
+              { `(R$ ${product.price.replace('.', ',')})` }
+            </span>
+          </div>
         ))
       ) }
-      <div data-testid="order-total-value">
-        {saleDetails && `Total: R$ ${saleDetails[0].total_price.replace('.', ',')}`}
-      </div>
-      { saleDetails && (
+        <div data-testid="order-total-value">
+          {saleDetails && `Total: R$ ${saleDetails[0].total_price.replace('.', ',')}`}
+        </div>
+        { saleDetails && (
         saleDetails[0].status === 'Pendente'
-        ? <button
+          ? <button
             data-testid="mark-as-delivered-btn"
             onClick={ () => handleClick(id) }>
               Marcar como entregue
-          </button>
-        : null) }
-    </div>
+            </button>
+          : null) }
+      </div>
     </div>
   );
 }

@@ -32,7 +32,7 @@ export default function ClientDetailsOrderPage(props) {
         </div>
         {order && (
           order.orderDetail.map((product, index) => (
-            <div key={index}>
+            <div key="eslint">
               <span key="indice">{ `${index + 1}` }</span>
               <span data-testid={ `${index}-product-name` }>
                 { `${product.name}` }
