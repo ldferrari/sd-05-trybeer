@@ -14,10 +14,10 @@ const localhostURL = 'http://localhost:3001';
 //   );
 
 const myInit = {
-  mode: 'cors',
-  method: 'GET',
+  mode: "cors",
+  method: "GET",
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 };
 
@@ -42,6 +42,21 @@ export const getProducts = () => (
       .catch((err) => Promise.reject(err))
   ))
 );
+
+export const getClientOrder = (id) =>
+  fetch(`${localhostURL}/orders/${id}`, myInitWithBody).then((response) =>
+    response
+      .json()
+      .then((json) => Promise.resolve(json))
+      .catch((err) => Promise.reject(err))
+  );
+
+export const getSalesOrder = () =>
+    fetch(`${localhostURL}/orders`, myInitWithBody).then((response) =>
+      response
+      .json()
+      .then((json) => Promise.resolve(json))
+      .catch((err) => Promise.reject(err))))
 
 // prettier-ignore
 export const getUser = (data) => (
