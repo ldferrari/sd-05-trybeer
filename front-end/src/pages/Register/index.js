@@ -125,7 +125,7 @@ const Register = (props) => {
         <button
           type="submit"
           disabled={ !(validEmail && validPassword && validName) }
-          className={ (validEmail && validPassword && validName) ? 'ready regBtn loginBtn' : '' }
+          className={ (validEmail && validPassword && validName) ? 'ready loginBtn' : '' }
           onClick={ handleSubmit }
           data-testid="signup-btn"
         >

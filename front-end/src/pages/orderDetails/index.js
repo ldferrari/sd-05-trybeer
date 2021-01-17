@@ -36,13 +36,13 @@ export default function OrderDetails(props) {
   }, [props, id]);
 
   return (
-    <div>
+    <div className="orderDetailsPage">
       <Header>Detalhes de Pedido</Header>
       <div className="detailsHeader">
         <h4 data-testid="order-number" className="orderTitle">
           { `Pedido ${id}` }
         </h4>
-        <h4 data-testid="order-date">
+        <h4 data-testid="order-date" className="orderTitle">
           { globalData[id] }
         </h4>
       </div>

@@ -1,5 +1,5 @@
 .Products {
-  background-image: url('../../images/newBg.jpg');
+  background-image: url('../../images/mobBG.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -49,6 +49,9 @@
   width: 37%;
   margin: auto;
   cursor: pointer;
+  position: sticky;
+  bottom: 3%;
+
   /* position:fixed */
  }
 

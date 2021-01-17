@@ -1,4 +1,7 @@
-.App {
+.ProfilePage {
+  background-image: url('../../images/newBg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
   text-align: center;
 }
 
@@ -17,11 +20,13 @@
 }
 
 .form p {
-  margin-left: -250px;
+  font-size: 25px;
 }
 
 .form button {
-  background: #6ce34f;
+  /*background: #6ce34f;*/
+  background-image: url('../../images/images.jpeg');
+  background-size: cover;
   border-radius: 5px;
   font-size: large;
   width: 300px;

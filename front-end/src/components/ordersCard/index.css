@@ -21,3 +21,7 @@
   color: black; 
   text-decoration: none;
 }
+
+.orderCardTitle {
+  font-weight: bold;
+}

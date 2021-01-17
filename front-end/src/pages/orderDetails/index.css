@@ -1,3 +1,9 @@
+.orderDetailsPage {
+  background-image: url('../../images/newBg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .detailsHeader {
   display: flex;
   justify-content: space-between;
@@ -11,4 +17,8 @@
 
 .total {
   font-weight: bold;
+}
+
+.pedido {
+  margin-bottom: 20%;
 }

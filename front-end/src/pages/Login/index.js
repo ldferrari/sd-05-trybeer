@@ -69,7 +69,7 @@ const Login = (props) => {
   };
   return (
     <div className="loginpage">
-      <img src={logo} className="logo"/>
+      <img src={ logo } className="logo" alt="logo" />
       <form className="column-login">
         <fieldset className="noDecor">
           <label htmlFor="email">

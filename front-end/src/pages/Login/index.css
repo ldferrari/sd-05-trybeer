@@ -42,11 +42,12 @@
   /* font-size:medium; */
   color: white; 
   padding: 2%;
-  text-align: left;
+  text-align: center;
   text-decoration: none;
   /* margin-left: 1%;*/
   margin-bottom: 5%;
   margin-top: 5%;
+  width: 100%;
 }
 
 .inputLogin {
