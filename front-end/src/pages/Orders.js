@@ -14,7 +14,7 @@ export default function Orders() {
   return role === 'administrator' ? (
     <section>
       <Header title="Pedidos Pendentes" />
-      <AdminOrderCard />
+      <AdminOrderCard token={token} />
     </section>
   ) : (
     <section>

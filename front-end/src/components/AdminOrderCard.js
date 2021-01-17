@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 import { fetchAdminOrders } from '../services/ApiTrybeer';
 
-export default function AdminOrderCard() {
+export default function AdminOrderCard({ token }) {
   const [adminOrders, setAdminOrders] = useState([]);
 
   useEffect(() => {
-    fetchAdminOrders().then((sales) => setAdminOrders(sales));
+    fetchAdminOrders(token).then((sales) => setAdminOrders(sales));
   }, []);
 
   return (

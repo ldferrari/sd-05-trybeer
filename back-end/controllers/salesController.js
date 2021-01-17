@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const rescue = require('express-rescue');
+const authToken = require('../middlewares/authToken');
 
 const salesService = require('../services/salesService');
 
@@ -30,6 +31,7 @@ salesRouter.get(
 
 salesRouter.get(
   '/admin',
+  authToken,
   rescue(async (_req, res) => {
     const sales = salesService.getAdminSales();
 

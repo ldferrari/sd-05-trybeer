@@ -33,7 +33,7 @@ function updateUser(name, email, token) {
     .put(
       `${API_URL}/users/name`,
       { name, email },
-      { headers: { Authorization: token } },
+      { headers: { Authorization: token } }
     )
     .then((res) => res.data)
     .catch((err) => err);
@@ -59,10 +59,10 @@ function fetchOrderId(email) {
     .catch((err) => err);
 }
 
-function fetchAdminOrders() {
+function fetchAdminOrders(token) {
   return axios
-    .get(`${API_URL}/orders/admin`)
-    .then((res) => console.log(res.data, 'data'))
+    .get(`${API_URL}/orders/admin`, { headers: { Authorization: token } })
+    .then((res) => res.data)
     .catch((err) => err);
 }
 
