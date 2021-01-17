@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import Menu from '../../components/client/Menu';
 import { ClientContext } from '../../context/client/ClientProvider';
 import fetchSalesData from '../../services/client/fetchSalesData';
+import '../../css/client/clientCheckoutPage.css';
 
 export default function ClientCheckoutPage() {
   const zero = 0;
@@ -57,40 +58,51 @@ export default function ClientCheckoutPage() {
   if (redirect) return <Redirect to="/products" />;
 
   return (
-    <div style={ { marginTop: '100px' } }>
+    <div className="checkoutBody">
       <Menu title="Finalizar Pedido" />
       { (localCartItens.length === zero) && <div>Não há produtos no carrinho</div> }
       { (localCartItens.length !== zero) && localCartItens.map((product, index) => (
-        <div key={ product.id }>
-          <span data-testid={ `${index}-product-qtd-input` }>{product.quantity}</span>
-          <span data-testid={ `${index}-product-name` }>{product.name}</span>
-          <span data-testid={ `${index}-product-total-value` }>{` R$ ${((Number(product.price)) * (Number(product.quantity))).toFixed(two).replace('.', ',')}`}</span>
-          <span data-testid={ `${index}-product-unit-price` }>{`(R$ ${Number(product.price).toFixed(two).replace('.', ',')} un)`}</span>
-          <button
-            data-testid={ `${index}-removal-button` }
-            type="button"
-            onClick={ () => removeProduct(index) }
-          >
-            X
-          </button>
+        <div key={ product.id } className="checkoutProduct">
+          <div className="checkoutContainer">
+            <div className="checkoutSpan">
+              <span data-testid={ `${index}-product-qtd-input` }>{ `Qtd: ${product.quantity}` }</span>
+              <span data-testid={ `${index}-product-name` }>{product.name}</span>
+            </div>
+            <div className="checkoutSpan">
+              <span data-testid={ `${index}-product-unit-price` }>{`(R$ ${Number(product.price).toFixed(two).replace('.', ',')} un)`}</span>
+              <span data-testid={ `${index}-product-total-value` } className="checkoutValue">{` R$ ${((Number(product.price)) * (Number(product.quantity))).toFixed(two).replace('.', ',')}`}</span>
+            </div>
+          </div>
+          <div>
+            <button
+              data-testid={ `${index}-removal-button` }
+              type="button"
+              className="checkoutButton"
+              onClick={ () => removeProduct(index) }
+            >
+              X
+            </button>
+          </div>
         </div>)) }
-      <div>
+      <div className="checkoutTotal">
         <span data-testid="order-total-value">{`Total: R$ ${Number(cart).toFixed(two).replace('.', ',')}`}</span>
       </div>
-      <div>
-        <label htmlFor="street">
+      <div className="checkoutLabels">
+        <label htmlFor="street" className="checkoutLabel">
           Rua
           <input
             data-testid="checkout-street-input"
+            className="checkoutInputRua"
             id="street"
             type="text"
             onChange={ (event) => setStreet(event.target.value) }
           />
         </label>
-        <label htmlFor="number">
+        <label htmlFor="number" className="checkoutLabel">
           Número da casa
           <input
             data-testid="checkout-house-number-input"
+            className="checkoutInputNumero"
             id="number"
             type="number"
             onChange={ (event) => setStreetNumber(event.target.value) }
@@ -99,13 +111,14 @@ export default function ClientCheckoutPage() {
       </div>
       <button
         data-testid="checkout-finish-btn"
+        className="chekcoutFinish"
         type="button"
         disabled={ (cart === zero) || (street === '') || (streetNumber === '') }
         onClick={ () => handleClick() }
       >
         Finalizar Pedido
       </button>
-      { purchaseDone && <div>Compra realizada com sucesso!</div> }
+      { purchaseDone && <div className="checkoutSucesso">Compra realizada com sucesso!</div> }
     </div>
   );
 }

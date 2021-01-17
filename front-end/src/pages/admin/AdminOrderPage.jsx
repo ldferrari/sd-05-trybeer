@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import OrderCard from '../../components/admin/OrderCard';
 import salesAPI from '../../services/admin/api';
 import MenuAdm from '../../components/admin/MenuAdm';
-// import '../../css/clientProductPage.css';
+import '../../css/admin/adminOrderPage.css';
 
 const AdminOrderPage = () => {
   const [allOrders, setAllOrders] = useState([]);
@@ -14,7 +14,7 @@ const AdminOrderPage = () => {
   return (
     <div>
       <MenuAdm />
-      <div>
+      <div className="orderBody">
         {allOrders.map((order, index) => (
           <OrderCard key={ order.id } index={ index } order={ order } />
         ))}
