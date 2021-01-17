@@ -7,4 +7,8 @@ async function createSale(userId, totalPrice, address, number, saleDate) {
   );
 }
 
-module.exports = { createSale };
+async function getSalesById(id) {
+  return connection.execute('SELECT * FROM sales WHERE user_id = ?;', [id]);
+}
+
+module.exports = { createSale, getSalesById };

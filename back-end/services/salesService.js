@@ -9,10 +9,25 @@ async function createSale(newSale) {
   }
 
   const user = await userModel.getByEmail(email);
-  const userId = user.id;
+  const { id } = user;
 
-  const addNewSale = salesModel.createSale(userId, totalPrice, address, number, saleDate);
+  const addNewSale = salesModel.createSale(id, totalPrice, address, number, saleDate);
   return addNewSale;
 }
 
-module.exports = { createSale };
+async function getSalesById(body) {
+  const { email } = body;
+
+  if (!email) throw new Error({ code: 404, message: 'E-mail is invalid' });
+
+  const user = await userModel.getByEmail(email);
+  const { id } = user;
+
+  const sales = await salesModel.getSalesById(id);
+
+  if (!sales) throw new Error({ code: 404, message: 'User has placed no orders yet' });
+
+  return sales[0];
+}
+
+module.exports = { createSale, getSalesById };

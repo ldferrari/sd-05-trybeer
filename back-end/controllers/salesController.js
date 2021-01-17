@@ -17,4 +17,15 @@ salesRouter.post(
   }),
 );
 
+salesRouter.get(
+  '/',
+  rescue(async (req, res) => {
+    const userSales = await salesService.getSalesById(req.query);
+
+    return userSales
+      ? res.status(200).json(userSales)
+      : res.status(400).json({ message: 'No orders found!' });
+  }),
+);
+
 module.exports = salesRouter;
