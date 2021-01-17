@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../Components/Header';
 import { totalPriceOfProducts } from '../Redux/Services';
 
@@ -22,26 +22,33 @@ const mockOrder = [
 ];
 
 const decimals = 2;
-// ++++++++++++++
-function OrderDetails({
+
+const OrderDetailsAdmin = ({
   history,
   match: {
     params: { id },
   },
-}) {
-  const data = '08/09';
+}) => {
+  const [isPendente, setIsPendente] = useState(true);
   const total = totalPriceOfProducts(mockOrder);
+
+  const setAsPendente = () => {
+    // marcar como pendente na store e no banco
+
+    // ---
+    setIsPendente(false);
+  };
+
   return (
     <div>
       <Header pathname={ history.location.pathname } />
-      Cliente - Detalhes do Pedido
-      <div>
-        <h2 data-testid="order-number">
-          Pedido
-          {id}
-        </h2>
-        <h2 data-testid="order-date">{data}</h2>
-      </div>
+      <h2 data-testid="order-number">
+        Pedido
+        {id}
+      </h2>
+      <h2 data-testid="order-status" style={ { color: isPendente ? 'yellow' : 'green' } }>
+        {isPendente ? <p>Pendente</p> : <p>Entregue</p>}
+      </h2>
       <div className="lista-dos-produtos">
         {mockOrder.map((product, index) => (
           // Usar component de card usado em outro requisito
@@ -61,7 +68,7 @@ function OrderDetails({
               R$
               {parseFloat(product.price * product.quantity, decimals)}
             </span>
-            <span>
+            <span data-testid="0-order-unit-price">
               (R$
               {product.price}
               {' '}
@@ -69,16 +76,21 @@ function OrderDetails({
             </span>
           </div>
         ))}
+        <div data-testid="order-total-value">
+          Total: R$
+          {total}
+        </div>
       </div>
-      <div data-testid="order-total-value">
-        Total: R$
-        {total}
-      </div>
+      {isPendente && (
+        <button type="button" onClick={ () => setAsPendente() }>
+          Marcar como entregue
+        </button>
+      )}
     </div>
   );
-}
+};
 
-OrderDetails.propTypes = {
+OrderDetailsAdmin.propTypes = {
   history: PropTypes.shape({
     location: PropTypes.shape({
       pathname: PropTypes.string,
@@ -91,4 +103,4 @@ OrderDetails.propTypes = {
   }).isRequired,
 };
 
-export default OrderDetails;
+export default OrderDetailsAdmin;

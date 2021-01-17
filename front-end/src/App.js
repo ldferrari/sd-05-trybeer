@@ -12,8 +12,8 @@ import Register from './Pages/Register';
 import orderDetails from './Pages/orderDetails';
 import AdminProfile from './Pages/AdminProfile';
 import AdminOrders from './Pages/AdminOrders';
-
 import './App.css';
+import OrderDetailsAdmin from './Pages/OrderDetailsAdmin';
 
 // prettier-ignore
 function App({ ProductsAPI }) {
@@ -35,6 +35,7 @@ function App({ ProductsAPI }) {
         <Route path="/orders/:id" component={ orderDetails } />
         <Route exact path="/register" component={ Register } />
         <Route exact path="/admin/orders" component={ AdminOrders } />
+        <Route exact path="/admin/orders/:id" component={ OrderDetailsAdmin } />
         <Route exact path="/admin/profile" component={ AdminProfile } />
       </Switch>
     </div>
