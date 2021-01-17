@@ -5,7 +5,7 @@ async function createSale(newSale) {
   const { email, totalPrice, address, number, saleDate } = newSale;
 
   if (!email || !totalPrice || !address || !number || !saleDate) {
-    throw { err: { code: 404, message: 'Missing information' } };
+    throw new Error({ code: 404, message: 'Missing information' });
   }
 
   const user = await userModel.getByEmail(email);

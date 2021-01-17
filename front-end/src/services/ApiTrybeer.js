@@ -1,38 +1,52 @@
 // API axios
 const axios = require('axios');
 
+const API_URL = 'http://localhost:3001';
+
 function fetchLogin(email, password) {
   return axios
-    .post('http://localhost:3001/login', { email, password })
+    .post(`${API_URL}/login`, { email, password })
     .then((res) => res.data)
     .catch((err) => err);
 }
 
 // prettier-ignore
 const apiRegister = (name, email, password, role) => axios
-  .post('http://localhost:3001/register', {
+  .post(`${API_URL}/register`, {
     name, email, password, role,
   })
   .then((res) => res.data)
   .catch((err) => err);
 
-const getAllProducts = (token) => axios
-  .get('http://localhost:3001/products', {
-    headers: { Authorization: token },
-  })
-  .then((res) => res.data);
+const getAllProducts = (token) =>
+  axios
+    .get(`${API_URL}/products`, {
+      headers: { Authorization: token },
+    })
+    .then((res) => res.data);
 
 function updateUser(name, email, token) {
   return axios
     .put(
-      'http://localhost:3001/users/name',
+      `${API_URL}/users/name`,
       { name, email },
-      { headers: { Authorization: token } },
+      { headers: { Authorization: token } }
     )
     .then((res) => res.data)
     .catch((err) => err);
 }
 
-export {
-  fetchLogin, apiRegister, updateUser, getAllProducts,
-};
+function placeOrder(email, totalPrice, address, number, saleDate) {
+  return axios
+    .post(`${API_URL}/checkout`, {
+      email,
+      totalPrice,
+      address,
+      number,
+      saleDate,
+    })
+    .then((res) => res.data)
+    .catch((err) => err);
+}
+
+export { fetchLogin, apiRegister, updateUser, getAllProducts, placeOrder };
