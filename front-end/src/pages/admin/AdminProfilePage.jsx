@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import MenuAdm from '../../components/admin/MenuAdm';
+import '../../css/admin/adminProfilePage.css';
 
 export default function ClientProfilePage() {
   const token = localStorage.getItem('token') || null;
@@ -9,27 +10,27 @@ export default function ClientProfilePage() {
   if (!token) return <Redirect to="/login" />;
 
   return (
-    <div>
+    <div className="admProfileBody">
       <MenuAdm />
-      <div>Admin - Perfil</div>
-      <div className="bodyProfile">
-        <label htmlFor="email" className="labelProfile">
+      <div className="admProfileTitle">Admin - Perfil</div>
+      <div className="amdProfileLabels">
+        <label htmlFor="email" className="admProfileLabel">
           Email
           <div
             data-testid="profile-email"
+            className="admProfileLabelDate"
             id="email"
-            className="inputProfile"
             readOnly
           >
             { user.email }
           </div>
         </label>
-        <label htmlFor="name" className="labelProfile">
+        <label htmlFor="name" className="admProfileLabel">
           Name
           <div
             data-testid="profile-name"
+            className="admProfileLabelDate"
             id="name"
-            className="inputProfile"
             readOnly
           >
             { user.name }
