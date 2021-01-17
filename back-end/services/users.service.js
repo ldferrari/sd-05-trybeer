@@ -32,7 +32,7 @@ const UPDATE_SCHEMA = Joi.object({
 
 // prettier-ignore
 const login = rescue(async (req, _res, next) => {
-  console.log(req.body)
+  console.log(req.body);
   const { error } = LOGIN_SCHEMA.validate(req.body);
   const user = await userModel.findUserbyEmailAndPassword(req.body);
   // console.log(user);
