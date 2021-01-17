@@ -16,11 +16,13 @@ const OrderCard = (props) => {
     <div className="oCard">
       <Link
         to={ `/orders/${id}` }
-        className="card"
+        className="cardz orderLink"
         key={ id }
         data-testid={ `${index}-order-card-container"` }
       >
-        <p data-testid={ `${index}-order-number` }>{ `Pedido ${id}` }</p>
+        <p data-testid={ `${index}-order-number` } className="orderCardTitle">
+          { `Pedido ${id}` }
+        </p>
         <p data-testid={ `${index}-order-date` }>
           { saleDate }
         </p>

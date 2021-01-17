@@ -2,6 +2,8 @@
   align-items: center;
   background-image: url('../../images/menuBg.jpg');
   background-size: cover;
+  box-shadow: 0 7px 7px rgba(83, 77, 77, 0.47);
+  border-radius: 3px;
   color: black;
   display: flex;
   flex-wrap: wrap;

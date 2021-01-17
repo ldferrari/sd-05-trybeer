@@ -20,7 +20,7 @@ const Header = ({ children }) => {
           &#9776;
         </button>
         <h2 data-testid="top-title" className="title">{children}</h2>
-        <img src={ logo } className="logoHeader" />
+        <img src={ logo } className="logoHeader" alt="logo" />
       </div>
       { display && <Sidebar /> }
     </header>
