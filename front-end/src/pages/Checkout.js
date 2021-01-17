@@ -16,9 +16,9 @@ const Checkout = () => {
   const role = userData && userData.user && userData.user.role;
   const token = userData && userData.token;
   const history = useHistory();
-  
+
   const date = new Date();
-  const month = date.getUTCMonth() + 1; //months from 1-12
+  const month = date.getUTCMonth() + 1;
   const day = date.getUTCDate();
   const year = date.getUTCFullYear();
   const saleDate = `${year}-${month}-${day}`;
