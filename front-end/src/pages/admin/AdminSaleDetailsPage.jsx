@@ -5,9 +5,9 @@ import MenuAdm from '../../components/admin/MenuAdm';
 import getSaleById from '../../services/admin/getSaleById';
 import updateSalesStatus from '../../services/admin/updateSalesStatus';
 
-export default function AdminSaleDetailsPage() {
+export default function AdminSaleDetailsPage(props) {
   const [saleDetails, setSaleDetails] = useState('');
-  const { id } = props.match.params;
+  const id = props.match.params.id;
   const token = localStorage.getItem('token') || null;
   const dois = 2;
 
@@ -26,15 +26,15 @@ export default function AdminSaleDetailsPage() {
     <div>
       <MenuAdm />
       <div style={ { marginLeft: '400px' } }>
-      <div data-testid="order-number">
-        {saleDetails && (`Pedido ${saleDetails[0].sale_id}`)}
-      </div>
-      <div data-testid="order-status">
-        {saleDetails && (`${saleDetails[0].status}`)}
-      </div>
-      {saleDetails && (
+        <div data-testid="order-number">
+          {saleDetails && (`Pedido ${saleDetails[0].sale_id}`)}
+        </div>
+        <div data-testid="order-status">
+          {saleDetails && (`${saleDetails[0].status}`)}
+        </div>
+          {saleDetails && (
         saleDetails.map((product, index) => (
-          <div key='eslint'>
+          <div key="eslint">
             <span data-testid={ `${index}-product-qtd` }>
               { `${product.quantity}` }
             </span>
@@ -54,13 +54,13 @@ export default function AdminSaleDetailsPage() {
           {saleDetails && `Total: R$ ${saleDetails[0].total_price.replace('.', ',')}`}
         </div>
         { saleDetails && (
-        saleDetails[0].status === 'Pendente'
-          ? <button
-            data-testid="mark-as-delivered-btn"
-            onClick={ () => handleClick(id) }>
-              Marcar como entregue
-            </button>
-          : null) }
+          saleDetails[0].status === 'Pendente'
+            ? <button
+              data-testid="mark-as-delivered-btn"
+              type="button"
+              onClick={ () => handleClick(id) }>Marcar como entregue
+              </button>
+            : null) }
       </div>
     </div>
   );
