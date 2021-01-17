@@ -4,8 +4,7 @@ import AdminSideBar from '../Components/AdminSideBar';
 import Header from '../Components/Header';
 import { getSalesOrder } from '../Redux/Services/index';
 
-const AdminOrders = () => (
-
+const AdminOrders = () => {
   const [orders, setOrders] = useState([]);
   
   useEffect(() => {
@@ -45,7 +44,7 @@ const AdminOrders = () => (
         </div>
       </div>
     </div>
-  )
-);
+  );
+};
 
 export default AdminOrders;
