@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import Menu from '../../components/client/Menu';
 import { ClientContext } from '../../context/client/ClientProvider';
 import fetchSalesData from '../../services/client/fetchSalesData';
-import '../../css/client/clientCheckoutPage.css'
+import '../../css/client/clientCheckoutPage.css';
 
 export default function ClientCheckoutPage() {
   const zero = 0;
@@ -71,7 +71,7 @@ export default function ClientCheckoutPage() {
             <div className="checkoutSpan">
               <span data-testid={ `${index}-product-unit-price` }>{`(R$ ${Number(product.price).toFixed(two).replace('.', ',')} un)`}</span>
               <span data-testid={ `${index}-product-total-value` } className="checkoutValue">{` R$ ${((Number(product.price)) * (Number(product.quantity))).toFixed(two).replace('.', ',')}`}</span>
-            </div >
+            </div>
           </div>
           <div>
             <button

@@ -6,8 +6,8 @@ const OrderCard = (props) => {
   const { index, order } = props;
   const dois = 2;
 
-  if (order.status === "Entregue") {
-    document.getElementsByClassName('orderStatus')[0].style.backgroundColor = "#008000";
+  if (order.status === 'Entregue') {
+    document.getElementsByClassName('orderStatus')[0].style.backgroundColor = '#008000';
   }
 
   return (

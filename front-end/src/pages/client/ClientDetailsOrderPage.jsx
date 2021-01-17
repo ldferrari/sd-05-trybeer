@@ -10,7 +10,7 @@ export default function ClientDetailsOrderPage(props) {
   const token = localStorage.getItem('token') || null;
   const zero = 0;
   const dois = 2;
-  
+
   useEffect(() => {
     const { id } = props;
     fetchOrderDetails(id).then((data) => setOrder(data));
