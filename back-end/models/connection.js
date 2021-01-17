@@ -20,7 +20,7 @@ const getAll = async () => {
 
 const getAllProducts = async () => {
   const [products] = await connection.execute('SELECT * FROM products');
-  
+
   return products;
 };
 

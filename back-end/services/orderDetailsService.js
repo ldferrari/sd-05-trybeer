@@ -5,13 +5,13 @@ const getOrderDetails = async (id) => {
 
   if (orderDetailsModel.length < 1) {
     throw {
-        code: 'not_found',
-        message: 'Sale not found',
+      code: 'not_found',
+      message: 'Sale not found',
     };
   }
 
   return orderDetailsModel;
-}
+};
 
 module.exports = {
   getOrderDetails,

@@ -10,7 +10,7 @@ const getSale = async (id) => {
   const [sale] = await database.execute(sql, [id]);
 
   return sale;
-}
+};
 
 const update = async (id, status) => {
   const sql = 'UPDATE sales SET status=? WHERE id=?';

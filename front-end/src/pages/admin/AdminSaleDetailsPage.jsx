@@ -14,7 +14,6 @@ export default function AdminSaleDetailsPage(props) {
   useEffect(() => {
     getSaleById(id).then((response) => setSaleDetails(response));
   }, [id]);
-  console.log(saleDetails)
   if (!token) return <Redirect to="/login" />;
 
   const handleClick = async (id) => {

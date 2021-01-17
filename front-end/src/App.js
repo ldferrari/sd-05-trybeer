@@ -23,7 +23,7 @@ function App() {
         <Route path="/register" component={ RegisterPage } />
         <Route path="/products" component={ ClientProductPage } />
         <Route path="/profile" component={ ClientProfilePage } />
-        <Route path="/orders/:id" component= { ClientDetailsOrderPage } />
+        <Route path="/orders/:id" component={ ClientDetailsOrderPage } />
         <Route path="/orders" component={ ClientMeusPedidos } />
         <Route path="/checkout" component={ ClientCheckoutPage } />
         <Route path="/" component={ () => <Redirect to="/login" /> } />

@@ -7,18 +7,18 @@ const getSale = async (id) => {
 
   if (saleExists.length < 1) {
     throw {
-        code: 'not_found',
-        message: 'Sale not found',
+      code: 'not_found',
+      message: 'Sale not found',
     };
   }
-  
+
   return saleExists;
 };
 
 const update = async (id, status) => {
   const saleExists = await salesModel.getSale(id);
-  console.log(saleExists)
-  
+  console.log(saleExists);
+
   if (saleExists.length < 1) {
     throw {
       code: 'not_found',

@@ -4,8 +4,8 @@ const updateSalesStatus = async (id, body) => fetch(`http://localhost:3001/admin
     Accept: 'application/json',
     'Content-Type': 'application/json',
   },
-  body: JSON.stringify({ 'status': body }),
+  body: JSON.stringify({ status: body }),
 })
-  .then((response) => response.json().then((data) => data))
+  .then((response) => response.json().then((data) => data));
 
 export default updateSalesStatus;
