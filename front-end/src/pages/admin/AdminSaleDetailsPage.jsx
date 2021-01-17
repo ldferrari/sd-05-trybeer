@@ -7,7 +7,7 @@ import updateSalesStatus from '../../services/admin/updateSalesStatus';
 
 export default function AdminSaleDetailsPage(props) {
   const [saleDetails, setSaleDetails] = useState('');
-  const { id } = props.match.params;
+  const { match: { params: { id } } } = props;
   const token = localStorage.getItem('token') || null;
   const dois = 2;
 
@@ -34,20 +34,20 @@ export default function AdminSaleDetailsPage(props) {
         </div>
         {saleDetails && (saleDetails.map((product, index) => (
           <div key="eslint">
-            <span data-testid={`${ index }-product-qtd`}>
+            <span data-testid={ `${index}-product-qtd` }>
               {`${product.quantity}`}
             </span>
-            <span data-testid={`${ index }-product-name`}>
+            <span data-testid={ `${index}-product-name` }>
               {`${product.name}`}
             </span>
-            <span data-testid={`${ index }-product-total-value`}>
+            <span data-testid={ `${index}-product-total-value` }>
               {`R$ ${product.total.toFixed(dois).replace('.', ',')}`}
             </span>
-            <span data-testid={`${ index }-order-unit-price`}>
+            <span data-testid={ `${index}-order-unit-price` }>
               {`(R$ ${product.price.replace('.', ',')})`}
             </span>
           </div>
-          )))}
+        )))}
         <div data-testid="order-total-value">
           {saleDetails && (`Total: R$ ${saleDetails[0].total_price.replace('.', ',')}`)}
         </div>
