@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import AdminSideBar from '../Components/AdminSideBar';
 
 const AdminOrders = () => (
   <>
     Admin - Orders
-    <Link to="/admin/profile" data-testid="side-menu-item-profile">Admin Profile</Link>
+    <AdminSideBar />
   </>
 );
 

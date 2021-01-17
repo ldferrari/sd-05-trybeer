@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import AdminSideBar from '../Components/AdminSideBar';
 
 const AdminProfile = ({ userData }) => {
   if (!userData.user) {
@@ -12,7 +13,9 @@ const AdminProfile = ({ userData }) => {
 
   const { name, email } = userData.user;
   return (
-    <>
+    <div>
+      <AdminSideBar />
+
       <h3>Perfil</h3>
       <p>Nome: </p>
       <p data-testid="profile-name">
@@ -20,7 +23,7 @@ const AdminProfile = ({ userData }) => {
       </p>
       <p>Email: </p>
       <p data-testid="profile-email">{email}</p>
-    </>
+    </div>
   );
 };
 

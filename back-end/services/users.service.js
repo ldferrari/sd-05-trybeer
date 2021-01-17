@@ -29,8 +29,10 @@ const UPDATE_SCHEMA = Joi.object({
     .max(64)
     .required(),
 });
+
 // prettier-ignore
 const login = rescue(async (req, _res, next) => {
+  console.log(req.body);
   const { error } = LOGIN_SCHEMA.validate(req.body);
   const user = await userModel.findUserbyEmailAndPassword(req.body);
   // console.log(user);
@@ -39,24 +41,30 @@ const login = rescue(async (req, _res, next) => {
   req.data = { user, token: jwt.createToken(user) };
   next();
 });
+
 // prettier-ignore
 const register = rescue(async (req, _res, next) => {
   const { error } = REGISTER_SCHEMA.validate(req.body);
   if (error) throw new Error(error);
   await userModel.createUser(req.body);
+  const user = await userModel.findUserbyEmailAndPassword(req.body);
   const { password, ...userWithoutPassword } = req.body;
-  req.data = userWithoutPassword;
-  // console.log(req.data);
+  req.data = { ...userWithoutPassword, token: jwt.createToken(user) };
   next();
 });
 
 const update = rescue(async (req, _res, next) => {
+  // Primeira etapa
   const { error } = UPDATE_SCHEMA.validate(req.body);
   if (error) throw new Error(error);
-  const user = await userModel.updateUser(req.body);
-  if (user[0].affectedRows === 0) {
-    throw new Error('Usuário bugado');
-  }
+  // Segunda etapa
+  const { authorization } = req.headers;
+  const { payload: { id } } = jwt.checkToken(authorization);
+  // Terceira etapa
+  await userModel.updateUser(id, req.body);
+  const user = await userModel.findUserById(id);
+  req.data = { ...user, token: jwt.createToken(user) };
+  if (!user) throw new Error('Usuário bugado');
   next();
 });
 

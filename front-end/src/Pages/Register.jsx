@@ -36,7 +36,7 @@ const Register = ({ registerUser, userError }) => {
     if (!isSeller) {
       return <Redirect to="/products" />;
     }
-    return <Redirect to="/admin/orders" />; // conferir se é este endPointMesmo
+    return <Redirect to="/admin/orders" />;
   }
 
   async function registerHandle() {

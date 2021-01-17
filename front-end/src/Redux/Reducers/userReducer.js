@@ -1,5 +1,6 @@
 import {
   REQUESTING_USER,
+  CLEAR_USER,
   REQUEST_USER_SUCCESS,
   REQUEST_USER_ERROR,
   UPDATE_USER_SUCCESS,
@@ -56,6 +57,11 @@ function userRequestReducer(state = INITIAL_STATE, action) {
         ...state,
         isLoading: false,
         error: action.error,
+      };
+    case CLEAR_USER:
+      return {
+        ...state,
+        userData: {},
       };
     default:
       return state;
