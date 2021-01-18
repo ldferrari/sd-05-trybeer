@@ -6,6 +6,7 @@ import Header from '../Components/Header';
 import ProductCard from '../Components/ProductCard';
 import Helpers from '../Helper/index';
 import { repopulatingAct } from '../Redux/Actions';
+// import getUserData from '../Services/utils';
 
 const zero = 0;
 
@@ -13,18 +14,18 @@ function Products({
   products, totalPrice, history, isLoading, cart, repopulatingStore,
 }) {
   const [redirect, setRedirect] = useState(null);
-
+  // const [userData] = useState(getUserData());
   const total = cart.reduce((acc, product) => acc + (product.quantity * product.price), zero);
 
   useEffect(() => {
     const localCart = JSON.parse(localStorage.getItem('cart'));
+
     if (localCart) repopulatingStore(localCart);
   }, [repopulatingStore]);
 
   if (isLoading) return <p>Loading...</p>;
   const totalPriceLocal = localStorage.getItem('totalPrice');
   if (redirect) return <Redirect to={ redirect } />;
-  // if (condição massa ) return <Redirect to="/login" />;
   return (
     <div>
       <Header pathname={ history.location.pathname } />
@@ -41,7 +42,6 @@ function Products({
       >
         Ver Carrinho
         <p on data-testid="checkout-bottom-btn-value">
-          {/* transferi a lógica de duas casas decimais diretamente para a funcao transformPrice */}
           {`R$ ${Helpers.transformPrice(total)}`}
         </p>
       </button>
@@ -67,7 +67,6 @@ Products.propTypes = {
 const mapStateToProps = (state) => ({
   products: state.productsRequestReducer.products,
   totalPrice: state.productsRequestReducer.totalPrice,
-  userData: state.userRequestReducer.userData,
   cart: state.productsRequestReducer.cart,
 });
 

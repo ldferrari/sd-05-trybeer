@@ -1,4 +1,4 @@
-import { helpers } from 'faker';
+// import { helpers } from 'faker';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import Header from '../Components/Header';
@@ -46,8 +46,6 @@ function OrderDetails({
       </div>
       <div className="lista-dos-produtos">
         {order.map((product, index) => (
-          // Usar component de card usado em outro requisito
-
           <div key={ product.name }>
             <span data-testid={ `${index}-product-qtd` }>
               {product.quantity}
