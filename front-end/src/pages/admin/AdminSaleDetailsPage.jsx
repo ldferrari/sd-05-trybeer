@@ -69,3 +69,7 @@ export default function AdminSaleDetailsPage(props) {
 AdminSaleDetailsPage.propTypes = {
   id: PropTypes.string,
 };
+
+AdminSaleDetailsPage.defaultProps = {
+  id: false,
+};
