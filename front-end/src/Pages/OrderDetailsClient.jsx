@@ -15,7 +15,7 @@ function OrderDetails({
   },
 }) {
   const [order, setOrder] = useState([]);
-  const [allOrders, SetAllOrders ] = useState([]);
+  // const [allOrders, SetAllOrders ] = useState([]);
   const [dataDoPedido, setdataDoPedido] = useState(0);
   // let dataDoPedido = 0;
 
