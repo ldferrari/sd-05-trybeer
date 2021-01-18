@@ -78,4 +78,4 @@ const mapDispatchToProps = (dispatch) => ({
   updateUser: (data) => dispatch(updateUserAct(data)),
 });
 
-export default connect(() => {}, mapDispatchToProps)(Profile);
+export default connect(null, mapDispatchToProps)(Profile);

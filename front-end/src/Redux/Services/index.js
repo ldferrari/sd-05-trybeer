@@ -85,6 +85,29 @@ export const registerUser = (data) => (
   )
 );
 
+export const clientSalesByUserId = (id) =>
+  fetch(`${localhostURL}/sales/user/${id}`, myInitWithBody).then((response) =>
+    response
+      .json()
+      .then((json) => Promise.resolve(json))
+      .catch((err) => Promise.reject(err))
+  );
+
+export const salesById = (id) =>
+fetch(`${localhostURL}/orders/${id}`, myInitWithBody).then((response) =>
+  response
+  .json()
+  .then((json) => Promise.resolve(json))
+  .catch((err) => Promise.reject(err)))
+
+export const getSalesOrder = () =>
+    fetch(`${localhostURL}/orders`, myInitWithBody).then((response) =>
+      response
+      .json()
+      .then((json) => Promise.resolve(json))
+      .catch((err) => Promise.reject(err)))
+
+
 const initialAccumulator = 0;
 export const totalPriceOfProducts = (products) => products.reduce(
   (acc, product) => acc + product.quantity * product.price,

@@ -39,6 +39,7 @@ function Checkout({
 
   function submitHandler() {
     setShouldRedirect(true);
+    console.log(cart, userData, total, street, houseNumber);
     submitOrder({
       cart,
       userData,
