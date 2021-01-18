@@ -6,10 +6,6 @@ const OrderCard = (props) => {
   const { index, order } = props;
   const dois = 2;
 
-  if (order.status === 'Entregue') {
-    document.getElementsByClassName('orderStatus')[0].style.backgroundColor = '#008000';
-  }
-
   return (
     <div>
       <Link to={ `/admin/orders/${order.id}` } className="orderContainer">
@@ -22,7 +18,7 @@ const OrderCard = (props) => {
         <span data-testid={ `${index}-order-total-value` }>
           { `R$ ${Number(order.total_price).toFixed(dois).replace('.', ',')}` }
         </span>
-        <p className="orderStatus">
+        <p className={ order.status === 'Entregue' ? 'green orderStatus' : 'orderStatus' }>
           <p data-testid={ `${index}-order-status` }>{order.status}</p>
         </p>
       </Link>

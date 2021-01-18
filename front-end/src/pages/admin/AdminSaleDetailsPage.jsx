@@ -4,10 +4,11 @@ import PropTypes from 'prop-types';
 import MenuAdm from '../../components/admin/MenuAdm';
 import getSaleById from '../../services/admin/getSaleById';
 import updateSalesStatus from '../../services/admin/updateSalesStatus';
+import '../../css/admin/adminDetailsPage.css'
 
 export default function AdminSaleDetailsPage(props) {
   const [saleDetails, setSaleDetails] = useState('');
-  const { match: { params: { id } } } = props;
+  const { id } = props;
   const token = localStorage.getItem('token') || null;
   const dois = 2;
 
@@ -25,7 +26,7 @@ export default function AdminSaleDetailsPage(props) {
   return (
     <div>
       <MenuAdm />
-      <div style={ { marginLeft: '400px' } }>
+      {/* <div className="bodyMargin"> */}
         <div data-testid="order-number">
           {saleDetails && `Pedido ${saleDetails[0].sale_id}`}
         </div>
@@ -60,7 +61,7 @@ export default function AdminSaleDetailsPage(props) {
             Marcar como entregue
           </button>
         ) : null)}
-      </div>
+      {/* </div> */}
     </div>
   );
 }

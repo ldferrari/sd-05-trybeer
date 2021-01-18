@@ -23,10 +23,11 @@ export default function ClientMeusPedidos() {
     <div>
       <Menu title="Meus Pedidos" />
       <div className="bodyMeusPedidos">
-        {pedidos.map((order, index) => (
+        {pedidos && pedidos.map((order, index) => (
           <MeusPedidosCard key={ order.id } order={ order } index={ index } />
         ))}
       </div>
     </div>
   );
 }
+

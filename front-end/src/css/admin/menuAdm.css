@@ -2,7 +2,7 @@
 	background:rgb(196, 135, 3);;
 	height:100%;
 	left: 0;
-	position: fixed;
+	/* position: fixed; */
 	top: 0;
 	transition:all .2s linear;
 	width:20%;
