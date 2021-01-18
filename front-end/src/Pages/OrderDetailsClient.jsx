@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Restrict from '../Components/Restrict';
 import Header from '../Components/Header';
 import Helper from '../Helper';
-import { salesById, totalPriceOfProducts } from '../Redux/Services';
+import { salesById } from '../Redux/Services';
 
 const NOONE = 0;
 const INITIAL = 0;
@@ -20,7 +20,7 @@ function OrderDetails({
     salesById(id).then((data) => setOrder(data));
   }, [id]);
 
-  const total = Helper.transformPrice(totalPriceOfProducts(order));
+  const total = Helper.transformPrice(Helper.totalPriceOfProducts(order));
   const date = (order.length !== NOONE)
     ? Helper.transformDate(order[INITIAL].sale_date)
     : null;

@@ -86,6 +86,12 @@ const transformDate = (date) => {
 // Essa função gera chaves aleatórias para as iterações de map
 const generateKey = (prefix) => `${prefix}-${Math.random()}`;
 
+const initialAccumulator = 0;
+const totalPriceOfProducts = (products) => products.reduce(
+  (acc, product) => acc + product.quantity * product.price,
+  initialAccumulator,
+);
+
 export default {
   getUserData, // Returns user data or null
   generateKey,
@@ -96,4 +102,5 @@ export default {
   addingProductToLocalStorage,
   decreaseProductToLocalStorage,
   deleteProductFromLocalStorage,
+  totalPriceOfProducts,
 };

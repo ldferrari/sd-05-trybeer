@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../Components/Header';
 import Restrict from '../Components/Restrict';
-import { totalPriceOfProducts } from '../Redux/Services';
+import { salesById } from '../Redux/Services';
+import Helper from '../Helper/index';
 
 const mockOrder = [
   {
@@ -25,14 +26,18 @@ const mockOrder = [
 const DECIMALS = 2;
 
 const OrderDetailsAdmin = ({
-  history,
   match: {
     params: { id },
   },
 }) => {
   const [isPendente, setIsPendente] = useState(true);
-  const total = totalPriceOfProducts(mockOrder);
+  const [order, setOrder] = useState([]);
 
+  useEffect(() => {
+    salesById(id).then((data) => setOrder(data));
+  }, [id]);
+
+  const total = Helper.totalPriceOfProducts(order);
   const setAsPendente = () => {
     // marcar como pendente na store e no banco
 
@@ -42,7 +47,7 @@ const OrderDetailsAdmin = ({
 
   return (
     <Restrict>
-      <Header pathname={ history.location.pathname } />
+      {/* <Header pathname={ history.location.pathname } /> */}
       <h2 data-testid="order-number">
         Pedido
         {id}
@@ -51,7 +56,7 @@ const OrderDetailsAdmin = ({
         {isPendente ? <p>Pendente</p> : <p>Entregue</p>}
       </h2>
       <div className="lista-dos-produtos">
-        {mockOrder.map((product, index) => (
+        {order.map((product, index) => (
           // Usar component de card usado em outro requisito
 
           <div key={ product.name }>

@@ -88,9 +88,3 @@ export const getSalesOrder = () => fetch(`${localhostURL}/sales`, myInit).then((
   .json()
   .then((json) => Promise.resolve(json))
   .catch((err) => Promise.reject(err.response)));
-
-const initialAccumulator = 0;
-export const totalPriceOfProducts = (products) => products.reduce(
-  (acc, product) => acc + product.quantity * product.price,
-  initialAccumulator,
-);

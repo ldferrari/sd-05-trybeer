@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import CheckoutProductsList from '../Components/CheckoutProductsList';
@@ -18,6 +19,8 @@ function Checkout({
   const [houseNumber, setHouseNumber] = useState('');
   const [isTotalZero, setisTotalZero] = useState(false);
   const [shouldRedirect, setShouldRedirect] = useState(false);
+  const [redirect, setRedirect] = useState(false);
+
 
   useEffect(() => {
     const localCart = JSON.parse(localStorage.getItem('cart'));
@@ -50,9 +53,11 @@ function Checkout({
 
   if (shouldRedirect) {
     setTimeout(() => {
-      history.push('/products');
+      setRedirect(true);
     }, tresMil);
   }
+  if (redirect) return <Redirect to="/products" />;
+
   return (
     <Restrict>
       <Header pathname={ history.location.pathname } />
