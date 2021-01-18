@@ -44,7 +44,7 @@ export const getProducts = () => (
 );
 
 export const getClientOrder = (id) =>
-  fetch(`${localhostURL}/orders/${id}`, myInitWithBody).then((response) =>
+  fetch(`${localhostURL}/sales/${id}`, myInitWithBody).then((response) =>
     response
       .json()
       .then((json) => Promise.resolve(json))
@@ -56,7 +56,7 @@ export const getSalesOrder = () =>
       response
       .json()
       .then((json) => Promise.resolve(json))
-      .catch((err) => Promise.reject(err))))
+      .catch((err) => Promise.reject(err)))
 
 // prettier-ignore
 export const getUser = (data) => (

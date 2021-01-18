@@ -14,11 +14,11 @@ const AdminOrders = () => {
   return (
     <div>
       <Header />
-       Admin - Orders
+       Admin - Pedidos
       <AdminSideBar />
       <div>
         <div>
-          {orders && orders.map(
+          {orders && orders.map((
             { orderBumber, orderPrice, address, adressNumber, status },
             index
           ) => (
@@ -40,7 +40,7 @@ const AdminOrders = () => {
                 {status}
               </div>
             </Link>
-          )}
+          ))}
         </div>
       </div>
     </div>
