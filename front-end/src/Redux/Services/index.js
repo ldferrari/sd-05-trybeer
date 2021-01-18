@@ -84,10 +84,10 @@ export const salesById = (id) => fetch(`${localhostURL}/sales/${id}`, myInitWith
   .then((json) => Promise.resolve(json))
   .catch((err) => Promise.reject(err)));
 
-export const getSalesOrder = () => fetch(`${localhostURL}/sales`, myInitWithBody).then((response) => response
+export const getSalesOrder = () => fetch(`${localhostURL}/sales`, myInit).then((response) => response
   .json()
   .then((json) => Promise.resolve(json))
-  .catch((err) => Promise.reject(err)));
+  .catch((err) => Promise.reject(err.response)));
 
 const initialAccumulator = 0;
 export const totalPriceOfProducts = (products) => products.reduce(

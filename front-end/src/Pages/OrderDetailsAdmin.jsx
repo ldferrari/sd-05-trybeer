@@ -22,7 +22,7 @@ const mockOrder = [
   },
 ];
 
-const decimals = 2;
+const DECIMALS = 2;
 
 const OrderDetailsAdmin = ({
   history,
@@ -67,7 +67,7 @@ const OrderDetailsAdmin = ({
             </span>
             <span data-testid={ `${index}-product-total-value` }>
               R$
-              {parseFloat(product.price * product.quantity, decimals)}
+              {parseFloat(product.price * product.quantity, DECIMALS)}
             </span>
             <span data-testid="0-order-unit-price">
               (R$
