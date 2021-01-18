@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import MenuAdm from '../../components/admin/MenuAdm';
 import getSaleById from '../../services/admin/getSaleById';
 import updateSalesStatus from '../../services/admin/updateSalesStatus';
-import '../../css/admin/adminDetailsPage.css'
+import '../../css/admin/adminDetailsPage.css';
 
 export default function AdminSaleDetailsPage(props) {
   const [saleDetails, setSaleDetails] = useState('');
@@ -27,13 +27,13 @@ export default function AdminSaleDetailsPage(props) {
     <div>
       <MenuAdm />
       {/* <div className="bodyMargin"> */}
-        <div data-testid="order-number">
+      <div data-testid="order-number">
           {saleDetails && `Pedido ${saleDetails[0].sale_id}`}
         </div>
-        <div data-testid="order-status">
+      <div data-testid="order-status">
           {saleDetails && `${saleDetails[0].status}`}
         </div>
-        {saleDetails && (saleDetails.map((product, index) => (
+      {saleDetails && (saleDetails.map((product, index) => (
           <div key="eslint">
             <span data-testid={ `${index}-product-qtd` }>
               {`${product.quantity}`}
@@ -49,10 +49,10 @@ export default function AdminSaleDetailsPage(props) {
             </span>
           </div>
         )))}
-        <div data-testid="order-total-value">
+      <div data-testid="order-total-value">
           {saleDetails && (`Total: R$ ${saleDetails[0].total_price.replace('.', ',')}`)}
         </div>
-        {saleDetails && (saleDetails[0].status === 'Pendente' ? (
+      {saleDetails && (saleDetails[0].status === 'Pendente' ? (
           <button
             data-testid="mark-as-delivered-btn"
             type="button"
@@ -66,10 +66,6 @@ export default function AdminSaleDetailsPage(props) {
   );
 }
 
-AdminSaleDetailsPage.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.string,
-    }),
-  }).isRequired,
+ClientDetailsOrderPage.propTypes = {
+  id: PropTypes.string,
 };

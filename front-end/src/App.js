@@ -48,7 +48,7 @@ function App() {
 
 export default App;
 
-/* App.propTypes = {
+App.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string,
@@ -58,4 +58,4 @@ export default App;
 
 App.defaultProps = {
   match: false,
-}; */
+};
