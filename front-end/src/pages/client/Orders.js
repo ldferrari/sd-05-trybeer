@@ -23,7 +23,7 @@ function Orders() {
   if (!isLogged) return <Redirect to="/login" />;
 
   return (
-    <div className="checkout-container yellow-background">
+    <div className="orders-big-container yellow-background">
       <ClientMenu title="Meus Pedidos" />
       <div className="orders-container">
       {orders.map((order, index) => <OrderCard order={ order } index={ index } key={ order } />)}

@@ -7,6 +7,13 @@
     padding: 50px 0;
 }
 
+.orders-big-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vmax;
+    width: 100%;
+}
+
 .order-card-size {
     width: 50% !important;
 }

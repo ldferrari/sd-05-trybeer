@@ -44,7 +44,7 @@ function Checkout() {
   };
 
   return (
-    <div>
+    <div className="orders-big-container">
       <ClientMenu data-testid="top-title" title="Finalizar pedido" />
       <div className="checkout-container yellow-background">
       <div className="content-checkout">
