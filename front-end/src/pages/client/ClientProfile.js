@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ClientMenu from '../../components/client/ClientMenu';
 import { updateName } from '../../services/fetch';
 import { checkName } from '../../services/checkUserData';
-
+import '../../css/client/profile.css'
 // console.log();
 
 function ClientProfile() {
@@ -32,33 +32,32 @@ function ClientProfile() {
   };
 
   const myProfile = () => (
-    <div>
+      <div className="profile-container yellow-background">
       <ClientMenu title="Meu perfil" />
-      Name:
-      <div>
+        <div className="content-profile">
         <input
-          data-testid="profile-name-input"
-          defaultValue={ name }
-          onChange={ (e) => handleNameChange(e.target.value) }
-          type="text"
+        placeholder="Name"
+        className="input-layout"
+        data-testid="profile-name-input"
+        defaultValue={ name }
+        onChange={ (e) => handleNameChange(e.target.value) }
+        type="text"
         />
-      </div>
-      Email:
-      <div>
-        <input data-testid="profile-email-input" value={ email } readOnly />
-      </div>
+        <input data-testid="profile-email-input" value={ email } readOnly className="input-layout"/>
       <button
-        type="button"
-        data-testid="profile-save-btn"
-        disabled={ (name === name1) }
-        onClick={ () => {
-          updateName(name1, email).then((result) => saveInStorage(result.name),
-            document.getElementById('update').innerHTML = 'Atualização concluída com sucesso');
-        } }
+      className="waves-effect waves-light btn btn-layout"
+      type="button"
+      data-testid="profile-save-btn"
+      disabled={ (name === name1) }
+      onClick={ () => {
+        updateName(name1, email).then((result) => saveInStorage(result.name),
+        document.getElementById('update').innerHTML = 'Atualização concluída com sucesso');
+      } }
       >
         Salvar
       </button>
       <div id="update" />
+      </div>
     </div>
   );
   return myProfile();
