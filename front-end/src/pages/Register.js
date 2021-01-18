@@ -8,6 +8,7 @@ import {
 } from '../services/checkUserData';
 import TrybeerContext from '../context/TrybeerContext';
 import { createUser } from '../services/fetch';
+import '../css/register.css';
 
 function Register({ history }) {
   const [checkedName, setCheckedName] = useState(false);
@@ -65,46 +66,55 @@ function Register({ history }) {
   };
 
   return (
-    <div>
-      <div>Nome</div>
+    <div className="general-container beer-background">
+      <h1 className="white-text">Registro</h1>
+      <div className="form-container">
       <input
+        className="input-layout"
+        placeholder="Nome"
         data-testid="signup-name"
         type="text"
         onChange={ (e) => handleNameChange(e) }
-      />
-      <div>Email</div>
+        />
       <input
+        className="input-layout"
+        placeholder="Email"
         data-testid="signup-email"
         type="text"
         onChange={ (e) => handleEmailChange(e) }
-      />
-      <div>Senha</div>
+        />
       <input
+        className="input-layout"
+        placeholder="Senha"
         data-testid="signup-password"
         type="password"
         onChange={ (e) => handlePasswordChange(e) }
-      />
-      <div>
+        />
+      <div className="checkbox-container">
         <label htmlFor="vender">
           <input
             data-testid="signup-seller"
+            className="filled-in"
             type="checkbox"
             id="vender"
             onClick={ () => setAdmin(true) }
-          />
-          Quero Vender
+            />
+          <span className="white-text">Quero Vender</span>
         </label>
       </div>
       <button
+      className="waves-effect waves-light btn btn-layout"
         type="button"
         data-testid="signup-btn"
         disabled={ !(checkedName && checkedEmail && checkedPassword) }
         onClick={ () => handleClickRegister() }
-      >
+        >
         Cadastrar
       </button>
       {emailExistis ? <div>E-mail already in database.</div> : null}
     </div>
+
+  </div>
   );
 }
 

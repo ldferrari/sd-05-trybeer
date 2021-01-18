@@ -19,7 +19,7 @@ export default function AdminProductsList({ sale, index }) {
   if (!product.price) return <div>Carregando...</div>;
 
   return (
-    <li>
+    <div className="checkout-card">
       <span data-testid={ `${index}-product-qtd` }>{sale.quantity}</span>
       -
       <span data-testid={ `${index}-product-name` }>{product.name}</span>
@@ -31,7 +31,7 @@ export default function AdminProductsList({ sale, index }) {
       <span data-testid={ `${index}-product-total-value` }>
         { `R$ ${((sale.quantity * product.price).toFixed(two)).replace('.', ',')}` }
       </span>
-    </li>
+    </div>
   );
 }
 

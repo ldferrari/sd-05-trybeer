@@ -13,7 +13,11 @@ export default function OrderStatus({ id }) {
   if (!status) return <div>Carregando...</div>;
 
   return (
-    <span data-testid="order-status">{status}</span>
+    <span data-testid="order-status">
+      <h5 className={status === 'Pendente' ? "red-text" : "green-text"}>
+      {status}
+      </h5>
+      </span>
   );
 }
 

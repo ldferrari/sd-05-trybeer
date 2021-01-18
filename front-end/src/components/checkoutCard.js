@@ -15,7 +15,7 @@ export default function CheckoutCard(props) {
   };
 
   return (
-    <div>
+    <div className="checkout-card">
       <p data-testid={ `${index}-product-qtd-input` }>{quantity}</p>
       <p data-testid={ `${index}-product-name` }>{item.name}</p>
       <p data-testid={ `${index}-product-total-value` }>
@@ -33,7 +33,7 @@ export default function CheckoutCard(props) {
         {' '}
         un)
       </p>
-      <button type="button" data-testid={ `${index}-removal-button` } onClick={ () => decreaseQuantity() }>-</button>
+      <button className="round-btn" type="button" data-testid={ `${index}-removal-button` } onClick={ () => decreaseQuantity() }>-</button>
     </div>
   );
 }

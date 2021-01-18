@@ -24,9 +24,12 @@
   "homepage": "https://github.com/betrybe/sd-0x-trybeer#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "jquery": "^3.5.1",
+    "materialize-css": "^1.0.0-rc.2",
     "mysql2": "^2.1.0",
     "prop-types": "^15.7.2",
     "react-axios": "^2.0.4",
+    "react-materialize": "^3.9.6",
     "sequelize": "^6.3.4"
   },
   "devDependencies": {

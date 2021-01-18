@@ -22,14 +22,20 @@ function AdminProfile() {
   if (!user) return <div>Carregando...</div>;
 
   return (
-    <div>
+    <div className="profile-container yellow-background">
       <AdminMenu />
-      <h2>Perfil</h2>
+      <div className="content-admin-profile">
+      <h2 className="white-text">Perfil</h2>
       <div data-testid="profile-name">
-        { `Nome: ${user.name}` }
+       <h4 className="white-text">
+         { `Nome: ${user.name}` }
+         </h4> 
       </div>
       <div data-testid="profile-email">
+        <h4 className="white-text">
         { `Email: ${user.email}` }
+        </h4>
+      </div>
       </div>
       <DarkModeBtn />
     </div>

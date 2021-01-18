@@ -1,7 +1,87 @@
 /* minimum css so as to visualize better the /products page */
 
-.productCards {
+.products-container {
+  margin-top: 30px;
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: relative !important;
+  overflow: hidden !important;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.card-title {
+  font-size: 15px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between!important;
+}
+
+.close-icon {
+  margin-top: 1em !important;
+  margin-bottom: 1em !important;
+}
+
+.card-content {
+  padding-right: 10px !important;
+  padding-left: 10px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.card-size {
+  height: 40% !important;
+  width: 55% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+.card-text {
+  width: 80% !important;
+}
+
+.card-reveal {
+  padding: 10px 10px!important;
+}
+
+.card-reveal-content {
+  height: 100% !important;
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-evenly !important;
+}
+
+p {
+  margin: 0;
+}
+
+.round-btn {
+  border-radius: 30px;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: #D75B49;
+  border: 0;
+  height: 30px;
+  width: 30px;
+  color:white;
+}
+
+.image-size {
+  margin: 0 !important;
+  padding: 0 !important;
+  flex-direction: column;
+  justify-content: center;
+  height: 100px;
+  width: 120px;
+}
+
+.image-size img {
+  width: auto !important;
+  height: 100% !important;
+  padding-left: 15px;
 }
 
 .eachCard {
@@ -11,4 +91,5 @@
 
 .controlQty {
   display: flex;
+  justify-content: center;
 }

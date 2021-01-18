@@ -1,15 +1,24 @@
+<<<<<<< HEAD
 .menu-superior{
 	background: blue;
 	position: fixed;
 	top:0;
 	width:100%;
+=======
+body {
+  margin: 0;
 }
-
+.menu-superior {
+  width: 100%;
+  margin: 0;
+  background-color: #D75B49
+>>>>>>> 2e28180d29ea36ed2044ae9ca37af2f7d6e357db
+}
 #check {
 	display: none;
 }
-
 .top-hamburguer {
+<<<<<<< HEAD
 	align-self: center;
 	background:blue;
 	box-shadow:0px;
@@ -20,17 +29,35 @@
 	position: fixed;
 	transition:color linear 1s;
 	z-index: 1;
+=======
+  align-self: center;
+  color: #FFB266;
+  float: left;
+  transition: color linear 0.2s;
+  cursor: pointer;
+  position: absolute;
+  display: inline-block;
+  font-size: 25px;
+  padding: 15px;
+  z-index: 3;
+>>>>>>> 2e28180d29ea36ed2044ae9ca37af2f7d6e357db
 }
-
 .top-title {
+<<<<<<< HEAD
 	text-align: center;
 	color: white;
 	font-family: Roboto;
 	font-size: 25px;
 	line-height: 25px;
+=======
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  line-height: 42px;
+>>>>>>> 2e28180d29ea36ed2044ae9ca37af2f7d6e357db
 }
-
 .side-menu-container {
+<<<<<<< HEAD
 	background: blue;
 	height:100%;
   left: -40%;
@@ -38,33 +65,65 @@
 	position: fixed;
 	transition:all 1s linear;
 	width: 20%;
+=======
+  background: #D75B49;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  transition: all 0.3s linear;
+  width: 40%;
+  z-index:ind 3;
 }
 
+.side-menu-container-2 {
+  background: #D75B49;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  transition: all 0.3s linear;
+  width: 10%;
+  z-index:ind 3;
+>>>>>>> 2e28180d29ea36ed2044ae9ca37af2f7d6e357db
+}
+
+.side-menu-container-changed {
+  background: #D75B49;
+}
 .side-menu {
-	display: flex;
-	flex-direction: column;
-	height: 100%;
-	justify-content: space-around;
+  background-color: #D75B49;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-start;
 }
-
 .btn-menu {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
-
 nav a{
-	text-decoration: none;
+  text-decoration: none;
 }
-
 .btn-side {
+<<<<<<< HEAD
 	background: purple;
 	border-radius:5px;
 	color:rgb(255, 255, 255);
 	font-size: 25px;
 	margin: 10%;
 	padding: 10%;
+=======
+  background: #D75B49;
+  border-radius:5px;
+  color: white;
+  font-size: 18px;
+  margin: 5%;
+  padding: 5%;
+>>>>>>> 2e28180d29ea36ed2044ae9ca37af2f7d6e357db
 }
-
 .btn-side:hover{
+<<<<<<< HEAD
 	background: blue;
+=======
+  background: #D75B49;
+>>>>>>> 2e28180d29ea36ed2044ae9ca37af2f7d6e357db
 }

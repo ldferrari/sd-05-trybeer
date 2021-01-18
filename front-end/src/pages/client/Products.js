@@ -4,7 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import ClientMenu from '../../components/client/ClientMenu';
 import { getProducts } from '../../services/fetch';
 import TrybeerContext from '../../context/TrybeerContext';
-import EachProduct from '../../components/client/EachProduct';
+import EachProduct from '../../components/client/newProductCard';
 import '../../css/client/products.css';
 
 function Products() {
@@ -18,22 +18,24 @@ function Products() {
   }, []);
 
   return (
-    <section>
+    <section className="general-container-2 yellow-background">
       <ClientMenu title="TryBeer" />
-      <div className="productCards">
+      <div className="products-container">
         {/* {fetching && <p>Loading...</p>} */}
         {/* BACK - como ver que o fetch acabou? */}
         {dataProducts.map((product, index) => (
           <EachProduct product={ product } index={ index } key={ product } />
         ))}
       </div>
-      <Link to="/checkout">
         <button
+          className="waves-effect waves-light btn btn-layout-2"
           type="button"
           data-testid="checkout-bottom-btn"
           disabled={ !totalPrice }
         >
+          <Link to="/checkout" className="white-text">
           Ver Carrinho
+            </Link>
           <p data-testid="checkout-bottom-btn-value">
             {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(
               totalPrice,
@@ -41,7 +43,6 @@ function Products() {
             {/* fonte sobre currency https://developer.mozilla.org/en-US/docs/Web/Java/Reference/Global_Objects/Intl/NumberFormat/NumberFormat */}
           </p>
         </button>
-      </Link>
       {!isLogged && <Redirect to="/login" />}
     </section>
   );

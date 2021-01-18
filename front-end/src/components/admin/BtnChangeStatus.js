@@ -10,6 +10,7 @@ export default function BtnStatus({ id }) {
 
   return (
     <button
+    className="waves-effect waves-light btn-large orange-background"
       type="button"
       data-testid="mark-as-delivered-btn"
       onClick={ () => closeSale(id).then(setStatus('Entregue')) }

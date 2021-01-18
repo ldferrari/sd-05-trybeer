@@ -12,10 +12,12 @@ function PendingOrders() {
   }, []);
 
   return (
-    <div>
+    <div className="orders-big-container yellow-background">
       <AdminMenu />
-      {allSales.map((order, index) => (
-        <OrderCard key={ order.id } order={ order } index={ index } />))}
+      <div className="orders-container">
+        {allSales.map((order, index) => (
+          <OrderCard key={ order.id } order={ order } index={ index } />))}
+      </div>
     </div>
   );
 }
