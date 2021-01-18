@@ -50,4 +50,8 @@
     color: rgb(196, 135, 3);
     font-weight: 900;
   }
+
+  .green {
+    color: green;
+   }
 }
