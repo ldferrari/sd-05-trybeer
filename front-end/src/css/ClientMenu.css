@@ -1,10 +1,9 @@
-<<<<<<< HEAD
 .menu-superior{
 	background: blue;
 	position: fixed;
 	top:0;
 	width:100%;
-=======
+
 body {
   margin: 0;
 }
@@ -12,13 +11,11 @@ body {
   width: 100%;
   margin: 0;
   background-color: #D75B49
->>>>>>> 2e28180d29ea36ed2044ae9ca37af2f7d6e357db
 }
 #check {
 	display: none;
 }
 .top-hamburguer {
-<<<<<<< HEAD
 	align-self: center;
 	background:blue;
 	box-shadow:0px;
@@ -29,7 +26,6 @@ body {
 	position: fixed;
 	transition:color linear 1s;
 	z-index: 1;
-=======
   align-self: center;
   color: #FFB266;
   float: left;

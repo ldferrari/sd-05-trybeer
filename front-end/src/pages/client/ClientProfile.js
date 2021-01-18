@@ -58,11 +58,8 @@ function ClientProfile() {
         Salvar
       </button>
       <div id="update" />
-<<<<<<< HEAD
       <DarkModeBtn />
-=======
       </div>
->>>>>>> 2e28180d29ea36ed2044ae9ca37af2f7d6e357db
     </div>
   );
   return myProfile();
