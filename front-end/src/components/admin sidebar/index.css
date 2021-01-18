@@ -6,37 +6,59 @@
 .sideBar-admin aside {
   height: auto;
   margin: 0;
-  flex-grow: 1;
+  /* flex-grow: 1; */
   /* flex-flow: column;
   height: 100vh; */
-  overflow: auto;
+  /* overflow: auto; */
 }
 
 .sideBar-admin {
   background-color: black;
   color: white;
   /* float: left; */
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   /* height: 100%; */
   padding: 3%;
   /* position: absolute; */
   text-decoration: none;
-  width: 33%;
+  width: auto;
+  padding: 0 4em;
   z-index: 1;
 }
+aside.sideBar-admin {
+  background-image: url('../../images/chalkboard-1.jpg');
+  background-size: cover;
 
+  margin: 0;
+  padding: 0 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: auto;
+}
 .menuBtnAdmin {
   color: white;
   text-decoration: none;
   padding: 2%;
 }
 
+#title-profile-adm {
+  font-size: 2.5em;
+}
+
 ul {
   list-style-type: none;
 }
 
-Link {
+.div-header-aside-admin {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 28%;
+}
+a {
+  font-size: 2em;
   color: white;
   text-decoration: none;
   padding: 2%;

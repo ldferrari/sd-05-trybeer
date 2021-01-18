@@ -47,10 +47,10 @@
   text-decoration: none;
   padding: 2%;
   width: 37%;
-  margin: auto;
+  margin: 0 auto 1.5em auto;
   cursor: pointer;
   position: sticky;
-  bottom: 3%;
+  bottom: 6%;
 
   /* position:fixed */
  }

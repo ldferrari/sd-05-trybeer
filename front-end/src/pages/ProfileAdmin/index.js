@@ -24,17 +24,22 @@ const PerfilAdmin = () => {
   }
 
   return (
-    <div className="App">
+    <div className="profile-admin">
       <AdminSideBar />
-      <Header>Meu perfil</Header>
-      <h3 data-testid="profile-name">
+      <div className="profile-admin-data">
+      <h3>
         Nome:
+      </h3>
+      <h4 data-testid="profile-name">
         {name}
+      </h4>
+      <h3>
+        Email:
       </h3>
       <h3 data-testid="profile-email">
-        Email:
         {email}
       </h3>
+      </div>
     </div>
 
   );

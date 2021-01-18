@@ -1,5 +1,7 @@
-.App {
+.profile-admin {
   text-align: center;
+  display: flex;
+  flex-direction: row;
 }
 
 .form {
@@ -27,4 +29,13 @@
   width: 300px;
   height: 60px;
   margin: 10px;
+}
+
+.profile-admin-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: normal;
+  padding-top: 2em ;
+  background-color: #ccccccb0;
+  width: 100%;
 }

@@ -4,6 +4,7 @@ import Footer from '../../components/footer';
 import CardOrder from '../../components/CardOrders';
 import AdminSideBar from '../../components/admin sidebar';
 import { getSales } from '../../services/requestAPI';
+import './index.css'
 
 const OrderAdmin = (props) => {
   const [allOrders, setAllOrders] = useState([]);
@@ -28,7 +29,7 @@ const OrderAdmin = (props) => {
   }, [token, history]);
 
   return (
-    <div>
+    <div className="admin-main">
       <div className="Orders" style={ { display: 'flex', alignItems: 'stretch' } }>
         <AdminSideBar />
         <div className="pedido">
