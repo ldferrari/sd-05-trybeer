@@ -34,8 +34,19 @@ body {
   position: absolute;
   transition: all 0.3s linear;
   width: 40%;
-  z-index: 3;
+  z-index:ind 3;
 }
+
+.side-menu-container-2 {
+  background: #D75B49;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  transition: all 0.3s linear;
+  width: 10%;
+  z-index:ind 3;
+}
+
 .side-menu-container-changed {
   background: #D75B49;
 }

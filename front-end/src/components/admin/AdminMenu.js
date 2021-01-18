@@ -27,7 +27,7 @@ function AdminMenu() {
       <h1 className="top-title" data-testid="top-title">
        Trybeer 
       </h1>
-      <div className="side-menu-container" style={ { left, display } }>
+      <div className="side-menu-container-2" style={ { left, display } }>
         <nav className="side-menu">
           <div className="btn-menu">
           <Link className="btn-side" data-testid="side-menu-item-orders" to="/admin/orders">
