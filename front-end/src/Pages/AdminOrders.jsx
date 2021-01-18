@@ -1,13 +1,11 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AdminSideBar from '../Components/AdminSideBar';
-import Header from '../Components/Header';
 import { getSalesOrder } from '../Redux/Services/index';
 
 const AdminOrders = () => {
   const [orders, setOrders] = useState([]);
-  
+
   useEffect(() => {
     getSalesOrder().then((result) => setOrders(result));
   }, []);
@@ -15,26 +13,28 @@ const AdminOrders = () => {
   return (
     <div>
       {/* <Header /> NAO USAR HEADER EM NENHUM COMPONENTE DO ADMIN */}
-       Admin - Pedidos
+      Admin - Pedidos
       <AdminSideBar />
       <div>
         <div>
           {orders && orders.map((
-            { orderBumber, orderPrice, address, adressNumber, status },
-            index
+            {
+              orderNumber, orderPrice, address, addressNumber, status,
+            },
+            index,
           ) => (
-            <Link to={`/admin/orders/${orderBumber}`} >
+            <Link to={ `/admin/orders/${orderNumber}` } key={ orderNumber }>
               <div>
-                <h4 className="product-card" data-testid={`${index}-order-number`}>
-                    {`Pedido ${orderBumber}`}
+                <h4 className="product-card" data-testid={ `${index}-order-number` }>
+                  {`Pedido ${orderNumber}`}
                 </h4>
-                <h4 className="product-card" data-testid={`${index}-order-address`}>
-                    {`Rua ${address} ${adressNumber}`}
+                <h4 className="product-card" data-testid={ `${index}-order-address` }>
+                  {`Rua ${address} ${addressNumber}`}
                 </h4>
               </div>
               <div>
-                <h4 className="product-card" data-testid={`${index}-order-total-value`}>
-                    {`R$ ${orderPrice}`}
+                <h4 className="product-card" data-testid={ `${index}-order-total-value` }>
+                  {`R$ ${orderPrice}`}
                 </h4>
               </div>
               <div className="order-status">

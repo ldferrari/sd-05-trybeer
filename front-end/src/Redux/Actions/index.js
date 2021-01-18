@@ -7,7 +7,6 @@ export const SUBMIT_ORDER_SUCCESS = 'SUBMIT_ORDER_SUCCESS';
 export const SUBMIT_ORDER_ERROR = 'SUBMIT_ORDER_ERROR';
 export const DELETE_PRODUCT_FROM_STORE = 'DELETE_PRODUCT_FROM_STORE';
 
-
 const requestingProducts = () => ({
   type: REQUESTING_PRODUCTS,
 });
@@ -76,4 +75,3 @@ export const deleteProductFromStore = (productId) => ({
   type: DELETE_PRODUCT_FROM_STORE,
   productId,
 });
-

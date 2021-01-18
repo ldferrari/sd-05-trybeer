@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import Restrict from '../Components/Restrict';
 import Header from '../Components/Header';
 
 function Orders({ history }) {
   return (
-    <div>
+    <Restrict>
       <Header pathname={ history.location.pathname } />
       Cliente - Meus pedidos
-    </div>
+    </Restrict>
   );
 }
 

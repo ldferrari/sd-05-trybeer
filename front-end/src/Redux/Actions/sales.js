@@ -4,7 +4,6 @@ export const REQUEST_USER_SALES_SUCCESS = 'REQUEST_USER_SALES_SUCCESS';
 export const REQUEST_USER_SALES_ERROR = 'REQUEST_USER_SALES_ERROR';
 export const REQUESTING_SALES = 'REQUESTING_SALES';
 
-
 const requestingSales = () => ({
   type: REQUESTING_SALES,
 });

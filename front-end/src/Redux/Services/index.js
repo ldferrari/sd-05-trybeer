@@ -2,17 +2,6 @@ import { getDataByKey } from '../../Services/localStorage';
 
 const localhostURL = 'http://localhost:3001';
 
-// NÃO USAR ESTA SINTAXE *lint:
-
-// export const getProducts = () =>
-//   fetch(`${localhostURL}/products`, myInit).then((response) =>
-//     response
-//       .json()
-//       .then((json) =>
-//         response.ok ? Promise.resolve(json) : Promise.reject(json),
-//       ),
-//   );
-
 const myInit = {
   mode: 'cors',
   method: 'GET',
@@ -85,28 +74,20 @@ export const registerUser = (data) => (
   )
 );
 
-export const clientSalesByUserId = (id) =>
-  fetch(`${localhostURL}/sales/user/${id}`, myInitWithBody).then((response) =>
-    response
-      .json()
-      .then((json) => Promise.resolve(json))
-      .catch((err) => Promise.reject(err))
-  );
-
-export const salesById = (id) =>
-fetch(`${localhostURL}/sales/${id}`, myInitWithBody).then((response) =>
-  response
+export const clientSalesByUserId = (id) => fetch(`${localhostURL}/sales/user/${id}`, myInitWithBody).then((response) => response
   .json()
   .then((json) => Promise.resolve(json))
-  .catch((err) => Promise.reject(err)))
+  .catch((err) => Promise.reject(err)));
 
-export const getSalesOrder = () =>
-    fetch(`${localhostURL}/sales`, myInitWithBody).then((response) =>
-      response
-      .json()
-      .then((json) => Promise.resolve(json))
-      .catch((err) => Promise.reject(err)))
+export const salesById = (id) => fetch(`${localhostURL}/sales/${id}`, myInitWithBody).then((response) => response
+  .json()
+  .then((json) => Promise.resolve(json))
+  .catch((err) => Promise.reject(err)));
 
+export const getSalesOrder = () => fetch(`${localhostURL}/sales`, myInitWithBody).then((response) => response
+  .json()
+  .then((json) => Promise.resolve(json))
+  .catch((err) => Promise.reject(err)));
 
 const initialAccumulator = 0;
 export const totalPriceOfProducts = (products) => products.reduce(

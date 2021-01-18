@@ -1,36 +1,38 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-
-const OrderCard = ({ordered: {id, sale_date, total_price}, index}) => {
-  const priceFormated = parseFloat(total_price).toLocaleString("pt-br", {
-    style: "currency",
-    currency: "BRL",
+const OrderCard = ({ ordered: { id, sale_date: saleDate, total_price: totalPrice }, index }) => {
+  const priceFormated = parseFloat(totalPrice).toLocaleString('pt-br', {
+    style: 'currency',
+    currency: 'BRL',
   });
 
-  const dataFormated = new Date(sale_date).toLocaleDateString("pt-br", {
-    day: "2-digit",
-    month: "2-digit",
-    hour: "numeric",
-    minute: "numeric"
+  const dataFormated = new Date(saleDate).toLocaleDateString('pt-br', {
+    day: '2-digit',
+    month: '2-digit',
+    hour: 'numeric',
+    minute: 'numeric',
   });
 
   return (
     <div>
-      <Link to={`/orders/${id}`} className="link to remove">
-        <div className="container-list" data-testid={`${index}-order-card-container`}>
+      <Link to={ `/orders/${id}` } className="link to remove">
+        <div className="container-list" data-testid={ `${index}-order-card-container` }>
           <div>
-            <span className="elements" data-testid={`${index}-order-number`}>
-              Pedido {id}
+            <span className="elements" data-testid={ `${index}-order-number` }>
+              Pedido
+              {' '}
+              {id}
             </span>
           </div>
           <div>
-            <span className="elements" data-testid={`${index}-order-date`}>
+            <span className="elements" data-testid={ `${index}-order-date` }>
               {dataFormated}
             </span>
           </div>
           <div>
-            <span className="elements" data-testid={`${index}-order-total-value`}>
+            <span className="elements" data-testid={ `${index}-order-total-value` }>
               {priceFormated}
             </span>
           </div>
@@ -38,13 +40,11 @@ const OrderCard = ({ordered: {id, sale_date, total_price}, index}) => {
       </Link>
     </div>
   );
-}
+};
 
-// OrderCard.PropTypes = {
-//     id: PropTypes.number,
-//     orderPrice: PropTypes.number,
-//     orderDate: PropTypes.number,
-//     index: PropTypes.number,
-//   };
+OrderCard.propTypes = {
+  ordered: PropTypes.shape(Object).isRequired,
+  index: PropTypes.number.isRequired,
+};
 
 export default OrderCard;

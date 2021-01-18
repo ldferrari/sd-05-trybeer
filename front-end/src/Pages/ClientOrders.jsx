@@ -1,45 +1,57 @@
-import React, { useEffect, useState } from "react";
-import Header from "../Components/Header";
-import OrderCard from "../Components/OrderCard";
-import { Redirect } from 'react-router-dom';
-import { connect } from "react-redux";
-import { getUserSalesAct } from '../Redux/Actions/sales'
+import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import Restrict from '../Components/Restrict';
+import Header from '../Components/Header';
+import OrderCard from '../Components/OrderCard';
+import { getUserSalesAct } from '../Redux/Actions/sales';
 
-const Orders = ({ history, gettingUserSales, salesList, isLoading }) => {
-  const local = JSON.parse(localStorage.getItem("trybeer"));
-  const [shouldRedirect, setShouldRedirect] = useState(false);
+import helper from '../Helper';
 
-  const user = local ? local.user : null
+const Orders = ({
+  history, gettingUserSales, salesList, isLoading,
+}) => {
   useEffect(() => {
-    if (!user) return setShouldRedirect(true);
-    const id = user ? user.id : null
-    if (id) {
+    try {
+      const { id } = helper.getUserData();
       gettingUserSales(id);
+    } catch (err) {
+      console.error(err);
+      // mensagem de usuário inexistente
     }
-  }, []);
-  
-  if (shouldRedirect) return <Redirect to="/login" />;
-  if (isLoading) return <p>Carregando seus pedidos</p>
+  }, [gettingUserSales]);
+
+  if (isLoading) return <p>Carregando seus pedidos</p>;
 
   return (
-    <div>
+    <Restrict>
       <Header pathname={ history.location.pathname } />
       {salesList ? (
         <div className="container">
           <ul>
-            {salesList.map((ordered, index) => {
-              console.log(ordered, index);
-              return (
-                  <li>
-                    <OrderCard ordered={ordered} index={index} />
-                  </li>
-                )})
-            }
+            {salesList.map((ordered, index) => (
+              <li key={ helper.generateKey('order') }>
+                <OrderCard ordered={ ordered } index={ index } />
+              </li>
+            ))}
           </ul>
         </div>
       ) : <span>Você não tem pedidos</span>}
-    </div>
+    </Restrict>
   );
+};
+
+Orders.propTypes = {
+  gettingUserSales: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    location: PropTypes.shape({
+      pathname: PropTypes.string,
+    }),
+  }).isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  salesList: PropTypes.shape({
+    map: PropTypes.func,
+  }).isRequired,
 };
 
 const mapStateToProps = (state) => ({

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import Header from '../Components/Header';
+import Restrict from '../Components/Restrict';
 import { totalPriceOfProducts } from '../Redux/Services';
 
 const mockOrder = [
@@ -40,7 +41,7 @@ const OrderDetailsAdmin = ({
   };
 
   return (
-    <div>
+    <Restrict>
       <Header pathname={ history.location.pathname } />
       <h2 data-testid="order-number">
         Pedido
@@ -86,7 +87,7 @@ const OrderDetailsAdmin = ({
           Marcar como entregue
         </button>
       )}
-    </div>
+    </Restrict>
   );
 };
 

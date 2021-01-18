@@ -5,7 +5,7 @@ import {
 } from '../Actions/sales';
 
 const INITIAL_STATE = {
-  isLoading: true,
+  isLoading: false,
   sales: [],
 };
 

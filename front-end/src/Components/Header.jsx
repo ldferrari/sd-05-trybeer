@@ -6,8 +6,6 @@ import Button from '@material-ui/core/Button';
 import titleForHeader from '../Helper/titleForHeader';
 import SideBar from './SideBar';
 
-import Restrict from './Restrict';
-
 const headerStyle = {
   display: 'flex',
   justifyContent: 'space-between',
@@ -38,7 +36,7 @@ const Header = ({ pathname }) => {
   if (redirect) return <Redirect to={ redirect } />;
 
   return (
-    <Restrict pathname={ pathname }>
+    <div pathname={ pathname }>
       <div style={ headerStyle }>
         <Button onClick={ toggleDrawer() } data-testid="top-hamburguer">
           <i
@@ -58,7 +56,7 @@ const Header = ({ pathname }) => {
           />
         </Drawer>
       </div>
-    </Restrict>
+    </div>
   );
 };
 
