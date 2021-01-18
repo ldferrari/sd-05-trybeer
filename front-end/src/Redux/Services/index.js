@@ -94,14 +94,14 @@ export const clientSalesByUserId = (id) =>
   );
 
 export const salesById = (id) =>
-fetch(`${localhostURL}/orders/${id}`, myInitWithBody).then((response) =>
+fetch(`${localhostURL}/sales/${id}`, myInitWithBody).then((response) =>
   response
   .json()
   .then((json) => Promise.resolve(json))
   .catch((err) => Promise.reject(err)))
 
 export const getSalesOrder = () =>
-    fetch(`${localhostURL}/orders`, myInitWithBody).then((response) =>
+    fetch(`${localhostURL}/sales`, myInitWithBody).then((response) =>
       response
       .json()
       .then((json) => Promise.resolve(json))

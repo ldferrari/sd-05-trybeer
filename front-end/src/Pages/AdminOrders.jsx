@@ -14,7 +14,7 @@ const AdminOrders = () => {
 
   return (
     <div>
-      <Header />
+      {/* <Header /> NAO USAR HEADER EM NENHUM COMPONENTE DO ADMIN */}
        Admin - Pedidos
       <AdminSideBar />
       <div>

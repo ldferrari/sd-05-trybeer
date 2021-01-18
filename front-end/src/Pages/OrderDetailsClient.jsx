@@ -1,49 +1,51 @@
+import { helpers } from 'faker';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../Components/Header';
-import { totalPriceOfProducts } from '../Redux/Services';
+import Helper from '../Helper';
+import { getSalesOrder, salesById, totalPriceOfProducts } from '../Redux/Services';
 
-const mockOrder = [
-  {
-    name: 'skol litraço de 4',
-    quantity: 3,
-    price: 4.12,
-  },
-  {
-    name: 'brahma litraço de 4',
-    quantity: 3,
-    price: 4.23,
-  },
-  {
-    name: 'barril',
-    quantity: 4,
-    price: 42.29,
-  },
-];
+
 
 const decimals = 2;
-// ++++++++++++++
 function OrderDetails({
   history,
   match: {
     params: { id },
   },
 }) {
-  const data = '08/09';
-  const total = totalPriceOfProducts(mockOrder);
+  const [order, setOrder] = useState([]);
+  const [allOrders, SetAllOrders ] = useState([]);
+  const [dataDoPedido, setdataDoPedido] = useState(0);
+  // let dataDoPedido = 0;
+
+  useEffect(() => {
+    salesById(id).then(data => setOrder(data))
+    // getSalesOrder().then(all => SetAllOrders(all));
+    getSalesOrder().then(all => {
+      const saleById = all.find(sale => sale.id == id);
+      const dataFormated = new Date(saleById.sale_date).toLocaleDateString("pt-br", {
+        day: "2-digit",
+        month: "2-digit",
+      });
+      setdataDoPedido(dataFormated);
+    });
+  }, [])
+
+  const total =   Helper.transformPrice(totalPriceOfProducts(order));
+
   return (
     <div>
       <Header pathname={ history.location.pathname } />
       Cliente - Detalhes do Pedido
       <div>
         <h2 data-testid="order-number">
-          Pedido
-          {id}
+          Pedido {id}
         </h2>
-        <h2 data-testid="order-date">{data}</h2>
+        <h2 data-testid="order-date">{dataDoPedido}</h2>
       </div>
       <div className="lista-dos-produtos">
-        {mockOrder.map((product, index) => (
+        {order.map((product, index) => (
           // Usar component de card usado em outro requisito
 
           <div key={ product.name }>
@@ -58,12 +60,10 @@ function OrderDetails({
               {' '}
             </span>
             <span data-testid={ `${index}-product-total-value` }>
-              R$
-              {parseFloat(product.price * product.quantity, decimals)}
+              R$ {Helper.transformPrice(product.price * product.quantity)}
             </span>
             <span>
-              (R$
-              {product.price}
+              (R$ {Helper.transformPrice(product.price)}
               {' '}
               un)
             </span>
@@ -71,8 +71,7 @@ function OrderDetails({
         ))}
       </div>
       <div data-testid="order-total-value">
-        Total: R$
-        {total}
+        Total: R$ {total}
       </div>
     </div>
   );
