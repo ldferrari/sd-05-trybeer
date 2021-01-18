@@ -11,11 +11,19 @@ import ClientCheckoutPage from './pages/client/ClientCheckoutPage';
 import ClientProfilePage from './pages/client/ClientProfilePage';
 import './css/client/app.css';
 import ClientDetailsOrderPage from './pages/client/ClientDetailsOrderPage';
+import AdminSaleDetailsPage from './pages/admin/AdminSaleDetailsPage';
 
 function App() {
   return (
     <div className="App">
       <Switch>
+        <Route
+          path="/admin/orders/:id"
+          render={ (props) => {
+            const { id } = props.match.params;
+            return <AdminSaleDetailsPage id={ id } />;
+          } }
+        />
         <Route path="/admin/orders" component={ AdminOrderPage } />
         <Route path="/admin/profile" component={ AdminProfilePage } />
         <Route path="/login" component={ LoginPage } />
