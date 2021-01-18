@@ -46,6 +46,16 @@ input:focus {
     background-color: #D75B49 !important;
 }
 
+.btn-layout-2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 80% !important;
+    text-decoration: none !important;
+    color: white !important;
+    background-color: #D75B49 !important;
+}
+
 .white-text {
     color: white;
     margin: 0;

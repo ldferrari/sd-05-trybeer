@@ -28,7 +28,7 @@ function Products() {
         ))}
       </div>
         <button
-          className="waves-effect waves-light btn btn-layout"
+          className="waves-effect waves-light btn btn-layout-2"
           type="button"
           data-testid="checkout-bottom-btn"
           disabled={ !totalPrice }
