@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import propTypes from 'prop-types';
 import './index.css';
@@ -7,10 +7,11 @@ import Footer from '../../components/footer';
 // import { Link } from 'react-router-dom';
 import OrderItem from '../../components/orderItems';
 import { postGetTheOrder } from '../../services/requestAPI';
+import AppContext from '../../context/AppContext';
 
 export default function OrderDetails(props) {
   const [orderHere, setOrder] = useState([]);
-  const [dia, setDia] = useState('');
+  const { globalData } = useContext(AppContext);
   // const theToken = localStorage.getItem('token');
   const { id } = useParams();
 
@@ -30,25 +31,22 @@ export default function OrderDetails(props) {
       const temp = await postGetTheOrder(token, id);
       const { data } = temp;
       setOrder(data);
-      setDia(data[0].sale_date);
     }
     fetchOrder();
   }, [props, id]);
 
-  const dataCerta = !dia ? '' : dia.match(/\d{4}-(\d{2})-(\d{2})/);
-
   return (
-    <div>
+    <div className="orderDetailsPage">
       <Header>Detalhes de Pedido</Header>
       <div className="detailsHeader">
-        <h4 data-testid="order-number">
+        <h4 data-testid="order-number" className="orderTitle">
           { `Pedido ${id}` }
         </h4>
-        <h4 data-testid="order-date">
-          { `${dataCerta[2]}/${dataCerta[1]}` }
+        <h4 data-testid="order-date" className="orderTitle">
+          { globalData[id] }
         </h4>
       </div>
-      <div>
+      <div className="pedido">
         <div className="legenda">
           <p>QUANTIDADE</p>
           <p>PRODUTO</p>

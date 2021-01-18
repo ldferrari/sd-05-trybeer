@@ -1,18 +1,25 @@
 .header {
   align-items: center;
-  background-color: black;
-  color: white;
+  background-image: url('../../images/menuBg.jpg');
+  background-size: cover;
+  box-shadow: 0 7px 7px rgba(83, 77, 77, 0.47);
+  border-radius: 3px;
+  color: black;
   display: flex;
   flex-wrap: wrap;
   height: 100px;
-  /* position:fixed; */
+  justify-content: space-around;
   width: 100%;
+}
+
+.logoHeader {
+  height: 90px;
 }
 
 .burguerBtn {
   background: none;
   border: none;
-  color: white;
+  color: black;
   cursor: pointer;
   font-size: 2rem;
   margin-left: 1%;
@@ -25,28 +32,31 @@
 }
 
 .sideBar {
-  background-color: black;
-  color: white;
+  background-image: url('../../images/menuBg.jpg');
+  background-size: cover;
+  color: black;
   float: left;
   /* display: flex;
   flex-direction: column; */
   height: 100%;
   /* margin-top: 100px; */
   /* position: fixed; */
-  padding: 3%;
+  padding: 2%;
   position: absolute;
   text-decoration: none;
   /* transform: translateX(-30rem); */
-  width: 73%;
+  width: 17%;
   z-index: 1;
 }
 /* .sideBar.open {
   transform: translateX(0);
 } */ 
 .menuBtn {
-  color: white;
+  color: black;
   text-decoration: none;
-  padding: 2%;
+  margin-bottom: 7%;
+  padding: 1%;
+  font-size: larger;
 }
 
 ul {
@@ -54,7 +64,15 @@ ul {
 }
 
 Link {
-  color: white;
+  color: black;
   text-decoration: none;
   padding: 2%;
+}
+
+@media screen and ( min-width : 300px ) and ( max-width : 569px ) {
+
+  .sideBar {
+    width: 57%;;
+  }
+
 }

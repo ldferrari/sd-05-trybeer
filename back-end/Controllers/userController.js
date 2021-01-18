@@ -36,8 +36,14 @@ register.post('/', async (req, res) => {
     if (newUser.error) {
       return res.status(newUser.statusCode).json({ message: newUser.message, ok: false });
     }
+    console.log('User Token', {
+      id: newUser.insertId,
+      email,
+      role,
+      iss: 'post_api',
+    });
     const token = createToken({
-      id: newUser.id,
+      id: newUser.insertId,
       email,
       role,
       iss: 'post_api',

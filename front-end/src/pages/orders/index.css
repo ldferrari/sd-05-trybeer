@@ -1,0 +1,13 @@
+.orders {
+  background-image: url('../../images/BG.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.ordersList {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 2%;
+}

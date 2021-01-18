@@ -48,11 +48,6 @@ const CartItem = (props) => {
 export default CartItem;
 
 CartItem.propTypes = {
-  item: PropTypes.shape({
-    id: PropTypes.number,
-    quantity: PropTypes.number,
-    name: PropTypes.string,
-    price: PropTypes.number,
-  }).isRequired,
+  item: PropTypes.instanceOf(Object).isRequired,
   index: PropTypes.number.isRequired,
 };

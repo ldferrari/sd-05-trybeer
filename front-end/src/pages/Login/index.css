@@ -1,3 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+.loginpage {
+  background-image: url('../../images/chalkboard-1.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
+  padding-bottom: 10%;
+  padding-top: 5%;
+}
+
+.logo {
+  width: 37%;
+}
+
+.column-login {
+  display: flex;
+  flex-direction: column;
+  /* align-items:initial; */
+  justify-content: center;
+}
+
+.column-login label {
+  color:white;
+  font-family: 'Permanent Marker', cursive;
+  font-size: x-large;
+  padding: 3%;
+}
+
+.noDecor {
+  border:none;
+  text-decoration: none;
+  background: none;
+}
+.semConta {
+  background: none;
+  border: none;
+  border-color: green;
+  border-radius: 3px;
+  /* font-size:medium; */
+  color: white; 
+  padding: 2%;
+  text-align: center;
+  text-decoration: none;
+  /* margin-left: 1%;*/
+  margin-bottom: 5%;
+  margin-top: 5%;
+  width: 100%;
+}
+
+.inputLogin {
+  height: 2rem;
+  align-self: flex-start;
+  border: none;
+}
+
+.loginBtn {
+  align-items: center;
+  background-color: darkgreen;
+  background-image: url('../../images/images.jpeg');
+  background-size: cover;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  font-size: x-large;
+  justify-content: space-around;
+  text-align: center;
+  text-decoration: none;
+  padding: 5%;
+  /* width: 51%; */
+  margin-left: 2%;
+  cursor: pointer;
+  /* position:fixed */
+ }
+
+ .email-alert {
+   color: red;
+ }
+
+@media screen and ( min-width : 300px ) and ( max-width : 569px ) {
+  .loginpage {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .column-login {
+    width: 100%;
+    align-items: center;
+  }
+
+  .logo {
+    width: 73%;;
+  }
+
+  .loginBtn {
+    width: 51%;
+  }
+  .semConta {
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+}
+
 /*  * {
   margin: 0;
   padding: 0;

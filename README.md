@@ -260,14 +260,12 @@ Variáveis:
 
 ### 1 - Crie uma página de login
 
-RETORNA:
+BACK-END RETORNA:
 ``` js
 {
-    "id": 2,
-    "name": "testuser",
-    "email": "user@test.com",
-    "password": "test123",
-    "role": "client"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImVtYWlsIjoidGVzdGVAdGVzdGUuY29tIiwicm9sZSI6ImFkbWluIiwiaXNzIjoicG9zdF9hcGkiLCJpYXQiOjE2MTA2NDgzODYsImV4cCI6MTYxMzI0MDM4Nn0.N1LfpCOVzfJHj77_JkLxzpISmVsdxty6MGHTo3SsbRo",
+    "role": "admin",
+    "ok": true
 }
 ```
 Esta tela possui o nome `Login` no protótipo.
@@ -320,17 +318,19 @@ Esta tela possui o nome `Login` no protótipo.
 
 ### 2 - Crie uma página de registro de usuários
 
-RETORNA:
-```js
+BACK-END RETORNA:
+``` js
 {
     "user": {
-        "name": "Paulo Ricardao",
-        "email": "paulo@paulo2.com",
-        "role": "admin"
+        "name": "Hugo Leonardo teste",
+        "email": "teste@teste5.com",
+        "role": "client"
     },
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhdWxvQHBhdWxvMi5jb20iLCJyb2xlIjoiYWRtaW4iLCJpc3MiOiJwb3N0X2FwaSIsImlhdCI6MTYwOTkwMDMwMSwiZXhwIjoxNjA5OTg2NzAxfQ.TEBkUCRevflydklknce1RcF_foWjll-upoY8Bz9TB44"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RlQHRlc3RlNS5jb20iLCJyb2xlIjoiY2xpZW50IiwiaXNzIjoicG9zdF9hcGkiLCJpYXQiOjE2MTA2NDkyNjcsImV4cCI6MTYxMzI0MTI2N30.GpVx7ChujCF4RQNKJWECTcE-95QYvrMRyFk-erMlQ4Q",
+    "ok": true
 }
 ```
+
 Esta tela possui o nome `Registro` no protótipo.
 
 - Todos os elementos devem respeitar os atributos descritos no protótipo;
@@ -453,7 +453,7 @@ Esta tela possui o nome `Registro` no protótipo.
 
 ### 4 - Criar tela de perfil do cliente
 
-RETORNA:
+BACK-END RETORNA:
 ``` js
 {
     "user": {
@@ -502,59 +502,71 @@ Esta tela possui o nome `Cliente - Meu Perfil` no protótipo.
 **[Será validado que é possível alterar o nome com sucesso]**
 
 ### 5 - Criar Tela de Produtos
-```js
+BACK-END ENTREGA:
+```json
 [
     {
+        "id": 1,
         "name": "Skol Lata 250ml",
         "price": "2.20",
         "url_image": "http://localhost:3001/images/Skol Lata 350ml.jpg"
     },
     {
+        "id": 2,
         "name": "Heineken 600ml",
         "price": "7.50",
         "url_image": "http://localhost:3001/images/Heineken 600ml.jpg"
     },
     {
+        "id": 3,
         "name": "Antarctica Pilsen 300ml",
         "price": "2.49",
         "url_image": "http://localhost:3001/images/Antarctica Pilsen 300ml.jpg"
     },
     {
+        "id": 4,
         "name": "Brahma 600ml",
         "price": "7.50",
         "url_image": "http://localhost:3001/images/Brahma 600ml.jpg"
     },
     {
+        "id": 5,
         "name": "Skol 269ml",
         "price": "2.19",
         "url_image": "http://localhost:3001/images/Skol 269ml.jpg"
     },
     {
+        "id": 6,
         "name": "Skol Beats Senses 313ml",
         "price": "4.49",
         "url_image": "http://localhost:3001/images/Skol Beats Senses 313ml.jpg"
     },
     {
+        "id": 7,
         "name": "Becks 330ml",
         "price": "4.99",
         "url_image": "http://localhost:3001/images/Becks 330ml.jpg"
     },
     {
+        "id": 8,
         "name": "Brahma Duplo Malte 350ml",
         "price": "2.79",
         "url_image": "http://localhost:3001/images/Brahma Duplo Malte 350ml.jpg"
     },
     {
+        "id": 9,
         "name": "Becks 600ml",
         "price": "8.89",
         "url_image": "http://localhost:3001/images/Becks 600ml.jpg"
     },
     {
+        "id": 10,
         "name": "Skol Beats Senses 269ml",
         "price": "3.57",
         "url_image": "http://localhost:3001/images/Skol Beats Senses 269ml.jpg"
     },
     {
+        "id": 11,
         "name": "Stella Artois 275ml",
         "price": "3.49",
         "url_image": "http://localhost:3001/images/Stella Artois 275ml.jpg"
@@ -680,6 +692,14 @@ data-testid="0-product-qtd"
 
 ### 6 - Criar Tela de Checkout
 
+BACK-END ENTREGA:
+```json
+{
+    "Produtos_adicionados": 2,
+    "Total_Produtos": 2
+}
+```
+
 Esta tela possui o nome `Cliente - Checkout` no protótipo.
 
 - Todos os elementos devem respeitar os atributos descritos no protótipo para a tela;
@@ -780,6 +800,21 @@ data-testid="0-removal-button"
 **[Será validado que não é possível acessar o checkout sem estar logado e será redirecionado para tela de login]**
 
 ### 7 - Criar Tela de Meus Pedidos
+BACK-END ENTREGA:
+```json
+[
+    {
+        "Número do pedido": 22,
+        "sale_date": "13/01",
+        "total_price": "108.47"
+    },
+    {
+        "Número do pedido": 23,
+        "sale_date": "13/01",
+        "total_price": "34.98"
+    }
+]
+```
 
 Esta tela possui o nome `Cliente - Meus Pedidos` no protótipo.
 
@@ -844,6 +879,31 @@ data-testid="0-order-card-container"
 **[Será validado que não é possível acessar a tela de meus pedidos sem estar logado e será redirecionado para tela de login]**
 
 ### 8 - Criar Tela de Detalhes Pedidos
+BACK-END ENTREGA:
+```json
+[
+    {
+        "quantity": "5",
+        "name": "Skol Lata 250ml",
+        "total_price": "108.47"
+    },
+    {
+        "quantity": "10",
+        "name": "Heineken 600ml",
+        "total_price": "108.47"
+    },
+    {
+        "quantity": "3",
+        "name": "Antarctica Pilsen 300ml",
+        "total_price": "108.47"
+    },
+    {
+        "quantity": "2",
+        "name": "Brahma 600ml",
+        "total_price": "108.47"
+    }
+]
+```
 
 Esta tela possui o nome `Cliente - Detalhes de Pedido` no protótipo.
 
@@ -955,6 +1015,13 @@ data-testid="0-product-total-value"
 **[Será validado que ao clicar no menu sair será redirecionado para tela home]**
 
 ### 10 - Criar tela de perfil de Administrador
+BACK-END RETORNA:
+```json
+{
+    "name": "Hugo Leonardo teste",
+    "email": "teste@teste.com"
+}
+```
 
 Esta tela possui o nome `Admin - Perfil` no protótipo.
 
@@ -983,6 +1050,19 @@ Esta tela possui o nome `Admin - Perfil` no protótipo.
 **[Será validado que não é possível acessar a tela sem estar autenticado e ser redirecionado para tela de login]**
 
 ### 11 - Criar tela de pedidos de admin
+
+BACK-END RETORNA:
+```json
+[
+    {
+        "id": 20,
+        "total_price": "86.00",
+        "delivery_address": "Rua Pastor Abreu",
+        "delivery_number": "232",
+        "status": "Pendente"
+    }
+]
+```
 
 Esta tela possui o nome `Admin - Pedidos` no protótipo.
 

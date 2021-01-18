@@ -5,6 +5,7 @@ import './index.css';
 
 import { getProfileInfo, postProfileInfo } from '../../services/requestAPI';
 import Header from '../../components/header';
+import Footer from '../../components/footer';
 
 const Perfil = () => {
   const [name, setName] = useState('');
@@ -52,11 +53,11 @@ const Perfil = () => {
   }
 
   return (
-    <div className="App">
-      <Header>Meu perfil</Header>
-      <h1 data-testid="top-title">Meu perfil</h1>
+    <div className="ProfilePage">
+      <Header>Meu Perfil</Header>
+      <h2 data-testid="top-title">Meu perfil</h2>
       <div className="form">
-        <p>Name</p>
+        <p>Nome:</p>
         <input
           type="text"
           name="name"
@@ -65,7 +66,7 @@ const Perfil = () => {
           data-testid="profile-name-input"
           onChange={ handleChanged }
         />
-        <p>Email</p>
+        <p>E-mail:</p>
         <input
           type="email"
           id="email"
@@ -79,12 +80,13 @@ const Perfil = () => {
           type="submit"
           data-testid="profile-save-btn"
           disabled={ !(validName) }
-          className={ (validName) ? 'ready' : '' }
+          className={ (validName) ? 'ready loginBtn' : '' }
           onClick={ handleSubmit }
         >
           Salvar
         </button>
       </div>
+      <Footer />
     </div>
 
   );

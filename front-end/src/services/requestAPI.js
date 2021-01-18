@@ -13,6 +13,8 @@ const getProfileInfo = async (token) => axios.get('http://localhost:3001/profile
 
 const getSales = async (token) => axios.get('http://localhost:3001/admin/orders', config(token));
 
+const getSaleDetail = async (token, id) => axios.get(`http://localhost:3001/admin/orders/${id}`, config(token));
+
 const postProfileInfo = async (token, name, email) => axios.put('http://localhost:3001/profile', {
   name,
   email,
@@ -44,14 +46,20 @@ const postGetOrders = async (token) => axios.get('http://localhost:3001/orders',
 
 const postGetTheOrder = async (token, id) => axios.get(`http://localhost:3001/orders/${id}`, config(token));
 
+const postStatusDelivered = async (token, id) => axios.put('http://localhost:3001/admin/orders', {
+  id,
+}, config(token));
+
 export {
   getSales,
   postLogin,
   postOrder,
   postRegister,
   postGetItems,
+  postGetOrders,
   getProfileInfo,
   postProfileInfo,
-  postGetOrders,
+  getSaleDetail,
   postGetTheOrder,
+  postStatusDelivered,
 };

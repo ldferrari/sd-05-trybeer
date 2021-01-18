@@ -35,3 +35,7 @@ ul {
   flex-direction: column;
   padding: 0;
 }
+
+.footer {
+  margin: 0;
+}

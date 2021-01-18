@@ -18,6 +18,7 @@ const OrderAdmin = (props) => {
       try {
         const { data } = await getSales(token);
         setAllOrders(data);
+        console.log(data);
       } catch (error) {
         console.log(error);
       }
@@ -27,15 +28,17 @@ const OrderAdmin = (props) => {
   }, [token, history]);
 
   return (
-    <div className="Orders">
-      <AdminSideBar />
-      <div className="pedido">
-        <h2 className="checkoutitle">Pedidos Pendentes</h2>
-        <div className="cartItems">
-          {
-            allOrders
-              .map((item, index) => <CardOrder key={ item.id } order={ item } index={ index } />)
-          }
+    <div>
+      <div className="Orders" style={ { display: 'flex', alignItems: 'stretch' } }>
+        <AdminSideBar />
+        <div className="pedido">
+          <h2 className="checkoutitle">Pedidos Pendentes</h2>
+          <div className="cartItems">
+            {
+              allOrders
+                .map((item, index) => <CardOrder key={ item.id } order={ item } index={ index } />)
+            }
+          </div>
         </div>
       </div>
       <Footer />
@@ -46,5 +49,5 @@ const OrderAdmin = (props) => {
 export default OrderAdmin;
 
 OrderAdmin.propTypes = {
-  history: propTypes.func.isRequired,
+  history: propTypes.instanceOf(Object).isRequired,
 };

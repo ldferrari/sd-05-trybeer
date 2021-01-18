@@ -74,7 +74,8 @@ const Register = (props) => {
   const adminFunction = ({ target: { checked } }) => setIsAdmin(checked);
 
   return (
-    <div>
+    <div className="registerPage">
+      <h2 className="registerTitle">Registre-se:</h2>
       <form className="column-register">
         <fieldset>
           <label htmlFor="name">
@@ -124,7 +125,7 @@ const Register = (props) => {
         <button
           type="submit"
           disabled={ !(validEmail && validPassword && validName) }
-          className={ (validEmail && validPassword && validName) ? 'ready' : '' }
+          className={ (validEmail && validPassword && validName) ? 'ready loginBtn' : '' }
           onClick={ handleSubmit }
           data-testid="signup-btn"
         >

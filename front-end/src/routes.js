@@ -15,8 +15,8 @@ import OrderDetails from './pages/orderDetails';
 
 const Rotas = () => (
   <Switch>
-    <Route exact path="/admin/ordersDetails" component={ OrderAdminDetails } />
     <Route exact path="/admin/orders" component={ OrderAdmin } />
+    <Route exact path="/admin/orders/:id" component={ OrderAdminDetails } />
     <Route exact path="/login" component={ Login } />
     <Route path="/profile" component={ Profile } />
     <Route path="/admin/profile" component={ ProfileAdmin } />
