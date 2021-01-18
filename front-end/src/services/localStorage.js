@@ -1,6 +1,8 @@
 let cart = JSON.parse(localStorage.getItem('cart'));
 
 function addToCart(product) {
+  let alreadyExists = false;
+
   if (!cart) {
     cart = [];
     product.quantity = 1;
@@ -11,12 +13,14 @@ function addToCart(product) {
       if (item.id === product.id) {
         item.quantity += 1;
         localStorage.setItem('cart', JSON.stringify(cart));
-      } else {
-        product.quantity = 1;
-        cart.push(product);
-        localStorage.setItem('cart', JSON.stringify(cart));
+        alreadyExists = true;
       }
     });
+    if (!alreadyExists) {
+      product.quantity = 1;
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
   }
 }
 

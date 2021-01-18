@@ -3,7 +3,7 @@ import { Redirect, useHistory } from 'react-router-dom';
 
 import TryBeerContext from '../context/TryBeerContext';
 import Header from '../components/Header';
-// import products from '../mock_data/productsCart'
+import { placeOrder } from '../services/ApiTrybeer';
 
 const Checkout = () => {
   const {
@@ -12,9 +12,16 @@ const Checkout = () => {
   const [success, setSuccess] = useState(false);
   const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem('cart')) || []);
   const userData = JSON.parse(localStorage.getItem('user'));
+  const email = userData && userData.user && userData.user.email;
   const role = userData && userData.user && userData.user.role;
   const token = userData && userData.token;
   const history = useHistory();
+
+  const date = new Date();
+  const month = date.getUTCMonth() + 1;
+  const day = date.getUTCDate();
+  const year = date.getUTCFullYear();
+  const saleDate = `${year}-${month}-${day}`;
 
   const noValue = 0;
   const decimals = 2;
@@ -23,16 +30,12 @@ const Checkout = () => {
   const priceCart = JSON.parse(localStorage.getItem('cart')) || [];
   const reducer = (sum, product) => sum + (+product.quantity * +product.price);
   const totalPrice = priceCart.reduce(reducer, noValue);
-  // const totalPrice = JSON.parse(localStorage.getItem('totalPrice'));
 
   const goToProducts = () => history.push('/products');
 
-  // useEffect(() => {}, [coruja])
-  // localStorage.setItem('cart', JSON.stringify(cartItems))
-  // console.log(cartItems)
-
   const handleClick = (e) => {
     e.preventDefault();
+    placeOrder(email, totalPrice, streetName, houseNumber, saleDate);
     setSuccess(!success);
     setTimeout(goToProducts, delayTime);
   };
@@ -43,7 +46,6 @@ const Checkout = () => {
     cartList.splice(index, 1);
     setCartItems(cartList);
     localStorage.setItem('cart', JSON.stringify(cartList));
-    // setCartItems(localStorage.setItem('cart', JSON.stringify(cartList)));
   };
 
   const detailsOrder = () => (cartItems.map((item, index) => (
@@ -104,8 +106,3 @@ const Checkout = () => {
 };
 
 export default Checkout;
-
-// 'new' Intl.NumberFormat('pt-BR', {
-//   style: 'currency',
-//   currency: 'BRL',
-// }).format(numeroPraSerFormatado)
