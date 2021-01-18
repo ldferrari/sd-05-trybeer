@@ -22,30 +22,34 @@ function AdminOrdersDetails() {
   if (!saleNumber) return <div>Carregando...</div>;
 
   return (
-    <div>
+    <div className="orders-big-container yellow-background">
       <AdminMenu />
-      <div>
+      <div className="order-detail-content">
+        <div  className="order-number">
+
         <span id="sale-id" data-testid="order-number">
+          <h4 className="white-text">
+
           { `Pedido ${saleNumber}` }
+          </h4>
         </span>
-        <div>
           <OrderStatus id={ saleNumber } />
+      
         </div>
-      </div>
-      <div>
-        <ul>
+        <div className="ordersDetail-card-container">
+
           {saleDetails.map((sale, index) => (
             <AdminProductsList
-              key={ sale.id }
-              sale={ sale }
-              index={ index }
+            key={ sale.id }
+            sale={ sale }
+            index={ index }
             />))}
-        </ul>
-        <span data-testid="order-total-value">
+        </div>
+        <h4 className="white-text" data-testid="order-total-value">
           { `Total: R$ ${(totalPrice.toFixed(two).replace('.', ','))}` }
-        </span>
-      </div>
+        </h4>
       <BtnStatus id={ saleNumber } />
+      </div>
     </div>
   );
 }

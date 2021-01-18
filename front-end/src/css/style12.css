@@ -75,3 +75,11 @@ input:focus {
 .orange-background {
     background-color: #D75B49 !important;
 }
+
+.green-text {
+    color: rgb(2, 180, 2);
+}
+
+.red-text {
+    color: red;
+}

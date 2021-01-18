@@ -14,3 +14,11 @@
     height: 60%;
     align-items: center;
 }
+
+.content-admin-profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 30%;
+    align-items: center;
+}

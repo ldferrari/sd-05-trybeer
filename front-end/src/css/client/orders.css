@@ -18,6 +18,10 @@
     width: 50% !important;
 }
 
+.order-card-size-admin {
+    width: 90% !important;
+}
+
 .order-card-content {
     display: flex;
     flex-direction: row;
