@@ -25,6 +25,7 @@ const PerfilAdmin = () => {
   return (
     <div className="App">
       <AdminSideBar />
+      <div className="adminData">
       <h3 data-testid="profile-name">
         Nome:
         {name}
@@ -34,7 +35,7 @@ const PerfilAdmin = () => {
         {email}
       </h3>
     </div>
-
+    </div>
   );
 };
 
