@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
       <Switch>
-      <Route
+        <Route
           path="/admin/orders/:id"
           render={ (props) => {
             const { id } = props.match.params;

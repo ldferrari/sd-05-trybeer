@@ -29,7 +29,6 @@ const update = async (id, status) => {
   return ({ id, status, message: 'success' });
 };
 
-
 module.exports = {
   getAllSales,
   getSale,

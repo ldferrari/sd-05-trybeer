@@ -1,4 +1,3 @@
-
 const updateSalesStatus = async (id, body) => fetch(`http://localhost:3001/admin/orders/${id}`, {
   method: 'PUT',
   headers: {
