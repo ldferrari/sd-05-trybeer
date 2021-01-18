@@ -19,7 +19,7 @@ body {
   display: inline-block;
   font-size: 25px;
   padding: 15px;
-  z-index: 1;
+  z-index: 3;
 }
 .top-title {
   text-align: center;
@@ -34,6 +34,7 @@ body {
   position: absolute;
   transition: all 0.3s linear;
   width: 40%;
+  z-index: 3;
 }
 .side-menu-container-changed {
   background: #D75B49;
