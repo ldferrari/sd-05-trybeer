@@ -45,7 +45,7 @@ function OrdersDetails({ location: { pathname } }) {
   const handlePrice = (price) => price.replace('.', ',');
 
   return (
-    <div>
+    <div className="orders-big-container">
       <ClientMenu title="Detalhes de Pedido" data-testid="top-title" />
       <div className="checkout-container yellow-background">
       <div className="order-detail-content">
