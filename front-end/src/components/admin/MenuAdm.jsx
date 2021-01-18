@@ -17,7 +17,7 @@ export default function MenuAdm() {
           <Link
             to="/login"
             data-testid="side-menu-item-logout"
-            className="buttonLateral"
+            className="buttonLateralAdm"
             onClick={ () => { localStorage.setItem('token', ''); setUserData({ initialUser }); } }
           >
             Sair
