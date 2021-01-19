@@ -20,11 +20,6 @@ function OrderDetails({
     salesById(id).then((data) => setOrder(data));
   }, [id]);
 
-  if (order.length !== NOONE) {
-
-    console.log(order[INITIAL]);
-  }
-
   const total = Helper.transformPrice(Helper.totalPriceOfProducts(order));
   const date = (order.length !== NOONE)
     ? Helper.transformDate(order[INITIAL].sale_date)
