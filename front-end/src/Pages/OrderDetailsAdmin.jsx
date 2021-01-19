@@ -4,7 +4,6 @@ import Restrict from '../Components/Restrict';
 import { salesById } from '../Redux/Services';
 import Helper from '../Helper/index';
 
-
 const DECIMALS = 2;
 
 const OrderDetailsAdmin = ({
