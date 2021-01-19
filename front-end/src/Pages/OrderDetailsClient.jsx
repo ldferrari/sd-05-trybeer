@@ -28,7 +28,6 @@ function OrderDetails({
   return (
     <Restrict>
       <Header pathname={ history.location.pathname } />
-      Cliente - Detalhes do Pedido
       <div>
         <h2 data-testid="order-number">
           Pedido

@@ -18,7 +18,8 @@ const OrderDetailsAdmin = ({
     salesById(id).then((data) => setOrder(data));
   }, [id]);
 
-  const total = Helper.totalPriceOfProducts(order);
+  const total = Helper.transformPrice(Helper.totalPriceOfProducts(order));
+
   const setAsPendente = () => {
     // marcar como pendente na store e no banco
 
@@ -30,8 +31,7 @@ const OrderDetailsAdmin = ({
     <Restrict>
       {/* <Header pathname={ history.location.pathname } /> */}
       <h2 data-testid="order-number">
-        Pedido
-        {id}
+        Pedido {id}
       </h2>
       <h2 data-testid="order-status" style={ { color: isPendente ? 'yellow' : 'green' } }>
         {isPendente ? <p>Pendente</p> : <p>Entregue</p>}
@@ -57,7 +57,7 @@ const OrderDetailsAdmin = ({
             </span>
             <span data-testid="0-order-unit-price">
               (R$
-              {product.price}
+              {Helper.transformPrice(product.price)}
               {' '}
               un)
             </span>
@@ -65,11 +65,11 @@ const OrderDetailsAdmin = ({
         ))}
         <div data-testid="order-total-value">
           Total: R$
-          {total}
+          {Helper.transformPrice(total)}
         </div>
       </div>
       {isPendente && (
-        <button type="button" onClick={ () => setAsPendente() }>
+        <button data-testid="mark-as-delivered-btn" type="button" onClick={ () => setAsPendente() }>
           Marcar como entregue
         </button>
       )}
