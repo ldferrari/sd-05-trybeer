@@ -15,6 +15,8 @@ import AdminOrders from './Pages/AdminOrders';
 import './App.css';
 import OrderDetailsAdmin from './Pages/OrderDetailsAdmin';
 
+// Parabéns aos envolvidos.
+
 // prettier-ignore
 function App({ ProductsAPI }) {
   useEffect(() => {
