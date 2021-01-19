@@ -99,7 +99,7 @@ const updateStatusFetchFlag = (data, token) => ({
   body: JSON.stringify(data),
 });
 
-export const updateDeliveryStatus = (id, status) => fetch(`${localhostURL}/sales/status`, updateStatusFetchFlag({id, status})).then((response) => response
-.json()
-.then((json) => Promise.resolve(json))
-.catch((err) => Promise.reject(err.response)));
+export const updateDeliveryStatus = (id, status) => fetch(`${localhostURL}/sales/status`, updateStatusFetchFlag({ id, status })).then((response) => response
+  .json()
+  .then((json) => Promise.resolve(json))
+  .catch((err) => Promise.reject(err.response)));

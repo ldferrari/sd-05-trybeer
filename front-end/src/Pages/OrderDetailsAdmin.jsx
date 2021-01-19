@@ -30,10 +30,14 @@ const OrderDetailsAdmin = ({
     <Restrict>
       {/* <Header pathname={ history.location.pathname } /> */}
       <AdminSideBar />
-      <h2 data-testid="order-number">Pedido {id}</h2>
+      <h2 data-testid="order-number">
+        Pedido
+        {' '}
+        {id}
+      </h2>
       <h2
         data-testid="order-status"
-        style={{ color: isPendente ? 'yellow' : 'green' }}
+        style={ { color: isPendente ? 'yellow' : 'green' } }
       >
         {isPendente ? <p>Pendente</p> : <p>Entregue</p>}
       </h2>
@@ -44,29 +48,42 @@ const OrderDetailsAdmin = ({
           );
 
           return (
-            <div key={product.name}>
-              <span data-testid={`${index}-product-qtd`}>
-                {product.quantity} -{' '}
+            <div key={ product.name }>
+              <span data-testid={ `${index}-product-qtd` }>
+                {product.quantity}
+                {' '}
+                -
+                {' '}
               </span>
-              <span data-testid={`${index}-product-name`}>{product.name} </span>
-              <span data-testid={`${index}-product-total-value`}>
-                R$ {totalValueByProduct}
+              <span data-testid={ `${index}-product-name` }>
+                {product.name}
+                {' '}
+              </span>
+              <span data-testid={ `${index}-product-total-value` }>
+                R$
+                {' '}
+                {totalValueByProduct}
               </span>
               <span data-testid="0-order-unit-price">
-                (R$ {Helper.transformPrice(product.price)})
+                (R$
+                {' '}
+                {Helper.transformPrice(product.price)}
+                )
               </span>
             </div>
           );
         })}
         <div data-testid="order-total-value">
-          Total: R$ {total}
+          Total: R$
+          {' '}
+          {total}
         </div>
       </div>
       {isPendente && (
         <button
           data-testid="mark-as-delivered-btn"
           type="button"
-          onClick={() => setAsPendente()}
+          onClick={ () => setAsPendente() }
         >
           Marcar como entregue
         </button>
