@@ -1,27 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
-import Header from '../Components/Header';
 import Restrict from '../Components/Restrict';
 import { salesById } from '../Redux/Services';
 import Helper from '../Helper/index';
 
-const mockOrder = [
-  {
-    name: 'skol litraço de 4',
-    quantity: 3,
-    price: 4.12,
-  },
-  {
-    name: 'brahma litraço de 4',
-    quantity: 3,
-    price: 4.23,
-  },
-  {
-    name: 'barril',
-    quantity: 4,
-    price: 42.29,
-  },
-];
 
 const DECIMALS = 2;
 

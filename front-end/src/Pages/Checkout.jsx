@@ -21,7 +21,6 @@ function Checkout({
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const [redirect, setRedirect] = useState(false);
 
-
   useEffect(() => {
     const localCart = JSON.parse(localStorage.getItem('cart'));
     if (localCart) repopulatingStore(localCart);
