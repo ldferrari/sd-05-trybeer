@@ -7,9 +7,9 @@ import Login from './Pages/Login';
 import Profile from './Pages/Profile';
 import Products from './Pages/Products';
 import Checkout from './Pages/Checkout';
-import Orders from './Pages/Orders';
+import ClientOrders from './Pages/ClientOrders';
 import Register from './Pages/Register';
-import orderDetails from './Pages/orderDetails';
+import OrderDetailsClient from './Pages/OrderDetailsClient';
 import AdminProfile from './Pages/AdminProfile';
 import AdminOrders from './Pages/AdminOrders';
 import './App.css';
@@ -31,8 +31,8 @@ function App({ ProductsAPI }) {
         <Route exact path="/profile" component={ Profile } />
         <Route exact path="/products" component={ Products } />
         <Route exact path="/checkout" component={ Checkout } />
-        <Route exact path="/orders" component={ Orders } />
-        <Route path="/orders/:id" component={ orderDetails } />
+        <Route exact path="/orders" component={ ClientOrders } />
+        <Route path="/orders/:id" component={ OrderDetailsClient } />
         <Route exact path="/register" component={ Register } />
         <Route exact path="/admin/orders" component={ AdminOrders } />
         <Route exact path="/admin/orders/:id" component={ OrderDetailsAdmin } />

@@ -2,17 +2,6 @@ import { getDataByKey } from '../../Services/localStorage';
 
 const localhostURL = 'http://localhost:3001';
 
-// NÃO USAR ESTA SINTAXE *lint:
-
-// export const getProducts = () =>
-//   fetch(`${localhostURL}/products`, myInit).then((response) =>
-//     response
-//       .json()
-//       .then((json) =>
-//         response.ok ? Promise.resolve(json) : Promise.reject(json),
-//       ),
-//   );
-
 const myInit = {
   mode: 'cors',
   method: 'GET',
@@ -85,8 +74,32 @@ export const registerUser = (data) => (
   )
 );
 
-const initialAccumulator = 0;
-export const totalPriceOfProducts = (products) => products.reduce(
-  (acc, product) => acc + product.quantity * product.price,
-  initialAccumulator,
-);
+export const clientSalesByUserId = (id) => fetch(`${localhostURL}/sales/user/${id}`, myInitWithBody).then((response) => response
+  .json()
+  .then((json) => Promise.resolve(json))
+  .catch((err) => Promise.reject(err)));
+
+export const salesById = (id) => fetch(`${localhostURL}/sales/${id}`, myInitWithBody).then((response) => response
+  .json()
+  .then((json) => Promise.resolve(json))
+  .catch((err) => Promise.reject(err)));
+
+export const getSalesOrder = () => fetch(`${localhostURL}/sales`, myInit).then((response) => response
+  .json()
+  .then((json) => Promise.resolve(json))
+  .catch((err) => Promise.reject(err.response)));
+
+const updateStatusFetchFlag = (data, token) => ({
+  mode: 'cors',
+  method: 'PUT',
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: token || '',
+  },
+  body: JSON.stringify(data),
+});
+
+export const updateDeliveryStatus = (id, status) => fetch(`${localhostURL}/sales/status`, updateStatusFetchFlag({ id, status })).then((response) => response
+  .json()
+  .then((json) => Promise.resolve(json))
+  .catch((err) => Promise.reject(err.response)));

@@ -6,6 +6,7 @@ import Header from '../Components/Header';
 import ProductCard from '../Components/ProductCard';
 import Helpers from '../Helper/index';
 import { repopulatingAct } from '../Redux/Actions';
+import Restrict from '../Components/Restrict';
 
 const zero = 0;
 
@@ -26,7 +27,7 @@ function Products({
   if (redirect) return <Redirect to={ redirect } />;
   // if (condição massa ) return <Redirect to="/login" />;
   return (
-    <div>
+    <Restrict>
       <Header pathname={ history.location.pathname } />
       <h1>Produtos</h1>
       {products.map((product) => (
@@ -45,7 +46,7 @@ function Products({
           {`R$ ${Helpers.transformPrice(total)}`}
         </p>
       </button>
-    </div>
+    </Restrict>
   );
 }
 
