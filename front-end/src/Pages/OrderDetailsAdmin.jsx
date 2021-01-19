@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import Restrict from '../Components/Restrict';
-import { salesById } from '../Redux/Services';
+import { salesById, updateDeliveryStatus } from '../Redux/Services';
 import Helper from '../Helper/index';
-
-const DECIMALS = 2;
+import AdminSideBar from '../Components/AdminSideBar';
 
 const OrderDetailsAdmin = ({
   match: {
@@ -22,7 +21,7 @@ const OrderDetailsAdmin = ({
 
   const setAsPendente = () => {
     // marcar como pendente na store e no banco
-
+    updateDeliveryStatus(id, 'Entregue');
     // ---
     setIsPendente(false);
   };
@@ -30,46 +29,45 @@ const OrderDetailsAdmin = ({
   return (
     <Restrict>
       {/* <Header pathname={ history.location.pathname } /> */}
-      <h2 data-testid="order-number">
-        Pedido {id}
-      </h2>
-      <h2 data-testid="order-status" style={ { color: isPendente ? 'yellow' : 'green' } }>
+      <AdminSideBar />
+      <h2 data-testid="order-number">Pedido {id}</h2>
+      <h2
+        data-testid="order-status"
+        style={{ color: isPendente ? 'yellow' : 'green' }}
+      >
         {isPendente ? <p>Pendente</p> : <p>Entregue</p>}
       </h2>
       <div className="lista-dos-produtos">
-        {order.map((product, index) => (
-          // Usar component de card usado em outro requisito
+        {order.map((product, index) => {
+          const totalValueByProduct = Helper.transformPrice(
+            product.price * product.quantity,
+          );
 
-          <div key={ product.name }>
-            <span data-testid={ `${index}-product-qtd` }>
-              {product.quantity}
-              {' '}
-              -
-              {' '}
-            </span>
-            <span data-testid={ `${index}-product-name` }>
-              {product.name}
-              {' '}
-            </span>
-            <span data-testid={ `${index}-product-total-value` }>
-              R$
-              {parseFloat(product.price * product.quantity, DECIMALS)}
-            </span>
-            <span data-testid="0-order-unit-price">
-              (R$
-              {Helper.transformPrice(product.price)}
-              {' '}
-              un)
-            </span>
-          </div>
-        ))}
+          return (
+            <div key={product.name}>
+              <span data-testid={`${index}-product-qtd`}>
+                {product.quantity} -{' '}
+              </span>
+              <span data-testid={`${index}-product-name`}>{product.name} </span>
+              <span data-testid={`${index}-product-total-value`}>
+                R$ {totalValueByProduct}
+              </span>
+              <span data-testid="0-order-unit-price">
+                (R$ {Helper.transformPrice(product.price)})
+              </span>
+            </div>
+          );
+        })}
         <div data-testid="order-total-value">
-          Total: R$
-          {Helper.transformPrice(total)}
+          Total: R$ {total}
         </div>
       </div>
       {isPendente && (
-        <button data-testid="mark-as-delivered-btn" type="button" onClick={ () => setAsPendente() }>
+        <button
+          data-testid="mark-as-delivered-btn"
+          type="button"
+          onClick={() => setAsPendente()}
+        >
           Marcar como entregue
         </button>
       )}

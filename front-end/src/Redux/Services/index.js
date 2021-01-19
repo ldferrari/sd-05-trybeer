@@ -88,3 +88,18 @@ export const getSalesOrder = () => fetch(`${localhostURL}/sales`, myInit).then((
   .json()
   .then((json) => Promise.resolve(json))
   .catch((err) => Promise.reject(err.response)));
+
+const updateStatusFetchFlag = (data, token) => ({
+  mode: 'cors',
+  method: 'PUT',
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: token || '',
+  },
+  body: JSON.stringify(data),
+});
+
+export const updateDeliveryStatus = (id, status) => fetch(`${localhostURL}/sales/status`, updateStatusFetchFlag({id, status})).then((response) => response
+.json()
+.then((json) => Promise.resolve(json))
+.catch((err) => Promise.reject(err.response)));
