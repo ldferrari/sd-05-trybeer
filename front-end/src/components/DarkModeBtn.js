@@ -7,7 +7,8 @@ function DarkModeBtn() {
 
   const darkOnOff = () => {
     if (theme === 'light') setTheme('dark');
-    else setTheme('light');
+    if (theme === 'dark') setTheme('light');
+    // else setTheme('light');
   };
 
   return (

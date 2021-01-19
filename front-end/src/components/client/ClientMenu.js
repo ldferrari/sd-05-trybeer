@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import DarkModeBtn from '../DarkModeBtn';
 import '../../css/ClientMenu.css';
 
 function ClientMenu(props) {
@@ -29,6 +30,7 @@ function ClientMenu(props) {
       <h1 className="top-title" data-testid="top-title">
         {title}
       </h1>
+      <DarkModeBtn />
       <div className="side-menu-container" style={ { left, display } }>
         <nav className="side-menu">
           <div className="btn-menu">

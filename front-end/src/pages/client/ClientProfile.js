@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import ClientMenu from '../../components/client/ClientMenu';
-import DarkModeBtn from '../../components/DarkModeBtn';
 import { updateName } from '../../services/fetch';
 import { checkName } from '../../services/checkUserData';
 import '../../css/client/profile.css'
@@ -58,7 +57,6 @@ function ClientProfile() {
         Salvar
       </button>
       <div id="update" />
-      <DarkModeBtn />
       </div>
     </div>
   );

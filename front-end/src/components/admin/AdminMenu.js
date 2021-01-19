@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import DarkModeBtn from '../DarkModeBtn';
 import '../../css/ClientMenu.css';
 
 function AdminMenu() {
@@ -27,6 +28,7 @@ function AdminMenu() {
       <h1 className="top-title" data-testid="top-title">
        Trybeer 
       </h1>
+      <DarkModeBtn />
       <div className="side-menu-container-2" style={ { left, display } }>
         <nav className="side-menu">
           <div className="btn-menu">
