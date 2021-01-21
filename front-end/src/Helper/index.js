@@ -61,9 +61,10 @@ const transformDate = (date) => new Date(date)
 // Essa função gera chaves aleatórias para as iterações de map
 const generateKey = (prefix) => `${prefix}-${Math.random()}`;
 
+const initialAccumulator = 0;
 const totalPriceOfProducts = (products) => products.reduce(
   (acc, product) => acc + product.quantity * product.price,
-  MIN,
+  initialAccumulator,
 );
 
 export default {

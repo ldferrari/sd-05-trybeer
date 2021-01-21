@@ -8,7 +8,6 @@ import Restrict from '../Components/Restrict';
 
 import helpers from '../Helper/';
 
-const INITIAL_VALUE = 0;
 const TIMEOUT = 3000;
 
 function Checkout({
