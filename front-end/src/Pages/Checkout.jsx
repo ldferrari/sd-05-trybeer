@@ -1,49 +1,45 @@
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
 import CheckoutProductsList from '../Components/CheckoutProductsList';
 import Header from '../Components/Header';
 import Input from '../Components/Input';
-import { submitOrderAct, repopulatingAct } from '../Redux/Actions/index';
 import Restrict from '../Components/Restrict';
 
-const zero = 0;
-const tresMil = 3000;
+import helpers from '../Helper/';
+
+const INITIAL_VALUE = 0;
+const TIMEOUT = 3000;
 
 function Checkout({
-  history, userData, cart, submitOrder, repopulatingStore,
+  history, userData, submitOrder
 }) {
   const [buttonShoulBeDisabled, setbuttonShoulBeDisabled] = useState(false);
   const [street, setStreet] = useState('');
   const [houseNumber, setHouseNumber] = useState('');
-  const [isTotalZero, setisTotalZero] = useState(false);
   const [shouldRedirect, setShouldRedirect] = useState(false);
+  const [redirect, setRedirect] = useState(false);
+
+  const [cart] = useState(helpers.getCartInfo());
 
   useEffect(() => {
-    const localCart = JSON.parse(localStorage.getItem('cart'));
-    if (localCart) repopulatingStore(localCart);
-  }, [repopulatingStore]);
+    const c = helpers.getCartInfo();
+    console.log(c);
+  }, []);
 
   useEffect(() => {
-    if (isTotalZero || street === '' || houseNumber === '') {
+    if (false || street === '' || houseNumber === '') {
       setbuttonShoulBeDisabled(true);
     } else {
       setbuttonShoulBeDisabled(false);
     }
-  }, [isTotalZero, setbuttonShoulBeDisabled, street, houseNumber]);
-
-  const total = cart.reduce(
-    (acc, product) => acc + product.quantity * product.price,
-    zero,
-  );
+  }, [setbuttonShoulBeDisabled, street, houseNumber]);
 
   function submitHandler() {
     setShouldRedirect(true);
-    console.log(cart, userData, total, street, houseNumber);
     submitOrder({
       cart,
       userData,
-      total,
       street,
       houseNumber,
     });
@@ -51,15 +47,16 @@ function Checkout({
 
   if (shouldRedirect) {
     setTimeout(() => {
-      history.push('/products');
-    }, tresMil);
+      setRedirect(true);
+    }, TIMEOUT);
   }
+  if (redirect) return <Redirect to="/products" />;
+
   return (
     <Restrict>
       <Header pathname={ history.location.pathname } />
       <h3>Produtos</h3>
-      {total === zero && <p>Não há produtos no carrinho</p>}
-      <CheckoutProductsList setisTotalZero={ setisTotalZero } />
+      <CheckoutProductsList cart={ cart } />
       <h3>Endereço</h3>
       <p>Rua:</p>
       <br />
@@ -106,14 +103,4 @@ Checkout.propTypes = {
   repopulatingStore: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({ userRequestReducer, productsRequestReducer }) => ({
-  userData: userRequestReducer.userData,
-  cart: productsRequestReducer.cart,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  submitOrder: (data) => dispatch(submitOrderAct(data)),
-  repopulatingStore: (cart) => dispatch(repopulatingAct(cart)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Checkout);
+export default Checkout;

@@ -20,18 +20,6 @@ const Register = ({ registerUser, userError }) => {
     else isSetDisabled(true);
   }
 
-  // ++++++++++++++++++++++++++
-
-  // useEffect precisa colocar a função que sera usada nas dependências
-  // Que por sua vez, se for uma função que que muda algum state local, pode dar um loop estranho.
-  // Lint não permite
-
-  // useEffect(() => {
-  //   validate();
-  // }, [name, email, password, validate]);
-
-  // ++++++++++++++++++++++++++
-
   if (shouldRedirect && !userError) {
     if (!isSeller) {
       return <Redirect to="/products" />;

@@ -1,92 +1,94 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
-import Header from '../Components/Header';
-import { totalPriceOfProducts } from '../Redux/Services';
-
-const mockOrder = [
-  {
-    name: 'skol litraço de 4',
-    quantity: 3,
-    price: 4.12,
-  },
-  {
-    name: 'brahma litraço de 4',
-    quantity: 3,
-    price: 4.23,
-  },
-  {
-    name: 'barril',
-    quantity: 4,
-    price: 42.29,
-  },
-];
-
-const decimals = 2;
+import React, { useState, useEffect } from 'react';
+import Restrict from '../Components/Restrict';
+import { salesById, updateDeliveryStatus } from '../Redux/Services';
+import Helper from '../Helper/index';
+import AdminSideBar from '../Components/AdminSideBar';
 
 const OrderDetailsAdmin = ({
-  history,
   match: {
     params: { id },
   },
 }) => {
   const [isPendente, setIsPendente] = useState(true);
-  const total = totalPriceOfProducts(mockOrder);
+  const [order, setOrder] = useState([]);
+
+  useEffect(() => {
+    salesById(id).then((data) => setOrder(data));
+  }, [id]);
+
+  const total = Helper.transformPrice(Helper.totalPriceOfProducts(order));
 
   const setAsPendente = () => {
     // marcar como pendente na store e no banco
-
+    updateDeliveryStatus(id, 'Entregue');
     // ---
     setIsPendente(false);
   };
 
   return (
-    <div>
-      <Header pathname={ history.location.pathname } />
+    <Restrict>
+      {/* <Header pathname={ history.location.pathname } /> */}
+      <AdminSideBar />
       <h2 data-testid="order-number">
         Pedido
+        {' '}
         {id}
       </h2>
-      <h2 data-testid="order-status" style={ { color: isPendente ? 'yellow' : 'green' } }>
+      <h2
+        data-testid="order-status"
+        style={ { color: isPendente ? 'yellow' : 'green' } }
+      >
         {isPendente ? <p>Pendente</p> : <p>Entregue</p>}
       </h2>
       <div className="lista-dos-produtos">
-        {mockOrder.map((product, index) => (
-          // Usar component de card usado em outro requisito
+        {order.map((product, index) => {
+          const totalValueByProduct = Helper.transformPrice(
+            product.price * product.quantity,
+          );
 
-          <div key={ product.name }>
-            <span data-testid={ `${index}-product-qtd` }>
-              {product.quantity}
-              {' '}
-              -
-              {' '}
-            </span>
-            <span data-testid={ `${index}-product-name` }>
-              {product.name}
-              {' '}
-            </span>
-            <span data-testid={ `${index}-product-total-value` }>
-              R$
-              {parseFloat(product.price * product.quantity, decimals)}
-            </span>
-            <span data-testid="0-order-unit-price">
-              (R$
-              {product.price}
-              {' '}
-              un)
-            </span>
-          </div>
-        ))}
+          return (
+            <div key={ product.name }>
+              <span data-testid={ `${index}-product-qtd` }>
+                {product.quantity}
+                {' '}
+                -
+                {' '}
+              </span>
+              <span data-testid={ `${index}-product-name` }>
+                {product.name}
+                {' '}
+              </span>
+              <span data-testid={ `${index}-product-total-value` }>
+                R$
+                {' '}
+                {totalValueByProduct}
+              </span>
+              <span data-testid="0-order-unit-price">
+                (R$
+                {' '}
+                {Helper.transformPrice(product.price)}
+                )
+              </span>
+            </div>
+          );
+        })}
         <div data-testid="order-total-value">
           Total: R$
+          {' '}
           {total}
         </div>
       </div>
       {isPendente && (
-        <button type="button" onClick={ () => setAsPendente() }>
+        <button
+          data-testid="mark-as-delivered-btn"
+          type="button"
+          onClick={ () => setAsPendente() }
+        >
           Marcar como entregue
         </button>
       )}
-    </div>
+    </Restrict>
   );
 };
 

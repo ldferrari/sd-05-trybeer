@@ -11,18 +11,19 @@ const cssProvisorio = {
 };
 // Me falem se tinha melhor opção que usar várias divs, por favor, Paulo
 function CheckoutProductCard({ item, i, triggerDelete }) {
+  const { quantity, name, price, id } = item;
   return (
     <div style={ cssProvisorio }>
-      <div data-testid={ `${i}-product-qtd-input` }>{item.quantity}</div>
-      <div data-testid={ `${i}-product-name` }>{item.name}</div>
+      <div data-testid={ `${i}-product-qtd-input` }>{quantity}</div>
+      <div data-testid={ `${i}-product-name` }>{name}</div>
       <div data-testid={ `${i}-product-total-value` }>
-        {`R$ ${helper.transformPrice(item.quantity * item.price)}`}
+        {`R$ ${helper.transformPrice(Number(quantity) * Number(price))}`}
       </div>
       <div data-testid={ `${i}-product-unit-price` }>
-        {`(R$ ${helper.transformPrice(item.price)} un)`}
+        {`(R$ ${helper.transformPrice(price)} un)`}
       </div>
       <button
-        onClick={ () => triggerDelete(i, item.id) }
+        onClick={ () => triggerDelete(i, id) }
         type="button"
         data-testid={ `${i}-removal-button` }
       >

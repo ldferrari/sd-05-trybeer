@@ -1,3 +1,12 @@
+import getUserData from './getUserData';
+import {
+  registerData,
+  getDataByKey,
+} from './localStorageHandle';
+
+const CART = 'cart';
+const MIN = 0;
+
 const transformPrice = (value) => {
   const decimals = 2;
   const valueWith2Decimals = parseFloat(value).toFixed(decimals);
@@ -5,79 +14,66 @@ const transformPrice = (value) => {
   return valueWithComma;
 };
 
-const verifyQuantity = (cart, product) => {
-  if (cart) {
-    const cartItem = cart.find((item) => item.id === product.id);
-    if (cartItem) return cartItem.quantity;
-  }
-  return null;
+const getCartInfo = () => {
+  const currentCart = getDataByKey(CART);
+  if (!currentCart) return {};
+  return Object.keys(currentCart).reduce((info, id) => {
+    const { quantity, price, name } = currentCart[id];
+    if (quantity === 0) return info;
+    const itemArray = [ ...info.itemArray, { id, price, quantity, name } ];
+    const total = info.total += Number(quantity) * Number(price);
+    return {
+      total,
+      itemArray,
+    };
+  }, { total: 0, itemArray: [] });
 };
 
-const getLocalStorage = (key) => {
-  const local = localStorage.getItem(key);
-  if (!local) {
-    return [];
-  }
-  return JSON.parse(local);
+const getProductFromCartById = (productId) => {
+  const currentCart = getDataByKey(CART)?.[productId];
+  return currentCart || {};
 };
 
-const zero = 0;
+const setProductToCart = (product, amount) => {
+  const currentCart = getDataByKey(CART);
+  const item = {
+    ...product,
+    quantity: Math.max((currentCart[product.id]?.quantity || 0) + amount, 0),
+  };
+  const cart = { ...currentCart, [product.id]: item };
+  registerData({ cart });
+  return item.quantity;
+};
 
-const addingProductToLocalStorage = (product, quantity) => {
-  const local = getLocalStorage('cart');
-  product = { ...product, quantity };
-  let setToLocalStorage = [...local];
-  if (local.length === zero) {
-    setToLocalStorage = [...local, product];
-  }
-  local.forEach((item, index) => {
-    if (item.id === product.id) {
-      setToLocalStorage = [...local];
-      setToLocalStorage[index] = product;
-    }
+const deleteProductById = (productID) => {
+  const currentCart = getDataByKey(CART);
+  const { [productID]: product, ...cart } = currentCart;
+  registerData({ cart });
+  return cart;
+};
+
+const transformDate = (date) => new Date(date)
+  .toLocaleDateString('pt-br', {
+    day: '2-digit',
+    month: '2-digit',
   });
-  if (!local.some((item) => item.id === product.id)) {
-    setToLocalStorage = [...local, product];
-  }
-  return localStorage.setItem('cart', JSON.stringify(setToLocalStorage));
-};
 
-const decreaseProductToLocalStorage = (product, quantity) => {
-  const local = getLocalStorage('cart');
-  product = { ...product, quantity };
-  let setToLocalStorage = [...local];
-  if (quantity > zero) {
-    local.forEach((item, index) => {
-      if (item.id === product.id) {
-        setToLocalStorage = [...local];
-        setToLocalStorage[index] = product;
-      }
-    });
-  }
-  if (quantity === zero) {
-    local.forEach((item, index) => {
-      if (item.id === product.id) {
-        setToLocalStorage = [...local];
-        setToLocalStorage.pop(index);
-      }
-    });
-  }
-  return localStorage.setItem('cart', JSON.stringify(setToLocalStorage));
-};
+// Essa função gera chaves aleatórias para as iterações de map
+const generateKey = (prefix) => `${prefix}-${Math.random()}`;
 
-const deleteProductFromLocalStorage = (productID) => {
-  const localCart = getLocalStorage('cart');
-  const cartWithoutOneProduct = localCart.filter(
-    (product) => productID !== product.id,
-  );
-  return localStorage.setItem('cart', JSON.stringify(cartWithoutOneProduct));
-};
+const totalPriceOfProducts = (products) => products.reduce(
+  (acc, product) => acc + product.quantity * product.price,
+  MIN,
+);
 
 export default {
+  getUserData, // Returns user data or null
+  generateKey,
   transformPrice,
-  verifyQuantity,
-  getLocalStorage,
-  addingProductToLocalStorage,
-  decreaseProductToLocalStorage,
-  deleteProductFromLocalStorage,
+  setProductToCart,
+  deleteProductById,
+  transformDate,
+  totalPriceOfProducts,
+  getProductFromCartById,
+  getCartInfo,
 };

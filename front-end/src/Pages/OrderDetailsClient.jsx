@@ -1,13 +1,13 @@
-// import { helpers } from 'faker';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
+import Restrict from '../Components/Restrict';
 import Header from '../Components/Header';
 import Helper from '../Helper';
-import { getSalesOrder, salesById, totalPriceOfProducts } from '../Redux/Services';
+import { salesById } from '../Redux/Services';
 
+const NOONE = 0;
+const INITIAL = 0;
 
-
-const decimals = 2;
 function OrderDetails({
   history,
   match: {
@@ -15,34 +15,26 @@ function OrderDetails({
   },
 }) {
   const [order, setOrder] = useState([]);
-  // const [allOrders, SetAllOrders ] = useState([]);
-  const [dataDoPedido, setdataDoPedido] = useState(0);
-  // let dataDoPedido = 0;
 
   useEffect(() => {
-    salesById(id).then(data => setOrder(data))
-    // getSalesOrder().then(all => SetAllOrders(all));
-    getSalesOrder().then(all => {
-      const saleById = all.find(sale => sale.id == id);
-      const dataFormated = new Date(saleById.sale_date).toLocaleDateString("pt-br", {
-        day: "2-digit",
-        month: "2-digit",
-      });
-      setdataDoPedido(dataFormated);
-    });
-  }, [])
+    salesById(id).then((data) => setOrder(data));
+  }, [id]);
 
-  const total =   Helper.transformPrice(totalPriceOfProducts(order));
+  const total = Helper.transformPrice(Helper.totalPriceOfProducts(order));
+  const date = (order.length !== NOONE)
+    ? Helper.transformDate(order[INITIAL].sale_date)
+    : null;
 
   return (
-    <div>
+    <Restrict>
       <Header pathname={ history.location.pathname } />
-      Cliente - Detalhes do Pedido
       <div>
         <h2 data-testid="order-number">
-          Pedido {id}
+          Pedido
+          {' '}
+          {id}
         </h2>
-        <h2 data-testid="order-date">{dataDoPedido}</h2>
+        <h2 data-testid="order-date">{date}</h2>
       </div>
       <div className="lista-dos-produtos">
         {order.map((product, index) => (
@@ -58,10 +50,14 @@ function OrderDetails({
               {' '}
             </span>
             <span data-testid={ `${index}-product-total-value` }>
-              R$ {Helper.transformPrice(product.price * product.quantity)}
+              R$
+              {' '}
+              {Helper.transformPrice(product.price * product.quantity)}
             </span>
             <span>
-              (R$ {Helper.transformPrice(product.price)}
+              (R$
+              {' '}
+              {Helper.transformPrice(product.price)}
               {' '}
               un)
             </span>
@@ -69,9 +65,11 @@ function OrderDetails({
         ))}
       </div>
       <div data-testid="order-total-value">
-        Total: R$ {total}
+        Total: R$
+        {' '}
+        {total}
       </div>
-    </div>
+    </Restrict>
   );
 }
 

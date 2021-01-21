@@ -1,21 +1,15 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import AdminSideBar from '../Components/AdminSideBar';
 
+import Restrict from '../Components/Restrict';
+
 const AdminProfile = ({ userData }) => {
-  if (!userData.user) {
-    return <Redirect to="/login" />;
-  }
-
-  // getlocalStorage - pegar funcao do luis para solução MUNDO REAL --
-
   const { name, email } = userData.user;
   return (
-    <div>
+    <Restrict>
       <AdminSideBar />
-
       <h3>Perfil</h3>
       <p>Nome: </p>
       <p data-testid="profile-name">
@@ -23,7 +17,7 @@ const AdminProfile = ({ userData }) => {
       </p>
       <p>Email: </p>
       <p data-testid="profile-email">{email}</p>
-    </div>
+    </Restrict>
   );
 };
 

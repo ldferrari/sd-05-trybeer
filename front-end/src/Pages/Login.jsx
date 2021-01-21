@@ -6,7 +6,6 @@ import { TextField, Button } from '@material-ui/core';
 import { getUserDataAct } from '../Redux/Actions/user';
 
 const pageStyle = {
-  border: '1px solid red',
   justifyContent: 'center',
 };
 
