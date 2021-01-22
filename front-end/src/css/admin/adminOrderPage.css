@@ -1,0 +1,61 @@
+@media only screen and (min-width: 600px) {
+  .orderBody {
+    margin-left: 15%;
+  }
+
+  .orderContainer {
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 7px 5px 3px rgba(50, 50, 50, 0.77);
+    color: black;
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    height: 60px;
+    justify-content: space-around;
+    margin: 2% 10%;
+    text-decoration: none;
+    width: 85%;
+  }
+
+  .orderStatus {
+    color: rgb(196, 135, 3);
+    font-weight: 900;
+  }
+
+  .green {
+    color: green;
+   }
+}
+
+@media only screen and (max-width: 600px) {
+  .orderBody {
+    margin-top: 25%;
+  }
+
+  .orderContainer {
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 7px 5px 3px rgba(50, 50, 50, 0.77);
+    color: black;
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    height: 60px;
+    justify-content: space-around;
+    margin: 2% 3%;
+    text-decoration: none;
+    width: 94%;
+  }
+
+  .orderStatus {
+    color: rgb(196, 135, 3);
+    font-weight: 900;
+  }
+
+  .green {
+    color: green;
+   }
+}

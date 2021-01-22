@@ -23,7 +23,9 @@
   },
   "homepage": "https://github.com/betrybe/sd-0x-trybeer#readme",
   "dependencies": {
+    "@createnextapp/async-local-storage": "^1.0.1",
     "mysql2": "^2.1.0",
+    "prop-types": "^15.7.2",
     "sequelize": "^6.3.4"
   },
   "devDependencies": {

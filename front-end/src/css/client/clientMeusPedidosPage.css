@@ -1,0 +1,27 @@
+.bodyMeusPedidos {
+  padding-top: 100px;
+  height: 100%;
+}
+
+.linkMeusPedidos {
+  text-decoration: none;
+  color: black;
+}
+
+.cardConteiner {
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 7px 5px 3px rgba(50, 50, 50, 0.77);
+  display: flex;
+  font-size: 25px;
+  justify-content: space-around;
+  height: 50px;
+  margin: 5%;
+  text-decoration: none;
+  width: 90%;
+}
+
+.valueMeuPedido {
+  font-weight: bold;
+}

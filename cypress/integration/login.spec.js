@@ -9,7 +9,7 @@ import {
   createAndInsertsDataBase,
   dropAndTruncateDataBase,
 } from '../actions/actionBase';
-  
+
 describe('Crie uma página de login', () => {
   before(() => {
     createAndInsertsDataBase();

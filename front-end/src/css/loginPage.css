@@ -1,0 +1,103 @@
+@media only screen and (min-width: 600px) {
+  .login {
+    background-image: url(../image/bebidas.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .inputs {
+    margin: 10% 30%;
+  }
+
+  .label {
+    display: flex;
+    color: rgb(228, 160, 13);
+    flex-direction: column;
+    font-size: 30px;
+    font-weight: 900;
+    margin: 6% 0;
+    padding: 0;
+    -webkit-text-stroke-width: 0.8px; /* largura da borda */
+    -webkit-text-stroke-color: black; /* cor da borda */
+    width: 100%;
+  }
+
+  .input {
+    background: white;
+    height: 30px;
+  }
+
+  .entrar {
+    font-size: 30px;
+    height: 50px;
+    margin: 0 35% 10%;
+    width: 30%;
+  }
+
+  .semConta {
+    background-color: rgba(0, 0, 0, 0.801);
+    height: 50px;
+    margin: 0 35% 0;
+    width: 30%;
+  }
+
+  .link {
+    text-decoration: none;
+    color: rgb(145, 9, 9);
+    font-size: 20px;
+    font-weight: 900;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .login {
+    background-image: url(../image/bebidas.jpg);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 370%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .inputs {
+    margin: 8% 10%;
+  }
+  
+  .label {
+    display: flex;
+    color: rgb(228, 160, 13);
+    flex-direction: column;
+    font-size: 30px;
+    font-weight: 900;
+    margin: 8% 0;
+    padding: 0;
+    -webkit-text-stroke-width: 0.8px; /* largura da borda */
+    -webkit-text-stroke-color: black; /* cor da borda */
+    width: 100%;
+  }
+  
+  .input {
+    background: white;
+    height: 30px;
+  }
+  
+  .entrar {
+    height: 30px;
+    margin: 43% 20%;
+    width: 60%;
+  }
+  
+  .semConta {
+    background-color: rgba(0, 0, 0, 0.801);
+  }
+  
+  .link {
+    text-decoration: none;
+    color: rgb(145, 9, 9);
+    font-weight: 900;
+  }
+}

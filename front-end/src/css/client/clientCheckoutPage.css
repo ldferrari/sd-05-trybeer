@@ -1,0 +1,185 @@
+@media only screen and (min-width: 600px) {
+  .checkoutBody {
+    padding-top: 100px;
+    height: 100%;
+  }
+
+  .checkoutProduct {
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 7px 5px 3px rgba(50, 50, 50, 0.77);
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    height: 60px;
+    margin: 2%;
+    text-decoration: none;
+    width: 96%;
+  }
+
+  .checkoutContainer {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .checkoutSpan {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .checkoutButton {
+    background-color: rgb(160, 6, 6);
+    color: white;
+  }
+
+  .checkoutValue {
+    font-weight: bold;
+  }
+
+  .checkoutTotal {
+    color: rgb(196, 135, 3);
+    font-size: 25px;
+    font-weight: bold;
+    padding: 0 10% 0 0;
+    text-align: end;
+    margin: 3% 0;
+    width: 90%;
+  }
+
+  .checkoutLabels {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .checkoutLabel {
+    font-size: 25px;
+    margin: 0 5%;
+    width: 100%;
+  }
+
+  .checkoutInputRua {
+    font-size: 17px;
+    height: 25px;
+    margin: 0 2%;
+    width: 80%;
+  }
+
+  .checkoutInputNumero {
+    font-size: 17px;
+    height: 25px;
+    margin: 2% 2%;
+    width: 25%;
+  }
+
+  .chekcoutFinish {
+    background-color: rgb(196, 135, 3);
+    font-size: 18px;
+    height: 50px;
+    margin: 2% 15%;
+    width: 70%;
+  }
+
+  .checkoutSucesso {
+    color: rgb(0,128,0);
+    font-size: 20px;
+    font-weight: 900;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .checkoutBody {
+    padding-top: 100px;
+    height: 100%;
+  }
+
+  .checkoutProduct {
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 7px 5px 3px rgba(50, 50, 50, 0.77);
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    height: 60px;
+    margin: 2%;
+    text-decoration: none;
+    width: 96%;
+  }
+
+  .checkoutContainer {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .checkoutSpan {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .checkoutButton {
+    background-color: rgb(160, 6, 6);
+    color: white;
+  }
+
+  .checkoutValue {
+    font-weight: bold;
+  }
+
+  .checkoutTotal {
+    color: rgb(196, 135, 3);
+    font-size: 25px;
+    font-weight: bold;
+    padding: 0 10% 0 0;
+    text-align: end;
+    margin: 7% 0;
+    width: 90%;
+  }
+
+  .checkoutLabels {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .checkoutLabel {
+    font-size: 25px;
+    margin: 1% 5%;
+    width: 100%;
+  }
+
+  .checkoutInputRua {
+    font-size: 17px;
+    height: 25px;
+    margin: 0 2%;
+    width: 80%;
+  }
+
+  .checkoutInputNumero {
+    font-size: 17px;
+    height: 25px;
+    margin: 3% 2%;
+    width: 25%;
+  }
+
+  .chekcoutFinish {
+    background-color: rgb(196, 135, 3);
+    font-size: 18px;
+    height: 50px;
+    margin: 5% 15%;
+    width: 70%;
+  }
+
+  .checkoutSucesso {
+    color: rgb(0,128,0);
+    font-size: 20px;
+    font-weight: 900;
+    text-align: center;
+  }
+}

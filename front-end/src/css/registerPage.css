@@ -1,0 +1,112 @@
+@media only screen and (min-width: 600px) {
+  .allRegistro {
+    height: 100%;
+  }
+
+  .title {
+    background-color:  rgb(196, 135, 3);
+    color: rgb(248, 242, 230);
+    font-size: 50px;
+    margin: 0;
+    padding: 2%;
+    text-align: center;
+  }
+
+  .bodyRegistro {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%
+  }
+
+  .labelRegistro {
+    display: flex;
+    flex-direction: column;
+    font-size: 25px;
+    margin: 1% 30%;
+  }
+
+  .inputRegistro {
+    height: 30px;
+    margin: 5px 0;
+  }
+
+  .labelCheckRegistro {
+    font-size : 25px;
+    margin: 7% 30%;
+  }
+
+  .inputCheckRegistro {
+    height: 20px;
+    width: 50px;
+  }
+
+  .alradyDB {
+    color: rgb(145, 9, 9);
+    font-weight: 900;
+    text-align: center;
+  }
+
+  .cadastrar {
+    background-color: rgb(196, 135, 3);
+    font-size: 18px;
+    height: 50px;
+    margin: 10% 35%;
+    width: 30%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .allRegistro {
+    height: 100%;
+  }
+
+  .title {
+    background-color:  rgb(196, 135, 3);
+    color: rgb(248, 242, 230);
+    font-size: 40px;
+    margin: 0;
+    padding: 5%;
+    text-align: center;
+  }
+
+  .bodyRegistro {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .labelRegistro {
+    display: flex;
+    flex-direction: column;
+    font-size: 25px;
+    margin: 4% 10%;
+  }
+
+  .inputRegistro {
+    height: 30px;
+    margin: 5px 0;
+  }
+
+  .labelCheckRegistro {
+    font-size : 25px;
+    margin: 7% 10%;
+  }
+
+  .inputCheckRegistro {
+    height: 20px;
+    width: 50px;
+  }
+
+  .alradyDB {
+    color: rgb(145, 9, 9);
+    font-weight: 900;
+    text-align: center;
+  }
+
+  .cadastrar {
+    background-color: rgb(196, 135, 3);
+    font-size: 18px;
+    height: 50px;
+    margin: 25% 15% 10%;
+    width: 70%;
+  }  
+}

@@ -93,7 +93,7 @@ Você pode ler mais sobre os atributos que serão utilizados para testes [neste 
 
 ---
 
-### Análise Estática 
+### Análise Estática
 
 Usaremos o [ESLint](https://eslint.org/) para fazer a análise estática do seu código.
 
@@ -107,7 +107,7 @@ Para poder rodar os `ESLint` em um projeto basta executar o comando `npm install
 Devido ao fato de as configurações das regras do `ESLint` dos projetos de front e back **serem diferentes**, **é preciso executar o `ESLint` em cada projeto**.
 
 Você pode também instalar o plugin do `ESLint` no `VSCode`, bastar ir em extensions e baixar o [plugin `ESLint`](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
- 
+
 ## Desenvolvimento
 
 Esse repositório contém duas pastas, `back-end` e `front-end`, onde você deve desenvolver o front-end e o back-end da aplicação. Ambas as pastas contêm um projeto iniciado com as configurações básicas necessárias. Após clonar o projeto e instalar as dependências, sinta-se livre para escolher usar Redux ou ContextAPI + React Hooks. Saiba avaliar as vantagens/desvantagens de cada um na hora da escolha.
@@ -199,8 +199,8 @@ Haverá um arquivo no caminho: `sd-05-trybeer/cypress/plugins/index.js`. Neste a
 module.exports = {
   "development": {
     "username": process.env.MYSQL_USER,
-    "password": process.env.MYSQL_PASSWORD, 
-    "database": 'Trybeer', 
+    "password": process.env.MYSQL_PASSWORD,
+    "database": 'Trybeer',
     "host": process.env.HOSTNAME,
     "dialect": 'mysql',
   },
@@ -332,7 +332,7 @@ Esta tela possui o nome `Registro` no protótipo.
 
 - Caso a opção `Quero vender` esteja marcada, ao clicar no botão `"Cadastrar"`, a pessoa deve ser redirecionada para a página **Admin - Home**. Caso contrario, deve ser redirecionada para a página de **Cliente - Produtos**.
 
-### Página de Registro 
+### Página de Registro
 
 - O campo input 'name' deverá conter a tag `data-testid="signup-name"`
 
@@ -368,9 +368,9 @@ Esta tela possui o nome `Registro` no protótipo.
 
 **[Será validado que é possível fazer cadastro de um cliente com sucesso e ser redirecionado para tela do cliente]**
 
-## Cliente 
+## Cliente
 
-### Menu superior 
+### Menu superior
 
 ### 3 - Crie o menu top e o menu side bar
 
@@ -394,7 +394,7 @@ Esta tela possui o nome `Registro` no protótipo.
 
 - Ao clicar no item `"Sair"`, a pessoa deve ser redirecionada para a tela **Login** e ser deslogada.
 
-### Menu superior 
+### Menu superior
 
 - O título do top 'Trybeer' deverá conter a tag `data-testid="top-title"`
 
